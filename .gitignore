@@ -1,0 +1,6 @@
+.idea
+.git
+.htaccess
+vendor
+app/Core/Config.php
+test

@@ -1,0 +1,33 @@
+.search-box{display: none}
+.page-header{ margin: 15px 0 20px;}
+.panel-default>.panel-heading{line-height:1;}
+.pagination{margin: 10px;}
+.operation-buttons{display: inline-flex;}
+.operation-buttons a{margin-right: 2px;}
+.operation-buttons a:last-child{margin-right: 0px;}
+.image-field{width: 100px; height: 80px;}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {color: #fff;background-color: #5cb85c;}
+.form-content{border-top: 1px dotted #5cb85c;margin-top: 10px;padding-top: 10px;}
+.flag-icon{margin: 25px 5px;}
+.breadcrumb{background-color:transparent;padding: 5px 0px;}
+.breadcrumb li {font-size: 12px;}
+
+.vertical-middle{vertical-align: middle !important;}
+.width-20{width: 20px;}
+.width-120{width: 100px;}
+.margin-top-10{margin-top: 10px;}
+.margin-right-10{margin-right: 10px;}
+.margin-bottom-3{margin-bottom: 3px;}
+.margin-top-6{margin-top:6px;}
+.margin-right-10{margin-right:10px;}
+.margin-bottom-10{margin-bottom:10px;}
+.padding-4{padding: 4px;}
+.padding-top-7{padding-top: 7px;}
+.border-radius-5{border-radius: 5px;}
+
+.gallery-img-field{max-width:100px;max-height: 100px;margin-bottom: 10px}
+.gallery-button-text{color: #FFF !important;}
+.inline-block{display:inline-block}
+
+/* gmaps */
+.gllpMap	{ width: 100%; height: 250px;}

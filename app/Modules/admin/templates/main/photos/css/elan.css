@@ -1,0 +1,264 @@
+/* add photos*/
+.photo_list {
+    margin-left: -6px;
+    padding-bottom: 10px;
+    /*overflow: hidden;*/
+}
+
+.photo_list li {
+    width: 205px;
+    float: left;
+    margin-left: 6px;
+    /*overflow: hidden;*/
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.photo_list li > input {
+    /*text-align: center;*/
+    margin-left: 50px;
+    /*max-width:100px;*/
+}
+
+/*.photo_list li > label {*/
+    /*margin-left: 147px;*/
+/*}*/
+
+.photo_list li div.li_div {
+    width: 205px;
+    height: 131px;
+    /*border: 1px solid #8b8b8b;*/
+    overflow: hidden;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.photo_list li div.li_div div.li_div2 {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    border: none;
+    display: inline-flex;
+    background: url(../icons/loading.gif) no-repeat center;
+}
+
+.photo_list li div div img {
+    max-width: 205px;
+    max-height: 131px;
+    display: block;
+    margin: auto;
+}
+
+.bbox .progress {
+    position: relative;
+    width: 100% !important;
+    height: 7px !important;
+    margin-top: -9px !important;
+    border: 1px solid #DDD !important;
+    border-radius: 3px !important;
+}
+
+.delete_photo {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    background: #D92500 url(../icons/trash_icon.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    margin-right: 4px;
+    margin-left: 45px;
+}
+
+.delete_photo:hover {
+    background: #ff3308 url(../icons/delete_photo.png) center no-repeat;
+}
+
+.turn_left {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    background: #e58a16 url(../icons/turn.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+}
+
+.turn_left:hover {
+    background: #ff9308 url(../icons/turn.png) center no-repeat;
+}
+
+.turn_right {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    margin-left: 4px;
+    background: #e58a16 url(../icons/turn2.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+}
+
+.turn_right:hover {
+    background: #ff9308 url(../icons/turn2.png) center no-repeat;
+}
+
+.unvisible {
+    visibility: hidden !important;
+}
+
+.bbox .progress {
+    position: relative;
+    width: 100% !important;
+    height: 7px !important;
+    margin-top: -9px !important;
+    border: 1px solid #DDD !important;
+    border-radius: 3px !important;
+}
+
+.bbox .bar {
+    background: #8bbc57 !important;
+    height: 7px !important;
+    width: 1%;
+    /* transition animation */
+    -webkit-transition: width .3s !important;
+    -moz-transition: width .3s !important;
+    transition: width .3s !important;
+}
+
+/** add menu photos **/
+/* add photos menzil*/
+.photo_list2 {
+    margin-left: -6px;
+    padding-bottom: 10px;
+    /*overflow: hidden;*/
+}
+
+.photo_list2 li {
+    width: 205px;
+    float: left;
+    margin-left: 6px;
+    /*overflow: hidden;*/
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.photo_list2 li > input {
+    /*text-align: center;*/
+    margin-left: 50px;
+    /*max-width:100px;*/
+}
+
+/*.photo_list li > label {*/
+/*margin-left: 147px;*/
+/*}*/
+
+.photo_list2 li div.li_divn {
+    width: 205px;
+    height: 131px;
+    /*border: 1px solid #8b8b8b;*/
+    overflow: hidden;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.photo_list2 li div.li_divn div.li_div2n {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    border: none;
+    display: inline-flex;
+    background: url(../icons/loading.gif) no-repeat center;
+}
+
+.photo_list2 li div div img {
+    max-width: 205px;
+    max-height: 131px;
+    display: block;
+    margin: auto;
+}
+
+.progress2 {
+    position: relative;
+    width: 100% !important;
+    height: 7px !important;
+    margin-top: -9px !important;
+    border: 1px solid #DDD !important;
+    border-radius: 3px !important;
+}
+
+.delete_photo2 {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    background: #D92500 url(../icons/trash_icon.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    margin-right: 4px;
+    margin-left: 45px;
+}
+
+.delete_photo2:hover {
+    background: #ff3308 url(../icons/delete_photo.png) center no-repeat;
+}
+
+.turn_left2 {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    background: #e58a16 url(../icons/turn.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+}
+
+.turn_left2:hover {
+    background: #ff9308 url(../icons/turn.png) center no-repeat;
+}
+
+.turn_right2 {
+    display: block;
+    width: 35px;
+    height: 20px;
+    float: left;
+    margin-left: 4px;
+    background: #e58a16 url(../icons/turn2.png) center no-repeat;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+}
+
+.turn_right2:hover {
+    background: #ff9308 url(../icons/turn2.png) center no-repeat;
+}
+
+.unvisible2 {
+    visibility: hidden !important;
+}
+
+.progress2 {
+    position: relative;
+    width: 100% !important;
+    height: 7px !important;
+    margin-top: -9px !important;
+    border: 1px solid #DDD !important;
+    border-radius: 3px !important;
+}
+
+.bar2 {
+    background: #8bbc57 !important;
+    height: 7px !important;
+    width: 1%;
+    /* transition animation */
+    -webkit-transition: width .3s !important;
+    -moz-transition: width .3s !important;
+    transition: width .3s !important;
+}

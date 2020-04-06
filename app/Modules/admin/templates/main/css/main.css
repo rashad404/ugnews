@@ -1,0 +1,344 @@
+div.clearBoth{
+    clear: both;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.btn-primary {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+}
+.btn-primary:hover{
+    background-color: #429dd4;
+}
+
+.nav-features a{
+    background-color: #3c8dbc !important;
+    color: #fff !important;
+     cursor: pointer;
+    margin: 1px!important;
+}
+.nav-features>li.active>a, .nav-features>li.active>a:focus, .nav-features>li.active>a:hover{
+    background-color: #fff !important;
+    color: #000000 !important;
+}
+
+.general_tab{
+    display:block;
+    padding: 20px 0 0 20px;
+}
+.features_tab{
+    display:none;
+    padding: 20px 0 0 20px;
+}
+.photos_tab{
+    display:none;
+    padding: 20px 0 0 20px;
+}
+
+.form-control{
+    border: 1px solid #d2d6de;
+    border-radius: 3px;
+}
+
+.thumb{
+    max-width: 100px;
+}
+
+.form_box{
+    /*padding: 20px;*/
+    padding: 20px 20px 0px 20px
+}
+
+.fade{
+    display: none;
+}
+.fade.in{
+    display: block;
+}
+
+img.thumb_img{
+    width: 120px;
+}
+
+div.list_alt_text{
+    color:#ababab;
+    font-size: 12px;
+    padding: 5px 0;
+}
+div.list_alt_text i{
+    padding: 0 3px 0 5px;
+}
+
+.apt_box{
+    /*float:left;*/
+    padding: 20px 20px 30px 20px;
+    background-color: #303a49;
+    margin: 10px 0;
+    color: #fff;
+    position: relative;
+}
+div.apt_name{
+    font-size: 16px;
+}
+div.apt_address{
+    font-size: 14px;
+    color: #838383;
+}
+div.apt_stats_counts{
+    margin-top: 10px;
+}
+
+span.count_active_beds{
+    background-color: green;
+    padding: 5px 10px;
+}
+span.count_all_beds{
+    background-color: #585858;
+    padding: 5px 10px;
+}
+span.count_vacant_beds{
+    background-color: #c80603;
+    padding: 5px 10px;
+}
+span.count_notice_beds{
+    background-color: #c89700;
+    padding: 5px 10px;
+}
+
+div.apt_tenants{
+    position: absolute;
+    z-index: 3;
+    margin-top: 10px;
+    bottom:0;
+    color: #000;
+    font-size: 13px;
+    background-color: #e0fff1;
+    padding: 10px;
+    width: 90%;
+    display: none;
+}
+div.apt_box:hover{
+    cursor: pointer;
+}
+div.apt_box:hover > div.apt_tenants{
+    display: block;
+}
+span.apt_counting{
+    font-weight: bold;
+    color: #ff4b48;
+}
+div.apt_revenues{
+    position: absolute;
+    z-index: 2;
+    margin-top: 10px;
+    top:0;
+    right:10px;
+}
+div.apt_revenue_item{
+    color: #fff;
+    font-size: 13px;
+    padding: 2px 5px;
+    margin-bottom: 3px;
+    background-color: #333333;
+    text-align: right;
+}
+div.apt_revenue_item.green_color{
+    color: green;
+    background-color: #fff;
+    font-weight: bold;
+}
+div.apt_revenue_item.red_color{
+    color: red;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+div.total_stats{
+    text-align: right;
+}
+span.table_key{
+    float:left;
+}
+span.table_value{
+    float:right;
+}
+span.table_value.red_color{
+    color: red;
+    font-weight: bold;
+}
+span.table_value.green_color{
+    color: green;
+    font-weight: bold;
+}
+
+
+
+table.prices_table th{
+    padding: 15px 20px 15px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid #ccc;
+    background-color: #3c8dbc;
+    color: #fff;
+}
+table.prices_table td{
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    background-color: #fff;
+}
+.price_text{
+    font-size: 14px;
+    line-height: 30px;
+}
+span.price_text_left{
+    font-size: 12px;
+    float: left;
+}
+span.price_text_right{
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+}
+
+
+/*BEDS STATS*/
+table.apt_bed_table td{
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+}
+table.apt_bed_table td.name{
+    font-weight: bold;
+}
+
+
+
+.bed_box{
+    /*float:left;*/
+    padding: 20px 20px 20px 20px;
+    background-color: #ffffff;
+    margin: 10px 0;
+    color: #232323;
+    /*border: 1px solid #b7b7b7;*/
+    position: relative;
+    min-height: 350px;
+}
+span.vacant_bed{
+    color:red;
+    font-weight: bold;
+}
+span.notice_bed{
+    color: #ff8e00;
+    font-weight: bold;
+}
+
+.stats_bed_list td,th{
+    padding:10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.stats_bed_list{
+    margin:50px 0;
+}
+
+.stats_bed_list div.title{
+    font-weight: bold;
+    font-size:24px;
+}
+
+
+.form_box{
+    /*padding: 20px;*/
+    font-size: 16px;
+
+}
+.half_box{
+    border-radius:3px;
+    background:#ffffff;
+    margin: 10px;
+    padding: 15px 0;
+    box-shadow:0 1px 1px rgba(0,0,0,0.1)
+}
+.half_box_orange{
+    border-top:12px solid orange;
+}
+.half_box_green{
+    border-top:12px solid limegreen;
+}
+.half_box_red{
+    border-top:12px solid orangered;
+}
+.half_box_gray{
+    border-top:12px solid #acadac;
+}
+
+.half_box_with_title{
+    border-radius:3px;
+    background:#ffffff;
+    margin: 10px 0;
+    /*padding: 15px 0;*/
+    box-shadow:0 1px 1px rgba(0,0,0,0.1)
+}
+.half_box_title{
+    border-radius:3px 3px 0 0;
+    background-color: #acadac;
+    color: #fff;
+    padding: 5px 0 5px 10px;
+    font-size: 16px;
+}
+.half_box_body{
+    background-color: #fff;
+    /*color: #fff;*/
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+
+input[type='radio']{
+    margin-bottom:10px;
+}
+.input_box{
+    padding:15px 10px;
+}
+label.radio_label{
+    font-weight: normal;
+    cursor: pointer;
+}
+textarea{
+    padding: 10px;
+    border: 1px solid #ccc;
+    width:100%;
+}
+
+div.header_notice{
+    margin:20px 0;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #ffe884;
+    color: #77693b;
+    font-weight: bold;
+    border: 1px solid #e6cc73;
+    border-radius: 6px;
+}
+div.header_notice i{
+    color: #ff7709;
+    font-size: 20px;
+}
+
+ul.right_block li{
+    padding: 5px 0;
+}
+
+
+@media(min-width: 800px) {
+    .width_50 {
+        width:50%;
+    }
+}
