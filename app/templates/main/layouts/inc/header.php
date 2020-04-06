@@ -44,7 +44,6 @@ $data['contacts'] = SiteModel::getContacts();
 <!--                <a style="float: right;" href="login"><i class="fas fa-sign-in-alt"></i> register</a>-->
                 <a style="float: left;" href="login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
             <?php endif;?>
-
         </div>
         <?php if($userId>0):?>
         <ul class="nav">
