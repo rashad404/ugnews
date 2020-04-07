@@ -47,8 +47,8 @@ $data['contacts'] = SiteModel::getContacts();
         </div>
         <?php if($userId>0):?>
         <ul class="nav">
-            <?php if($userInfo['landlord_portal']==1):?><li><a href="partner"><?=$lng->get('Landlord Portal')?></a></li><?php endif;?>
-            <?php if($userInfo['tenant_portal']==1):?><li><a href="user"> <?=$lng->get('Tenant Portal')?></a></li><?php endif;?>
+            <?php if($userInfo['landlord_portal']==1):?><li><a href="partner"><?=$lng->get('Admin Portal')?></a></li><?php endif;?>
+            <?php if($userInfo['tenant_portal']==1):?><li><a href="user"> <?=$lng->get('User Portal')?></a></li><?php endif;?>
         </ul>
         <?php endif;?>
         <?= $menuListMobile;?>
@@ -103,8 +103,8 @@ $data['contacts'] = SiteModel::getContacts();
                 <?php if($userId>0):?>
                 <a class="login_info" href="javascript:void(0);"><i class="fas fa-user"></i> <?=Format::listTitle($userInfo['first_name'],5)?> <i class="fas fa-caret-down"></i></a>
                     <ul class="sub_menu">
-                        <?php if($userInfo['landlord_portal']==1):?><li><a href="partner"><i class="fas fa-caret-right"></i>  <?=$lng->get('Landlord Portal')?></a></li><?php endif;?>
-                        <?php if($userInfo['tenant_portal']==1):?><li><a href="user"><i class="fas fa-caret-right"></i>  <?=$lng->get('Tenant Portal')?></a></li><?php endif;?>
+                        <?php if($userInfo['landlord_portal']==1):?><li><a href="partner"><i class="fas fa-caret-right"></i>  <?=$lng->get('Admin Portal')?></a></li><?php endif;?>
+                        <?php if($userInfo['tenant_portal']==1):?><li><a href="user"><i class="fas fa-caret-right"></i>  <?=$lng->get('User Portal')?></a></li><?php endif;?>
                         <li><a href="user_panel/profile"><i class="fas fa-caret-right"></i>  <?=$lng->get('Your Profile')?></a></li>
                         <li><a href="user_panel/logout"><i class="fas fa-caret-right"></i> <?=$lng->get('Logout')?></a></li>
                     </ul>

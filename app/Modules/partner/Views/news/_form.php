@@ -4,6 +4,7 @@ use Models\LanguagesModel;
 $model = $data["model"];
 $languages = LanguagesModel::getLanguages();
 $defaultLanguage = LanguagesModel::getDefaultLanguage();
+$lng = $data['lng'];
 
 ?>
 <form action="" method="post" enctype="multipart/form-data">
@@ -13,7 +14,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label for="image">Şəkil</label>
+                    <label for="image"><?=$lng->get('Photo')?></label>
                     <div class="slim"
                          data-label="Şəkil seçin"
                          data-label-loading=""
@@ -31,25 +32,30 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                     </div>
                 </div>
             </div>
-            <?php
-            foreach($languages as $k => $language){
-                ?>
-                <div class="tab-pane fade <?= $k=='0' ? 'active in' : ''?>" id="lang-<?= $language["name"]?>">
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <label><strong>Başlıq</strong></label><br/>
-                            <input class="form-control admininput" type="text" name="title_<?= $language["name"] ?>" value="<?=$model?$model["title_".$language["name"]]:''?>">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <label><strong>Mətn</strong></label>
-                            <textarea id="summernote" name="text_<?= $language["name"] ?>"><?=$model?$model["text_".$language["name"]]:''?></textarea>
-                        </div>
-                    </div>
+
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label><strong><?=$lng->get('Title')?></strong></label><br/>
+                    <input class="form-control admininput" type="text" name="title" value="<?=$model?$model["title"]:''?>">
                 </div>
-            <?php }
-            ?>
+            </div>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label><strong><?=$lng->get('Category')?></strong></label><br/>
+                    <select name="<?=$value['key']?>" class="select2 form-control">
+                        <?php foreach($value['data'] as $data):?>
+                            <option <?=$item&&$item[$value['key']]==$data['key']?'selected':''?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$data['name']?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label><strong><?=$lng->get('Text')?></strong></label>
+                    <textarea id="summernote" name="text"><?=$model?$model["text"]:''?></textarea>
+                </div>
+            </div>
+
         </div>
     </div><!-- /.box-body -->
 
@@ -70,3 +76,34 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
         </div>
     </div>
 </form>
+
+
+<link rel="stylesheet" href="<?=\Helpers\Url::templatePartnerPath()?>css/select2.min.css" />
+<script src="<?=\Helpers\Url::templatePartnerPath()?>js/select2.min.js"></script>
+
+
+<link rel="stylesheet" href="<?=\Helpers\Url::templatePartnerPath()?>assets/datepicker/bootstrap-datetimepicker.min.css" />
+<script src="<?=\Helpers\Url::templatePartnerPath()?>assets/datepicker/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+    $(".select2.form-control").select2( {
+        placeholder: "---",
+        allowClear: true
+    } );
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(function() {
+            <?php for ($i=0;$i<$dp_c;$i++):?>
+            $('#datetimepicker<?=$i?>').datetimepicker();
+            <?php endfor;?>
+            <?php for ($i=0;$i<$dtp_c;$i++):?>
+            $('#datepicker<?=$i?>').datetimepicker({
+                format: 'L'
+            });
+            <?php endfor;?>
+
+        });
+    });
+</script>

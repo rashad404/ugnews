@@ -14,7 +14,7 @@ if($user_id>0){
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="<?php echo Url::to('partner/main/index');?>">
             <div class="mainlogocenter">
-                Landlord Panel
+                Admin Panel
             </div>
         </a>
     </nav>

@@ -1,6 +1,7 @@
 <?php
 namespace Modules\partner\Controllers;
 
+use Core\Language;
 use Helpers\Cache;
 use Helpers\Csrf;
 use Helpers\Database;
@@ -41,6 +42,8 @@ class News extends MyController
     public static $issetAlbum = false;
 
     public $operation;
+    public static $lng;
+    public static $partner_id;
 
     public static $rules;
 //'title_'.self::$def_language => ['required',],
@@ -68,13 +71,12 @@ class News extends MyController
         $this->operation = new Operation();
         $this->operation->tableName = $this->dataParams["cName"];
         self::$def_language = LanguagesModel::getDefaultLanguage('partner');
-        self::$rules = ['title_'.self::$def_language.'' => ['required']];
+        self::$rules = ['title' => ['required']];
         parent::__construct();
 
-        if(parent::accessControl(['create', 'update', 'delete'], $this->dataParams["cName"]) == true) {
-            return Url::redirect(MODULE_PARTNER);
-
-        }
+        self::$lng = new Language();
+        self::$lng->load('partner');
+        self::$partner_id = Session::get('user_session_id');
     }
 
     public function index()
@@ -91,7 +93,7 @@ class News extends MyController
     public function search(){
         if($_POST){
             $word = $_POST['word'];
-            $rows = $this->searchLikeFor($this->dataParams["cName"],['id','title_az','text_az'],$word);
+            $rows = $this->searchLikeFor($this->dataParams["cName"],['id','title','text'],$word);
         } else {
             $rows = Database::get()->select("SELECT * FROM `".$this->dataParams["cName"]."` WHERE `status`=1 ");
         }
@@ -126,6 +128,7 @@ class News extends MyController
         $defaultLang = $this->defaultLanguage();
         if(isset($_POST["submit"]) && Csrf::isTokenValid() ){
             $postArray = $this->getPost('create');
+            $postArray['partner_id'] = self::$partner_id;
             $model = $postArray;
 
             $rules = self::$rules;
@@ -161,6 +164,7 @@ class News extends MyController
             'dataParams' => $this->getDataParams(),
             'model' => $model,
             'defaultLang' => $defaultLang,
+            'lng' => self::$lng,
         ]);
 
     }
@@ -205,6 +209,7 @@ class News extends MyController
             'dataParams' => $this->getDataParams(),
             'model' => $model,
             'defaultLang' => $defaultLang,
+            'lng' => self::$lng,
         ]);
     }
 
@@ -249,24 +254,18 @@ class News extends MyController
 
     }
 
-    protected function getPost($action = 'create')
+
+    protected static function getPost()
     {
-        $languages = LanguagesModel::getLanguages();
         extract($_POST);
+        $skip_list = ['csrf_token','submit'];
         $array = [];
-        foreach($languages as $lang){
-            $title = "title_".$lang["name"];
-            $array[$title] = Security::safe($$title);
-
-            $unvani = "text_".$lang["name"];
-            $array[$unvani] = Security::safe($$unvani);
-
+        foreach($_POST as $key=>$value){
+            if (in_array($key, $skip_list)) continue;
+            $array[$key] = Security::safe($_POST[$key]);
         }
 
-        $array["status"] = Security::safe($status);
         $array["time"] = time();
-        $array["view"] = 1;
-
         return $array;
     }
 
@@ -282,10 +281,10 @@ class News extends MyController
                 $search_execute[':id']= $_GET['id'];
                 $values["id"] = $_GET['id'];
             }
-            if (!empty($_GET['title_'.$defaultLang])){
-                $search_array.="`title_{$defaultLang}`=:title_{$defaultLang} AND ";
-                $search_execute[':title_'.$defaultLang]= $_GET['title_'.$defaultLang];
-                $values['title_'.$defaultLang] = $_GET['title_'.$defaultLang];
+            if (!empty($_GET['title'])){
+                $search_array.="`title`=:title AND ";
+                $search_execute[':title']= $_GET['title'];
+                $values['title'] = $_GET['title'];
             }
             if (isset($_GET['parent_id']) && intval($_GET['parent_id'])>0) {
                 $search_array .= "`parent_id`=:parent_id AND ";

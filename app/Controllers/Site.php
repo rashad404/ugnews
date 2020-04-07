@@ -65,13 +65,9 @@ class Site extends Controller
         $pagination->limit = 70;
         $data['pagination'] = $pagination;
 
-        $data['blog_list'] = BlogModel::getList(12);
-        $data['tour_list'] = ApartmentsModel::getList(12, '');
+        $data['list'] = NewsModel::getList();
 
-        $data['testimonials_list'] = TestimonialsModel::getList(100);
-        $data['partners_list'] = [
-                'adams_college', 'kaplan', 'harvest_english', 'ucla', 'cal_america', 'columbia_west', 'usc'
-        ];
+        Session::set('cat',0);
 
         View::render('site/'.__FUNCTION__, $data);
     }

@@ -20,12 +20,12 @@ class PartnerModel extends Model{
         }
 
 
-            $data['name'] = 'USABN';
-            $data['website'] = 'usabn.org';
-            $data['header_logo'] = 'usabn.svg';
-            $data['header_logo_white'] = 'usabn_white.svg';
+            $data['name'] = 'UG.news';
+            $data['website'] = 'ug.news';
+            $data['header_logo'] = 'ug_news.svg';
+            $data['header_logo_white'] = 'ug_news_white.svg';
             $data['phone'] = '+1 (323) 800-1151';
-            $data['email'] = 'info@usabn.org';
+            $data['email'] = 'info@ug.news';
             $data['address'] = '5670 Wilshire blvd, Los Angeles, CA 90036';
 
             $data['square']['access_token'] = 'EAAAEIMwBOa4v75eWMriPMybaVP74H5ga_jYW6gpCtCnOHa5CkwAwiUIKE1uZlCL';

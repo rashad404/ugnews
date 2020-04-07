@@ -11,7 +11,7 @@ $css_v = '?v='.UPDATE_VERSION;
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Landlord Panel</title>
+    <title>Admin Panel</title>
     <?php
 
     Assets::css([

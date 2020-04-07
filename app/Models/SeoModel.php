@@ -8,8 +8,8 @@ use Helpers\XLSXReader;
 
 class SeoModel extends Model{
 
-    public static $add_text = ' | USABN.org';
-    public static $add_prefix = 'USABN.org | US Azerbaijan Business Network ';
+    public static $add_text = ' | UG.news';
+    public static $add_prefix = 'UG.news | User Generated News ';
     public $lng;
 
     public function __construct(){

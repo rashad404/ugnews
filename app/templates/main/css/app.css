@@ -2504,19 +2504,21 @@ div.forum_sidebar_title:hover{
 }
 
 div.page_title{
-    text-align: center;
+    text-align: left;
 
 }
 div.page_title h2{
     font-weight: bold;
     letter-spacing: 2px;
     color:#000;
-    font-size: 48px;
+    font-size: 36px;
 }
 div.page_title hr{
-    width: 100px;
-    background-color: #868686;
-    height: 2px;
+    width: 250px;
+    background-color: red;
+    height: 3px;
+    float: left;
+    margin-top: 0;
 }
 
 
@@ -3077,6 +3079,62 @@ div.google_sign_in i {
     background-color: #10a578;
     color: #fff;
 }
+
+
+/*NEWS*/
+.col-lg-3{
+    padding-left: 8px!important;
+    padding-right: 8px!important;
+}
+.news_box{
+    margin-bottom: 30px;
+    height: 270px;
+    background-color: #fff;
+}
+/*NEWS*/
+.news_box:hover{
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+}
+.news_image{
+    width: 100%;
+    height: 150px;
+}
+.news_title{
+    padding: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+    margin-bottom: 10px;
+    height: 72px;
+}
+.news_date{
+    padding: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000;
+    margin-bottom: 10px;
+    height: 72px;
+}
+
+/*News inner*/
+.news_inner_box{
+    background-color: #fff;
+}
+.news_inner_img{
+    width: 100%;
+    height: 400px;
+}
+.news_inner_box img{
+    width: 100%;
+}
+.news_inner_title{
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+
 
 
 

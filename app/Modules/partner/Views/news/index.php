@@ -77,7 +77,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                         </div>
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $row["id"]?></td>
-                                    <td class="admin-arrow-box"><?= $row["title_".$defaultLang]?></td>
+                                    <td class="admin-arrow-box"><?= $row["title"]?></td>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["cPositionEnable"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getPositionIcons($row["id"],MODULE_PARTNER."/".$params["cName"])?></td>

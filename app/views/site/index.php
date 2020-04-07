@@ -15,31 +15,83 @@ use Models\TextsModel;
 
     ?>
 <!--    Why Us?-->
-    <div class="page_title paddingTop40 paddingBottom40">
-        <h2>
-            <?=$lng->get('Our Community Businesses')?>
-        </h2>
-    </div>
     <div class="container paddingBottom20">
-        <div class="row">
-            <?php foreach($company_list as $List):?>
-            <div class="col-sm-4">
-                <div class="why_us">
-                    <img src="<?=Url::templatePath()?>img/partner_logos/<?=$List['logo']?>" alt="<?=$List['name']?>"/>
-                    <div class="why_us_body">
-                        <h5 class="sub-title">
-                            <a href="<?=$List['url']?>" target="_blank"><?=$lng->get($List['name'])?></a>
-                        </h5>
-                        <div class="why_us_text">
-                            <?=$lng->get($List['info'])?>
+            <div class="row paddingBottom40">
+                <div class="col-sm-12">
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title paddingTop20 paddingBottom20">
+                                <h2>
+                                    <?=$lng->get('Top Tags')?>
+                                </h2>
+                                <hr/>
+                            </div>
                         </div>
+
+                        <?php foreach ($data['list'] as $list):?>
+                            <div class="item col-lg-3">
+                                <div class="news_box">
+                                    <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
+                                        <img class="news_image" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+                                        <div class="caption">
+                                            <div class="news_title">
+                                                <span>
+                                                    <?=ProductsModel::formatListText($list['title'], 60)?>
+                                                </span>
+                                            </div>
+                                            <div class="row news_date">
+                                                <div class="col-xs-6 col-md-6">
+                                                    <?=date("M d Y",$list['time'])?>
+                                                </div>
+                                                <div class="col-xs-6 col-md-6">
+                                                    <span style="float:right;"><?=date("H:i",$list['time'])?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+
+
+                        <div class="col-lg-12">
+                            <div class="page_title paddingTop20 paddingBottom20">
+                                <h2>
+                                    <?=$lng->get('Latest News')?>
+                                </h2>
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <?php foreach ($data['list'] as $list):?>
+                            <div class="item col-lg-3">
+                                <div class="news_box">
+                                    <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
+                                        <img class="news_image" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+                                        <div class="caption">
+                                            <div class="news_title">
+                                                <span>
+                                                    <?=ProductsModel::formatListText($list['title'], 60)?>
+                                                </span>
+                                            </div>
+                                            <div class="row news_date">
+                                                <div class="col-xs-6 col-md-6">
+                                                    <?=date("M d Y",$list['time'])?>
+                                                </div>
+                                                <div class="col-xs-6 col-md-6">
+                                                    <span style="float:right;"><?=date("H:i",$list['time'])?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-            <?php endforeach;?>
-
-        </div>
-        </div>
     </div>
 
 </main>

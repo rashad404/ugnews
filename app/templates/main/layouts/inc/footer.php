@@ -27,13 +27,16 @@ use Helpers\Format;
                 </div>
             </div>
 
-            <div class="col-sm-4 col-4">
+            <div class="col-sm-8 col-8">
                 <div class="footer_block">
                     <h2><?=$lng->get('Quick Links')?></h2>
                     <div class="footer_links_1">
                         <ul>
-                            <li><a href="about"><?=$lng->get('About us')?></a></li>
-                            <li><a href="contact-us"><?=$lng->get('Contact Us')?></a></li>
+                            <li><a href="about"><?=$lng->get('Coronavirus news')?></a></li>
+                            <li><a href="about"><?=$lng->get('World news')?></a></li>
+                            <li><a href="contact-us"><?=$lng->get('Local news')?></a></li>
+                            <li><a href="contact-us"><?=$lng->get('Sport news')?></a></li>
+                            <li><a href="contact-us"><?=$lng->get('Political news')?></a></li>
                         </ul>
                     </div>
                     <div class="footer_links_2">
@@ -46,27 +49,6 @@ use Helpers\Format;
                 </div>
             </div>
 
-            <div class="col-sm-4 col-4">
-                <div class="footer_block">
-                    <h2><?=$lng->get('Last posts')?></h2>
-
-
-                    <div class="footer_blog">
-                            <?php foreach (BlogModel::getList(2) as $item):?>
-                            <div class="row">
-                                <div class="footer_blog_item">
-                                    <a href="blog/<?=$item['id']?>/<?=Format::urlText($item['title_'.$data['def_language']])?>">
-                                        <img class="img-left" src="<?= Url::uploadPath().$item['thumb']?>" alt="<?= $item['title_'.$data['def_language']]?>"/>
-                                        <div class="content-heading"><h4><?= $item['title_'.$data['def_language']]?></h4></div>
-                                    </a>
-                                        <p><?= substr(strip_tags(html_entity_decode($item['text_'.$data['def_language']])),0,100)?></p>
-
-                                </div>
-                            </div>
-                        <?php endforeach;?>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </footer>
