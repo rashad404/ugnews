@@ -2505,6 +2505,7 @@ div.forum_sidebar_title:hover{
 
 div.page_title{
     text-align: left;
+    display: inline-block;
 
 }
 div.page_title h2{
@@ -2514,7 +2515,7 @@ div.page_title h2{
     font-size: 36px;
 }
 div.page_title hr{
-    width: 250px;
+    width: 105%;
     background-color: red;
     height: 3px;
     float: left;

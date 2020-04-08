@@ -86,6 +86,22 @@ class Site extends Controller
         View::render('site/'.__FUNCTION__, $data);
     }
 
+
+    // Index page
+    public function tags($id=0, $name=''){
+        $data = SeoModel::index();
+        $data['def_language'] = self::$def_language;
+
+        $pagination = new Pagination();
+        $pagination->limit = 72;
+        $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
+        $data['list'] = NewsModel::getListByCat($id, $limitSql);
+        $data['cat_name'] = NewsModel::getTagName($id);
+        View::render('site/'.__FUNCTION__, $data);
+    }
+
+
     public function news()
     {
         $data['title'] = SITE_TITLE;

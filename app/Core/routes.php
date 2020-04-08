@@ -39,6 +39,7 @@ Router::any('news', 'Controllers\Site@news');
 Router::any('news/(:num)/(:any)', 'Controllers\Site@news_inner');
 
 Router::any('cat/(:num)/(:any)', 'Controllers\Site@cat');
+Router::any('tags/(:num)/(:any)', 'Controllers\Site@tags');
 
 Router::any('blog', 'Controllers\Blog@index');
 Router::any('blog/(:num)/(:any)', 'Controllers\Blog@inner');

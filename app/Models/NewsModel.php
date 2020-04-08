@@ -12,6 +12,7 @@ class NewsModel extends Model{
 
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
+    private static $tableNameTags = 'tags';
     public $lng;
     public function __construct(){
         parent::__construct();
@@ -41,11 +42,11 @@ class NewsModel extends Model{
 
     public static function getCatName($id){
         $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameCategories."` WHERE `id`='".$id."'");
-        if($array){
-            return $array['name'];
-        }else{
-            return '';
-        }
+        if($array){return $array['name'];}else{return '';}
+    }
+    public static function getTagName($id){
+        $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameTags."` WHERE `id`='".$id."'");
+        if($array){return $array['name'];}else{return '';}
     }
 
     public static function navigate($id, $action){
