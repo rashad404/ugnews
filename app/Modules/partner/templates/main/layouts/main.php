@@ -28,6 +28,7 @@ $css_v = '?v='.UPDATE_VERSION;
         Url::templatePartnerPath() . 'semantic-ui/transition.min.css',
         Url::templatePartnerPath() . 'photos/css/elan.css',
         Url::templatePartnerPath() . 'css/main.css'.$css_v,
+        Url::templatePartnerPath() . 'css/bootstrap-tagsinput.css',
     ]);
     ?>
 
@@ -45,6 +46,7 @@ $css_v = '?v='.UPDATE_VERSION;
         Url::templatePartnerPath() . 'js/script_yuel.js',
         Url::templatePartnerPath() . 'js/summernote.min.js',
         Url::templatePartnerPath() . 'js/main.js',
+        Url::templatePartnerPath() . 'js/bootstrap-tagsinput.min.js',
         Url::templatePartnerPath() . 'semantic-ui/dropdown.min.js',
         Url::templatePartnerPath() . 'semantic-ui/transition.min.js',
         Url::templatePartnerPath() . 'photos/js/malsup.js',

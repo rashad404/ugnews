@@ -1,13 +1,13 @@
 <?php
 use Models\LanguagesModel;
-$params = $data["dataParams"];
+$params = $data["params"];
 $languages = LanguagesModel::getLanguages();
 $defaultLanguage = LanguagesModel::getDefaultLanguage();
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="headtext">
-        <span><a href="index"><span style="color:#8bc34a;"><?= $params["cTitle"]; ?></span></a> / Əlavə et</span>
+        <span><a href="index"><span style="color:#8bc34a;"><?= $params["title"]; ?></span></a> / Add</span>
     </div>
 </section>
 
@@ -18,7 +18,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
             <div class="box">
                 <div class="box-header">
                     <div class="col-xs-6">
-                        <h3 class="box-title">Əlavə et</h3>
+                        <h3 class="box-title">Add</h3>
                     </div>
                     <div class="col-xs-6">
                         <ul class="nav nav-pills pull-right">

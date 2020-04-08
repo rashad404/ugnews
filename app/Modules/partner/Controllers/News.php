@@ -2,109 +2,179 @@
 namespace Modules\partner\Controllers;
 
 use Core\Language;
-use Helpers\Cache;
 use Helpers\Csrf;
 use Helpers\Database;
-use Helpers\File;
-use Helpers\FileCache;
-use Helpers\Operation;
 use Helpers\Pagination;
-use Helpers\Recursive;
-use Helpers\Slim;
 use Helpers\Security;
 use Helpers\Session;
-use Helpers\SimpleImage;
-use Helpers\Validator;
-use Modules\partner\Models\GalleryModel;
-use Modules\partner\Models\NewsModel as TableModel;
+use Modules\partner\Models\ApartmentsModel;
+use Modules\partner\Models\BalanceModel;
+use Modules\partner\Models\BedsModel;
+use Modules\partner\Models\RoomsModel;
+use Modules\partner\Models\SmsModel;
+use Modules\partner\Models\NewsModel;
 use Models\LanguagesModel;
 use Core\View;
 use Helpers\Url;
 
-class News extends MyController
-{
+class News extends MyController{
 
-    public static $safeMode = false;  // silinmemeli olan rowlarin mudafieso
-    public static $safeModeFields = ["safe_mode"]; // siline bilmeyen rowlarin nezere alinmali fieldi
-
-    public static $positionEnable=false;     // Siralama aktiv, deaktiv
-    public static $positionOrderBy  = 'ASC'; // Siralama ucun order
-    public static $positionCondition = true;    // siralanma zamani nezere alinacaq fieldlerin olub olmamasi
-    public static $positionConditionField = ['parent_id']; // siralanma zamani nezere alinacaq fieldler
-
-    public static $statusMode = true; // Melumatlarin aktiv deaktiv edile bilmesi (status) field
-    public static $crudMode = true; // emeliyyatlar bolmesinin gorsenib gorsenmemesi (operations) fields
-
-    public static $issetImage = true;
-    public static $requiredImage = true;
-    public static $imageFolder = 'news';
-
-    public static $issetAlbum = false;
-
-    public $operation;
-    public static $lng;
-    public static $partner_id;
-
-    public static $rules;
-//'title_'.self::$def_language => ['required',],
-    public $dataParams = [
+    public static $params = [
+        'name' => 'news',
+        'searchFields' => ['id','title','text'],
+        'title' => 'News',
+        'position' => true,
+        'status' => true,
+        'actions' => true,
+        'imageSizeX' => '730',
+        'imageSizeY' => '450',
+        'thumbSizeX' => '270',
+        'thumbSizeY' => '150',
     ];
 
-    public function getDataParams()
-    {
-        $this->dataParams = [
-            "cName" => "news",
-            "cModelName" => "NewsModel",
-            "cTitle" => "Xəbərlər",
-            "cStatusMode" => self::$statusMode,
-            "cPositionEnable" => self::$positionEnable,
-            "cCrudMode" => self::$crudMode,
 
-        ];
-        return $this->dataParams;
-    }
+    public static $model;
+    public static $lng;
+    public static $def_language;
+    public static $rules;
 
-    public function __construct()
-    {
-
-        $this->getDataParams();
-        $this->operation = new Operation();
-        $this->operation->tableName = $this->dataParams["cName"];
+    public function __construct(){
         self::$def_language = LanguagesModel::getDefaultLanguage('partner');
-        self::$rules = ['title' => ['required']];
-        parent::__construct();
-
         self::$lng = new Language();
         self::$lng->load('partner');
-        self::$partner_id = Session::get('user_session_id');
+        self::$rules = ['first_name' => ['required']];
+        self::$model = new NewsModel(self::$params);
+        new BalanceModel();
+        new SmsModel();
+        parent::__construct();
     }
 
-    public function index()
-    {
-        $values = ["id"=> '', "title"=> '',"unvani"=> '', "status"=>'', "page"=>"index"];
-        $rows = Database::get()->select("SELECT * FROM {$this->dataParams['cName']}");
-        View::renderPartner($this->dataParams["cName"].'/index',[
-            'dataParams' => $this->getDataParams(),
-            'rows' => $rows,
-            'values' => $values,
-        ]);
-    }
-
-    public function search(){
-        if($_POST){
-            $word = $_POST['word'];
-            $rows = $this->searchLikeFor($this->dataParams["cName"],['id','title','text'],$word);
-        } else {
-            $rows = Database::get()->select("SELECT * FROM `".$this->dataParams["cName"]."` WHERE `status`=1 ");
+    public function index(){
+        $model = self::$model;
+        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
+            $data['list'] = $model::search();
+            $pagination = new Pagination();
+            $data['pagination'] = $pagination;
+        }else {
+            $pagination = new Pagination();
+            $pagination->limit = 30;
+            $data['pagination'] = $pagination;
+            $limitSql = $pagination->getLimitSql($model::countList());
+            $data['list'] = $model::getList($limitSql);
         }
-        $pagination = new Pagination();
-        View::renderPartner($this->dataParams["cName"].'/index',[
-            'dataParams' => $this->getDataParams(),
-            'rows' => $rows,
-            'pagination' => $pagination,
-            'page' => 'search'
-        ]);
+        $data['lng'] = self::$lng;
+        $data['params'] = self::$params;
+        View::renderPartner(self::$params['name'].'/index',$data);
     }
+
+
+    public function active(){
+        $model = self::$model;
+        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
+            $data['list'] = $model::searchActive();
+            $pagination = new Pagination();
+            $data['pagination'] = $pagination;
+        }else {
+
+            $pagination = new Pagination();
+            $pagination->limit = 30;
+            $data['pagination'] = $pagination;
+            $limitSql = $pagination->getLimitSql($model::countListActive());
+            $data['list'] = $model::getListActive($limitSql);
+        }
+        $data['lng'] = self::$lng;
+        $data['params'] = self::$params;
+        View::renderPartner(self::$params['name'].'/active',$data);
+    }
+
+    public function view($id){
+
+        $data['item'] = NewsModel::getItem($id);
+        $data['item']['apt_name'] = '';
+        $data['item']['room_name'] = '';
+        $data['item']['bed_name'] = '';
+        $data['item']['apt_address'] = '';
+        if($data['item']['apt_id']>0)$data['item']['apt_name'] = ApartmentsModel::getName($data['item']['apt_id']);
+        if($data['item']['apt_id']>0)$data['item']['apt_address'] = ApartmentsModel::getAddress($data['item']['apt_id']);
+        if($data['item']['room_id']>0)$data['item']['room_name'] = RoomsModel::getName($data['item']['room_id']);
+        if($data['item']['bed_id']>0)$data['item']['bed_name'] = BedsModel::getName($data['item']['bed_id']);
+        $data['lng'] = self::$lng;
+        $data['params'] = self::$params;
+        $data['balance_logs'] = BalanceModel::getUserLogs($id);
+
+        if(isset($_POST['log_id'])){$log_id=intval($_POST['log_id']);}else{$log_id=0;}
+
+        if(isset($_POST['csrf_token'.$log_id]) && Csrf::isTokenValid($log_id)){
+            $modelArray = BalanceModel::sendReceipt(intval($_POST['log_id']));
+            if(empty($modelArray['errors'])){
+                Session::setFlash('success',self::$lng->get('Receipt successfully sent'));
+            }else {
+                Session::setFlash('error',$modelArray['errors']);
+            }
+        }
+
+        if(isset($_POST['csrf_tokensms']) && Csrf::isTokenValid('sms')){
+            $modelArray = SmsModel::send($id);
+            if(empty($modelArray['errors'])){
+                Session::setFlash('success',self::$lng->get('SMS successfully sent'));
+            }else {
+                Session::setFlash('error',$modelArray['errors']);
+            }
+        }
+        $data['sms_list'] = SmsModel::getList($id);
+
+        View::renderPartner(self::$params['name'].'/'.__FUNCTION__,$data);
+    }
+
+    public function view_portal($id){
+
+        Session::set('user_session_id', $id);
+        $pass = NewsModel::getPass($id);
+        Session::set("user_session_pass", Security::session_password($pass));
+        Url::redirect('user');
+    }
+
+    public function add(){
+
+        $model = self::$model;
+//        echo $_POST['csrf_token'].' ||| ';
+//        echo Session::get('csrf_token');
+
+        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
+            $modelArray = $model::add();
+            if(empty($modelArray['errors'])){
+                Session::setFlash('success',self::$lng->get('Data has been saved successfully'));
+                Url::redirect(MODULE_PARTNER."/".self::$params["name"]);
+            }else {
+                Session::setFlash('error',$modelArray['errors']);
+            }
+        }
+        $data['input_list'] = $model::getInputs();
+        $data['params'] = self::$params;
+        $data['item'] = '';
+        $data['lng'] = self::$lng;
+        View::renderPartner(self::$params["name"].'/'.__FUNCTION__,$data);
+    }
+
+    public function update($id){
+        $model = self::$model;
+
+        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
+            $modelArray = $model::update($id);
+            if(empty($modelArray['errors'])){
+                Session::setFlash('success',self::$lng->get('Data has been saved successfully'));
+                Url::redirect(MODULE_PARTNER."/".self::$params["name"]);
+            }else {
+                Session::setFlash('error',$modelArray['errors']);
+            }
+        }
+        $data['input_list'] = $model::getInputs();
+        $data['params'] = self::$params;
+        $data['item'] = $model::getItem($id);
+        $data['lng'] = self::$lng;
+        View::renderPartner(self::$params["name"].'/'.__FUNCTION__,$data);
+    }
+
 
     public function searchLikeFor($table, $values, $search_word){
 
@@ -122,261 +192,41 @@ class News extends MyController
 
     }
 
-    public function create()
-    {
-        $model = false;
-        $defaultLang = $this->defaultLanguage();
-        if(isset($_POST["submit"]) && Csrf::isTokenValid() ){
-            $postArray = $this->getPost('create');
-            $postArray['partner_id'] = self::$partner_id;
-            $model = $postArray;
-
-            $rules = self::$rules;
-            $validator = Validator::validate($postArray,$rules,TableModel::naming());
-
-            if($validator->isSuccess()){
-                $insert = Database::get()->insert($this->dataParams["cName"],$postArray);
-
-                if($insert){
-                    if(self::$issetImage) {
-                        $images = Slim::getImages('image');
-                        $image = $images[0];
-
-                        $this->imageUpload($image, $insert);
-                    }
-                    Session::setFlash('success','Məlumatlar yadda saxlanıldı');
-                    return Url::redirect(MODULE_PARTNER."/".$this->dataParams["cName"]);
-                }else{
-                    Session::setFlash('error','Xəta baş verdi(DB)');
-                }
-            }else {
-                $msg = '';
-                foreach ($validator->getErrors() as $error) {
-                    $msg .= $error . '<br>';
-                }
-                Session::setFlash('error', $msg);
-
-            }
-
-        }
-
-        View::renderPartner($this->dataParams["cName"].'/create',[
-            'dataParams' => $this->getDataParams(),
-            'model' => $model,
-            'defaultLang' => $defaultLang,
-            'lng' => self::$lng,
-        ]);
-
+    public function up($id){
+        $model = self::$model;
+        $model::move($id,'up');
+        Url::previous(MODULE_PARTNER."/".self::$params['name']);
     }
-
-    public function update($id)
-    {
-        $model = $this->operation->findModel($id);
-        $defaultLang = $this->defaultLanguage();
-
-        if(isset($_POST["submit"]) && Csrf::isTokenValid() ){
-            $postArray = $this->getPost('update');
-            $model = $postArray;
-
-            $rules = self::$rules;
-
-            $validator = Validator::validate($postArray,self::$rules, TableModel::naming());
-            if($validator->isSuccess()){
-                $update =  Database::get()->update($this->dataParams["cName"],$postArray,["id" => $id]);
-                $images = Slim::getImages('image');
-                if($update || $images){
-                    $image = $images[0];
-                    if(!empty($image)){
-                        $this->imageUpload($image, $id);
-                    }
-
-                    Session::setFlash('success','Məlumatlar yadda saxlanıldı');
-                    return Url::redirect(MODULE_PARTNER."/".$this->dataParams["cName"]);
-                }else{
-                    Session::setFlash('error','Heç bir məlumat dəyişdirilməyib (DB)');
-                }
-            }else {
-                $msg = '';
-                foreach ($validator->getErrors() as $error) {
-                    $msg .= $error;
-                }
-                Session::setFlash('error', $msg);
-
-            }
-        }
-
-        View::renderPartner($this->dataParams["cName"].'/update',[
-            'dataParams' => $this->getDataParams(),
-            'model' => $model,
-            'defaultLang' => $defaultLang,
-            'lng' => self::$lng,
-        ]);
+    public function down($id){
+        $model = self::$model;
+        $model::move($id,'down');
+        Url::previous(MODULE_PARTNER."/".self::$params['name']);
     }
-
-    public function view($id)
-    {
-        $model = $this->operation->findModel($id);
-        $photos = [];
-        if(self::$issetAlbum){
-            $photos = GalleryModel::getPhotos($this->dataParams["cName"],$id);
-        }
-        View::renderPartner($this->dataParams["cName"].'/view', [
-            'dataParams' => $this->getDataParams(),
-            'result' => $model,
-            'defaultLang' => $this->defaultLanguage(),
-            'photos' => $photos,
-            'issetAlbum' => self::$issetAlbum
-        ]);
+    public function status($id){
+        $model = self::$model;
+        $model::statusToggle($id);
+        Url::previous(MODULE_PARTNER."/".self::$params['name']);
     }
-
-    // for slim cropper
-    protected function imageUpload($image, $id)
-    {
-        $new_dir = Url::uploadPath().self::$imageFolder.'/'.$id;
-        $new_thumb_dir = Url::uploadPath().self::$imageFolder.'/'.$id.'/thumbs';
-
-        File::makeDir($new_dir);
-        File::makeDir($new_thumb_dir);
-
-        $new = Slim::saveFile($image['output']['data'], $id.'_0.png', $new_dir, false);
-
-        $file_arr = explode('.', $new['name']);
-        $ext = end($file_arr);
-        $destination = $new_thumb_dir."/" . $id."_0.".$ext;
-
-        $img = new SimpleImage();
-
-        $img->load($new['path'])->resize(250, 200)->save($destination);
-
-        $sql_img = self::$imageFolder.'/'.$id.'/' . $id."_0.".$ext;
-        $sql_thumb_img = self::$imageFolder.'/'.$id.'/thumbs/' . $id."_0.".$ext;
-        Database::get()->update($this->dataParams["cName"], ['image' => $sql_img, 'thumb' => $sql_thumb_img], ['id' => $id]);
-
+    public function delete($id){
+        $model = self::$model;
+        $model::delete([$id]);
+        Url::previous(MODULE_PARTNER."/".self::$params['name']);
     }
-
-
-    protected static function getPost()
-    {
-        extract($_POST);
-        $skip_list = ['csrf_token','submit'];
-        $array = [];
-        foreach($_POST as $key=>$value){
-            if (in_array($key, $skip_list)) continue;
-            $array[$key] = Security::safe($_POST[$key]);
-        }
-
-        $array["time"] = time();
-        return $array;
-    }
-
-    protected function getSearchParams(){
-        $array = [];
-        if(isset($_GET["submit"])){
-            $defaultLang = $this->defaultLanguage();
-            $search_array = " WHERE ";
-            $search_execute = [];
-            $values = ["id"=> '', "title"=> '',"text"=> '', "status"=>'', "page"=>"search"];
-            if (isset($_GET['id']) && intval($_GET['id'])>0){
-                $search_array.="`id`=:id AND ";
-                $search_execute[':id']= $_GET['id'];
-                $values["id"] = $_GET['id'];
-            }
-            if (!empty($_GET['title'])){
-                $search_array.="`title`=:title AND ";
-                $search_execute[':title']= $_GET['title'];
-                $values['title'] = $_GET['title'];
-            }
-            if (isset($_GET['parent_id']) && intval($_GET['parent_id'])>0) {
-                $search_array .= "`parent_id`=:parent_id AND ";
-                $search_execute[':parent_id'] = $_GET['parent_id'];
-                $values["parent_id"] = $_GET['parent_id'];
-            }
-            if (isset($_GET['status'])){
-                $search_array.="status=:status";
-                $search_execute[':status']=$_GET['status'];
-                $values["status"] = $_GET['status'];
-            }
-            else{
-                $search_array.="status=:status";
-                $search_execute[':status']= 0;
-                $values["status"] = '0';
-            }
-            $values["page"]="search";
-            $array = array("SQL"=>$search_array,"Data"=>$search_execute,"Values"=>$values);
-        }
-        return $array;
-    }
-
-    public function delete($id)
-    {
-        $model = $this->operation->findModel($id);
-        $this->operation->deleteModel([$id]);
-
-        if(self::$issetImage) $this->deleteImage($id);
-        if(self::$issetAlbum) Photos::deletePhotos($this->dataParams['cName'],$id);
-
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"]);
-    }
-
-
-    public function deleteImage($id)
-    {
-        if(is_dir(Url::uploadPath().self::$imageFolder.'/'.$id)) {
-            File::rmDir(Url::uploadPath().self::$imageFolder.'/'.$id);
-        }
-
-        return true;
-    }
-
-    public function up($id)
-    {
-        $this->operation->move($id,'up');
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"]);
-    }
-
-    public function down($id)
-    {
-        $this->operation->move($id,'down');
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"]);
-    }
-
-    public function status($id)
-    {
-        $model = $this->operation->findModel($id);
-        $status = $model["status"]==1?0:1;
-        $this->operation->statusModel([$id],$status);
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"]);
-    }
-
-    public function operation()
-    {
+    public function operation(){
+        $model = self::$model;
         if(isset($_POST["row_check"])){
             if(isset($_POST["delete"])){
-                $row_check = $_POST["row_check"];
-                foreach ($row_check as $ids) {
-                    if (self::$issetImage) {
-                        $this->deleteImage($ids);
-                    }
-                    if (self::$issetAlbum) {
-                        Photos::deletePhotos($this->dataParams['cName'], $ids);
-                    }
-                }
-                $this->operation->deleteModel($row_check);
+                $model::delete();
             }elseif(isset($_POST["active"])){
-                $row_check = $_POST["row_check"];
-                $this->operation->statusModel($row_check,1);
+                $model::status(1);
             }elseif(isset($_POST["deactive"])){
-                $row_check = $_POST["row_check"];
-                $this->operation->statusModel($row_check,0);
+                $model::status(0);
             }
         }else{
-            Session::setFlash('error','Seçim edilməyib');
-
+            Session::setFlash('error','Please choose an action');
         }
-
-
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"]);
-
+        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"].'/album');
     }
+
 
 }

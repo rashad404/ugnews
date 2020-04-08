@@ -12,6 +12,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
 
 <section class="content-header">
     <div class="headtext">
+        <span><?=$lng->get('Current')?> / <a href="index"><?=$lng->get('All')?></a></span>
         <span><?= $params["title"]; ?></span>
     </div>
 </section>
@@ -80,7 +81,10 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
+                                        <a href="view/<?= $item["id"]?>"><?= $item["first_name"]?> <?= $item["last_name"]?></a><br/>
+                                        <div class="list_alt_text">
+                                            <i class="fa fa-phone"></i> <span style="color:#496086;cursor:pointer;" onclick="copyFunction()"><?=Format::phoneNumber($item['phone'])?></span> <i class="fa fa-envelope"></i> <?= $item["email"]?>
+                                        </div>
                                     </td>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>

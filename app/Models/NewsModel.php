@@ -18,12 +18,12 @@ class NewsModel extends Model{
     }
 
     public static function getList($limit=10){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`price` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `id` DESC LIMIT $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `id` DESC LIMIT $limit");
         return $array;
     }
 
     public static function getItem($id){
-        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`price`,`features` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1 ORDER BY `id` DESC");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1 ORDER BY `id` DESC");
         return $array;
     }
 
@@ -33,7 +33,7 @@ class NewsModel extends Model{
         }else{
             $action_symbol = '<';
         }
-        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`price`,`features` FROM `".self::$tableName."` WHERE `id` ".$action_symbol." '".$id."' AND `status`=1 ORDER BY `id` DESC");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `id` ".$action_symbol." '".$id."' AND `status`=1 ORDER BY `id` DESC");
         return $array;
     }
 
