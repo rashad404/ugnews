@@ -90,7 +90,7 @@ $data['contacts'] = SiteModel::getContacts();
         ?>
     <div class="icons_area">
         <ul>
-            <li><a href="messages"><i class="fa fa-comment-dots"></i>
+            <li><a href="messages"><i class="fa fa-globe"></i>
                     <span class="new_message_header"><?=$new_messages?></span>
                 </a></li>
             <li><a href=""><i class="fa fa-bell"></i></a></li>

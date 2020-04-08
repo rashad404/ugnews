@@ -2506,7 +2506,7 @@ div.forum_sidebar_title:hover{
 div.page_title{
     text-align: left;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
 
 }
 div.page_title h2{
@@ -2520,7 +2520,7 @@ div.page_title hr{
     background-color: red;
     height: 3px;
     float: left;
-    margin-top: 0;
+    margin-top: -5px;
 }
 
 
@@ -3139,6 +3139,7 @@ div.google_sign_in i {
 
 /*Tag box*/
 .tag_box{
+    margin-bottom: 10px;
     padding: 10px 0;
     border: 1px solid #ededef;
     text-align: center;
@@ -3176,10 +3177,7 @@ a.tag_box_a:hover{
     .main{
         padding: 80px 0px 0px 0px!important;
     }
-    hr {
-        margin-top: 5px!important;
-        margin-bottom: 5px!important;
-    }
+
     .inner_background{
         padding: 5px;
     }

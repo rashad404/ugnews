@@ -31,7 +31,7 @@ use Models\TextsModel;
                         </div>
 
                         <?php foreach ($tag_list as $key => $val):?>
-                            <div class="item col-lg-2">
+                            <div class="item col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                 <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
                                     <div class="tag_box">
                                         #<?=Format::shortText($val,20)?>
