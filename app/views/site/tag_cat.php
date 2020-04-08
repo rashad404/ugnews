@@ -7,13 +7,6 @@ use Models\TextsModel;
 
 <main class="main">
 
-    <?php
-    $tag_list = [
-            'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
-    ];
-
-
-    ?>
 <!--    Why Us?-->
     <div class="container paddingBottom20">
             <div class="row paddingBottom40">
@@ -21,30 +14,11 @@ use Models\TextsModel;
 
 
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="page_title paddingTop20 paddingBottom20">
-                                <h2>
-                                    <?=$lng->get('Featured')?>
-                                </h2>
-                                <hr/>
-                            </div>
-                        </div>
-
-                        <?php foreach ($tag_list as $key => $val):?>
-                            <div class="item col-lg-2">
-                                <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
-                                    <div class="tag_box">
-                                        #<?=Format::shortText($val,20)?>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
-
 
                         <div class="col-lg-12">
                             <div class="page_title paddingTop20 paddingBottom20">
                                 <h2>
-                                    <?=$lng->get('Latest News')?>
+                                    <?=$lng->get($data['cat_name']. ' News')?>
                                 </h2>
                                 <hr/>
                             </div>
@@ -58,7 +32,7 @@ use Models\TextsModel;
                                         <div class="caption">
                                             <div class="news_title">
                                                 <span>
-                                                    <?=Format::listTitle($list['title'], 60)?>
+                                                    <?=ProductsModel::formatListText($list['title'], 60)?>
                                                 </span>
                                             </div>
                                             <div class="row news_date">

@@ -2506,13 +2506,14 @@ div.forum_sidebar_title:hover{
 div.page_title{
     text-align: left;
     display: inline-block;
+    margin-top: 20px;
 
 }
 div.page_title h2{
     font-weight: bold;
     letter-spacing: 2px;
-    color:#000;
-    font-size: 36px;
+    color: #242424;
+    font-size: 32px;
 }
 div.page_title hr{
     width: 105%;
@@ -3136,7 +3137,20 @@ div.google_sign_in i {
     padding: 20px 0;
 }
 
+/*Tag box*/
+.tag_box{
+    padding: 10px 0;
+    border: 1px solid #ededef;
+    text-align: center;
+    background-color: #fff;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .13);
+}
 
+a.tag_box_a:hover{
+    color:red;
+}
 
 
 @media screen and (min-width: 767px) {

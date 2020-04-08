@@ -7,6 +7,7 @@ use Core\Language;
 use Facebook\Facebook;
 use Google_Client;
 use Google_Service_Oauth2;
+use Helpers\Format;
 use Helpers\Parse;
 use Helpers\Sms;
 use Helpers\Url;
@@ -87,17 +88,32 @@ class Site extends Controller
     }
 
 
-    // Index page
-    public function tags($id=0, $name=''){
+    // Tag cat page
+    public function tag_cat($id=0, $name=''){
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
         $pagination->limit = 72;
         $data['pagination'] = $pagination;
-        $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
-        $data['list'] = NewsModel::getListByCat($id, $limitSql);
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByTagCat($id));
+        $data['list'] = NewsModel::getListByTagCat($id, $limitSql);
         $data['cat_name'] = NewsModel::getTagName($id);
+        View::render('site/'.__FUNCTION__, $data);
+    }
+
+    // Tag page
+    public function tags($name=''){
+        $name = Format::deUrlText($name);
+        $data = SeoModel::index();
+        $data['def_language'] = self::$def_language;
+
+        $pagination = new Pagination();
+        $pagination->limit = 72;
+        $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByTag($name));
+        $data['list'] = NewsModel::getListByTag($name, $limitSql);
+        $data['cat_name'] = $name;
         View::render('site/'.__FUNCTION__, $data);
     }
 

@@ -12,6 +12,11 @@ class Format{
         $text = urlencode($text);
         return $text;
     }
+    public static function deUrlText($text){
+        $text = urldecode($text);
+        $text = ucwords($text);
+        return $text;
+    }
     public static function shortText($text,$length=100){
         if(strlen($text)>$length)$text = substr($text,0,$length);
         return $text;

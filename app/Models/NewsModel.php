@@ -25,6 +25,7 @@ class NewsModel extends Model{
         return $array;
     }
 
+    //Cats
     public static function getListByCat($id, $limit = 'LIMIT 0,10'){
         $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
@@ -32,6 +33,30 @@ class NewsModel extends Model{
 
     public static function countListByCat($cat){
         $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$cat."'");
+        return $array;
+    }
+
+    //Tags cat
+    public static function getListByTagCat($id, $limit = 'LIMIT 0,10'){
+        $tag = self::getTagName($id);
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        return $array;
+    }
+
+    public static function countListByTagCat($cat){
+        $tag = self::getTagName($cat);
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`)");
+        return $array;
+    }
+
+    //Tags
+    public static function getListByTag($tag, $limit = 'LIMIT 0,10'){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        return $array;
+    }
+
+    public static function countListByTag($tag){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`)");
         return $array;
     }
 
