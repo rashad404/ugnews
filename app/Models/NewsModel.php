@@ -23,6 +23,16 @@ class NewsModel extends Model{
         return $array;
     }
 
+    public static function getListByCat($id, $limit = 'LIMIT 0,10'){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$id."' ORDER BY `id` DESC $limit");
+        return $array;
+    }
+
+    public static function countListByCat($cat){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$cat."'");
+        return $array;
+    }
+
     public static function getItem($id){
         $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1 ORDER BY `id` DESC");
         return $array;

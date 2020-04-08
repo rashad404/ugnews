@@ -59,7 +59,6 @@ class Site extends Controller
     {
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
-        $data['slider'] = SliderModel::getList(10);
 
         $pagination = new Pagination();
         $pagination->limit = 70;
@@ -69,6 +68,20 @@ class Site extends Controller
 
         Session::set('cat',0);
 
+        View::render('site/'.__FUNCTION__, $data);
+    }
+
+
+    // Index page
+    public function cat($id=0, $name=''){
+        $data = SeoModel::index();
+        $data['def_language'] = self::$def_language;
+
+        $pagination = new Pagination();
+        $pagination->limit = 72;
+        $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
+        $data['list'] = NewsModel::getListByCat($id, $limitSql);
         View::render('site/'.__FUNCTION__, $data);
     }
 
@@ -154,32 +167,6 @@ class Site extends Controller
         View::render('site/'.__FUNCTION__, $data);
     }
 
-    // Index page
-    public function cat($id=0, $name=''){
-        $boutique_info = BoutiquesModel::getItem($id);
-        $data['title'] = $boutique_info['name'];
-        $data['keywords'] = $boutique_info['name'];
-        $data['description'] = $boutique_info['name'];
-
-        $data['def_language'] = self::$def_language;
-
-        if(isset($_POST['products_order'])){
-            Cookie::set('products_order', $_POST['products_order']);
-            $data['products_order'] = $_POST['products_order'];
-        }elseif(Cookie::has('products_order')){
-            $data['products_order'] = Cookie::get('products_order');
-        }else{
-            $data['products_order'] = 'recent';
-        }
-
-        $pagination = new Pagination();
-        $pagination->limit = 72;
-        $data['pagination'] = $pagination;
-        $limitSql = $pagination->getLimitSql(ProductsModel::countListByCat($id));
-        $data['products'] = ProductsModel::getProductListByCat($id, $limitSql, $data['products_order']);
-        $data['pageTitle'] = $boutique_info['name'];
-        View::render('site/'.__FUNCTION__, $data);
-    }
 
     // Product inner page
     public function product_inner($id)
