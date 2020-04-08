@@ -1,0 +1,2 @@
+<br />
+<b>Warning</b>:  imagejpeg() expects parameter 1 to be resource, bool given in <b>/Applications/MAMP/htdocs/ug.loc/app/Helpers/SimpleImage.php</b> on line <b>676</b><br />
