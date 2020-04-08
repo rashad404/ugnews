@@ -82,6 +82,7 @@ class Site extends Controller
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
         $data['list'] = NewsModel::getListByCat($id, $limitSql);
+        $data['cat_name'] = NewsModel::getCatName($id);
         View::render('site/'.__FUNCTION__, $data);
     }
 

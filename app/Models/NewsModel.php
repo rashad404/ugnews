@@ -11,6 +11,7 @@ use Core\Language;
 class NewsModel extends Model{
 
     private static $tableName = 'news';
+    private static $tableNameCategories = 'categories';
     public $lng;
     public function __construct(){
         parent::__construct();
@@ -36,6 +37,15 @@ class NewsModel extends Model{
     public static function getItem($id){
         $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1 ORDER BY `id` DESC");
         return $array;
+    }
+
+    public static function getCatName($id){
+        $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameCategories."` WHERE `id`='".$id."'");
+        if($array){
+            return $array['name'];
+        }else{
+            return '';
+        }
     }
 
     public static function navigate($id, $action){

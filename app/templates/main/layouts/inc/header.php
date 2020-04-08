@@ -32,7 +32,7 @@ $data['contacts'] = SiteModel::getContacts();
     <div class="mobile_menu_header">
         <div class="login-buttons-mobile">
         </div>
-        <a href=""><img src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/></a>
+        <a href=""><img src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/></a>
     </div>
     <div class="mobile_menu_body">
         <div class="sign_in_mob">
