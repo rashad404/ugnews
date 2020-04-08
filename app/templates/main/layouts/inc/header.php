@@ -22,7 +22,7 @@ ob_end_clean();
 $count_cart = CartModel::countItems();
 
 $data['contacts'] = SiteModel::getContacts();
-
+$region = 'US';
 ?>
 
 <div class="flash_notification"><?=Session::getFlash()?></div>
@@ -84,19 +84,27 @@ $data['contacts'] = SiteModel::getContacts();
     <div class="menu hidden-xs">
         <?=$menuList?>
     </div>
-    <?php if($userId>0):
-        $new_messages = MessagesModel::countNewMessages();
-    if($new_messages==0)$new_messages='';
-        ?>
+
+
+
+
     <div class="icons_area">
-        <ul>
-            <li><a href="messages"><i class="fa fa-globe"></i>
-                    <span class="new_message_header"><?=$new_messages?></span>
-                </a></li>
-            <li><a href=""><i class="fa fa-bell"></i></a></li>
+        <ul class="menu">
+            <li class="menu_li">
+
+                <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=$region?> <i class="fas fa-caret-down"></i></a>
+                    <ul class="sub_menu">
+                        <li><a href="#"><i class="fas fa-caret-right"></i> US</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> RU</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> TR</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> AZ</a></li>
+                    </ul>
+
+
+            </li>
         </ul>
     </div>
-    <?php endif;?>
+
     <div class="account_area visible-lg">
         <ul class="menu">
             <li class="menu_li">

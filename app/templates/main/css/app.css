@@ -157,6 +157,10 @@ ul.menu > li a {
     text-decoration: none;
     letter-spacing: 1px;
 }
+
+div.icons_area ul.menu > li >a {
+    padding: 27px 16px!important;
+}
 ul.menu li a:hover {
     background-color: #f7f7f7;
     color: #673194;
@@ -176,8 +180,9 @@ ul.sub_menu{
     z-index: 110;
     background-color: #fff;
     display: none;
-    min-width: 250px;
+    min-width: 140px;
 }
+
 
 
 ul.sub_menu>li{
@@ -185,7 +190,6 @@ ul.sub_menu>li{
 
 ul.sub_menu > li a {
     display: block;
-    text-align: center;
     font-size: 14px;
     color: #000;
     font-weight: normal;
@@ -265,21 +269,30 @@ img.footer_logo{
 }
 .icons_area{
     position: absolute;
-    top: 25%;
+    top: 0%;
     right:15%;
 }
 .icons_area ul{
     list-style: none;
 }
 .icons_area li{
-    float:left;
+    /*float:left;*/
 }
 .icons_area i{
     color: #673194;
     font-size: 24px;
-    padding:10px;
+    padding-right: 2px;
 }
-.icons_area i:hover{
+.icons_area span{
+    color: #673194;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icons_area:hover span{
+    color: #a44bea;
+}
+.icons_area:hover i{
     color: #a44bea;
 }
 span.new_message_header{
