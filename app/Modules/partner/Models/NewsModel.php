@@ -41,7 +41,6 @@ class NewsModel extends Model{
         return [];
     }
 
-
     /*
      *If type is empty, will not appear on the page
      *If sql_type is empty, will not create field on sql table

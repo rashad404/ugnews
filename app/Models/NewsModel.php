@@ -7,6 +7,7 @@ use Helpers\Session;
 use Helpers\Validator;
 use Core\Language;
 
+
 class NewsModel extends Model{
 
     private static $tableName = 'news';

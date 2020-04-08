@@ -35,7 +35,6 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                     </div>
                 </div>
             </div>
-
             <?php foreach ($data['input_list'] as $value) :?>
                 <?php if(!empty($value['name'])):?>
                     <?php if($value['key']=='notice_date'):?>
