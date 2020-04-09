@@ -94,6 +94,7 @@ $region = 'US';
 
                 <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=$region?> <i class="fas fa-caret-down"></i></a>
                     <ul class="sub_menu">
+                        <li class="li_title">Select Region:</li>
                         <li><a href="#"><i class="fas fa-caret-right"></i> US</a></li>
                         <li><a href="#"><i class="fas fa-caret-right"></i> RU</a></li>
                         <li><a href="#"><i class="fas fa-caret-right"></i> TR</a></li>

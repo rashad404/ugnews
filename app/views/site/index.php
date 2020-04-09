@@ -31,9 +31,17 @@ use Models\TextsModel;
                         </div>
 
                         <?php foreach ($tag_list as $key => $val):?>
-                            <div class="item col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <div class="item col-xs-6 col-sm-4 col-md-3 col-lg-3">
                                 <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
-                                    <div class="tag_box">
+                                    <?php
+                                        $rand = rand(14,34);
+                                        if($rand>24 && $rand<30){
+                                            $bold = 'font-weight:bold;';
+                                        }else{
+                                            $bold = '';
+                                        }
+                                    ?>
+                                    <div class="tag_box" style="<?=$bold?>font-size: <?=$rand?>px;height: 70px;line-height: 50px;">
                                         #<?=Format::shortText($val,20)?>
                                     </div>
                                 </a>

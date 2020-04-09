@@ -158,6 +158,11 @@ ul.menu > li a {
     letter-spacing: 1px;
 }
 
+ul.menu li.li_title{
+    padding:10px;
+    font-weight: bold;
+}
+
 div.icons_area ul.menu > li >a {
     padding: 27px 16px!important;
 }

@@ -12,10 +12,20 @@ use Helpers\Security;
 use Models\TextsModel;
 //exit;
 
-$allowed_ips = ['::1','91.242.22.27', '108.162.229.93', '172.69.34.201'];
-if(!in_array($_SERVER['REMOTE_ADDR'],$allowed_ips)){
+//$allowed_ips = ['::1','91.242.22.27', '108.162.229.93', '172.69.34.201'];
+//if(!in_array($_SERVER['REMOTE_ADDR'],$allowed_ips)){
+//    echo 'blocked<br/>';
+//    echo $_SERVER['REMOTE_ADDR'];
+//    exit;
+//}
+
+
+if(isset($_GET['access'])){
+    Cookie::set('access', 'access');
+}
+
+if(Cookie::has('access')===false){
     echo 'blocked<br/>';
-    echo $_SERVER['REMOTE_ADDR'];
     exit;
 }
 
