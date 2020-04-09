@@ -65,6 +65,8 @@ Router::any('auth/facebook/callback', 'Controllers\Auth@facebook_callback');
 Router::any('user_panel/logout', 'Controllers\UserPanel@logout');
 Router::any('user_panel/profile', 'Controllers\UserPanel@profile');
 
+Router::any('set/region/(:any)', 'Controllers\Settings@region');
+
 
 
 /** Module routes. */

@@ -4,7 +4,7 @@ use Helpers\Url;
 use Models\CartModel;
 use Models\MenusModel;
 use Models\SiteModel;
-use Models\MessagesModel;
+use Helpers\Features;
 use Helpers\Format;
 ?>
 
@@ -92,13 +92,12 @@ $region = 'US';
         <ul class="menu">
             <li class="menu_li">
 
-                <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=$region?> <i class="fas fa-caret-down"></i></a>
-                    <ul class="sub_menu">
-                        <li class="li_title">Select Region:</li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> US</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> RU</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> TR</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> AZ</a></li>
+                <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=strtoupper($_SETTINGS['region'])?> <i class="fas fa-caret-down"></i></a>
+                    <ul class="sub_menu" style="max-height: 500px">
+                        <li class="li_title"><?=$lng->get('Select Region:')?></li>
+                        <?php foreach (Features::getCountries() as $key=>$val) :if($key>0):?>
+                            <li><a href="set/region/<?=$key?>"><i class="fas fa-caret-right"></i> <?=$val?></a></li>
+                        <?php endif;endforeach;?>
                     </ul>
 
 
