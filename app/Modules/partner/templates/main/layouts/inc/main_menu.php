@@ -9,8 +9,8 @@ $admin_role = Session::get('user_session_role');
 
 $menu_list[] = ['name'=>'Admin panel', 'url'=>'main/index','icon'=>'home'];
 $menu_list[] = ['name'=>'News', 'url'=>'news/index','icon'=>'newspaper'];
-$menu_list[] = ['name'=>'Users', 'url'=>'tenants/active','icon'=>'users'];
-$menu_list[] = ['name'=>'Payments', 'url'=>'balance/index','icon'=>'dollar-sign'];
+$menu_list[] = ['name'=>'Settings', 'url'=>'settings/defaults','icon'=>'tools'];
+//$menu_list[] = ['name'=>'Payments', 'url'=>'balance/index','icon'=>'dollar-sign'];
 $menu_list[] = ['name'=>'Logout', 'url'=>'main/logout','icon'=>'sign-out-alt'];
 
 new SmsModel();

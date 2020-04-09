@@ -29,6 +29,7 @@ class Main extends MyController
     public function index()
     {
     	$data = [];
+        Url::redirect(MODULE_PARTNER.'/news/index');
     	View::renderPartner('main/index', $data);
     }
 

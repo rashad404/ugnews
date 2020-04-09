@@ -57,9 +57,9 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                     <?php endforeach;?>
                                 </select>
                             <?php elseif($value['type']=='textarea'):?>
-                                <textarea id="summernote" name="<?=$value['key']?>"><?=$item[$value['key']]?></textarea>
+                                <textarea id="summernote" name="<?=$value['key']?>"><?=$item?$item[$value['key']]:''?></textarea>
                             <?php elseif($value['type']=='tags'):?>
-                                <input class="tags_input" value="<?=$item[$value['key']]?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/><br/>
+                                <input class="tags_input" value="<?=$item?$item[$value['key']]:''?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/><br/>
                             <?php else: ?>
                                 <input class="form-control admininput" type="<?=$value['type']?>" placeholder="" name="<?=$value['key']?>" value="<?=$item?$item[$value['key']]:''?>">
                             <?php endif; ?>

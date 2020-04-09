@@ -17,6 +17,7 @@ class NewsModel extends Model{
 
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
+    private static $tableNameCountries = 'countries';
 
     private static $rules;
     private static $params;
@@ -26,8 +27,8 @@ class NewsModel extends Model{
     public function __construct($params=''){
         parent::__construct();
         self::$rules = [
-            'first_name' => ['min_length(2)', 'max_length(30)'],
-            'last_name' => ['min_length(2)', 'max_length(30)'],
+            'title' => ['required','min_length(5)', 'max_length(100)'],
+            'text' => ['required','min_length(50)', 'max_length(10000)'],
         ];
         self::$db->createTable(self::$tableName,self::getInputs());
         self::$params = $params;
@@ -52,6 +53,7 @@ class NewsModel extends Model{
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'position',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',            'sql_type'=>'int(5)', 'data' => self::getCategories()];
         $array[] = ['type'=>'tags',         'name'=>'Tags',             'key'=>'tags',            'sql_type'=>'varchar(255)'];
+        $array[] = ['type'=>'select2',      'name'=>'Select Country',   'key'=>'country',            'sql_type'=>'varchar(2)', 'data' => self::getCountries()];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'status',          'sql_type'=>'tinyint(2)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',           'sql_type'=>'int(11)'];
@@ -64,16 +66,24 @@ class NewsModel extends Model{
 
 
     public static function getCategories(){
-
         $list = [];
-
         $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCategories." WHERE `status`=1 ORDER BY `position`");
         foreach ($array as $item){
             $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>''];
         }
-
         return $list;
     }
+
+    public static function getCountries(){
+        $list = [];
+        $array = self::$db->select("SELECT `code`,`name` FROM ".self::$tableNameCountries);
+        foreach ($array as $item){
+            $list[] = ['key'=>$item['code'], 'name'=>$item['name'], 'disabled'=>''];
+        }
+        return $list;
+    }
+
+
     public static function getBreakPredicts(){
         $list = [];
         $list[] = ['key'=>0, 'name'=>'Not selected', 'disabled'=>''];
@@ -196,10 +206,6 @@ class NewsModel extends Model{
             $return['errors'] = null;
 
             $insert_data = $post_data;
-
-            $bed_array = BedsModel::getItem($post_data['bed_id']);
-            $insert_data['apt_id'] = intval($bed_array['apt_id']);
-            $insert_data['room_id'] = intval($bed_array['room_id']);
             $insert_data['partner_id'] = self::$partner_id;
 
             $insert_id = self::$db->insert(self::$tableName,$insert_data);

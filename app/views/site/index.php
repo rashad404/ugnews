@@ -12,7 +12,6 @@ use Models\TextsModel;
             'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
     ];
 
-
     ?>
 <!--    Why Us?-->
     <div class="container paddingBottom20">

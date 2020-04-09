@@ -1742,7 +1742,7 @@ div.flash_notification{
 }
 
 .mobile_menu_header{
-    padding: 0 20px 30px 20px;
+    padding: 0 20px 10px 20px;
     border-bottom: 1px solid #ffffff;
 }
 .mobile_menu_header i{
@@ -1750,12 +1750,13 @@ div.flash_notification{
     padding-right: 10px
 }
 .mobile_menu_header img{
-    width: 80px;
+    width: 150px;
 }
 .sign_in_mob{
     margin: 0;
     padding:15px 30px 40px 30px;
     background-color: #d7d9f9;
+
 }
 .sign_in_mob a:hover{
     background-color: unset;
@@ -1767,6 +1768,7 @@ div.flash_notification{
 }
 .mobile_menu_body .nav>li>a {
     padding: 10px 30px!important;
+    font-weight: bold;
 }
 .mobile_sub_menu{
     display: none;
@@ -3216,7 +3218,7 @@ a.tag_box_a:hover{
     }
 
     .header_logo{
-        left:14%;
+        left:20%;
     }
     .header_logo img{
         width: 130px;
