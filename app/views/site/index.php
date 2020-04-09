@@ -29,25 +29,30 @@ use Models\TextsModel;
                                 <hr/>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="row">
                         <?php foreach ($tag_list as $key => $val):?>
-                            <div class="item col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+
                                 <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
                                     <?php
-                                        $rand = rand(14,34);
-                                        if($rand>24 && $rand<30){
+                                        $rand = rand(14,26);
+                                        if($rand>18 && $rand<22){
                                             $bold = 'font-weight:bold;';
                                         }else{
                                             $bold = '';
                                         }
                                     ?>
-                                    <div class="tag_box" style="<?=$bold?>font-size: <?=$rand?>px;height: 70px;line-height: 50px;">
+                                    <div class="tag_box" style="<?=$bold?>font-size: <?=$rand?>px;height: 60px;line-height: 40px;">
                                         #<?=Format::shortText($val,20)?>
                                     </div>
                                 </a>
                             </div>
                         <?php endforeach; ?>
+                    </div>
 
+                    <div class="row">
 
                         <div class="col-lg-12">
                             <div class="page_title paddingTop20 paddingBottom20">
@@ -57,9 +62,11 @@ use Models\TextsModel;
                                 <hr/>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="row">
                         <?php foreach ($data['list'] as $list):?>
-                            <div class="item col-lg-3">
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                                 <div class="news_box">
                                     <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
                                         <img class="news_image" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
@@ -70,10 +77,10 @@ use Models\TextsModel;
                                                 </span>
                                             </div>
                                             <div class="row news_date">
-                                                <div class="col-xs-6 col-md-6">
+                                                <div class="col-xs-8 col-md-8">
                                                     <?=date("M d Y",$list['time'])?>
                                                 </div>
-                                                <div class="col-xs-6 col-md-6">
+                                                <div class="col-xs-4 col-md-4">
                                                     <span style="float:right;"><?=date("H:i",$list['time'])?></span>
                                                 </div>
                                             </div>
