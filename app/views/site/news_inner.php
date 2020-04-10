@@ -30,18 +30,16 @@ use Helpers\Format;
                                         <div class="col-lg-6">
                                             <div style="padding-top: 3px;text-align: center">
                                             <i class="fas fa-bell"></i>
-                                                <?=$item['view']?> <span style="font-size: 14px;"><?=$lng->get('subscribers')?></span>
+                                                <span style="font-size: 14px;"><?=$item['view']?> <?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-tag"></i>
-                                    <?=\Models\NewsModel::getCatName($item['cat'])?>
+                                    <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-eye"></i>
-                                    <?=$item['view']?> <?=$lng->get('view')?>
+                                    <i class="fas fa-eye"></i> <?=$item['view']?> <?=$lng->get('view')?>
                                 </div>
                             </div>
                         </div>

@@ -62,4 +62,5 @@ return [
     'Previous News' => 'Əvvəlki xəbər',
     'Next News' => 'Növbəti xəbər',
     'subscribers' => 'abunə',
+    'view' => 'oxunma',
 ];
