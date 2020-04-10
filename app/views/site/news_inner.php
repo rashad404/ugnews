@@ -11,9 +11,37 @@ use Helpers\Format;
                 <div class="col-lg-7 news_inner_box">
                     <div class="">
                         <div class="news_inner_title"><?=$item['title']?></div>
-                        <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 0!important;">
+                                <div class="news_inner_right_box">
+                                    <i class="fas fa-clock"></i>
+                                    <?=date("H:i",$item['time'])?>
+                                    <?=date("M d Y",$item['time'])?>
+                                </div>
+                                <div class="news_inner_right_box">
+                                    <i class="fas fa-at"></i>
+                                    <span style="font-size: 18px;"><?=\Models\UserModel::getName($item['partner_id'])?></span>
+                                    <span style="float: right">
+                                        <i class="fas fa-bell"></i>
+                                        <?=$item['view']?> <div style="font-size: 14px;"><?=$lng->get('subscribers')?></div>
+                                    </span>
+                                </div>
+                                <div class="news_inner_right_box">
+                                    <i class="fas fa-tag"></i>
+                                    <?=\Models\NewsModel::getCatName($item['cat'])?>
+                                </div>
+                                <div class="news_inner_right_box">
+                                    <i class="fas fa-eye"></i>
+                                    <?=$item['view']?> <?=$lng->get('view')?>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="">
-                            <div class="news_inner_date"><?=date("M d Y",$item['time'])?></div>
                             <div style="clear: both"></div>
                         </div>
                     </div>

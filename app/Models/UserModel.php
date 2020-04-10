@@ -25,6 +25,10 @@ class UserModel extends Model{
 		$row = self::$db->selectOne("SELECT `id`,`balance` FROM ".self::$tableName." WHERE `phone`=:phone",[":phone"=>$phone]);
 		return $row;
 	}
+	public static function getName($id){
+		$row = self::$db->selectOne("SELECT `first_name`,`last_name` FROM ".self::$tableName." WHERE `id`=:id",[":id"=>$id]);
+		return $row['first_name'].' '.$row['last_name'];
+	}
 	public static function updateOnline(){
         $userId = intval(Session::get("user_session_id"));
         $update = ['time'=>time()];

@@ -61,4 +61,5 @@ return [
 //    News inner
     'Previous News' => 'Əvvəlki xəbər',
     'Next News' => 'Növbəti xəbər',
+    'subscribers' => 'abunə',
 ];
