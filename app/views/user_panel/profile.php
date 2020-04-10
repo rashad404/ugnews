@@ -107,7 +107,7 @@ use Helpers\Url;
                         </div>
                         <div class="row">
                                 <div class="col-md-4">
-                                    <label><?=$lng->get('Birthday')?></label>
+                                    <label><?=$lng->get('Birth month')?></label>
                                     <select name="birth_month" required>
                                         <?php foreach (Date::getMonths3Code() as $month => $month_name): if ($postData['birth_month'] == $month) {
                                             $selected = 'selected';
@@ -120,7 +120,7 @@ use Helpers\Url;
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label><?=$lng->get('Month')?></label>
+                                    <label><?=$lng->get('Day')?></label>
                                     <select name="birth_day" required>
                                         <?php foreach (Date::getDays() as $day): if ($postData['birth_day'] == $day) {
                                             $selected = 'selected';

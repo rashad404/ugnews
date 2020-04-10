@@ -19,6 +19,10 @@ return [
     'Continue with Facebook' => 'Facebook-la davam et',
     'Continue with Google' => 'Google-la davam et',
 
+//    Profile
+    'Account info' => 'Hesab məlumatları',
+    'Choose Photo' => 'Şəkil seçin',
+
 //    Register
     'First name' => 'Ad',
     'Last name' => 'Soyad',
