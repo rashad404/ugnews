@@ -23,12 +23,17 @@ use Helpers\Format;
                                     <?=date("M d Y",$item['time'])?>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-at"></i>
-                                    <span style="font-size: 18px;"><?=\Models\UserModel::getName($item['partner_id'])?></span>
-                                    <span style="float: right">
-                                        <i class="fas fa-bell"></i>
-                                        <?=$item['view']?> <div style="font-size: 14px;"><?=$lng->get('subscribers')?></div>
-                                    </span>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\UserModel::getName($item['partner_id'])?></span>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div style="padding-top: 3px;text-align: center">
+                                            <i class="fas fa-bell"></i>
+                                                <?=$item['view']?> <span style="font-size: 14px;"><?=$lng->get('subscribers')?></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="news_inner_right_box">
                                     <i class="fas fa-tag"></i>
