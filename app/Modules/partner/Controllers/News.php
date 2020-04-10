@@ -43,10 +43,8 @@ class News extends MyController{
         self::$lng = new Language();
         self::$lng->load('partner');
         self::$rules = ['first_name' => ['required']];
-        self::$model = new NewsModel(self::$params);
-        new BalanceModel();
-        new SmsModel();
         parent::__construct();
+        self::$model = new NewsModel(self::$params);
     }
 
     public function index(){
@@ -90,17 +88,8 @@ class News extends MyController{
     public function view($id){
 
         $data['item'] = NewsModel::getItem($id);
-        $data['item']['apt_name'] = '';
-        $data['item']['room_name'] = '';
-        $data['item']['bed_name'] = '';
-        $data['item']['apt_address'] = '';
-        if($data['item']['apt_id']>0)$data['item']['apt_name'] = ApartmentsModel::getName($data['item']['apt_id']);
-        if($data['item']['apt_id']>0)$data['item']['apt_address'] = ApartmentsModel::getAddress($data['item']['apt_id']);
-        if($data['item']['room_id']>0)$data['item']['room_name'] = RoomsModel::getName($data['item']['room_id']);
-        if($data['item']['bed_id']>0)$data['item']['bed_name'] = BedsModel::getName($data['item']['bed_id']);
         $data['lng'] = self::$lng;
         $data['params'] = self::$params;
-        $data['balance_logs'] = BalanceModel::getUserLogs($id);
 
         if(isset($_POST['log_id'])){$log_id=intval($_POST['log_id']);}else{$log_id=0;}
 
@@ -121,7 +110,6 @@ class News extends MyController{
                 Session::setFlash('error',$modelArray['errors']);
             }
         }
-        $data['sms_list'] = SmsModel::getList($id);
 
         View::renderPartner(self::$params['name'].'/'.__FUNCTION__,$data);
     }

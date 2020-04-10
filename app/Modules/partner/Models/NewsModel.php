@@ -3,7 +3,6 @@
 namespace Modules\partner\Models;
 
 use Core\Model;
-use Helpers\Console;
 use Helpers\Security;
 use Helpers\FileUploader;
 use Helpers\Session;
@@ -18,11 +17,11 @@ class NewsModel extends Model{
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
     private static $tableNameCountries = 'countries';
+    private static $tableNameLanguages = 'languages';
 
     private static $rules;
     private static $params;
     private static $partner_id;
-    private static $user_id;
 
     public function __construct($params=''){
         parent::__construct();
@@ -33,9 +32,6 @@ class NewsModel extends Model{
         self::$db->createTable(self::$tableName,self::getInputs());
         self::$params = $params;
         self::$partner_id = Session::get('user_session_id');
-        if(!empty($params['user_id'])){
-            self::$user_id = $params['user_id'];
-        }
     }
 
     public static function naming(){
@@ -54,6 +50,7 @@ class NewsModel extends Model{
         $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',            'sql_type'=>'int(5)', 'data' => self::getCategories()];
         $array[] = ['type'=>'tags',         'name'=>'Tags',             'key'=>'tags',            'sql_type'=>'varchar(255)'];
         $array[] = ['type'=>'select2',      'name'=>'Select Country',   'key'=>'country',            'sql_type'=>'varchar(2)', 'data' => self::getCountries()];
+        $array[] = ['type'=>'select2',      'name'=>'Select Language',  'key'=>'language',            'sql_type'=>'varchar(2)', 'data' => self::getLanguages()];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'status',          'sql_type'=>'tinyint(2)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',           'sql_type'=>'int(11)'];
@@ -75,10 +72,26 @@ class NewsModel extends Model{
     }
 
     public static function getCountries(){
+        new SettingsModel();
+        $defaults = SettingsModel::getItem();
+        $def_country = $defaults['country'];
+
         $list = [];
-        $array = self::$db->select("SELECT `code`,`name` FROM ".self::$tableNameCountries);
+        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCountries);
         foreach ($array as $item){
-            $list[] = ['key'=>$item['code'], 'name'=>$item['name'], 'disabled'=>''];
+            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_country==$item['id'])?'true':''];
+        }
+        return $list;
+    }
+    public static function getLanguages(){
+        new SettingsModel();
+        $defaults = SettingsModel::getItem();
+        $def_language = $defaults['language'];
+
+        $list = [];
+        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameLanguages." WHERE `status`=1 ORDER BY `id` DESC");
+        foreach ($array as $item){
+            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_language==$item['id'])?'true':''];
         }
         return $list;
     }

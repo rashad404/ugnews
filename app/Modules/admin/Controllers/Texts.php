@@ -218,7 +218,7 @@ class Texts extends MyController
         $array = [];
         $array["title"] = Security::safe($_POST['title']);
         foreach($languages as $lang){
-            $text = "text_".$lang["name"];
+            $text = "text_".$lang["code"];
             $array[$text] = Security::safe($$text);
         }
 

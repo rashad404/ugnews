@@ -52,6 +52,7 @@ class Site extends Controller
 
         $this->userId = intval(Session::get("user_session_id"));
 	    $this->siteModel = new SiteModel();
+        new NewsModel();
 
     }
 
@@ -60,7 +61,6 @@ class Site extends Controller
     {
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
-
         $pagination = new Pagination();
         $pagination->limit = 70;
         $data['pagination'] = $pagination;

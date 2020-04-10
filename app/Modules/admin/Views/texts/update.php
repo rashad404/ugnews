@@ -27,7 +27,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                 $li_class = '';
                                 if($language["default"]) $li_class = 'active';
                                 ?>
-                                <li class="<?= $li_class?>"><a aria-expanded="false" href="#lang-<?= $language["name"]?>" data-toggle="tab"><?= $language["fullname"]?></a></li>
+                                <li class="<?= $li_class?>"><a aria-expanded="false" href="#lang-<?= $language["code"]?>" data-toggle="tab"><?= $language["name"]?></a></li>
                             <?php }  ?>
                         </ul>
                     </div>

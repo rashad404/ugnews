@@ -17,19 +17,8 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
             <div class="box">
                 <div class="box-header">
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <h3 class="box-title">Add</h3>
-                    </div>
-                    <div class="col-xs-6">
-                        <ul class="nav nav-pills pull-right">
-                            <?php
-                            foreach($languages as $language){
-                                $li_class = '';
-                                if($language["default"]) $li_class = 'active';
-                                ?>
-                                <li class="<?= $li_class?>"><a aria-expanded="false" href="#lang-<?= $language["name"]?>" data-toggle="tab"><?= $language["fullname"]?></a></li>
-                            <?php }  ?>
-                        </ul>
                     </div>
                 </div>
                 <?php

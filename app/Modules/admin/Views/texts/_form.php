@@ -17,11 +17,11 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
             <?php
             foreach($languages as $k => $language){
             ?>
-            <div class="tab-pane fade <?= $k=='0' ? 'active in' : ''?>" id="lang-<?= $language["name"]?>">
+            <div class="tab-pane fade <?= $k=='0' ? 'active in' : ''?>" id="lang-<?= $language["code"]?>">
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label><strong>Text</strong></label>
-                        <textarea class="summernote" name="text_<?= $language["name"] ?>"><?=$model?$model["text_".$language["name"]]:''?></textarea>
+                        <textarea class="summernote" name="text_<?= $language["code"] ?>"><?=$model?$model["text_".$language["code"]]:''?></textarea>
                     </div>
                 </div>
             </div>

@@ -6,25 +6,21 @@ use Core\Model;
 use Helpers\Security;
 use Helpers\Session;
 use Helpers\Validator;
+use Models\PartnerModel;
 
 class SettingsModel extends Model
 {
-    private static $tableName = 'user_settings';
-    private static $user_id;
+    private static $tableName = 'partner_settings';
     private static $partner_id;
     private static $rules;
 
     public function __construct(){
         parent::__construct();
-        self::$user_id = Session::get('user_session_id');
-        $user_info = UserModel::getItem(self::$user_id);
-        self::$partner_id = $user_info['partner_id'];
+        self::$partner_id = Session::get('user_session_id');
 
         self::$rules = [
-            'first_name_share' => ['min(0)', 'max(2)'],
-            'photo_share' => ['min(0)', 'max(2)'],
-            'age_share' => ['min(0)', 'max(2)'],
-            'score_share' => ['min(0)', 'max(2)'],
+            'country' => ['min_length(0)', 'max_length(2)'],
+            'language' => ['min_length(0)', 'max_length(2)'],
         ];
     }
 
@@ -46,16 +42,14 @@ class SettingsModel extends Model
     }
 
     public static function getItem(){
-        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `user_id`='" .self::$user_id . "'");
+        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `partner_id`='" .self::$partner_id . "'");
         if($check){
             return $check;
         }else{
             $array = [
-                'first_name_share'=>2,
-                'photo_share'=>2,
-                'age_share'=>2,
-                'score_share'=>2,
-                'user_id'=>self::$user_id,
+                'country'=>'233',
+                'language'=>'3',
+                'partner_id'=>self::$partner_id,
             ];
             self::$db->insert(self::$tableName,$array);
             return $array;
@@ -74,7 +68,7 @@ class SettingsModel extends Model
             $return['errors'] = null;
             $update_data = $post_data;
 
-            self::$db->update(self::$tableName, $update_data, ['user_id'=>self::$user_id]);
+            self::$db->update(self::$tableName, $update_data, ['partner_id'=>self::$partner_id]);
         }else{
             $return['errors'] = implode('<br/>',array_map("ucfirst", $validator->getErrors()));
         }

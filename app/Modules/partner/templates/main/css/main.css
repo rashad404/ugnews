@@ -408,6 +408,7 @@ table.default_vertical tr td:first-child{
     width: 30%;
     font-weight: bold;
     text-align: right;
+    padding-bottom: 25px;
 }
 
 

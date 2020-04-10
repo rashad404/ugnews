@@ -22,7 +22,6 @@ class MyController extends Controller
     }
 
     public function checkAuth(){
-
         $getSessionId = intval(Session::get('user_session_id'));
         $getSessionPass = Security::safe(Session::get('user_session_pass'));
          $getAuthInfo = Database::get()->selectOne("SELECT * FROM `users` WHERE id=:id",["id" => $getSessionId]);

@@ -5,7 +5,7 @@ use Helpers\Csrf;
     <div class="col-xs-12"><!-- /.box -->
         <div class="box nopadbot">
             <div class="box-body">
-                <form action="<?=\Helpers\Url::to('partner/tenants/index')?>" method="POST" >
+                <form action="<?=\Helpers\Url::to('partner/news/index')?>" method="POST" >
                     <input type="hidden" value="<?= Csrf::makeToken();?>" name="csrf_token">
                     <div class="col-sm-1 pull-right nopad">
                         <div class="nopad">

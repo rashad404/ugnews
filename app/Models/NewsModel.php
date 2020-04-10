@@ -13,33 +13,35 @@ class NewsModel extends Model{
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
     private static $tableNameTags = 'tags';
+    private static $region;
     public $lng;
     public function __construct(){
         parent::__construct();
         $this->lng = new Language();
         $this->lng->load('app');
+        self::$region = Cookie::get('set_region');
     }
 
     public static function getList($limit=10){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `id` DESC LIMIT $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
         return $array;
     }
 
     //Cats
     public static function getListByCat($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$id."' ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
     }
 
     public static function countListByCat($cat){
-        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `cat`='".$cat."'");
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$cat."'");
         return $array;
     }
 
     //Tags cat
     public static function getListByTagCat($id, $limit = 'LIMIT 0,10'){
         $tag = self::getTagName($id);
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
         return $array;
     }
 

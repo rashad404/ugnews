@@ -19,13 +19,15 @@ use Models\TextsModel;
 //    exit;
 //}
 
+//Country settings
 $_SETTINGS = [];
 if(Cookie::has('set_region')===true){
     $_SETTINGS['region'] = Cookie::get('set_region');
 }else{
-    Cookie::set('set_region', 'us');
-    $_SETTINGS['region'] = 'us';
+    Cookie::set('set_region', '16');
+    $_SETTINGS['region'] = '16';
 }
+
 
 if(isset($_GET['access'])){
     Cookie::set('access', 'access');

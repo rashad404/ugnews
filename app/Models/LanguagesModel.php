@@ -27,19 +27,28 @@ class LanguagesModel extends Model{
     {
 	    if($app=='admin'){$table = self::$adminTableName;}elseif($app=='partner'){$table = self::$partnerTableName;}else{$table = self::$tableName;}
 
-        $language  = Database::get()->selectOne('SELECT `name` FROM '.$table.' WHERE `default` = 1');
+        $language  = Database::get()->selectOne('SELECT `code` FROM '.$table.' WHERE `default` = 1');
 
-        return $language["name"];
+        return $language["code"];
     }
 
     public static function defaultLanguage($app='app')
     {
 	    if($app=='admin'){$table = self::$adminTableName;$admin_key='admin_';}else{$table = self::$tableName;$admin_key='';}
-        if(Cookie::has($admin_key.'lang')) {
+        if(Cookie::has('set_region')) {
+            $region = Cookie::get('set_region');
+            if($region==16){
+                $language = 'az';
+            }else{
+                $language = 'en';
+            }
+            Cookie::set('lang', $language);
+
+        }elseif(Cookie::has($admin_key.'lang')) {
             $language = Cookie::get($admin_key.'lang');
         } else {
-            $get_language = Database::get()->selectOne('SELECT `name` FROM '.$table.' WHERE `default` = 1');
-            $language = $get_language['name'];
+            $get_language = Database::get()->selectOne('SELECT `code` FROM '.$table.' WHERE `default` = 1');
+            $language = $get_language['code'];
         }
         return $language;
     }
@@ -47,9 +56,9 @@ class LanguagesModel extends Model{
     public static function getLanguageName($code,$app='app')
     {
 	    if($app=='admin'){$table = self::$adminTableName;}else{$table = self::$tableName;}
-        $get_language = Database::get()->selectOne('SELECT `fullname` FROM '.$table.' WHERE `name` = :name', [':name' => $code]);
+        $get_language = Database::get()->selectOne('SELECT `name` FROM '.$table.' WHERE `name` = :name', [':name' => $code]);
         if(is_array($get_language)) {
-            return $get_language['fullname'];
+            return $get_language['name'];
         } else {
             return 'Not found';
         }

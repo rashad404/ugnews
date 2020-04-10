@@ -53,7 +53,16 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                             <?php elseif($value['type']=='select2'):?>
                                 <select name="<?=$value['key']?>" class="select2 form-control">
                                     <?php foreach($value['data'] as $data):?>
-                                        <option <?=$item&&$item[$value['key']]==$data['key']?'selected':''?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$data['name']?></option>
+                                        <?php
+                                            if($item&&$item[$value['key']]==$data['key']){
+                                                $selected = 'selected';
+                                            }elseif(!$item&&$data['default']==true){
+                                                $selected = 'selected';
+                                            }else{
+                                                $selected = '';
+                                            }
+                                        ?>
+                                        <option <?=$selected?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$data['name']?></option>
                                     <?php endforeach;?>
                                 </select>
                             <?php elseif($value['type']=='textarea'):?>

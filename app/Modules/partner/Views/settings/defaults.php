@@ -1,7 +1,6 @@
 <?php
 
 $item = $data['item'];
-
 $lng = $data['lng'];
 ?>
 
@@ -12,46 +11,26 @@ $lng = $data['lng'];
 
             <div class="col-sm-12">
                 <div class="half_box_with_title">
-                    <div class="half_box_title"><?=$lng->get('Default settings')?>:</div>
+                    <div class="half_box_title"><?=$lng->get('Settings for new posts')?></div>
                     <div class="half_box_body">
-                        <table class="default_vertical">
+                        <table class="default_vertical default">
                             <tr>
-                                <td><?=$lng->get('My first name')?></td>
+                                <td><?=$lng->get('Default Country')?>:</td>
                                 <td>
-                                    <select name="first_name_share">
-                                        <option value="0" <?=($item['first_name_share']==0)?'selected':''?>><?=$lng->get('Don\'t share')?></option>
-                                        <option value="1" <?=($item['first_name_share']==1)?'selected':''?>><?=$lng->get('Housemates only')?></option>
-                                        <option value="2" <?=($item['first_name_share']==2)?'selected':''?>><?=$lng->get('All Users')?></option>
+                                    <select name="country">
+                                        <?php foreach (\Models\CountryModel::getList() as $list):?>
+                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['country'])?'selected':''?>><?=$list['name']?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
-                                <td><?=$lng->get('My photo')?></td>
+                                <td><?=$lng->get('Default Language')?>:</td>
                                 <td>
-                                    <select name="photo_share">
-                                        <option value="0" <?=($item['photo_share']==0)?'selected':''?>><?=$lng->get('Don\'t share')?></option>
-                                        <option value="1" <?=($item['photo_share']==1)?'selected':''?>><?=$lng->get('Housemates only')?></option>
-                                        <option value="2" <?=($item['photo_share']==2)?'selected':''?>><?=$lng->get('All Users')?></option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><?=$lng->get('My age')?></td>
-                                <td>
-                                    <select name="age_share">
-                                        <option value="0" <?=($item['age_share']==0)?'selected':''?>><?=$lng->get('Don\'t share')?></option>
-                                        <option value="1" <?=($item['age_share']==1)?'selected':''?>><?=$lng->get('Housemates only')?></option>
-                                        <option value="2" <?=($item['age_share']==2)?'selected':''?>><?=$lng->get('All Users')?></option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><?=$lng->get('My Tenant score')?></td>
-                                <td>
-                                    <select name="score_share">
-                                        <option value="0" <?=($item['score_share']==0)?'selected':''?>><?=$lng->get('Don\'t share')?></option>
-                                        <option value="1" <?=($item['score_share']==1)?'selected':''?>><?=$lng->get('Housemates only')?></option>
-                                        <option value="2" <?=($item['score_share']==2)?'selected':''?>><?=$lng->get('All Users')?></option>
+                                    <select name="language">
+                                        <?php foreach (\Models\LanguagesModel::getLanguages() as $list):?>
+                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['language'])?'selected':''?>><?=$list['name']?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </td>
                             </tr>

@@ -6,7 +6,7 @@ use Dompdf\Dompdf;
 use Helpers\Csrf;
 use Helpers\Session;
 use Core\View;
-use Modules\user\Models\SettingsModel;
+use Modules\partner\Models\SettingsModel;
 
 class Settings extends MyController{
 

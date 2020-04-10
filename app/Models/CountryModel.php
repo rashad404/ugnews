@@ -9,8 +9,16 @@ class CountryModel extends Model{
     }
 
     public static function getList(){
-        $row = self::$db->select("SELECT `name`,`code` FROM `".self::$tableName."`");
+        $row = self::$db->select("SELECT `id`,`name`,`code` FROM `".self::$tableName."` ORDER BY `name`");
         return $row;
+    }
+    public static function getCode($id){
+        $row = self::$db->selectOne("SELECT `code` FROM `".self::$tableName."` WHERE `id`='".$id."'");
+        return $row['code'];
+    }
+    public static function getName($id){
+        $row = self::$db->selectOne("SELECT `name` FROM `".self::$tableName."` WHERE `id`='".$id."'");
+        return $row['name'];
     }
 
 }

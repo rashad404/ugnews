@@ -22,7 +22,7 @@ ob_end_clean();
 $count_cart = CartModel::countItems();
 
 $data['contacts'] = SiteModel::getContacts();
-$region = 'US';
+$region = '233';
 ?>
 
 <div class="flash_notification"><?=Session::getFlash()?></div>
@@ -92,11 +92,11 @@ $region = 'US';
         <ul class="menu">
             <li class="menu_li">
 
-                <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=strtoupper($_SETTINGS['region'])?> <i class="fas fa-caret-down"></i></a>
+                <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=CountryModel::getCode($_SETTINGS['region'])?> <i class="fas fa-caret-down"></i></a>
                     <ul class="sub_menu" style="max-height: 500px;right:-40px;">
-                        <li class="li_title"><?=$lng->get('Select Region:')?></li>
+                        <li class="li_title"><?=$lng->get('Select Region')?>:</li>
                         <?php foreach (CountryModel::getList() as $country) :?>
-                            <li><a href="set/region/<?=$country['code']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
+                            <li><a href="set/region/<?=$country['id']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
                         <?php endforeach;?>
                     </ul>
 

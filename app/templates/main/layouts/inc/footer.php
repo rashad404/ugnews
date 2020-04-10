@@ -32,11 +32,12 @@ use Helpers\Format;
                     <h2><?=$lng->get('Quick Links')?></h2>
                     <div class="footer_links_1">
                         <ul>
-                            <li><a href="about"><?=$lng->get('Coronavirus news')?></a></li>
-                            <li><a href="about"><?=$lng->get('World news')?></a></li>
-                            <li><a href="contact-us"><?=$lng->get('Local news')?></a></li>
-                            <li><a href="contact-us"><?=$lng->get('Sport news')?></a></li>
-                            <li><a href="contact-us"><?=$lng->get('Political news')?></a></li>
+                            <?php
+                            $menu_array = \Models\MenusModel::buildCategoryList();
+                            foreach ($menu_array as $menu):
+                                ?>
+                                <li><a href="<?=$menu['url']?>"><?=$menu['name']?><?=$lng->get(' news')?></a></li>
+                            <?php endforeach;?>
                         </ul>
                     </div>
                     <div class="footer_links_2">
