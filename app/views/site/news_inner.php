@@ -16,7 +16,7 @@ use Helpers\Format;
                             <div class="col-lg-8">
                                 <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
                             </div>
-                            <div class="col-lg-4" style="padding-left: 0!important;">
+                            <div class="col-lg-4 web_pl_remove">
                                 <div class="news_inner_right_box">
                                     <i class="fas fa-clock"></i>
                                     <?=date("H:i",$item['time'])?>
@@ -24,10 +24,10 @@ use Helpers\Format;
                                 </div>
                                 <div class="news_inner_right_box">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-xs-6">
                                             <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\UserModel::getName($item['partner_id'])?></span>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-xs-6">
                                             <div style="padding-top: 3px;text-align: center">
                                             <i class="fas fa-bell"></i>
                                                 <span style="font-size: 14px;"><?=$item['view']?> <?=$lng->get('subscribers')?></span>
