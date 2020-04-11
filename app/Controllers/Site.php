@@ -178,6 +178,36 @@ class Site extends Controller
         }
         $data['modal_url'] = SMVC."app/views/modals/login.php";
 
+
+
+        $clientID = '358271044733-dkovkbpii2rt8ocr9ednfm9q9qmerqe4.apps.googleusercontent.com';
+        $clientSecret = 'WeMXhqBBxwbBOF65qw0thv8T';
+        $redirectUri = 'https://ureb.com/auth/google';
+
+        // create Client Request to access Google API
+        $client = new Google_Client();
+        $client->setClientId($clientID);
+        $client->setClientSecret($clientSecret);
+        $client->setRedirectUri($redirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        $data['postData']['google_client'] = $client;
+
+
+        $fb = new Facebook([
+            'app_id' => '977943965970059', // Replace {app-id} with your app id
+            'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
+            'default_graph_version' => 'v3.2',
+        ]);
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        $permissions = ['email']; // Optional permissions
+        $loginUrl = $helper->getLoginUrl('https://ug.news/auth/facebook/callback', $permissions);
+
+        $data['postData']['facebook_url'] = htmlspecialchars($loginUrl);
+
         View::render('site/'.__FUNCTION__, $data);
     }
 
