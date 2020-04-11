@@ -4,7 +4,7 @@ use Helpers\Date;
 ?>
         <div class="container small_width default">
             <div class="row paddingBottom40">
-                <div class="col-md-12" id="register_tab">
+                <div class="col-md-12" style="display: none" id="register_tab">
                     <form action="" method="POST">
                         <input type="hidden" value="<?=Csrf::makeToken('_register')?>" name="csrf_token_register" />
                         <input id="redirect_url_register" type="hidden" name="redirect_url"/>
@@ -97,7 +97,7 @@ use Helpers\Date;
 
                 </div>
 
-                <div class="col-md-12 " id="login_tab" style="display: none">
+                <div class="col-md-12 " id="login_tab">
                     <form action="" method="POST">
                         <input type="hidden" value="<?=Csrf::makeToken('_login')?>" name="csrf_token_login" />
                         <input id="redirect_url_login" type="hidden" name="redirect_url"/>

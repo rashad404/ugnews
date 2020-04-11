@@ -84,7 +84,7 @@ use Helpers\Format;
 <div class="umodal login">
     <div class="umodal_box">
         <div class="umodal_head">
-            <div class="umodal_title"><h2 class="title" id="umodal_title"><?=$lng->get('Register')?></h2></div>
+            <div class="umodal_title"><h2 class="title" id="umodal_title"><?=$lng->get('Login')?></h2></div>
             <div class="umodal_close"><i class="fas fa-times"></i></div>
             <div class="clearBoth"></div>
             <hr class="dark_gray"/>

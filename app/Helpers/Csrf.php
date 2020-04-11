@@ -38,7 +38,11 @@ class Csrf
 
     public static function isTokenValid($form="")
     {
-        return $_POST['csrf_token'.$form] === Session::get('csrf_token'.$form);
+        if(isset($_POST['csrf_token'.$form])){
+            return $_POST['csrf_token'.$form] === Session::get('csrf_token'.$form);
+        }else{
+            return false;
+        }
     }
 
     public static function updateToken($form=""){
