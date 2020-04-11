@@ -13,24 +13,33 @@ use Helpers\Format;
                         <div class="news_inner_title"><?=$item['title']?></div>
 
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-sm-8 col-md-8 col-lg-8">
                                 <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
                             </div>
-                            <div class="col-lg-4 web_pl_remove">
+                            <div class="col-sm-4 col-md-4 col-lg-4 web_pl_remove">
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-clock"></i>
-                                    <?=date("H:i",$item['time'])?>
-                                    <?=date("M d Y",$item['time'])?>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <i class="fas fa-clock"></i> <?=date("H:i",$item['time'])?>
+
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div style="text-align: center">
+                                                <i class="fas fa-calendar"></i> <?=date("M d Y",$item['time'])?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="news_inner_right_box">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\UserModel::getName($item['partner_id'])?></span>
+                                            <i class="fas fa-eye"></i> <?=$item['view']?> <?=$lng->get('view')?>
+
                                         </div>
                                         <div class="col-xs-6">
-                                            <div style="padding-top: 3px;text-align: center">
+                                            <div style="text-align: center">
                                             <i class="fas fa-bell"></i>
-                                                <span style="font-size: 14px;"><?=$item['view']?> <?=$lng->get('subscribers')?></span>
+                                                <span style=""><?=$item['view']?> <?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -39,13 +48,21 @@ use Helpers\Format;
                                     <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-eye"></i> <?=$item['view']?> <?=$lng->get('view')?>
+                                    <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\NewsModel::getChannelName($item['channel'])?></span>
+                                </div>
+                                <div class="news_inner_right_box">
+
+                                    <?php
+                                        $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+                                    ?>
+                                    <button id="subscribe_button" channel_id="<?=$item['channel']?>" class="subscribe <?=($subscribe_check===true)?' subscribed':''?>">
+                                        <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
+                                        <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
+                                    </button>
+                                    <button class="thumbs_up"><i class="fas fa-thumbs-up"></i></button>
+                                    <button class="thumbs_down"><i class="fas fa-thumbs-down"></i></button>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="">
-                            <div style="clear: both"></div>
                         </div>
                     </div>
                     <div class="news_inner_text">

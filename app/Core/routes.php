@@ -7,7 +7,8 @@ use Helpers\Url;
 /** Define routes. */
 
 //API
-Router::any('api/sms/receive/8Aj2M1astF4W/(:any)', 'Controllers\Sms@receive');
+Router::any('ajax/subscribe/(:num)', 'Controllers\Ajax@subscribe');
+Router::any('ajax/un_subscribe/(:num)', 'Controllers\Ajax@un_subscribe');
 
 
 //SEO

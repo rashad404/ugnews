@@ -18,7 +18,6 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
 
 <section class="content">
 
-
     <?php include "_search.php"; ?>
 
     <div class="row pad-top-15">
@@ -27,12 +26,6 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                 <div class="box">
                     <div class="box-body">
                         <div class="dropdown secimet">
-                            <?php if($data['channel_count']==0):?>
-                                <div class="create_notice">
-                                    <?=$lng->get('Please first create a news channel');?><br/>
-                                    <a href="/partner/channels/index"><?=$lng->get('Create your first Channel');?></a>
-                                </div>
-                            <?php exit;endif;?>
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
                                 <span>Actions...<i class="fa fa-caret-down"></i></span>
                             </a>
@@ -68,10 +61,11 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </div>
                                 </th>
                                 <th class="width-20">#</th>
-                                <th>Name</th>
-                                <?php if($params["position"]){ ?><th>Order</th><?php } ?>
-                                <?php if($params["status"]){ ?><th>Active</th><?php } ?>
-                                <?php if($params["actions"]){ ?><th>Actions</th><?php } ?>
+                                <th><?=$lng->get('Name');?></th>
+                                <th><?=$lng->get('Subscribers');?></th>
+                                <?php if($params["position"]){ ?><th><?=$lng->get('Order');?></th><?php } ?>
+                                <?php if($params["status"]){ ?><th><?=$lng->get('Status');?></th><?php } ?>
+                                <?php if($params["actions"]){ ?><th><?=$lng->get('Operations');?></th><?php } ?>
                             </tr>
                             </thead>
                             <tbody>
@@ -87,7 +81,10 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
+                                        <a target="_blank" href="<?=SITE_URL?>/channels/<?= $item["id"]?>/<?=Format::urlText($item['name'])?>"><?= $item["name"]?></a><br/>
+                                    </td>
+                                    <td class="admin-arrow-box">
+                                        <?= \Modules\partner\Models\ChannelsModel::countSubscribers($item["id"])?> <?=$lng->get('subscriber');?><br/>
                                     </td>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>

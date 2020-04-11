@@ -2,17 +2,42 @@
 namespace Models;
 use Core\Model;
 use Core\Language;
+use Helpers\Cookie;
+use Helpers\Session;
 
 class AjaxModel extends Model{
 
-    private static $tableName = 'apartments';
-    public $lng;
+    private static $tableName = 'subscribers';
+    public static $lng;
     public function __construct(){
         parent::__construct();
-        $this->lng = new Language();
-        $this->lng->load('app');
+        self::$lng = new Language();
+        self::$lng->load('app');
     }
 
+
+
+    public static function subscribe($id){
+        $user_id = intval(Session::get("user_session_id"));
+        if($user_id<1)exit;
+
+        $check = self::$db->selectOne("SELECT `id` FROM `".self::$tableName."` WHERE `channel`= '".$id."' AND `user_id`= '".$user_id."'");
+        if(!$check) {
+            $data = ['channel'=>$id, 'user_id'=>$user_id, 'time'=>time()];
+            self::$db->insert(self::$tableName, $data);
+            return self::$lng->get('Subscribed');
+        }else{
+            return self::$lng->get('Subscribe');
+        }
+    }
+
+    public static function unSubscribe($id){
+        $user_id = intval(Session::get("user_session_id"));
+        if($user_id<1)exit;
+        $where = ['channel'=>$id, 'user_id'=>$user_id];
+        self::$db->delete(self::$tableName, $where);
+        return self::$lng->get('Subscribe');
+    }
 
 
     public static function countyListByState($id){

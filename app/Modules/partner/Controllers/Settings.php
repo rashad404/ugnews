@@ -33,7 +33,7 @@ class Settings extends MyController{
     public function defaults(){
         $model = self::$model;
         if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $modelArray = $model::update(self::$user_id);
+            $modelArray = $model::update();
             if(empty($modelArray['errors'])){
                 Session::setFlash('success',self::$lng->get('Data has been saved successfully'));
             }else {

@@ -5,22 +5,19 @@ use Core\Language;
 use Helpers\Csrf;
 use Helpers\Database;
 use Helpers\Pagination;
-use Helpers\Security;
 use Helpers\Session;
 use Modules\partner\Models\BalanceModel;
 use Modules\partner\Models\ChannelsModel;
-use Modules\partner\Models\SmsModel;
-use Modules\partner\Models\NewsModel;
 use Models\LanguagesModel;
 use Core\View;
 use Helpers\Url;
 
-class News extends MyController{
+class Channels extends MyController{
 
     public static $params = [
-        'name' => 'news',
+        'name' => 'channels',
         'searchFields' => ['id','title','text'],
-        'title' => 'News',
+        'title' => 'Your Channels',
         'position' => true,
         'status' => true,
         'actions' => true,
@@ -42,7 +39,7 @@ class News extends MyController{
         self::$lng->load('partner');
         self::$rules = ['first_name' => ['required']];
         parent::__construct();
-        self::$model = new NewsModel(self::$params);
+        self::$model = new ChannelsModel(self::$params);
     }
 
     public function index(){
@@ -58,8 +55,6 @@ class News extends MyController{
             $limitSql = $pagination->getLimitSql($model::countList());
             $data['list'] = $model::getList($limitSql);
         }
-        new ChannelsModel();
-        $data['channel_count'] = ChannelsModel::countList();
         $data['lng'] = self::$lng;
         $data['params'] = self::$params;
         View::renderPartner(self::$params['name'].'/index',$data);
@@ -85,42 +80,6 @@ class News extends MyController{
         View::renderPartner(self::$params['name'].'/active',$data);
     }
 
-    public function view($id){
-
-        $data['item'] = NewsModel::getItem($id);
-        $data['lng'] = self::$lng;
-        $data['params'] = self::$params;
-
-        if(isset($_POST['log_id'])){$log_id=intval($_POST['log_id']);}else{$log_id=0;}
-
-        if(isset($_POST['csrf_token'.$log_id]) && Csrf::isTokenValid($log_id)){
-            $modelArray = BalanceModel::sendReceipt(intval($_POST['log_id']));
-            if(empty($modelArray['errors'])){
-                Session::setFlash('success',self::$lng->get('Receipt successfully sent'));
-            }else {
-                Session::setFlash('error',$modelArray['errors']);
-            }
-        }
-
-        if(isset($_POST['csrf_tokensms']) && Csrf::isTokenValid('sms')){
-            $modelArray = SmsModel::send($id);
-            if(empty($modelArray['errors'])){
-                Session::setFlash('success',self::$lng->get('SMS successfully sent'));
-            }else {
-                Session::setFlash('error',$modelArray['errors']);
-            }
-        }
-
-        View::renderPartner(self::$params['name'].'/'.__FUNCTION__,$data);
-    }
-
-    public function view_portal($id){
-
-        Session::set('user_session_id', $id);
-        $pass = NewsModel::getPass($id);
-        Session::set("user_session_pass", Security::session_password($pass));
-        Url::redirect('user');
-    }
 
     public function add(){
 

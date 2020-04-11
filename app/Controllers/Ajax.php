@@ -13,32 +13,39 @@ use Models\AjaxModel;
 class Ajax extends Controller
 {
 
-    public $lng;
-    public $userId;
-    public $userInfo;
+    public static $lng;
+    public static $userId;
+    public static $userInfo;
     // Call the parent construct
     public function __construct()
     {
         parent::__construct();
-        $this->lng = new Language();
-        $this->lng->load('app');
-        $this->userId = intval(Session::get("user_session_id"));
+        self::$lng = new Language();
+        self::$lng->load('app');
+        self::$userId = intval(Session::get("user_session_id"));
         new AjaxModel();
     }
 
 
-
-    public function countyListByState($id){
-        echo AjaxModel::countyListByState($id);
+    public function subscribe($id){
+        echo AjaxModel::subscribe($id);
+    }
+    public function un_subscribe($id){
+        echo AjaxModel::unSubscribe($id);
     }
 
-    public function cityListByCounty($id){
-        echo AjaxModel::cityListByCounty($id);
-    }
 
-    public function locationSearchList($text){
-        echo AjaxModel::locationSearchList($text);
-    }
+//    public function countyListByState($id){
+//        echo AjaxModel::countyListByState($id);
+//    }
+//
+//    public function cityListByCounty($id){
+//        echo AjaxModel::cityListByCounty($id);
+//    }
+//
+//    public function locationSearchList($text){
+//        echo AjaxModel::locationSearchList($text);
+//    }
 
 
 }

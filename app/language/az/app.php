@@ -63,4 +63,6 @@ return [
     'Next News' => 'Növbəti xəbər',
     'subscribers' => 'abunə',
     'view' => 'oxunma',
+    'Subscribe' => 'Abunə ol',
+    'Subscribed' => 'Abunə',
 ];

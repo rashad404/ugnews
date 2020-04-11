@@ -13,6 +13,8 @@ class NewsModel extends Model{
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
     private static $tableNameTags = 'tags';
+    private static $tableNameChannels = 'channels';
+    private static $tableNameSubscribers = 'subscribers';
     private static $region;
     public $lng;
     public function __construct(){
@@ -64,7 +66,7 @@ class NewsModel extends Model{
 
     public static function getItem($id){
         $update = self::$db->raw("UPDATE `".self::$tableName."` SET `view`=`view`+1 WHERE `id`='".$id."'");
-        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
         return $array;
     }
 
@@ -74,6 +76,10 @@ class NewsModel extends Model{
     }
     public static function getTagName($id){
         $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameTags."` WHERE `id`='".$id."'");
+        if($array){return $array['name'];}else{return '';}
+    }
+    public static function getChannelName($id){
+        $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameChannels."` WHERE `id`='".$id."'");
         if($array){return $array['name'];}else{return '';}
     }
 
@@ -87,4 +93,15 @@ class NewsModel extends Model{
         return $array;
     }
 
+
+
+    public static function subscribeCheck($id){
+        $user_id = intval(Session::get("user_session_id"));
+        $check = self::$db->selectOne("SELECT `id` FROM `".self::$tableNameSubscribers."` WHERE `channel`=".$id." AND `user_id`='".$user_id."'");
+        if($check) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -49,6 +49,44 @@ $(document).ready(function() {
     });
 
 
+    // Subscribe
+    $("#subscribe_button").click(function() {
+        var channelId = $(this).attr('channel_id');
+        if($("#subscribe_button").hasClass('subscribed')){
+
+            $.ajax({
+                url: "ajax/un_subscribe/" + channelId,
+                type: "POST",
+                data: "channel=" + channelId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#subscribe_button").removeClass('subscribed');
+                    $("#subscribe_button i").addClass('fa-bell');
+                    $("#subscribe_button i").removeClass('fa-bell-slash');
+                    $("#subscribe_button span").text(response);
+
+                },
+            });
+        }else{
+
+            $.ajax({
+                url: "ajax/subscribe/" + channelId,
+                type: "POST",
+                data: "channel=" + channelId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#subscribe_button").addClass('subscribed');
+
+                    $("#subscribe_button i").removeClass('fa-bell');
+                    $("#subscribe_button i").addClass('fa-bell-slash');
+                    $("#subscribe_button span").text(response);
+
+                },
+            });
+        }
+    });
 
 
 // Location Search input Dropdown

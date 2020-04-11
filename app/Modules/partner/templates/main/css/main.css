@@ -805,6 +805,11 @@ div.table-responsive{
     color: #cc4c4c;
 }
 
+.create_notice{
+    padding: 20px;
+    font-size: 16px;
+}
+
 @media(min-width: 800px) {
     .width_50 {
         width:50%;

@@ -29,6 +29,8 @@ return [
 	'Order' => 'Sıralama',
 	'Status' => 'Status',
 	'Operations' => 'Əməliyyatlar',
+	'Subscribers' => 'Abunələr',
+	'subscriber' => 'abunə',
 	'Top' => 'Yuxarı',
 	'Bottom' => 'Aşağı',
 
@@ -93,5 +95,10 @@ return [
     'Services included'=> 'Xidmətə daxildir',
     'Hotel star'=> 'Otel ulduzu',
     'star'=> 'ulduz',
+
+    //News
+    'Please first create a news channel'=> 'Zəhmət olmasa, xəbər əlavə etmək üçün xəbər kanalı yaradın',
+    'Create your first Channel'=> 'İlk xəbər kanalını yarat',
+    'News'=> 'Xəbərlər',
 
 ];

@@ -1,5 +1,5 @@
 <?php
-
+use Modules\partner\Models\ChannelsModel;
 $item = $data['item'];
 $lng = $data['lng'];
 ?>
@@ -15,11 +15,16 @@ $lng = $data['lng'];
                     <div class="half_box_body">
                         <table class="default_vertical default">
                             <tr>
-                                <td><?=$lng->get('Default Country')?>:</td>
+                                <td><?=$lng->get('Default Channel')?>:</td>
                                 <td>
-                                    <select name="country">
-                                        <?php foreach (\Models\CountryModel::getList() as $list):?>
-                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['country'])?'selected':''?>><?=$list['name']?></option>
+                                    <?php
+                                    new ChannelsModel();
+                                    $data = ChannelsModel::getList();
+                                    ?>
+                                    <select name="channel">
+                                        <?php
+                                            foreach ($data as $list):?>
+                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['channel'])?'selected':''?>><?=$list['name']?></option>
                                         <?php endforeach;?>
                                     </select>
                                 </td>

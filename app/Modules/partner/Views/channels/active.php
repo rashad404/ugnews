@@ -12,12 +12,12 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
 
 <section class="content-header">
     <div class="headtext">
+        <span><?=$lng->get('Current')?> / <a href="index"><?=$lng->get('All')?></a></span>
         <span><?= $params["title"]; ?></span>
     </div>
 </section>
 
 <section class="content">
-
 
     <?php include "_search.php"; ?>
 
@@ -27,12 +27,6 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                 <div class="box">
                     <div class="box-body">
                         <div class="dropdown secimet">
-                            <?php if($data['channel_count']==0):?>
-                                <div class="create_notice">
-                                    <?=$lng->get('Please first create a news channel');?><br/>
-                                    <a href="/partner/channels/index"><?=$lng->get('Create your first Channel');?></a>
-                                </div>
-                            <?php exit;endif;?>
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
                                 <span>Actions...<i class="fa fa-caret-down"></i></span>
                             </a>
@@ -87,7 +81,10 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
+                                        <a href="view/<?= $item["id"]?>"><?= $item["first_name"]?> <?= $item["last_name"]?></a><br/>
+                                        <div class="list_alt_text">
+                                            <i class="fa fa-phone"></i> <span style="color:#496086;cursor:pointer;" onclick="copyFunction()"><?=Format::phoneNumber($item['phone'])?></span> <i class="fa fa-envelope"></i> <?= $item["email"]?>
+                                        </div>
                                     </td>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>

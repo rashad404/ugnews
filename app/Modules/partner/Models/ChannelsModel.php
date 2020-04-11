@@ -2,6 +2,7 @@
 
 namespace Modules\partner\Models;
 
+use Core\Language;
 use Core\Model;
 use Helpers\Security;
 use Helpers\FileUploader;
@@ -12,23 +13,26 @@ use Helpers\Validator;
 use Helpers\Slim;
 use Helpers\SimpleImage;
 
-class NewsModel extends Model{
+class ChannelsModel extends Model{
 
-    private static $tableName = 'news';
+    private static $tableName = 'channels';
+    private static $tableNameSubscribers = 'subscribers';
     private static $tableNameCategories = 'categories';
     private static $tableNameCountries = 'countries';
     private static $tableNameLanguages = 'languages';
-    private static $tableNameChannels = 'channels';
 
+    private static $lng;
     private static $rules;
     private static $params;
     private static $partner_id;
 
     public function __construct($params=''){
         parent::__construct();
+        self::$lng = new Language();
+        self::$lng->load('partner');
         self::$rules = [
-            'title' => ['required','min_length(5)', 'max_length(100)'],
-            'text' => ['required','min_length(50)', 'max_length(10000)'],
+            'name' => ['required','min_length(3)', 'max_length(100)'],
+            'text' => ['min_length(10)', 'max_length(10000)'],
         ];
         self::$db->createTable(self::$tableName,self::getInputs());
         self::$params = $params;
@@ -44,20 +48,20 @@ class NewsModel extends Model{
      *If sql_type is empty, will not create field on sql table
      */
     public static function getInputs(){
-        $array[] = ['type'=>'text',         'name'=>'Title',       'key'=>'title',        'sql_type'=>'varchar(100)'];
+        $array[] = ['type'=>'text',         'name'=>'Name',            'key'=>'name',        'sql_type'=>'varchar(100)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'image',             'sql_type'=>'varchar(200)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'thumb',             'sql_type'=>'varchar(200)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'position',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',            'sql_type'=>'int(5)', 'data' => self::getCategories()];
         $array[] = ['type'=>'tags',         'name'=>'Tags',             'key'=>'tags',            'sql_type'=>'varchar(255)'];
-        $array[] = ['type'=>'select2',      'name'=>'Select Channel',   'key'=>'channel',            'sql_type'=>'varchar(2)', 'data' => self::getChannels()];
+        $array[] = ['type'=>'select2',      'name'=>'Select Country',   'key'=>'country',            'sql_type'=>'varchar(2)', 'data' => self::getCountries()];
+        $array[] = ['type'=>'select2',      'name'=>'Select Language',  'key'=>'language',            'sql_type'=>'varchar(2)', 'data' => self::getLanguages()];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'status',          'sql_type'=>'tinyint(2)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',           'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',           'sql_type'=>'int(11)'];
 
-        $array[] = ['type'=>'textarea',      'name'=>'Text',           'key'=>'text',            'sql_type'=>'text'];
-//        $array[] = ['type'=>'date',         'name'=>'Notice Date',    'key'=>'notice_date',          'sql_type'=>'varchar(20)'];
+        $array[] = ['type'=>'textarea',      'name'=>'About',           'key'=>'text',            'sql_type'=>'text'];
         return $array;
     }
 
@@ -92,18 +96,6 @@ class NewsModel extends Model{
         $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameLanguages." WHERE `status`=1 ORDER BY `id` DESC");
         foreach ($array as $item){
             $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_language==$item['id'])?'true':''];
-        }
-        return $list;
-    }
-    public static function getChannels(){
-        new SettingsModel();
-        $defaults = SettingsModel::getItem();
-        $default = $defaults['channel'];
-
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameChannels." WHERE `status`=1 ORDER BY `id` DESC");
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($default==$item['id'])?'true':''];
         }
         return $list;
     }
@@ -200,6 +192,11 @@ class NewsModel extends Model{
     }
 
 
+    public static function countSubscribers($id){
+        $count = self::$db->selectOne("SELECT count(`id`) as c FROM ".self::$tableNameSubscribers." WHERE `channel`='".$id."'");
+        return $count['c'];
+    }
+
     public static function countUsers($gender){
         $count = self::$db->selectOne("SELECT count(`id`) as c FROM ".self::$tableName." WHERE `bed_id`>0 AND  `partner_id`='".self::$partner_id."' AND `gender`='".$gender."'");
         return $count['c'];
@@ -232,22 +229,23 @@ class NewsModel extends Model{
 
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
+            $insert_data['name_code'] = strtolower(preg_replace("/[ *()\-_.,]/","",$insert_data['name']));
 
-            if($post_data['channel']>0){
-                $channel_info = ChannelsModel::getItem($post_data['channel']);
-                $insert_data['country'] = $channel_info['country'];
-                $insert_data['language'] = $channel_info['language'];
-            }
+//            echo $insert_data['name_code'];exit;
 
-            $insert_id = self::$db->insert(self::$tableName,$insert_data);
-            if($insert_id>0){
-                self::updatePosition($insert_id);
-
-                $images = Slim::getImages('image');
-                if($images){
-                    $image = $images[0];
-                    if(!empty($image)){
-                        self::imageUpload($image, $insert_id);
+            $check = self::$db->selectOne("SELECT `id` FROM ".self::$tableName." WHERE `name_code`='".$insert_data['name_code']."'");
+            if($check){
+                $return['errors'] = self::$lng->get("This channel name already taken. Please choose another name");
+            }else {
+                $insert_id = self::$db->insert(self::$tableName, $insert_data);
+                if ($insert_id > 0) {
+                    self::updatePosition($insert_id);
+                    $images = Slim::getImages('image');
+                    if ($images) {
+                        $image = $images[0];
+                        if (!empty($image)) {
+                            self::imageUpload($image, $insert_id);
+                        }
                     }
                 }
             }
@@ -266,19 +264,20 @@ class NewsModel extends Model{
             $return['errors'] = null;
 
             $update_data = $post_data;
-            if($post_data['channel']>0){
-                $channel_info = ChannelsModel::getItem($post_data['channel']);
-                $update_data['country'] = $channel_info['country'];
-                $update_data['language'] = $channel_info['language'];
-            }
+            $update_data['name_code'] = strtolower(preg_replace("/[ *()\-_.,]/","",$update_data['name']));
 
-            self::$db->update(self::$tableName, $update_data, ['id'=>$id]);
+            $check = self::$db->selectOne("SELECT `id` FROM ".self::$tableName." WHERE `name_code`='".$update_data['name_code']."' AND `id`!=".$id);
+            if($check){
+                $return['errors'] = self::$lng->get("This channel name already taken. Please choose another name");
+            }else {
+                self::$db->update(self::$tableName, $update_data, ['id' => $id]);
 
-            $images = Slim::getImages('image');
-            if($images){
-                $image = $images[0];
-                if(!empty($image)){
-                    self::imageUpload($image, $id);
+                $images = Slim::getImages('image');
+                if ($images) {
+                    $image = $images[0];
+                    if (!empty($image)) {
+                        self::imageUpload($image, $id);
+                    }
                 }
             }
         }else{
