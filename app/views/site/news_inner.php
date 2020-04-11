@@ -55,7 +55,7 @@ use Helpers\Format;
                                     <?php
                                         $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
                                     ?>
-                                    <button id="subscribe_button" channel_id="<?=$item['channel']?>" class="subscribe <?=($subscribe_check===true)?' subscribed':''?>">
+                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
                                         <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
                                         <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
                                     </button>
@@ -79,3 +79,21 @@ use Helpers\Format;
 
     </section>
 </main>
+
+
+<div class="umodal login">
+    <div class="umodal_box">
+        <div class="umodal_head">
+            <div class="umodal_title"><h2 class="title" id="umodal_title"><?=$lng->get('Register')?></h2></div>
+            <div class="umodal_close"><i class="fas fa-times"></i></div>
+            <div class="clearBoth"></div>
+            <hr class="dark_gray"/>
+        </div>
+        <div class="umodal_body">
+            <?php require $data['modal_url'];?>
+        </div>
+        <!--        <div id="redirect_url">-->
+        <!---->
+        <!--        </div>-->
+    </div>
+</div>

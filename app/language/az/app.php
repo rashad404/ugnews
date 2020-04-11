@@ -24,6 +24,7 @@ return [
     'Choose Photo' => 'Şəkil seçin',
 
 //    Register
+    'Register' => 'Qeydiyyat',
     'First name' => 'Ad',
     'Last name' => 'Soyad',
     'Gender' => 'Cins',

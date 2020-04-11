@@ -140,11 +140,43 @@ class Site extends Controller
         $data['description'] = SITE_TITLE;
 
         $data['def_language'] = self::$def_language;
+        $data['userId'] = $this->userId;
 
         $data['item'] = NewsModel::getItem($id);
         $data['next_item'] = NewsModel::navigate($id,'next');
         $data['previous_item'] = NewsModel::navigate($id,'previous');
 //        $data['latest'] = ProductsModel::getProductListBySimilar($id,4);
+
+
+        $return = '';
+        $data['countryList'] = Sms::getCountryList();
+        if(isset($_POST['csrf_token_register']) or isset($_POST['csrf_token_login'])){
+            if(Csrf::isTokenValid('_register')){
+                $model = new RegistrationModel();
+                $modelArray = $model->registration();
+            }else if(Csrf::isTokenValid('_login')){
+                $model = new LoginModel();
+                $modelArray = $model->login();
+            }
+
+            $data['postData'] = $modelArray['postData'];
+            if(empty($modelArray['errors'])){
+                if(isset($_POST['redirect_url'])) {
+                    $redirect_url = $_POST['redirect_url'];
+                    Url::redirect($redirect_url);
+                    exit;
+                }else {
+                    Url::redirect('');
+                    exit;
+                }
+            }else {
+                Session::setFlash('error',$modelArray['errors']);
+            }
+        }else{
+            if(!empty($return))$return = '/'.$return;
+            $data['postData'] = ['return'=>$return,'first_name'=>'','last_name'=>'','phone'=>'','email'=>'','gender'=>'','birth_month'=>'','birth_day'=>'','birth_year'=>'','country_code'=>''];
+        }
+        $data['modal_url'] = SMVC."app/views/modals/login.php";
 
         View::render('site/'.__FUNCTION__, $data);
     }

@@ -898,3 +898,28 @@
 #8 {main}</pre>
 
            <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Apr 10, 2020 20:27PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[HY000] [2006] MySQL server has gone away</p>
+
+           <p><strong>Code:</strong> 2006</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/ug.loc/app/Helpers/Database.php</p>
+
+           <p><strong>Line:</strong> 53</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/ug.loc/app/Helpers/Database.php(53): PDO->__construct('mysql:host=loca...', '********', '********')
+#1 /Applications/MAMP/htdocs/ug.loc/app/Core/Model.php(16): Helpers\Database::get()
+#2 /Applications/MAMP/htdocs/ug.loc/app/Models/SiteModel.php(8): Core\Model->__construct()
+#3 /Applications/MAMP/htdocs/ug.loc/app/Controllers/Site.php(54): Models\SiteModel->__construct()
+#4 /Applications/MAMP/htdocs/ug.loc/app/Core/Router.php(121): Controllers\Site->__construct(NULL)
+#5 /Applications/MAMP/htdocs/ug.loc/app/Core/Router.php(238): Core\Router::invokeObject('Controllers\\Sit...', Array)
+#6 /Applications/MAMP/htdocs/ug.loc/app/Core/routes.php(87): Core\Router::dispatch('')
+#7 /Applications/MAMP/htdocs/ug.loc/index.php(93): require('/Applications/M...')
+#8 {main}</pre>
+
+           <hr />

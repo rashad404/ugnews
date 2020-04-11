@@ -52,6 +52,9 @@ $(document).ready(function() {
     // Subscribe
     $("#subscribe_button").click(function() {
         var channelId = $(this).attr('channel_id');
+        if($("#subscribe_button").hasClass('umodal_toggle')){
+            return;
+        }
         if($("#subscribe_button").hasClass('subscribed')){
 
             $.ajax({

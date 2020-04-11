@@ -9,6 +9,7 @@ class Sms{
     }
     public static function getCountryList(){
         $array = [1=>'United States'];
+        $array = [994=>'Azerbaijan'];
         return $array;
     }
     public static function get3DigitPrefix($prefix){
