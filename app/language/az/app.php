@@ -65,5 +65,5 @@ return [
     'subscribers' => 'abunə',
     'view' => 'oxunma',
     'Subscribe' => 'Abunə ol',
-    'Subscribed' => 'Abunə',
+    'Subscribed' => 'Abunə olunub',
 ];

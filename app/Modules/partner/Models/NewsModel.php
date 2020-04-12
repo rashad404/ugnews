@@ -28,7 +28,7 @@ class NewsModel extends Model{
         parent::__construct();
         self::$rules = [
             'title' => ['required','min_length(5)', 'max_length(100)'],
-            'text' => ['required','min_length(50)', 'max_length(10000)'],
+            'text' => ['required','min_length(50)', 'max_length(100000)'],
         ];
         self::$db->createTable(self::$tableName,self::getInputs());
         self::$params = $params;
@@ -232,6 +232,7 @@ class NewsModel extends Model{
 
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
+            $insert_data['time'] = time();
 
             if($post_data['channel']>0){
                 $channel_info = ChannelsModel::getItem($post_data['channel']);

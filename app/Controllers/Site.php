@@ -66,7 +66,8 @@ class Site extends Controller
         $data['pagination'] = $pagination;
 
         $data['list'] = NewsModel::getList();
-
+        $data['region'] = Cookie::get('set_region');
+        if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
         Session::set('cat',0);
 
         View::render('site/'.__FUNCTION__, $data);

@@ -23,6 +23,7 @@ class NewsModel extends Model{
         $this->lng = new Language();
         $this->lng->load('app');
         self::$region = Cookie::get('set_region');
+        if(self::$region==0)self::$region = DEFAULT_COUNTRY;
     }
 
     public static function getList($limit=10){

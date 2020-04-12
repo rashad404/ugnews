@@ -8,10 +8,15 @@ use Models\TextsModel;
 <main class="main">
 
     <?php
-    $tag_list = [
+    if($data['region']==16) {
+        $tag_list = [
+            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti'
+        ];
+    }else{
+        $tag_list = [
             'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
-    ];
-
+        ];
+    }
     ?>
 <!--    Why Us?-->
     <div class="container paddingBottom20">

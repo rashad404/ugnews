@@ -24,19 +24,19 @@ $_SETTINGS = [];
 if(Cookie::has('set_region')===true){
     $_SETTINGS['region'] = Cookie::get('set_region');
 }else{
-    Cookie::set('set_region', '16');
-    $_SETTINGS['region'] = '16';
+    Cookie::set('set_region', DEFAULT_COUNTRY);
+    $_SETTINGS['region'] = DEFAULT_COUNTRY;
 }
 
 
-if(isset($_GET['access'])){
-    Cookie::set('access', 'access');
-}
-
-if(Cookie::has('access')===false){
-    echo 'blocked<br/>';
-    exit;
-}
+//if(isset($_GET['access'])){
+//    Cookie::set('access', 'access');
+//}
+//
+//if(Cookie::has('access')===false){
+//    echo 'blocked<br/>';
+//    exit;
+//}
 
 if(Cookie::has('uniqueId')===false){
     Cookie::set('uniqueId', Security::generateHash());
