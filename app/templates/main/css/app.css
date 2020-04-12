@@ -3233,13 +3233,14 @@ div.google_sign_in i {
 /*Tag box*/
 .tag_box{
     margin-bottom: 10px;
-    padding: 10px 0;
+    padding: 5px 0;
     border: 1px solid #ededef;
     text-align: center;
     background-color: #fff;
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 5px;
 }
 
 a.tag_box_a:hover{

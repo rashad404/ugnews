@@ -10,7 +10,7 @@ use Models\TextsModel;
     <?php
     if($data['region']==16) {
         $tag_list = [
-            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlər yardımı', '8103 SMS'
+            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlət yardımı', '8103 SMS'
         ];
     }else{
         $tag_list = [
@@ -41,14 +41,14 @@ use Models\TextsModel;
 
                                 <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
                                     <?php
-                                        $rand = rand(14,26);
-                                        if($rand>18 && $rand<22){
+                                        $rand = rand(13,22);
+                                        if($rand>16 && $rand<19){
                                             $bold = 'font-weight:bold;';
                                         }else{
                                             $bold = '';
                                         }
                                     ?>
-                                    <div class="tag_box" style="<?=$bold?>font-size: <?=$rand?>px;height: 60px;line-height: 40px;">
+                                    <div class="tag_box" style="<?=$bold?>font-size: <?=$rand?>px;height: 50px;line-height: 40px;">
                                         #<?=Format::shortText($val,20)?>
                                     </div>
                                 </a>
@@ -59,7 +59,7 @@ use Models\TextsModel;
                     <div class="row">
 
                         <div class="col-lg-12">
-                            <div class="page_title paddingTop20 paddingBottom20">
+                            <div class="page_title paddingBottom20">
                                 <h2>
                                     <?=$lng->get('Latest News')?>
                                 </h2>
