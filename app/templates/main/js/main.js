@@ -189,61 +189,20 @@ $(document).ready(function() {
 
 
 
-// Location Search input Dropdown
-
-    $('#state').on("change",function () {
-        $("#county").html('');
-        $("#city").html('');
-        $("#county").hide();
-        $("#city").hide();
-        var selectedID = $(this).find('option:selected').val();
-        if(selectedID>0) {
-
-            $("#county").show();
-            $.ajax({
-                url: "ajax/countyListByState/" + selectedID,
-                type: "POST",
-                data: "categoryId=" + selectedID,
-                success: function (response) {
-                    console.log(response);
-                    $("#county").html(response);
-                },
-            });
-        }
-    });
-
-    $('#county').on("change",function () {
-        $("#city").html('');
-
-        $("#city").hide();
-        var selectedID = $(this).find('option:selected').val();
-        if (selectedID > 0){
-            $("#city").show();
-            $.ajax({
-                url: "ajax/cityListByCounty/" + selectedID,
-                type: "POST",
-                data: "categoryId=" + selectedID,
-                success: function (response) {
-                    console.log(response);
-                    $("#city").html(response);
-                },
-            });
-        }
-    });
-
-    $('#search_location_input').keyup(function () {
-        var inputVal = $('#search_location_input').val();
+// Header search
+    $('#header_search_input').keyup(function () {
+        var inputVal = $('#header_search_input').val();
         // alert(inputVal);
 
         if(inputVal.length>=3) {
-            $("#locationDropDown").show();
+            $("#headerSearchDropDown").show();
             $.ajax({
-                url: "ajax/locationSearchList/" + inputVal,
+                url: "ajax/search/" + inputVal,
                 type: "POST",
-                data: "categoryId=",
+                data: "text=",
                 success: function (response) {
                     console.log(response);
-                    $("#locationDropDown").html(response);
+                    $("#headerSearchDropDown").html(response);
                 },
             });
         }else{
@@ -288,6 +247,7 @@ $(document).ready(function() {
     $(".all_site").click(function() {
         $(".all_site").hide();
         $(".umodal").hide();
+        $("#locationDropDown").hide();
         $("div.flash_notification").hide();
         $(".mobile_menu").hide("fast");
         $("body").css({

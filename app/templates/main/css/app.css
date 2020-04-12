@@ -172,6 +172,7 @@ div.icons_area ul.menu > li >a {
 ul.menu li a:hover {
     background-color: #f7f7f7;
     color: #673194;
+    font-weight: bold;
 }
 li.menu_li:hover ul.sub_menu{
     display: block;
@@ -1367,7 +1368,8 @@ a.tag_box_a:hover{
 
 /*SEARCH AREA*/
 .search_area{
-    margin-top: 10px;
+    margin-top: 12px;
+    position: relative;
 }
 .search_area input{
     padding: 8px 20px;
@@ -1386,7 +1388,53 @@ a.tag_box_a:hover{
 .search_area button:hover{
     background-color: #853fbf;
 }
+.search_result_modal_box{
+    position: absolute;
+    left:0;
+    margin-top: 15px;
+    padding: 20px 0;
+    border: 1px solid #f0e2f9;
+    background-color: #fff;
+    border-radius: 5px;
+    list-style-type: none;
+    overflow-y: scroll;
+    z-index: 100!important;
+    max-width: 460px;
+    display: none;
+}
 
+ul.search_result_modal_box .li_title {
+    padding: 0px 20px 5px 15px;
+    font-weight: bold;
+}
+
+
+ul.search_result_modal_box > li a {
+    display: block;
+    font-size: 14px;
+    color: #000;
+    font-weight: normal;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: left;
+}
+ul.search_result_modal_box >li:nth-child(even) a {
+    background-color: #fbfbfb;
+}
+ul.search_result_modal_box > li i {
+    color: #673194;
+    font-size: 16px;
+    padding-right: 2px;
+}
+
+ul.search_result_modal_box a:hover i {
+    color: #a44bea;
+}
+ul.search_result_modal_box a:hover{
+    font-weight: bold;
+    color: #a44bea;
+    /*background-color: rgba(174, 82, 249, 0.05);*/
+}
 
 
 @media screen and (min-width: 767px) {

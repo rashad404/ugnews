@@ -89,13 +89,15 @@ $region = '233';
                 <div class="search_area hidden-xs hidden-sm">
                     <form action="" method="POST" >
                         <input type="hidden" value="<?= Csrf::makeToken();?>" name="csrf_token">
-                        <input class="" type="text" name="search" id="search" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
+                        <input class="" type="text" name="search" id="header_search_input" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
 
                         <button type="submit" class="">
                             <?=$lng->get('Search')?>
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
+                    <ul id="headerSearchDropDown" class="search_result_modal_box" style="max-height: 500px;right: 0px;">
+                    </ul>
 
                 </div>
             </div>

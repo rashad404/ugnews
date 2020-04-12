@@ -51,17 +51,9 @@ class Ajax extends Controller
     }
 
 
-//    public function countyListByState($id){
-//        echo AjaxModel::countyListByState($id);
-//    }
-//
-//    public function cityListByCounty($id){
-//        echo AjaxModel::cityListByCounty($id);
-//    }
-//
-//    public function locationSearchList($text){
-//        echo AjaxModel::locationSearchList($text);
-//    }
+    public function search($text){
+        echo AjaxModel::search($text);
+    }
 
 
 }

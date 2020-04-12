@@ -9,6 +9,7 @@ return [
     'Select Region' => 'Ölkə seçin',
     'Channel or News' => 'Kanal və ya Xəbər',
     'Search' => 'Axtar',
+    'News Channels' => 'Xəbər Kanalları',
 
     //Sign in
     'Sign in' => 'Daxil ol',
