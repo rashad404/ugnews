@@ -1148,6 +1148,48 @@ h3.heading, h4.img_title{
 }
 
 
+div.page_title{
+    text-align: left;
+    display: inline-block;
+    margin-top: 10px;
+
+}
+div.page_title h2{
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #242424;
+    font-size: 32px;
+}
+div.page_title hr{
+    width: 105%;
+    background-color: red;
+    height: 3px;
+    float: left;
+    margin-top: -5px;
+}
+
+
+div.page_title_select h2{
+    font-weight: bold;
+    letter-spacing: 2px;
+    color:#000;
+    font-size: 48px;
+    text-align:left;
+    line-height: 56px;
+    padding-top: 20px;
+
+}
+div.page_title_select h4{
+    letter-spacing: 1px;
+    color: #6e40a8;
+    font-size: 32px;
+    text-align:left;
+    line-height: 56px;
+    padding-top: 20px;
+
+}
+
+
 /*Login, Register*/
 div.fb_sign_in a {
     display: block;
