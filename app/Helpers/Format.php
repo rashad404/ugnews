@@ -18,12 +18,12 @@ class Format{
         return $text;
     }
     public static function shortText($text,$length=100){
-        if(strlen($text)>$length)$text = substr($text,0,$length);
+        if(strlen($text)>$length)$text = mb_substr($text,0,$length);
         return $text;
     }
     public static function listTitle($text,$length=100){
-        $text = ucfirst(mb_strtolower($text));
-        if(strlen($text)>$length)$text = substr($text,0,$length).'...';
+//        $text = ucfirst(mb_strtolower($text));
+        if(strlen($text)>$length)$text = mb_substr($text,0,$length).'...';
         return $text;
     }
 

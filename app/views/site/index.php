@@ -10,7 +10,7 @@ use Models\TextsModel;
     <?php
     if($data['region']==16) {
         $tag_list = [
-            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti'
+            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlər yardımı', '8103 SMS'
         ];
     }else{
         $tag_list = [
@@ -77,7 +77,7 @@ use Models\TextsModel;
                                         <div class="caption">
                                             <div class="news_title">
                                                 <span>
-                                                    <?=Format::listTitle($list['title'], 60)?>
+                                                    <?=Format::listTitle($list['title'], 50)?>
                                                 </span>
                                             </div>
                                             <div class="row news_date">

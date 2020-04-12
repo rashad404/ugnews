@@ -3660,4 +3660,8 @@ a.tag_box_a:hover{
         margin-left: 0;
         left: 0;
     }
+
+    .news_title{
+        font-size: 16px;
+    }
 }
