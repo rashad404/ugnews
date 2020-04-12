@@ -1383,6 +1383,10 @@ a.tag_box_a:hover{
     border: 1px solid #dcdcdc;
 }
 
+.search_area button:hover{
+    background-color: #853fbf;
+}
+
 
 
 @media screen and (min-width: 767px) {

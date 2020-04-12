@@ -7,6 +7,8 @@ return [
 
     //header
     'Select Region' => 'Ölkə seçin',
+    'Channel or News' => 'Kanal və ya Xəbər',
+    'Search' => 'Axtar',
 
     //Sign in
     'Sign in' => 'Daxil ol',
