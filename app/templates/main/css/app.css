@@ -129,7 +129,8 @@ div#redirect_url{
 
 
 .header_logo{
-    position: absolute;top: 50%;left:16%;transform: translate(-50%, -50%);
+    margin-top: 3px;
+    margin-left: 25%;
 }
 
 div.menu{
@@ -161,10 +162,12 @@ ul.menu > li a {
 ul.menu li.li_title{
     padding:10px;
     font-weight: bold;
+    text-align: left;
 }
 
 div.icons_area ul.menu > li >a {
-    padding: 27px 16px!important;
+    padding: 38px 16px 22px 16px!important;
+    margin-top: -16px;
 }
 ul.menu li a:hover {
     background-color: #f7f7f7;
@@ -198,7 +201,7 @@ ul.sub_menu > li a {
     font-size: 14px;
     color: #000;
     font-weight: normal;
-    padding: 10px 20px;
+    padding: 5px 20px;
     text-decoration: none;
     text-align: left;
 }
@@ -265,17 +268,8 @@ img.footer_logo{
     border-radius: 50%;
 }
 
-.account_area{
-    background-color: #673194;
-    color: #fff;
-    position: absolute;
-    top: 0%;
-    right:4%;
-}
 .icons_area{
-    position: absolute;
-    top: 0%;
-    right:15%;
+    text-align: right;
 }
 .icons_area ul{
     list-style: none;
@@ -711,13 +705,11 @@ div.flash_notification{
     text-decoration: none;
 }
 .mobile_menu_icon{
-    position: absolute;
-    top: 50%;
-    right:0%;
-    transform: translate(-50%, -50%);
+    margin-top: 20px;
+    text-align: center;
     padding: 0px 15px 0px 2px;
     z-index: 102;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .mobile_menu_icon i{
@@ -1373,10 +1365,29 @@ a.tag_box_a:hover{
     color:red;
 }
 
+/*SEARCH AREA*/
+.search_area{
+    margin-top: 10px;
+}
+.search_area input{
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    width: 60%;
+}
+.search_area button{
+    padding: 9px 20px;
+    background-color: #673194;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+}
+
+
 
 @media screen and (min-width: 767px) {
     .visible-xs-flex, .mobile_menu_icon{
-        display: none!important;
+        display: block!important;
     }
     .web_pl_remove{
         padding-left: 0!important;
@@ -1421,7 +1432,7 @@ a.tag_box_a:hover{
     }
 
     .header_logo{
-        left:20%;
+        margin-left: 0;
     }
     .header_logo img{
         width: 130px;

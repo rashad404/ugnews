@@ -9,7 +9,7 @@ class CountryModel extends Model{
     }
 
     public static function getList(){
-        $row = self::$db->select("SELECT `id`,`name`,`code` FROM `".self::$tableName."` ORDER BY `name`");
+        $row = self::$db->select("SELECT `id`,`name`,`code` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `name`");
         return $row;
     }
     public static function getCode($id){
