@@ -32,6 +32,22 @@ class Ajax extends Controller
     }
     public function un_subscribe($id){
         echo AjaxModel::unSubscribe($id);
+
+    }
+
+    public function like($id){
+        echo AjaxModel::like($id);
+    }
+    public function remove_like($id){
+        echo AjaxModel::removeLike($id);
+    }
+
+    public function dislike($id){
+        echo AjaxModel::dislike($id);
+    }
+
+    public function remove_dislike($id){
+        echo AjaxModel::removeDislike($id);
     }
 
 

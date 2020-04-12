@@ -15,6 +15,7 @@ class NewsModel extends Model{
     private static $tableNameTags = 'tags';
     private static $tableNameChannels = 'channels';
     private static $tableNameSubscribers = 'subscribers';
+    private static $tableNameLikes = 'likes';
     private static $region;
     public $lng;
     public function __construct(){
@@ -98,6 +99,25 @@ class NewsModel extends Model{
     public static function subscribeCheck($id){
         $user_id = intval(Session::get("user_session_id"));
         $check = self::$db->selectOne("SELECT `id` FROM `".self::$tableNameSubscribers."` WHERE `channel`=".$id." AND `user_id`='".$user_id."'");
+        if($check) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function likeCheck($id){
+        $user_id = intval(Session::get("user_session_id"));
+        $check = self::$db->selectOne("SELECT `id` FROM `".self::$tableNameLikes."` WHERE `liked`=1 AND `news_id`=".$id." AND `user_id`='".$user_id."'");
+        if($check) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public static function dislikeCheck($id){
+        $user_id = intval(Session::get("user_session_id"));
+        $check = self::$db->selectOne("SELECT `id` FROM `".self::$tableNameLikes."` WHERE `disliked`=1 AND `news_id`=".$id." AND `user_id`='".$user_id."'");
         if($check) {
             return true;
         }else{

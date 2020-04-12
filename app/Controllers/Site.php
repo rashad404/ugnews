@@ -370,16 +370,17 @@ class Site extends Controller
         $data['postData']['google_client'] = $client;
 
 
+
         $fb = new Facebook([
-            'app_id' => '602514563823433', // Replace {app-id} with your app id
-            'app_secret' => 'dfa689f62219f6ae4111a2591a4a3dc3',
+            'app_id' => '977943965970059', // Replace {app-id} with your app id
+            'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
             'default_graph_version' => 'v3.2',
         ]);
 
         $helper = $fb->getRedirectLoginHelper();
 
         $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('https://ureb.com/auth/facebook/callback', $permissions);
+        $loginUrl = $helper->getLoginUrl('https://ug.news/auth/facebook/callback', $permissions);
 
         $data['postData']['facebook_url'] = htmlspecialchars($loginUrl);
 

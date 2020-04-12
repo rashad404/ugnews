@@ -50,17 +50,28 @@ use Helpers\Format;
                                 <div class="news_inner_right_box">
                                     <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\NewsModel::getChannelName($item['channel'])?></span>
                                 </div>
-                                <div class="news_inner_right_box">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="news_inner_subscribe_area">
 
                                     <?php
-                                        $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+                                    $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+                                    $like_check = \Models\NewsModel::likeCheck($item['id']);
+                                    $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                                     ?>
                                     <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
                                         <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
                                         <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
                                     </button>
-                                    <button class="thumbs_up"><i class="fas fa-thumbs-up"></i></button>
-                                    <button class="thumbs_down"><i class="fas fa-thumbs-down"></i></button>
+
+                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="like_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> like <?=($like_check===true)?' liked':''?>">
+                                        <i class="fas fa-<?=($like_check===true)?'thumbs-up':'thumbs-up'?>"></i>
+                                    </button>
+                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="dislike_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> dislike <?=($dislike_check===true)?' disliked':''?>">
+                                        <i class="fas fa-<?=($dislike_check===true)?'thumbs-down':'thumbs-down'?>"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -92,6 +92,103 @@ $(document).ready(function() {
     });
 
 
+
+    // Like
+    $("#like_button").click(function() {
+        var newsId = $(this).attr('news_id');
+        if($("#like_button").hasClass('umodal_toggle')){
+            return;
+        }
+        if($("#like_button").hasClass('liked')){
+            // alert('REMOVE LIKE');
+            $.ajax({
+                url: "ajax/remove_like/" + newsId,
+                type: "POST",
+                data: "news_id=" + newsId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#like_button").removeClass('liked');
+                    $("#dislike_button").removeClass('disliked');
+
+                    // $("#like_button i").css('color', '#787878');
+
+
+                    $("#like_button span").text(response);
+
+                },
+            });
+        }else{
+            // alert('LIKE');
+            $.ajax({
+                url: "ajax/like/" + newsId,
+                type: "POST",
+                data: "news_id=" + newsId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#like_button").addClass('liked');
+                    $("#dislike_button").removeClass('disliked');
+
+                    // $("#like_button i").css('color', '#00B600');
+                    // $("#dislike_button i").css('color', '#787878');
+                    $("#like_button span").text(response);
+
+                },
+            });
+        }
+    });
+
+
+
+
+    // Dislike
+    $("#dislike_button").click(function() {
+        var newsId = $(this).attr('news_id');
+        if($("#dislike_button").hasClass('umodal_toggle')){
+            return;
+        }
+        if($("#dislike_button").hasClass('disliked')){
+            // alert('REMOVE DISLIKE');
+            $.ajax({
+                url: "ajax/remove_dislike/" + newsId,
+                type: "POST",
+                data: "news_id=" + newsId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#dislike_button").removeClass('disliked');
+                    $("#like_button").removeClass('liked');
+
+                    // $("#dislike_button i").css('color', '#787878');
+                    $("#dislike_button span").text(response);
+
+                },
+            });
+        }else{
+            // alert('DISLIKE');
+            $.ajax({
+                url: "ajax/dislike/" + newsId,
+                type: "POST",
+                data: "news_id=" + newsId,
+                success: function (response) {
+                    console.log(response);
+
+                    $("#dislike_button").addClass('disliked');
+                    $("#like_button").removeClass('liked');
+
+                    // $("#dislike_button i").css('color', 'red');
+                    // $("#like_button i").css('color', '#787878');
+                    $("#dislike_button span").text(response);
+
+                },
+            });
+        }
+    });
+
+
+
+
 // Location Search input Dropdown
 
     $('#state').on("change",function () {

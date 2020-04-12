@@ -34,8 +34,8 @@ class Auth extends Controller
 
     public function facebook_login(){
         $fb = new Facebook([
-            'app_id' => '602514563823433', // Replace {app-id} with your app id
-            'app_secret' => 'dfa689f62219f6ae4111a2591a4a3dc3',
+            'app_id' => '977943965970059', // Replace {app-id} with your app id
+            'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
             'default_graph_version' => 'v3.2',
         ]);
 
@@ -49,8 +49,8 @@ class Auth extends Controller
     }
 
     public function facebook_callback(){
-        $app_id = '602514563823433';
-        $app_secret = 'dfa689f62219f6ae4111a2591a4a3dc3';
+        $app_id = '977943965970059';
+        $app_secret = '83a9b6499f72d0a344e2b2fa2e27a65e';
         $fb = new Facebook([
             'app_id' => $app_id, // Replace {app-id} with your app id
             'app_secret' => $app_secret,

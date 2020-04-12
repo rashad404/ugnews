@@ -3173,7 +3173,10 @@ div.google_sign_in i {
 .news_inner_right_box i{
     padding-right: 3px;
 }
-.news_inner_right_box button.subscribe{
+.news_inner_subscribe_area{
+    padding-top:10px;
+}
+.news_inner_subscribe_area button.subscribe{
     color: #fff;
     font-size: 16px;
     background-color: red;
@@ -3181,34 +3184,49 @@ div.google_sign_in i {
     border: 1px solid red;
     border-radius: 4px;
 }
-.news_inner_right_box button.subscribed{
-    background-color: #787878!important;
-    border: 1px solid #787878!important;
+.news_inner_subscribe_area button.subscribed{
+    background-color: #00B600!important;
+    border: 1px solid #00B600!important;
 }
-.news_inner_right_box button.subscribe:hover{
+.news_inner_subscribe_area button.subscribe:hover{
     color: #fff;
     background-color: #d40000;
 }
-.news_inner_right_box button.thumbs_up{
+.news_inner_subscribe_area button.like{
     color: #727272;
-    font-size: 18px;
+    font-size: 24px;
     padding-left: 10px;
     border:0;
-    background-color: #f5f5f5;
+    background-color: #fff;
 }
-.news_inner_right_box button.thumbs_up:hover{
-    color: green;
-}
-
-.news_inner_right_box button.thumbs_down{
-    color: #727272;
+.news_inner_subscribe_area button.liked i{
+    background-color: #00B600;
+    color: #fff;
     font-size: 18px;
-    padding-left: 0px;
-    border:0;
-    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+}
+.news_inner_subscribe_area button.like:hover{
+    color: #00B600;
 }
 
-.news_inner_right_box button.thumbs_down:hover{
+.news_inner_subscribe_area button.dislike{
+    color: #727272;
+    font-size: 24px;
+    padding: 0px;
+    margin-left: 10px;
+    border:0;
+    background-color: #fff;
+}
+.news_inner_subscribe_area button.disliked i{
+    background-color: red;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.news_inner_subscribe_area button.dislike:hover{
     color: red;
 }
 

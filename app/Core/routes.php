@@ -10,6 +10,12 @@ use Helpers\Url;
 Router::any('ajax/subscribe/(:num)', 'Controllers\Ajax@subscribe');
 Router::any('ajax/un_subscribe/(:num)', 'Controllers\Ajax@un_subscribe');
 
+Router::any('ajax/like/(:num)', 'Controllers\Ajax@like');
+Router::any('ajax/remove_like/(:num)', 'Controllers\Ajax@remove_like');
+
+Router::any('ajax/dislike/(:num)', 'Controllers\Ajax@dislike');
+Router::any('ajax/remove_dislike/(:num)', 'Controllers\Ajax@remove_dislike');
+
 
 //SEO
 Router::any('seo/insert_keywords', 'Controllers\Seo@insert_keywords');
