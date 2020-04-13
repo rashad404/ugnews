@@ -30,6 +30,7 @@ $region = '233';
 <div class="flash_notification"><?=Session::getFlash()?></div>
 
 <div class="all_site"></div>
+<div class="all_site_no_bg"></div>
 <div class="mobile_menu">
     <div class="mobile_menu_header">
         <div class="login-buttons-mobile">
@@ -96,8 +97,6 @@ $region = '233';
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
-                    <ul id="headerSearchDropDown" class="search_result_modal_box" style="max-height: 500px;right: 0px;">
-                    </ul>
 
                 </div>
             </div>
@@ -128,3 +127,7 @@ $region = '233';
         </div>
     </div>
 </div>
+
+<ul id="headerSearchDropDown" class="search_result_modal_box" style="max-height: 500px;right: 0px;">
+    <li class="li_title"><?=$lng->get('Loading')?>...</li>
+</ul>

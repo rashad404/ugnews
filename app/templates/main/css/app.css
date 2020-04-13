@@ -654,7 +654,20 @@ i.header_cart_icon{
 }
 
 .all_site {
-    background-color: rgba(0, 0, 0, .8);
+    /*background-color: rgba(0, 0, 0, .8);*/
+    height: 100%;
+    left: 0;
+    opacity: .9;
+    top: 0;
+    display: none;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    transform: translateZ(0)
+}
+
+.all_site_no_bg {
+    background-color: rgba(0, 0, 0, .3);
     height: 100%;
     left: 0;
     opacity: .9;
@@ -1389,8 +1402,9 @@ a.tag_box_a:hover{
     background-color: #853fbf;
 }
 .search_result_modal_box{
-    position: absolute;
-    left:0;
+    position: fixed;
+    left:34%;
+    top:67px;
     margin-top: 15px;
     padding: 20px 0;
     border: 1px solid #f0e2f9;
@@ -1398,11 +1412,15 @@ a.tag_box_a:hover{
     border-radius: 5px;
     list-style-type: none;
     overflow-y: scroll;
-    z-index: 100!important;
+    z-index: 1000!important;
     max-width: 460px;
     display: none;
-}
 
+}
+.search_result_modal_box img{
+    width: 70px;
+    height: 70px;
+}
 ul.search_result_modal_box .li_title {
     padding: 0px 20px 5px 15px;
     font-weight: bold;
@@ -1411,7 +1429,7 @@ ul.search_result_modal_box .li_title {
 
 ul.search_result_modal_box > li a {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
     font-weight: normal;
     padding: 10px 20px;
@@ -1431,7 +1449,7 @@ ul.search_result_modal_box a:hover i {
     color: #a44bea;
 }
 ul.search_result_modal_box a:hover{
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #a44bea;
     /*background-color: rgba(174, 82, 249, 0.05);*/
 }

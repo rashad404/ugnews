@@ -4,12 +4,14 @@ use Core\Model;
 use Core\Language;
 use Helpers\Cookie;
 use Helpers\Session;
+use Helpers\Url;
 
 class AjaxModel extends Model{
 
     private static $tableNameSubscribers = 'subscribers';
     private static $tableNameLikes = 'likes';
     private static $tableNameChannels = 'channels';
+    private static $tableNameNews = 'news';
     public static $lng;
     public function __construct(){
         parent::__construct();
@@ -110,10 +112,26 @@ class AjaxModel extends Model{
 
 
     public static function search($text){
-        $array = self::$db->select("SELECT `id`,`name` FROM `".self::$tableNameChannels."` WHERE `name` LIKE '%".$text."%'ORDER BY `id` ASC");
-        $data = '<li class="li_title">'.self::$lng->get('News Channels').':</li>';
-        foreach ($array as $item) {
-            $data .= '<li><a href="/channels/'.$item['id'].'"><i class="fas fa-broadcast-tower"></i> '.$item['name'].'</a></li>';
+        $data = '';
+
+        $array_channels = self::$db->select("SELECT `id`,`name` FROM `".self::$tableNameChannels."` WHERE `name` LIKE '%".$text."%'ORDER BY `id` ASC");
+        if($array_channels) {
+            $data .= '<li class="li_title">' . self::$lng->get('News Channels') . ':</li>';
+            foreach ($array_channels as $item) {
+                $data .= '<li><a href="/channels/' . $item['id'] . '"><i class="fas fa-broadcast-tower"></i> ' . $item['name'] . '</a></li>';
+            }
+        }
+
+        $array_news = self::$db->select("SELECT `id`,`title`,`thumb` FROM `".self::$tableNameNews."` WHERE `title` LIKE '%".$text."%'ORDER BY `time` DESC");
+        if($array_news) {
+            $data .= '<li class="li_title" style="padding-top:20px;">' . self::$lng->get('News') . ':</li>';
+            foreach ($array_news as $item) {
+                $data .= '<li><a href="/news/' . $item['id'] . '"><img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/> ' . $item['title'] . '</a></li>';
+            }
+        }
+
+        if(!$array_channels && !$array_news){
+            $data .= '<li class="li_title">' . self::$lng->get('No result').'</li>';
         }
         return $data;
     }

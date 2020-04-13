@@ -10,6 +10,9 @@ return [
     'Channel or News' => 'Kanal və ya Xəbər',
     'Search' => 'Axtar',
     'News Channels' => 'Xəbər Kanalları',
+    'Loading' => 'Yüklənir',
+    'News' => 'Xəbərlər',
+    'No result' => 'Nəticə tapılmadı.',
 
     //Sign in
     'Sign in' => 'Daxil ol',

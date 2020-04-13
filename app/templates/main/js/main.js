@@ -195,6 +195,7 @@ $(document).ready(function() {
         // alert(inputVal);
 
         if(inputVal.length>=3) {
+            $(".all_site_no_bg").show();
             $("#headerSearchDropDown").show();
             $.ajax({
                 url: "ajax/search/" + inputVal,
@@ -247,7 +248,27 @@ $(document).ready(function() {
     $(".all_site").click(function() {
         $(".all_site").hide();
         $(".umodal").hide();
-        $("#locationDropDown").hide();
+        $("#headerSearchDropDown").hide();
+        $("div.flash_notification").hide();
+        $(".mobile_menu").hide("fast");
+        $("body").css({
+            overflow: "auto",
+            position: "none",
+            height: "auto"
+        });
+        $("html").css({
+            overflow: "auto",
+            position: "none",
+            height: "auto"
+        });
+    });
+
+
+
+    $(".all_site_no_bg").click(function() {
+        $(".all_site_no_bg").hide();
+        $(".umodal").hide();
+        $("#headerSearchDropDown").hide();
         $("div.flash_notification").hide();
         $(".mobile_menu").hide("fast");
         $("body").css({
