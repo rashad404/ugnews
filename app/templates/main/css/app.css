@@ -34,7 +34,7 @@ a:hover{
 }
 
 .container{
-    max-width: 1140px;
+    max-width: 1000px;
 }
 
 .container.small_width{
@@ -423,7 +423,7 @@ div.new_message_inner{
 .main{
     /*padding: 20px 20px 0px 20px;*/
     /*margin: 50px 0;*/
-    background-color: #f6f5f7;
+    background-color: #ededed;
     padding-top:80px;
 }
 
@@ -1239,10 +1239,15 @@ div.google_sign_in i {
     padding-left: 8px!important;
     padding-right: 8px!important;
 }
+.col-lg-4{
+    padding-left: 5px!important;
+}
 .news_box{
-    margin-bottom: 30px;
-    height: 270px;
+    margin-bottom: 23px;
+    height: 290px;
     background-color: #fff;
+    /*border: 1px solid #ccc;*/
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 /*NEWS*/
 .news_box:hover{
@@ -1251,16 +1256,19 @@ div.google_sign_in i {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
 .news_image{
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
     width: 100%;
-    height: 150px;
+    height: 170px;
 }
 .news_title{
-    padding: 10px;
+    padding: 10px 15px;
     font-size: 18px;
     line-height: 24px;
     color: #000;
     margin-bottom: 10px;
     height: 72px;
+    font-weight: bold;
 }
 .news_date{
     padding: 10px;
@@ -1375,6 +1383,11 @@ div.google_sign_in i {
     border-radius: 5px;
 }
 
+a.tag_box_a{
+    color: #475873;
+    font-weight: bold;
+}
+
 a.tag_box_a:hover{
     color:red;
 }
@@ -1418,27 +1431,35 @@ a.tag_box_a:hover{
 
 }
 .search_result_modal_box img{
-     width: 50px;
+     width: 65px;
      height: 50px;
-    margin-right: 7px;
  }
 .search_result_modal_box div{
     display: flex;
     align-items: center;
 }
 
+.search_result_modal_box div.search_date{
+    color: #5a5a5a;
+    font-size: 12px;
+    width: 60px;
+    text-align: center;
+    font-weight: normal;
+}
+
 ul.search_result_modal_box .li_title {
     padding: 0px 20px 5px 15px;
     font-weight: bold;
+    text-align: center;
 }
 
 
 ul.search_result_modal_box > li a {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
     font-weight: normal;
-    padding: 10px 20px;
+    padding: 5px 10px;
     text-decoration: none;
     text-align: left;
 }
@@ -1709,5 +1730,12 @@ ul.search_result_modal_box a:hover{
     /*News*/
     .news_title{
         font-size: 16px;
+    }
+    .news_box{
+        margin: 8px;
+        height: 250px;
+    }
+    .news_image{
+        height: 130px;
     }
 }
