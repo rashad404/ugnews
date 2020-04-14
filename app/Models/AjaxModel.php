@@ -126,7 +126,10 @@ class AjaxModel extends Model{
         if($array_news) {
             $data .= '<li class="li_title" style="padding-top:20px;">' . self::$lng->get('News') . ':</li>';
             foreach ($array_news as $item) {
-                $data .= '<li><a href="/news/' . $item['id'] . '"><img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/> ' . $item['title'] . '</a></li>';
+                $data .= '
+                <li><a href="/news/' . $item['id'] . '">
+                <div><img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/> ' . $item['title'] . '</div>
+                </a></li>';
             }
         }
 

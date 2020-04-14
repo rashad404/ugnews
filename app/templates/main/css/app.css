@@ -1418,9 +1418,15 @@ a.tag_box_a:hover{
 
 }
 .search_result_modal_box img{
-    width: 70px;
-    height: 70px;
+     width: 50px;
+     height: 50px;
+    margin-right: 7px;
+ }
+.search_result_modal_box div{
+    display: flex;
+    align-items: center;
 }
+
 ul.search_result_modal_box .li_title {
     padding: 0px 20px 5px 15px;
     font-weight: bold;

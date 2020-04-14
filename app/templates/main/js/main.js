@@ -194,7 +194,7 @@ $(document).ready(function() {
         var inputVal = $('#header_search_input').val();
         // alert(inputVal);
 
-        if(inputVal.length>=3) {
+        if(inputVal.length>=1) {
             $(".all_site_no_bg").show();
             $("#headerSearchDropDown").show();
             $.ajax({
