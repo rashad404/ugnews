@@ -6,19 +6,11 @@ use Core\View;
 use Core\Language;
 use Facebook\Facebook;
 use Google_Client;
-use Google_Service_Oauth2;
 use Helpers\Format;
-use Helpers\Parse;
 use Helpers\Sms;
 use Helpers\Url;
 use Helpers\Csrf;
 use Helpers\Session;
-use Models\AuthModel;
-use Models\BoutiquesModel;
-use Models\FaqsModel;
-use Models\FilterModel;
-use Models\MediaModel;
-use Models\ProductsModel;
 use Models\RegistrationModel;
 use Models\SeoModel;
 use Models\SiteModel;
@@ -26,12 +18,8 @@ use Models\ContactsModel;
 use Models\LoginModel;
 use Models\NewsModel;
 use Models\AboutModel;
-use Models\SliderModel;
 use Helpers\Pagination;
 use Helpers\Cookie;
-use Models\BlogModel;
-use Models\ApartmentsModel;
-use Models\TestimonialsModel;
 
 
 /**
@@ -213,116 +201,6 @@ class Site extends Controller
     }
 
 
-    public function blog()
-    {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-
-        $data['list'] = BlogModel::getList();
-
-        Session::set('cat',0);
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-
-    // News inner page
-    public function blog_inner($id)
-    {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-
-        $data['def_language'] = self::$def_language;
-
-        $data['item'] = BlogModel::getItem($id);
-
-        $data['popular_list'] = BlogModel::getPopularList(10);
-
-        $data['next_item'] = BlogModel::navigate($id,'next');
-        $data['previous_item'] = BlogModel::navigate($id,'previous');
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-
-    public function media()
-    {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-
-        $pagination = new Pagination();
-        $pagination->limit = 12;
-        $data['pagination'] = $pagination;
-        $limitSql = $pagination->getLimitSql(MediaModel::countList());
-        $data['list'] = MediaModel::getList($limitSql);
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-
-    // Product inner page
-    public function product_inner($id)
-    {
-
-        $product_info = ProductsModel::getProduct($id);
-        $data['title'] = $product_info['title_'.self::$def_language];
-        $data['keywords'] = $product_info['title_'.self::$def_language];
-        $data['description'] = $product_info['title_'.self::$def_language];
-
-        $data['def_language'] = self::$def_language;
-
-        $data['productInfo'] = $product_info;
-        $data['products_similar'] = ProductsModel::getProductListBySimilar($id,4);
-//        $data['product_photos'] = ProductPhotosModel::getAll($id);
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-    // Boutique inner page
-    public function boutique($id)
-    {
-        $boutique_info = BoutiquesModel::getItem($id);
-        $data['title'] = $boutique_info['name'];
-        $data['keywords'] = $boutique_info['name'];
-        $data['description'] = $boutique_info['name'];
-
-        $data['def_language'] = self::$def_language;
-
-        if(isset($_POST['products_order'])){
-            Cookie::set('products_order', $_POST['products_order']);
-            $data['products_order'] = $_POST['products_order'];
-        }elseif(Cookie::has('products_order')){
-            $data['products_order'] = Cookie::get('products_order');
-        }else{
-            $data['products_order'] = 'recent';
-        }
-
-        $pagination = new Pagination();
-        $pagination->limit = 72;
-        $data['pagination'] = $pagination;
-        $limitSql = $pagination->getLimitSql(ProductsModel::countListByBoutique($id));
-        $data['products'] = ProductsModel::getListByBoutique($id, $limitSql, $data['products_order']);
-        $data['pageTitle'] = $boutique_info['name'];
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-
-//    public function sign_in(){
-//        $data['title'] = SITE_TITLE;
-//        $data['keywords'] = SITE_TITLE;
-//        $data['description'] = SITE_TITLE;
-//        $data['def_language'] = self::$def_language;
-//
-//        $link = 'https://lordhousing.appfolio.com/connect/users/sign_in';
-//        $html = Parse::sign_in($link);
-//        $data['html'] = $html;
-//        View::render('site/'.__FUNCTION__, $data);
-//    }
-
     public function logout(){
         Session::destroy('',true);
         Url::redirect("");
@@ -442,15 +320,6 @@ class Site extends Controller
         View::render('site/'.__FUNCTION__, $data);
     }
 
-    public function how_it_works(){
-        $data['title'] = $this->lng->get("How It Works").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("How It Works").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("How It Works").' '.SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-        $data['item'] = AboutModel::getItem();
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
     public function about(){
         $data['title'] = $this->lng->get("About").' '.PROJECT_NAME;
         $data['keywords'] = $this->lng->get("About").' '.SITE_TITLE;
@@ -475,60 +344,6 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         View::render('site/'.__FUNCTION__, $data);
-    }
-    public function what_we_do(){
-        $data['title'] = $this->lng->get("About").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("About").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("About").' '.SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function airport_service(){
-        $data = SeoModel::airport_service();
-        $data['def_language'] = self::$def_language;
-
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function faqs(){
-        $data['title'] = $this->lng->get("FAQs").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("Frequently asked questions").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("Frequently asked questions").' '.SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-        $data['list'] = FaqsModel::getList();
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function testimonials(){
-        $data['title'] = $this->lng->get("About").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("About").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("About").' '.SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function schedule(){
-        $data = [];
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function locations(){
-        $data = SeoModel::locations();
-        $data['def_language'] = self::$def_language;
-        View::render('site/'.__FUNCTION__, $data);
-    }
-    public function locations_iframe(){
-        Session::set('header_off',true);
-        $this->locations();
-    }
-    public function locations_app(){
-        Session::set('header_off',true);
-        $this->locations();
-    }
-    public function contacts_app(){
-        Session::set('header_off',true);
-        $this->contacts();
-    }
-    public function about_app(){
-        Session::set('header_off',true);
-        $this->about();
     }
 
 }

@@ -37,6 +37,12 @@ class NewsModel extends Model{
         return $array;
     }
 
+    //Cats
+    public static function getListByChannel($id, $limit = 'LIMIT 0,10'){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND `channel`='".$id."' ORDER BY `id` DESC $limit");
+        return $array;
+    }
+
     public static function countListByCat($cat){
         $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$cat."'");
         return $array;

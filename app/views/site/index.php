@@ -18,7 +18,7 @@ use Models\TextsModel;
         ];
     }
     ?>
-<!--    Why Us?-->
+
     <div class="container paddingBottom20">
             <div class="row paddingBottom40">
                 <div class="col-sm-12">

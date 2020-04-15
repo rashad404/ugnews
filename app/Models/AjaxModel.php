@@ -119,7 +119,7 @@ class AjaxModel extends Model{
         if($array_channels) {
             $data .= '<li class="li_title">' . self::$lng->get('News Channels') . ':</li>';
             foreach ($array_channels as $item) {
-                $data .= '<li><a style="padding: 10px 20px;" href="/channels/' . $item['id'] . '"><i class="fas fa-broadcast-tower"></i> ' . $item['name'] . '</a></li>';
+                $data .= '<li><a style="padding: 10px 20px;" href="/' . Format::urlText($item['name']) . '"><i class="fas fa-broadcast-tower"></i> ' . $item['name'] . '</a></li>';
             }
         }
 

@@ -1730,10 +1730,11 @@ ul.search_result_modal_box a:hover{
     /*News*/
     .news_title{
         font-size: 16px;
+        height: 90px;
     }
     .news_box{
         margin: 8px;
-        height: 250px;
+        height: 270px;
     }
     .news_image{
         height: 130px;
