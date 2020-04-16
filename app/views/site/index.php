@@ -82,6 +82,9 @@ use Models\TextsModel;
                                             </div>
                                         </div>
                                     </a>
+                                    <div class="news_date">
+                                        <?=date("H:i",$list['time'])?>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
