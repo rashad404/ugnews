@@ -1244,7 +1244,7 @@ div.google_sign_in i {
 }
 .news_box{
     margin-bottom: 23px;
-    height: 290px;
+    height: 250px;
     background-color: #fff;
     /*border: 1px solid #ccc;*/
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -1267,7 +1267,6 @@ div.google_sign_in i {
     line-height: 24px;
     color: #000;
     margin-bottom: 10px;
-    height: 72px;
     font-weight: bold;
 }
 .news_date{
@@ -1803,11 +1802,11 @@ ul.search_result_modal_box a:hover{
     /*News*/
     .news_title{
         font-size: 16px;
-        height: 90px;
+        /*height: 70px;*/
     }
     .news_box{
         margin: 8px;
-        height: 270px;
+        height: 230px;
     }
     .news_image{
         height: 130px;

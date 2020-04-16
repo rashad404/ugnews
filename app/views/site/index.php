@@ -80,14 +80,6 @@ use Models\TextsModel;
                                                     <?=Format::listTitle($list['title'], 50)?>
                                                 </span>
                                             </div>
-                                            <div class="row news_date">
-                                                <div class="col-xs-8 col-md-8">
-                                                    <?=date("M d Y",$list['time'])?>
-                                                </div>
-                                                <div class="col-xs-4 col-md-4">
-                                                    <span style="float:right;"><?=date("H:i",$list['time'])?></span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
