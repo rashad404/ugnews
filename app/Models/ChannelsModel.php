@@ -6,11 +6,17 @@ use Core\Language;
 class ChannelsModel extends Model{
 
     private static $tableName = 'channels';
+    private static $tableNameSubscribers = 'subscribers';
     public $lng;
     public function __construct(){
         parent::__construct();
         $this->lng = new Language();
         $this->lng->load('app');
+    }
+
+    public static function countSubscribers($id){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableNameSubscribers."` WHERE `channel`='".$id."'");
+        return $array;
     }
 
     public static function getList($limit=10){
@@ -30,8 +36,18 @@ class ChannelsModel extends Model{
     }
 
     public static function getItem($url){
-        $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`view` FROM `".self::$tableName."` WHERE `name_url`='".$url."' AND `status`=1");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `name_url`='".$url."' AND `status`=1");
         return $array;
+    }
+
+
+    public static function getName($id){
+        $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableName."` WHERE `id`='".$id."'");
+        if($array){return $array['name'];}else{return '';}
+    }
+    public static function getUrl($id){
+        $array = self::$db->selectOne("SELECT `name_url` FROM `".self::$tableName."` WHERE `id`='".$id."'");
+        if($array){return $array['name_url'];}else{return '';}
     }
 
     public static function navigate($id, $action){

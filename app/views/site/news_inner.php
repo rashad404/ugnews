@@ -39,7 +39,8 @@ use Helpers\Format;
                                         <div class="col-xs-6">
                                             <div style="text-align: center">
                                             <i class="fas fa-bell"></i>
-                                                <span style=""><?=$item['view']?> <?=$lng->get('subscribers')?></span>
+                                                <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
+                                                <span style=""><?=$subscribe_count?> <?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +49,8 @@ use Helpers\Format;
                                     <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-at"></i> <span style="font-size: 18px;"><?=\Models\NewsModel::getChannelName($item['channel'])?></span>
+                                    <i class="fas fa-at"></i>
+                                    <a href="/<?=\Models\ChannelsModel::getUrl($item['channel'])?>" style="font-size: 18px;"><?=\Models\ChannelsModel::getName($item['channel'])?></a>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +105,5 @@ use Helpers\Format;
         <div class="umodal_body">
             <?php require $data['modal_url'];?>
         </div>
-        <!--        <div id="redirect_url">-->
-        <!---->
-        <!--        </div>-->
     </div>
 </div>

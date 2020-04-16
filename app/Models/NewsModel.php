@@ -86,10 +86,6 @@ class NewsModel extends Model{
         $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameTags."` WHERE `id`='".$id."'");
         if($array){return $array['name'];}else{return '';}
     }
-    public static function getChannelName($id){
-        $array = self::$db->selectOne("SELECT `name` FROM `".self::$tableNameChannels."` WHERE `id`='".$id."'");
-        if($array){return $array['name'];}else{return '';}
-    }
 
     public static function navigate($id, $action){
         if($action=='next'){

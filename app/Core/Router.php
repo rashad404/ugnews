@@ -7,6 +7,7 @@
 namespace Core;
 
 use Core\View;
+use Helpers\Console;
 use Helpers\Url;
 
 /**
@@ -138,6 +139,7 @@ class Router
         if ( ($module==false && !file_exists("app/Controllers/$controller.php")) or ($module==true && !file_exists("app/Modules/".$module."/Controllers/$controller.php")) ) {
             return false;
         }
+
         if($module==false) $controller = "\Controllers\\$controller"; else $controller = "\Modules\\$module\Controllers\\$controller";
 
        $c = new $controller;
@@ -149,6 +151,7 @@ class Router
         }
 
 
+
         return false;
     }
 
@@ -157,7 +160,9 @@ class Router
      */
     public static function dispatch($module=false)
     {
+
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         $searches = array_keys(static::$patterns);
@@ -222,10 +227,14 @@ class Router
             foreach (self::$routes as $route) {
                 $route = str_replace('//', '/', $route);
 
+
+                if(($uri =='/partner' or $uri =='/user') && $route=='/(:any)'){
+                    continue;
+                }
+
                 if (strpos($route, ':') !== false) {
                     $route = str_replace($searches, $replaces, $route);
                 }
-
                 if (preg_match('#^' . $route . '$#', $uri, $matched)) {
                     if (self::$methods[$pos] == $method || self::$methods[$pos] == 'ANY') {
                         $found_route = true;

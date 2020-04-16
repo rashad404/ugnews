@@ -115,11 +115,22 @@ class AjaxModel extends Model{
     public static function search($text){
         $data = '';
 
-        $array_channels = self::$db->select("SELECT `id`,`name` FROM `".self::$tableNameChannels."` WHERE `name` LIKE '%".$text."%'ORDER BY `id` ASC LIMIT 10");
+        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb` FROM `".self::$tableNameChannels."` WHERE `name` LIKE '%".$text."%'ORDER BY `id` ASC LIMIT 10");
         if($array_channels) {
             $data .= '<li class="li_title">' . self::$lng->get('News Channels') . ':</li>';
             foreach ($array_channels as $item) {
-                $data .= '<li><a style="padding: 10px 20px;" href="/' . Format::urlText($item['name']) . '"><i class="fas fa-broadcast-tower"></i> ' . $item['name'] . '</a></li>';
+                $data .= '<li class="channel_li"><a style="padding: 10px 20px;" href="/' . Format::urlText($item['name']) . '">
+                <div class="row">
+                        <div class="col-xs-2">
+                            <img  class="channel_img" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>
+                        </div>
+                        <div class="col-xs-7">
+                            ' . $item['name'] . '
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="search_count">4 '.self::$lng->get('subscribers').'</div>
+                        </div>
+                    </div></a></li>';
             }
         }
 

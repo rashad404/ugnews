@@ -69,6 +69,7 @@ return [
     'Previous News' => 'Əvvəlki xəbər',
     'Next News' => 'Növbəti xəbər',
     'subscribers' => 'abunə',
+    'Subscribers' => 'Abunə',
     'view' => 'oxunma',
     'Subscribe' => 'Abunə ol',
     'Subscribed' => 'Abunə olunub',

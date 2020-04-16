@@ -1370,6 +1370,7 @@ div.google_sign_in i {
     color: red;
 }
 
+
 /*Tag box*/
 .tag_box{
     margin-bottom: 10px;
@@ -1430,6 +1431,24 @@ a.tag_box_a:hover{
     display: none;
 
 }
+
+.search_result_modal_box img.channel_img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+    object-fit: contain;
+    border: 1px solid #ededed;
+    background-color: #fff;
+}
+.search_result_modal_box .channel_li a{
+    font-size: 16px;
+}
+
+.search_result_modal_box .search_count{
+    color: #5a5a5a;
+    font-size: 14px;
+}
 .search_result_modal_box img{
      width: 65px;
      height: 50px;
@@ -1481,6 +1500,60 @@ ul.search_result_modal_box a:hover{
     /*background-color: rgba(174, 82, 249, 0.05);*/
 }
 
+
+/*Channels inner*/
+.channel_title{
+    background-color: #a44bea;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    padding: 10px 0;
+}
+.channel_title .title{
+    font-weight: bold;
+    font-size: 22px;
+}
+.channel_title .subscribe_url{
+    font-weight: bold;
+    font-size: 16px;
+}
+.channel_title img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+    object-fit: contain;
+    border: 1px solid #fff;
+    background-color: #fff;
+    /*object-position: center; !* Center the image within the element *!*/
+}
+.channel_title_subscribe{
+    position: absolute;
+    right: 100px;
+    top:20px;
+}
+.subscribe_count{
+
+    color: #e3e3e3;
+    font-weight: bold;
+}
+
+.channel_title_subscribe button.subscribe{
+    color: #fff;
+    font-size: 16px;
+    background-color: red;
+    padding:10px 15px;
+    border: 1px solid red;
+    border-radius: 4px;
+}
+.channel_title_subscribe button.subscribed {
+    background-color: #00B600 !important;
+    border: 1px solid #00B600 !important;
+}
+.channel_title_subscribe button.subscribe:hover{
+    color: #fff;
+    background-color: #d40000;
+}
 
 @media screen and (min-width: 767px) {
     .visible-xs-flex, .mobile_menu_icon{

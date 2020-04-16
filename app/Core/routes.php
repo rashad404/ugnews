@@ -73,6 +73,7 @@ Router::any('user_panel/logout', 'Controllers\UserPanel@logout');
 Router::any('user_panel/profile', 'Controllers\UserPanel@profile');
 
 Router::any('set/region/(:any)', 'Controllers\Settings@region');
+
 Router::any('(:any)', 'Controllers\Channels@inner');
 
 
@@ -82,7 +83,9 @@ Router::any('(:any)', 'Controllers\Channels@inner');
 $hooks = Hooks::get();
 $hooks->run('routes');
 
+
 $module=Url::getModule();
+
 /** If no route found. */
 if($module==false) Router::error('Core\Error@index');
 else Router::error('Core\Error@module_index');
