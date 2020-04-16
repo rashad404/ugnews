@@ -15,7 +15,7 @@ $subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
         <span class="subscribe_count"><?=$subscriber_count?> <?=$lng->get('subscribers')?></span>
 
         <div class="channel_title_subscribe">
-            <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
+            <button redirect_url="<?=Format::urlText($item['name_url'])?>" id="subscribe_button" channel_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
                 <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
                 <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
             </button>
@@ -37,6 +37,8 @@ $subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
                     </div>
                 </div>
 
+
+
                 <div class="row">
                     <?php foreach ($data['list'] as $list):?>
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
@@ -49,16 +51,11 @@ $subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
                                                     <?=Format::listTitle($list['title'], 50)?>
                                                 </span>
                                         </div>
-                                        <div class="row news_date">
-                                            <div class="col-xs-8 col-md-8">
-                                                <?=date("M d Y",$list['time'])?>
-                                            </div>
-                                            <div class="col-xs-4 col-md-4">
-                                                <span style="float:right;"><?=date("H:i",$list['time'])?></span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </a>
+                                <div class="news_date">
+                                    <?=date("H:i",$list['time'])?>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>

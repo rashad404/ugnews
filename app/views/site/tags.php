@@ -24,27 +24,25 @@ use Models\TextsModel;
                             </div>
                         </div>
 
+                    </div>
+
+                    <div class="row">
                         <?php foreach ($data['list'] as $list):?>
-                            <div class="item col-lg-3">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                                 <div class="news_box">
                                     <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
                                         <img class="news_image" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
                                         <div class="caption">
                                             <div class="news_title">
                                                 <span>
-                                                    <?=ProductsModel::formatListText($list['title'], 60)?>
+                                                    <?=Format::listTitle($list['title'], 50)?>
                                                 </span>
-                                            </div>
-                                            <div class="row news_date">
-                                                <div class="col-xs-6 col-md-6">
-                                                    <?=date("M d Y",$list['time'])?>
-                                                </div>
-                                                <div class="col-xs-6 col-md-6">
-                                                    <span style="float:right;"><?=date("H:i",$list['time'])?></span>
-                                                </div>
                                             </div>
                                         </div>
                                     </a>
+                                    <div class="news_date">
+                                        <?=date("H:i",$list['time'])?>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
