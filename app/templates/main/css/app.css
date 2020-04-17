@@ -1,3 +1,10 @@
+:root {
+    --main-color: #0d4754;
+    --main-color-hover: #c1fffd;
+    --main-color-darker: #07272e;
+    --main-color-lighter: rgba(16, 87, 103, 0.89);
+}
+
 body{
     font-family: 'Open Sans', sans-serif;
     text-rendering: optimizeLegibility;
@@ -125,7 +132,7 @@ div#redirect_url{
     width: 100%;
     padding: 3px 10px;
     color: #000;
-    background-color: #0d4754;
+    background-color: var(--main-color);
     -webkit-box-shadow: rgba(13, 71, 84, 0.2) 0 1px 10px 0;
     box-shadow: 0 10px 10px 0 rgba(13, 71, 84, 0.4);
 }
@@ -296,10 +303,10 @@ img.footer_logo{
 }
 
 .icons_area:hover span{
-    color: #d5d4ff;
+    color: var(--main-color-hover);
 }
 .icons_area:hover i, .search_icon:hover i{
-    color: #d5d4ff;
+    color: var(--main-color-hover);
 }
 span.new_message_header{
     position:absolute;
@@ -325,11 +332,11 @@ div.new_message_inner{
 }
 
 .account_area .menu_li a.login_info{
-    color: #fff;
+    color: var(--main-color);
 }
 
 .account_area .menu_li a:hover{
-    color: #673194;
+    color: var(--main-color-hover);
 }
 .account_area .sub_menu{
     margin-left: -40px;
@@ -350,7 +357,7 @@ div.new_message_inner{
 }
 
 .footer{
-    background: #0d4754;;
+    background: var(--main-color);
     color: #FFFFFF;
     padding: 20px 122px 30px 122px;
 }
@@ -400,7 +407,7 @@ div.new_message_inner{
 
 .footer_alt{
     padding: 20px 122px;
-    background-color: #0a343e;;
+    background-color: var(--main-color-darker);
     color: #fff;
 }
 .footer_alt a{
@@ -736,7 +743,7 @@ div.flash_notification{
     color: #fff;
 }
 .mobile_menu_icon i:hover{
-    color: #d5d4ff;
+    color: var(--main-color-hover);
 }
 
 .mobile_menu_header{
@@ -1421,14 +1428,14 @@ a.tag_box_a:hover{
 .search_area button{
     padding: 9px 20px;
     background-color: #fff;
-    color: #1c1c42;
+    color: var(--main-color);;
     font-weight: bold;
     border-radius: 4px;
     border: 1px solid #dcdcdc;
 }
 
 .search_area button:hover{
-    background-color: #d5d4ff;
+    background-color: var(--main-color-hover);
 }
 .search_result_modal_box{
     position: fixed;
@@ -1518,7 +1525,7 @@ ul.search_result_modal_box a:hover{
 
 /*Channels inner*/
 .channel_title{
-    background-color: rgba(16, 87, 103, 0.89);
+    background-color: var(--main-color-lighter);
     text-align: center;
     position: relative;
     color: #fff;
@@ -1668,7 +1675,7 @@ ul.search_result_modal_box a:hover{
         width: 150px;
     }
     div.header{
-        padding: 5px 10px 0 0 !important;
+        padding: 0px 10px 0 0 !important;
     }
     .header-notifications{
         font-size: 12px;
