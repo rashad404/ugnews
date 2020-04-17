@@ -28,6 +28,38 @@ use Models\TextsModel;
                         <div class="col-lg-12">
                             <div class="page_title paddingTop20 paddingBottom20">
                                 <h2>
+                                    <?=$lng->get('Popular Channels')?>
+                                </h2>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <?php foreach ($data['channel_list'] as $list):?>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                                <div class="channel_box">
+                                    <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
+                                        <img src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+
+                                        <div class="news_title">
+                                            <span>
+                                                <?=Format::listTitle($list['name'], 50)?>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title paddingTop20 paddingBottom20">
+                                <h2>
                                     <?=$lng->get('Featured')?>
                                 </h2>
                                 <hr/>

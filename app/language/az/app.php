@@ -2,6 +2,7 @@
 return [
 
     //index
+    'Popular Channels' => 'Məşhur kanallar',
     'Featured' => 'Seçilmişlər',
     'Latest News' => 'Son xəbərlər',
 

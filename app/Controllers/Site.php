@@ -11,6 +11,7 @@ use Helpers\Sms;
 use Helpers\Url;
 use Helpers\Csrf;
 use Helpers\Session;
+use Models\ChannelsModel;
 use Models\RegistrationModel;
 use Models\SeoModel;
 use Models\SiteModel;
@@ -54,6 +55,8 @@ class Site extends Controller
         $data['pagination'] = $pagination;
 
         $data['list'] = NewsModel::getList();
+        $data['channel_list'] = ChannelsModel::getList();
+
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
         Session::set('cat',0);

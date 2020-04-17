@@ -1543,6 +1543,25 @@ ul.search_result_modal_box a:hover{
 }
 
 
+/*Index Channels*/
+.channel_box{
+    text-align: center;
+}
+.channel_box:hover img{
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+}
+.channel_box img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+    object-fit: contain;
+    background-color: #fff;
+}
+
+
 /*Channels inner*/
 .channel_title{
     background-color: var(--main-color-lighter);
