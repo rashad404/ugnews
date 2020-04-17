@@ -58,7 +58,7 @@ use Models\TextsModel;
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="page_title paddingTop20 paddingBottom20">
+                            <div class="page_title paddingBottom20">
                                 <h2>
                                     <?=$lng->get('Featured')?>
                                 </h2>

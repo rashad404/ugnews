@@ -55,7 +55,7 @@ class Site extends Controller
         $data['pagination'] = $pagination;
 
         $data['list'] = NewsModel::getList();
-        $data['channel_list'] = ChannelsModel::getList();
+        $data['channel_list'] = ChannelsModel::getList(6);
 
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
