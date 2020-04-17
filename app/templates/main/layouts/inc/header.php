@@ -87,15 +87,11 @@ $region = '233';
             <div class="col-xs-1 col-sm-5">
 
                 <div class="search_area hidden-xs hidden-sm">
-                    <form action="" method="POST" >
-                        <input type="hidden" value="<?= Csrf::makeToken();?>" name="csrf_token">
                         <input class="" type="text" name="search" id="header_search_input" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
-
                         <button type="submit" class="">
                             <?=$lng->get('Search')?>
                             <i class="fas fa-search"></i>
                         </button>
-                    </form>
 
                 </div>
             </div>
@@ -136,13 +132,9 @@ $region = '233';
 </ul>
 
 <div id="headerSearchBoxMobile" class="search_box_mobile" style="max-height: 200px;right: 0px;">
-    <form action="" method="POST" >
-        <input type="hidden" value="<?= Csrf::makeToken();?>" name="csrf_token">
         <input class="" type="text" name="search" id="header_search_input_mobile" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
-
         <button type="submit" class="">
             <?=$lng->get('Search')?>
             <i class="fas fa-search"></i>
         </button>
-    </form>
 </div>
