@@ -1,8 +1,14 @@
+
 :root {
-    --main-color: #0d4754;
-    --main-color-hover: #c1fffd;
-    --main-color-darker: #07272e;
-    --main-color-lighter: rgba(16, 87, 103, 0.89);
+    --main-color: #730c2e;
+    --main-color-hover: rgba(255, 255, 255, 0.8);
+    --main-color-darker: #540922;
+    --main-color-lighter: rgba(115, 12, 46, 0.74);
+
+    /*--main-color: #0d4754;*/
+    /*--main-color-hover: #c1fffd;*/
+    /*--main-color-darker: #07272e;*/
+    /*--main-color-lighter: rgba(16, 87, 103, 0.89);*/
 }
 
 body{
@@ -723,7 +729,7 @@ div.flash_notification{
     color: #FFFFFF;
 }
 .mobile_menu_body a{
-    color: #522776;
+    color: var(--main-color);
     display: block;
 }
 .mobile_menu_body a:hover{
@@ -760,12 +766,15 @@ div.flash_notification{
 .sign_in_mob{
     margin: 0;
     padding:15px 30px 40px 30px;
-    background-color: #d7d9f9;
+    background-color: var(--main-color-lighter);
 
+}
+.sign_in_mob a{
+    color: #fff;
 }
 .sign_in_mob a:hover{
     background-color: unset;
-    color: #ed3237;
+    color: var(--main-color-hover);
 }
 .mobile_menu_body{
     padding: 10px 0;
@@ -1107,14 +1116,14 @@ div.default_radio label{
     background: white;
 }
 .default_button{
-    background-color: #673194;
+    background-color: var(--main-color);
     color: #fff;
     padding: 7px 30px!important;
     border-radius: 0;
     margin-top: 6px;
 }
 .default_button:hover{
-    background-color: #8c43c9;
+    background-color: var(--main-color-lighter);
     color: #fff!important;
 }
 .default_button i{
