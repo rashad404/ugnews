@@ -62,7 +62,7 @@ class Channels extends Controller
 
         $data['userId'] = self::$userId;
 
-        $data['item'] = ChannelsModel::getItem($url);
+        $data['item'] = ChannelsModel::getItem(urldecode($url));
 
         $pagination = new Pagination();
         $pagination->limit = 70;
