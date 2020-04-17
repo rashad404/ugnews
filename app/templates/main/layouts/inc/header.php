@@ -7,7 +7,6 @@ use Models\CartModel;
 use Models\MenusModel;
 use Models\SiteModel;
 use Models\CountryModel;
-use Helpers\Format;
 ?>
 
 <?php
@@ -75,7 +74,7 @@ $region = '233';
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-xs-7 col-sm-4">
+            <div class="col-xs-5 col-sm-4">
                 <div class="header_logo">
                     <div>
                         <a href="">
@@ -101,26 +100,30 @@ $region = '233';
                 </div>
             </div>
 
-            <div class="col-xs-4 col-sm-3">
+            <div class="col-xs-6 col-sm-3 ">
 
-                <div class="icons_area">
+                <div class="mobile_menu_icon" style="float: right">
+                    <a href="javascript:void(0);" class="icon">
+                        <i class="fa fa-bars fa-2x"></i>
+                    </a>
+                </div>
+                <div class="icons_area" style="float: right">
                     <ul class="menu">
                         <li class="menu_li">
-                            <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <?=CountryModel::getCode($_SETTINGS['region'])?> <i class="fas fa-caret-down"></i></a>
+                            <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <span class="hidden-xs"><?=CountryModel::getCode($_SETTINGS['region'])?></span> <i class="fas fa-caret-down hidden-xs"></i></a>
                             <ul class="sub_menu" style="max-height: 500px;right: 0px;">
                                 <li class="li_title"><?=$lng->get('Select Region')?>:</li>
                                 <?php foreach (CountryModel::getList() as $country) :?>
                                     <li><a href="set/region/<?=$country['id']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
                                 <?php endforeach;?>
                             </ul>
-
                         </li>
                     </ul>
                 </div>
 
-                <div class="mobile_menu_icon">
+                <div class="search_icon" style="float: right">
                     <a href="javascript:void(0);" class="icon">
-                        <i class="fa fa-bars fa-2x"></i>
+                        <i class="fa fa-search fa-2x"></i>
                     </a>
                 </div>
             </div>

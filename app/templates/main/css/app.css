@@ -166,11 +166,11 @@ ul.menu li.li_title{
 }
 
 div.icons_area ul.menu > li >a {
-    padding: 38px 16px 22px 16px!important;
+    padding: 38px 16px 22px 0px!important;
     margin-top: -16px;
 }
 ul.menu li a:hover {
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
     color: #673194;
     font-weight: bold;
 }
@@ -269,8 +269,11 @@ img.footer_logo{
     border-radius: 50%;
 }
 
+.search_icon{
+    padding: 22px 16px 22px 0px!important;
+}
 .icons_area{
-    text-align: right;
+    /*text-align: right;*/
 }
 .icons_area ul{
     list-style: none;
@@ -278,7 +281,7 @@ img.footer_logo{
 .icons_area li{
     /*float:left;*/
 }
-.icons_area i{
+.icons_area i, .search_icon i{
     color: #673194;
     font-size: 24px;
     padding-right: 2px;
@@ -292,7 +295,7 @@ img.footer_logo{
 .icons_area:hover span{
     color: #a44bea;
 }
-.icons_area:hover i{
+.icons_area:hover i, .search_icon:hover i{
     color: #a44bea;
 }
 span.new_message_header{
@@ -727,10 +730,10 @@ div.flash_notification{
 }
 
 .mobile_menu_icon i{
-    color:#000;
+    color: #673194;
 }
 .mobile_menu_icon i:hover{
-    color:#fc5103;
+    color: #a44bea;
 }
 
 .mobile_menu_header{
@@ -1532,7 +1535,7 @@ ul.search_result_modal_box a:hover{
 }
 .channel_title_subscribe{
     position: absolute;
-    right: 100px;
+    right: 3%;
     top:20px;
 }
 .subscribe_count{
@@ -1606,6 +1609,7 @@ ul.search_result_modal_box a:hover{
 
     .header_logo{
         margin-left: 0;
+        margin-top: 12px;
     }
     .header_logo img{
         width: 130px;
@@ -1641,6 +1645,8 @@ ul.search_result_modal_box a:hover{
     }
     .mobile_menu_icon{
         display: block;
+        text-align: right;
+        padding: 0px;
     }
     .login-buttons, .menu{
         /*display: none;*/
@@ -1653,7 +1659,7 @@ ul.search_result_modal_box a:hover{
         width: 150px;
     }
     div.header{
-        /*display: none;*/
+        padding: 5px 10px 0 0 !important;
     }
     .header-notifications{
         font-size: 12px;
