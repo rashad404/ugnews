@@ -121,7 +121,7 @@ $region = '233';
                     </ul>
                 </div>
 
-                <div class="search_icon" style="float: right">
+                <div class="search_icon visible-xs" style="float: right">
                     <a href="javascript:void(0);" class="icon">
                         <i class="fa fa-search fa-2x"></i>
                     </a>
