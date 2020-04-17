@@ -1925,5 +1925,8 @@ ul.search_result_modal_box a:hover{
         max-width:100%;
         top: 132px;
     }
+    .search_news_name{
+        padding-left: 10px;
+    }
 
 }

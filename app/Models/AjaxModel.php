@@ -142,13 +142,13 @@ class AjaxModel extends Model{
                 <li>
                 <a href="/news/' . $item['id'] . '/'.Format::urlText($item['title']).'">
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-xs-2 col-md-2 remove_col_padding_mob">
                             <img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>
                         </div>
-                        <div class="col-xs-8">
-                            ' . $item['title'] . '
+                        <div class="col-xs-8 col-md-8">
+                            <span class="search_news_name">' . $item['title'] . '</span> 
                         </div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-2 col-md-2">
                             <div class="search_date">'.date('M d H:i', $item['time']).'</div>
                         </div>
                     </div>
