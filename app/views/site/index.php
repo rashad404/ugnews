@@ -41,7 +41,7 @@ use Models\TextsModel;
                         <?php foreach ($data['channel_list'] as $list):?>
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">
-                                    <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
+                                    <a href="/<?=Format::urlText($list['name_url'])?>">
                                         <img src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
 
                                         <div class="news_title">
