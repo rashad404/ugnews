@@ -215,6 +215,7 @@ $(document).ready(function() {
     $('#mobile_search_icon').click(function () {
         $("#headerSearchBoxMobile").show();
         $(".all_site_no_bg").css('display','block');
+        $('#header_search_input_mobile').focus();
     });
 
 
