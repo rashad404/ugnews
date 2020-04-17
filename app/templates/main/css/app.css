@@ -779,7 +779,7 @@ div.flash_notification{
 }
 .sign_in_mob a:hover{
     background-color: unset;
-    color: var(--main-color-hover);
+    color: var(--main-color-hover-on-white);
 }
 .mobile_menu_body{
     padding: 10px 0;
