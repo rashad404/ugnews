@@ -1,7 +1,10 @@
 
 :root {
     --main-color: #730c2e;
-    --main-color-hover: rgba(255, 255, 255, 0.8);
+    --main-color-button: #ae072d;
+    --main-color-button-hover: #c70833;
+    --main-color-hover-on-white: rgba(255, 255, 255, 0.8);
+    --main-color-hover: #af1246;
     --main-color-darker: #5c0a25;
     --main-color-lighter: rgba(115, 12, 46, 0.74);
     --main-color-lighter2: rgba(152, 0, 30, 0.96);
@@ -310,10 +313,10 @@ img.footer_logo{
 }
 
 .icons_area:hover span{
-    color: var(--main-color-hover);
+    color: var(--main-color-hover-on-white);
 }
 .icons_area:hover i, .search_icon:hover i{
-    color: var(--main-color-hover);
+    color: var(--main-color-hover-on-white);
 }
 span.new_message_header{
     position:absolute;
@@ -750,7 +753,7 @@ div.flash_notification{
     color: #fff;
 }
 .mobile_menu_icon i:hover{
-    color: var(--main-color-hover);
+    color: var(--main-color-hover-on-white);
 }
 
 .mobile_menu_header{
@@ -1117,14 +1120,14 @@ div.default_radio label{
     background: white;
 }
 .default_button{
-    background-color: var(--main-color);
+    background-color: var(--main-color-button);
     color: #fff;
     padding: 7px 30px!important;
     border-radius: 0;
     margin-top: 6px;
 }
 .default_button:hover{
-    background-color: var(--main-color-lighter);
+    background-color: var(--main-color-button-hover);
     color: #fff!important;
 }
 .default_button i{
@@ -1350,9 +1353,9 @@ div.google_sign_in i {
 .news_inner_subscribe_area button.subscribe{
     color: #fff;
     font-size: 16px;
-    background-color: red;
+    background-color: var(--main-color-button);
     padding:10px 15px;
-    border: 1px solid red;
+    border: 1px solid var(--main-color-button);
     border-radius: 4px;
 }
 .news_inner_subscribe_area button.subscribed{
@@ -1361,7 +1364,7 @@ div.google_sign_in i {
 }
 .news_inner_subscribe_area button.subscribe:hover{
     color: #fff;
-    background-color: #d40000;
+    background-color:  var(--main-color-button-hover);
 }
 .news_inner_subscribe_area button.like{
     color: #727272;
@@ -1445,7 +1448,7 @@ a.tag_box_a:hover{
 }
 
 .search_area button:hover{
-    background-color: var(--main-color-hover);
+    background-color: var(--main-color-hover-on-white);
 }
 .search_result_modal_box{
     position: fixed;
