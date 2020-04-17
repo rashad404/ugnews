@@ -64,6 +64,10 @@ class Channels extends Controller
 
         $data['item'] = ChannelsModel::getItem(urldecode($url));
 
+        if($data['item']['id']<1){
+            echo 'Wrong Channel';
+            exit;
+        }
         $pagination = new Pagination();
         $pagination->limit = 70;
         $data['pagination'] = $pagination;

@@ -20,7 +20,7 @@ class ChannelsModel extends Model{
     }
 
     public static function getList($limit=10){
-        $array = self::$db->select("SELECT `id`,`time`,`view`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `id` DESC LIMIT $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`view`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `status`=1 ORDER BY `subscribers` DESC LIMIT $limit");
         return $array;
     }
     public static function getPopularList($limit=10){

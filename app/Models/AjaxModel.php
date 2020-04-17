@@ -119,7 +119,7 @@ class AjaxModel extends Model{
         if($array_channels) {
             $data .= '<li class="li_title">' . self::$lng->get('News Channels') . '</li>';
             foreach ($array_channels as $item) {
-                $data .= '<li class="channel_li"><a style="padding: 10px 20px;" href="/' . Format::urlText($item['name']) . '">
+                $data .= '<li class="channel_li"><a style="padding: 10px 20px;" href="/' . Format::urlTextChannel($item['name']) . '">
                 <div class="row">
                         <div class="col-xs-2">
                             <img  class="channel_img" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>

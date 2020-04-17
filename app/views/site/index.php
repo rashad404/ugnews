@@ -41,7 +41,7 @@ use Models\TextsModel;
                         <?php foreach ($data['channel_list'] as $list):?>
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">
-                                    <a href="/<?=Format::urlText($list['name_url'])?>">
+                                    <a href="/<?=Format::urlTextChannel($list['name_url'])?>">
                                         <img src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
 
                                         <div class="news_title">
@@ -71,7 +71,7 @@ use Models\TextsModel;
                         <?php foreach ($tag_list as $key => $val):?>
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 
-                                <a class="tag_box_a" href="tags/<?=Format::urlText($val)?>">
+                                <a class="tag_box_a" href="tags/<?=Format::urlTextTag($val)?>">
                                     <?php
                                         $rand = rand(13,22);
                                         if($rand>16 && $rand<19){
