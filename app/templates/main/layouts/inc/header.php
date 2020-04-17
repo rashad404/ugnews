@@ -78,7 +78,7 @@ $region = '233';
                 <div class="header_logo">
                     <div>
                         <a href="">
-                            <img class="logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
+                            <img class="logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
                         </a>
                     </div>
                 </div>
