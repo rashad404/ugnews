@@ -121,7 +121,7 @@ $region = '233';
                     </ul>
                 </div>
 
-                <div class="search_icon visible-xs" style="float: right">
+                <div id="mobile_search_icon" class="search_icon visible-xs" style="float: right">
                     <a href="javascript:void(0);" class="icon">
                         <i class="fa fa-search fa-2x"></i>
                     </a>
@@ -134,3 +134,15 @@ $region = '233';
 <ul id="headerSearchDropDown" class="search_result_modal_box" style="max-height: 500px;right: 0px;">
     <li class="li_title"><?=$lng->get('Loading')?>...</li>
 </ul>
+
+<div id="headerSearchBoxMobile" class="search_box_mobile" style="max-height: 200px;right: 0px;">
+    <form action="" method="POST" >
+        <input type="hidden" value="<?= Csrf::makeToken();?>" name="csrf_token">
+        <input class="" type="text" name="search" id="header_search_input_mobile" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
+
+        <button type="submit" class="">
+            <?=$lng->get('Search')?>
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>

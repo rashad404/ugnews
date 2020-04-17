@@ -1442,7 +1442,7 @@ a.tag_box_a:hover{
 .search_area button{
     padding: 9px 20px;
     background-color: #fff;
-    color: var(--main-color);;
+    color: var(--main-color);
     font-weight: bold;
     border-radius: 4px;
     border: 1px solid #dcdcdc;
@@ -1451,6 +1451,44 @@ a.tag_box_a:hover{
 .search_area button:hover{
     background-color: var(--main-color-hover-on-white);
 }
+.search_box_mobile{
+    position: fixed;
+    z-index: 1000!important;
+    top:67px;
+    left:0;
+    width: 95%;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    list-style-type: none;
+    overflow-y: scroll;
+    display: none;
+}
+
+
+.search_box_mobile button{
+    padding: 9px 20px;
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+}
+
+.search_box_mobile button:hover{
+    color: var(--main-color-hover-on-white);
+}
+.search_box_mobile input {
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    width: 60%;
+}
+
+
 .search_result_modal_box{
     position: fixed;
     left:34%;
@@ -1879,6 +1917,13 @@ ul.search_result_modal_box a:hover{
 
     .news_date{
         bottom: 120px;
+    }
+
+    .search_result_modal_box{
+        left: 2%;
+        width: 95%;
+        max-width:100%;
+        top: 132px;
     }
 
 }
