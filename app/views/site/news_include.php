@@ -21,7 +21,7 @@ use Helpers\Format;
                         </div>
                         <div class="col-xs-3">
                             <div class="news_box_view">
-                                <?=$list['view']?><br/><i class="far fa-signal"></i>
+                                <?=$list['view']?><br/><i class="fas fa-signal"></i>
                             </div>
                         </div>
                     </div>
