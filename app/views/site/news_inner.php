@@ -46,11 +46,41 @@ use Helpers\Format;
 
                         <div class="row">
                             <div class="col-sm-8 col-md-8 col-lg-8">
-                                <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
+                                <?php if(!empty($item['image'])):?>
+                                    <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
+                                <?php else:?>
+                                    <div class="news_inner_text">
+                                        <?=html_entity_decode($item['text'])?>
+                                    </div>
+                                <?php endif;?>
                             </div>
                             <div class="col-sm-4 col-md-4 col-lg-4 web_pl_remove">
                                 <div class="news_inner_right_box">
                                     <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
+                                </div>
+
+                                <?php
+                                $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+                                $like_check = \Models\NewsModel::likeCheck($item['id']);
+                                $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
+                                ?>
+                                <div class="news_inner_right_box" style="padding: 5px 10px;">
+                                    <div class="news_inner_subscribe_area">
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
+                                            <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
+                                            <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="news_inner_right_box" style="padding: 5px 10px;">
+                                    <div class="news_inner_subscribe_area">
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="like_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> like <?=($like_check===true)?' liked':''?>">
+                                            <i class="fas fa-<?=($like_check===true)?'thumbs-up':'thumbs-up'?>"></i>
+                                        </button>
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="dislike_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> dislike <?=($dislike_check===true)?' disliked':''?>">
+                                            <i class="fas fa-<?=($dislike_check===true)?'thumbs-down':'thumbs-down'?>"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="news_inner_right_box">
                                     <div class="share_btns">
@@ -61,7 +91,7 @@ use Helpers\Format;
                                         <a href="https://twitter.com/intent/tweet?text=<?=Format::listTitle($item['title'])?>&url=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="tw_share" target="_blank">
                                             <i class="fab fa-twitter" aria-hidden="true"></i> <span>Tweet</span>
                                         </a>
-                                        <a href="whatsapp://send?text=<?=Format::listTitle($item['title'])?> url=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" data-action="share/whatsapp/share" class="wtp_share">
+                                        <a href="whatsapp://send?text=<?=Format::listTitle($item['title'])?> https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" data-action="share/whatsapp/share" class="wtp_share">
                                             <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
                                         </a>
 
@@ -73,33 +103,12 @@ use Helpers\Format;
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="news_inner_subscribe_area">
-
-                                    <?php
-                                    $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
-                                    $like_check = \Models\NewsModel::likeCheck($item['id']);
-                                    $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
-                                    ?>
-                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
-                                        <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
-                                        <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
-                                    </button>
-
-                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="like_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> like <?=($like_check===true)?' liked':''?>">
-                                        <i class="fas fa-<?=($like_check===true)?'thumbs-up':'thumbs-up'?>"></i>
-                                    </button>
-                                    <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="dislike_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> dislike <?=($dislike_check===true)?' disliked':''?>">
-                                        <i class="fas fa-<?=($dislike_check===true)?'thumbs-down':'thumbs-down'?>"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    <?php if(!empty($item['image'])):?>
                     <div class="news_inner_text">
                         <?=html_entity_decode($item['text'])?>
                     </div>
+                    <?php endif;?>
                     <div class="news_inner_navigate" style="display: none">
                         <?php if($previous_item['id']>0):?><div class="news_inner_date"><a href="news/<?=$previous_item['id']?>/<?=Format::urlText($previous_item['title'])?>"><<< <?=$lng->get('Previous News')?></a></div><?php endif;?>
                         <?php if($next_item['id']>0):?><div class="news_inner_title"><a href="news/<?=$next_item['id']?>/<?=Format::urlText($next_item['title'])?>"><?=$lng->get('Next News')?> >>></a></div><?php endif;?>
