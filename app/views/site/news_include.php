@@ -2,7 +2,7 @@
 use Helpers\Url;
 use Helpers\Format;
     foreach ($data['list'] as $list):?>
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <div class="news_box">
 
                 <div class="channel_info">
