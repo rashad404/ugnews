@@ -13,15 +13,15 @@ use Helpers\Format;
                         <div class="row">
                             <div class="col-sx-12">
 
-                                <div class="channel_info ">
+                                <div class="channel_info remove_col_padding_mob">
                                     <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']);?>
 
 
                                     <div class="row">
-                                        <div class="col-xs-2 col-lg-2 remove_col_padding_mob" style="text-align: right">
+                                        <div class="col-xs-2 col-lg-2 remove_col_padding_mob" style="text-align: right;width:12%;">
                                             <img class="channel_img" src="<?=Url::filePath()?>/<?=$channel_info['thumb']?>" alt=""/>
                                         </div>
-                                        <div class="col-xs-6 col-lg-7">
+                                        <div class="col-xs-6 col-lg-7 remove_col_padding_web" >
                                             <div class="news_box_channel_title">
                                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                                             </div>
