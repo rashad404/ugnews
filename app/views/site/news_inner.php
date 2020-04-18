@@ -10,6 +10,38 @@ use Helpers\Format;
                 <div class="col-lg-1"></div>
                 <div class="col-lg-7 news_inner_box">
                     <div class="">
+                        <div class="row">
+                            <div class="col-sx-12">
+
+                                <div class="channel_info ">
+                                    <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']);?>
+
+
+                                    <div class="row">
+                                        <div class="col-xs-2 col-lg-2 remove_col_padding_mob" style="text-align: right">
+                                            <img class="channel_img" src="<?=Url::filePath()?>/<?=$channel_info['thumb']?>" alt=""/>
+                                        </div>
+                                        <div class="col-xs-6 col-lg-7">
+                                            <div class="news_box_channel_title">
+                                                <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
+                                            </div>
+                                            <div class="news_box_date"><?=date("H:i",$item['time'])?></div>
+                                        </div>
+                                        <div class="col-xs-2  col-lg-1">
+                                            <div class="news_box_view">
+                                                <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
+                                                <span style=""><?=$subscribe_count?> <?=$lng->get('subscribers')?></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2 col-lg-2">
+                                            <div class="news_box_view" style="text-align: center">
+                                                <?=$item['view']?><br/><i class="fas fa-signal"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="news_inner_title"><?=$item['title']?></div>
 
                         <div class="row">
@@ -17,19 +49,6 @@ use Helpers\Format;
                                 <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
                             </div>
                             <div class="col-sm-4 col-md-4 col-lg-4 web_pl_remove">
-                                <div class="news_inner_right_box">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <i class="fas fa-clock"></i> <?=date("H:i",$item['time'])?>
-
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div style="text-align: center">
-                                                <i class="fas fa-calendar"></i> <?=date("M d Y",$item['time'])?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="news_inner_right_box">
                                     <div class="row">
                                         <div class="col-xs-6">
@@ -47,10 +66,6 @@ use Helpers\Format;
                                 </div>
                                 <div class="news_inner_right_box">
                                     <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
-                                </div>
-                                <div class="news_inner_right_box">
-                                    <i class="fas fa-at"></i>
-                                    <a href="/<?=\Models\ChannelsModel::getUrl($item['channel'])?>" style="font-size: 18px;"><?=\Models\ChannelsModel::getName($item['channel'])?></a>
                                 </div>
                             </div>
                         </div>
