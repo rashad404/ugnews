@@ -11,6 +11,12 @@ use Helpers\Csrf;
                 <div class="col-sm-6 custom_block">
                     <h1 class="title"><?=$lng->get('Sign in')?></h1>
                     <hr class="dark_gray"/>
+
+                    <div class="fb_sign_in">
+                        <a href="<?=$data['postData']['facebook_url']?>"><?=$lng->get('Continue with Facebook')?></a>
+                    </div>
+                    <div style="text-align: center;padding: 10px;"><?=$lng->get('Or')?>:</div>
+
                     <form action="" method="POST">
                         <input type="hidden" value="<?=Csrf::makeToken()?>" name="csrf_token" />
 
@@ -27,11 +33,7 @@ use Helpers\Csrf;
                             <a href="register"><?=$lng->get('Register')?></a></div>
 
                     </form>
-                    <div style="text-align: center;padding: 10px;"><?=$lng->get('Or connect with')?>:</div>
-                    <div class="fb_sign_in">
-                        <a href="<?=$data['postData']['facebook_url']?>"><?=$lng->get('Continue with Facebook')?></a>
-                    </div>
-                    <div class="google_sign_in">
+                    <div class="google_sign_in" style="display: none;">
                         <a href="<?=$data['postData']['google_client']->createAuthUrl()?>"><i class="fa fa-facebook-f"></i> <?=$lng->get('Continue with Google')?></a>
                     </div>
                 </div>

@@ -50,22 +50,26 @@ use Helpers\Format;
                             </div>
                             <div class="col-sm-4 col-md-4 col-lg-4 web_pl_remove">
                                 <div class="news_inner_right_box">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <i class="fas fa-eye"></i> <?=$item['view']?> <?=$lng->get('view')?>
-
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div style="text-align: center">
-                                            <i class="fas fa-bell"></i>
-                                                <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
-                                                <span style=""><?=$subscribe_count?> <?=$lng->get('subscribers')?></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
                                 </div>
                                 <div class="news_inner_right_box">
-                                    <i class="fas fa-tag"></i> <?=$lng->get(\Models\NewsModel::getCatName($item['cat']))?>
+                                    <div class="share_btns">
+
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="fb_share" target="_blank">
+                                            <i class="fab fa-facebook-f"></i> <span><?=$lng->get('Share')?></span>
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?text=<?=Format::listTitle($item['title'])?>&url=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="tw_share" target="_blank">
+                                            <i class="fab fa-twitter" aria-hidden="true"></i> <span>Tweet</span>
+                                        </a>
+                                        <a href="whatsapp://send?text=<?=Format::listTitle($item['title'])?> url=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" data-action="share/whatsapp/share" class="wtp_share">
+                                            <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
+                                        </a>
+
+                                        <a href="mailto:?subject=<?=Format::listTitle($item['title'])?> &body=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="em_share">
+                                            <i class="fas fa-envelope" aria-hidden="true"></i> <span>E-mail</span>
+                                        </a>
+                                    </div>
+                                    <div class="clearBoth"></div>
                                 </div>
                             </div>
                         </div>

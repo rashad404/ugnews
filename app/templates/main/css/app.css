@@ -1374,9 +1374,9 @@ div.google_sign_in i {
     width: 100%;
 }
 .news_inner_title{
-    font-size: 32px;
+    font-size: 25px;
     font-weight: bold;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 .news_inner_text{
     margin-top: 20px;
@@ -1396,6 +1396,41 @@ div.google_sign_in i {
 .news_inner_right_box i{
     padding-right: 3px;
 }
+
+.share_btns a {
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    width: 48%;
+    display: inline-block;
+    float: left;
+}
+
+.share_btns a:hover {
+    color: #eaeaea;
+}
+.share_btns a span {
+    padding-left: 8px;
+    border-left: 1px solid #fff;
+    font-size: 13px;
+}
+.fb_share {
+    background: #4965b5;
+}
+.fb_share, .wtp_share {
+    margin-right: 8px;
+}
+.tw_share {
+    background: #1b95e0;
+}
+.wtp_share {
+    background: #5cbe4a;
+}
+.em_share {
+    background: #ea4335;
+}
+
 .news_inner_subscribe_area{
     padding-top:10px;
 }

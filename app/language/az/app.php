@@ -24,6 +24,7 @@ return [
     'If you have no account, then' => 'Hesabınız yoxdursa, ',
     'Register' => 'Qeydiyyatdan keçin',
     'Or connect with' => 'Və ya birini seçin',
+    'Or' => 'Və ya',
     'Continue with Facebook' => 'Facebook-la davam et',
     'Continue with Google' => 'Google-la davam et',
 
@@ -75,4 +76,5 @@ return [
     'view' => 'oxunma',
     'Subscribe' => 'Abunə ol',
     'Subscribed' => 'Abunə olunub',
+    'Share' => 'Paylaş',
 ];
