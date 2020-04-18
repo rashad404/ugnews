@@ -13,7 +13,7 @@ use Helpers\Format;
                         <div class="row">
                             <div class="col-sx-12">
 
-                                <div class="channel_info remove_col_padding_mob">
+                                <div class="channel_info remove_col_padding_mob" style="padding: 15px 10px;">
                                     <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']);?>
 
 
@@ -30,7 +30,7 @@ use Helpers\Format;
                                         <div class="col-xs-2  col-lg-1">
                                             <div class="news_box_view">
                                                 <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
-                                                <span style=""><?=$subscribe_count?> <?=$lng->get('subscribers')?></span>
+                                                <span style=""><?=$subscribe_count?><br/><?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-lg-2">
