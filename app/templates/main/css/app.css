@@ -1271,11 +1271,12 @@ div.google_sign_in i {
 }
 .news_box{
     margin-bottom: 23px;
-    height: 250px;
+    height: 310px;
     background-color: #fff;
     /*border: 1px solid #ccc;*/
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     position: relative;
+    overflow: hidden;
 }
 /*NEWS*/
 .news_box:hover{
@@ -1288,7 +1289,14 @@ div.google_sign_in i {
     object-position: center; /* Center the image within the element */
     width: 100%;
     height: 170px;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    max-width: 100%;
 }
+.news_box:hover .news_image {
+    transform: scale(1.03);
+}
+
 .news_title{
     padding: 10px 15px;
     font-size: 18px;
@@ -1297,7 +1305,51 @@ div.google_sign_in i {
     margin-bottom: 10px;
     font-weight: bold;
 }
-.news_date{
+.channel_info{
+    padding: 10px;
+    font-weight: bold;
+    color: #2534b6;
+}
+.channel_info img.channel_img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+    object-fit: contain;
+    border: 1px solid #ededed;
+    background-color: #fff;
+}
+
+.news_box_channel_title{
+    padding-top: 2px;
+    padding-left: 5px;
+}
+.news_box_date{
+    color: #a2a2a2;
+    font-size: 13px;
+    padding-top: 2px;
+    padding-left: 5px;
+}
+.news_box_view{
+    font-size: 12px;
+    color: var(--main-color-lighter2);
+    text-align: right;
+    font-weight: bold;
+    padding-top:5px;
+}
+.news_only_text{
+    padding: 0px 5px 20px 15px;
+    font-size: 16px;
+    line-height: 1.38;
+    color: #000!important;
+    text-align:left;
+}
+.news_only_text span{
+    color: red;
+}
+
+
+.news_cat{
     padding: 0px 15px;
     font-size: 13px;
     line-height: 24px;
@@ -1909,14 +1961,14 @@ ul.search_result_modal_box a:hover{
     }
     .news_box{
         margin: 5px;
-        height: 250px;
+        height: 300px;
     }
     .news_image{
         height: 130px;
     }
 
-    .news_date{
-        bottom: 120px;
+    .news_cat{
+        bottom: 100px;
     }
 
     .search_result_modal_box{

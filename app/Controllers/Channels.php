@@ -62,7 +62,7 @@ class Channels extends Controller
 
         $data['userId'] = self::$userId;
 
-        $data['item'] = ChannelsModel::getItem(urldecode($url));
+        $data['item'] = ChannelsModel::getItemByUrl(urldecode($url));
 
         if($data['item']['id']<1){
             echo 'Wrong Channel';

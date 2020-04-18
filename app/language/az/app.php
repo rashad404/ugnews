@@ -5,6 +5,7 @@ return [
     'Popular Channels' => 'Məşhur kanallar',
     'Featured' => 'Seçilmişlər',
     'Latest News' => 'Son xəbərlər',
+    'Read more' => 'Ardını oxu',
 
     //header
     'Select Region' => 'Ölkə seçin',

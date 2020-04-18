@@ -27,19 +27,19 @@ class NewsModel extends Model{
     }
 
     public static function getList($limit=10){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
         return $array;
     }
 
     //Cats
     public static function getListByCat($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$id."' ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
     }
 
     //Cats
     public static function getListByChannel($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND `channel`='".$id."' ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `channel`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
     }
 
@@ -51,7 +51,7 @@ class NewsModel extends Model{
     //Tags cat
     public static function getListByTagCat($id, $limit = 'LIMIT 0,10'){
         $tag = self::getTagName($id);
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
         return $array;
     }
 
@@ -63,7 +63,7 @@ class NewsModel extends Model{
 
     //Tags
     public static function getListByTag($tag, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
         return $array;
     }
 

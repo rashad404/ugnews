@@ -35,7 +35,12 @@ class ChannelsModel extends Model{
         return $array;
     }
 
-    public static function getItem($url){
+    public static function getItem($id){
+        $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
+        return $array;
+    }
+
+    public static function getItemByUrl($url){
         $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `name_url`='".$url."' AND `status`=1");
         return $array;
     }
