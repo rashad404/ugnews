@@ -89,79 +89,28 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <link rel="icon" type="image/png" sizes="32x32" href="<?=Url::templatePath()?>img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?=Url::templatePath()?>img/favicon/favicon-16x16.png">
     <link rel="manifest" href="<?=Url::templatePath()?>img/favicon/site.webmanifest">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">-->
 
-    <?php $hooks->run('meta'); ?>
-    <?php
-        if(in_array('summernote',$data['extra_css'])){
-            $summernote_css = 'app/Components/summernote/summernote.css';
-        }else{
-            $summernote_css = '';
-        }
 
-        if(in_array('summernote',$data['extra_js'])){
-            $summernote_js = 'app/Components/summernote/summernote.js';
-        }else{
-            $summernote_js = '';
-        }
+    <link href="<?=Url::templatePath()?>css/app.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>css/bootstrap.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>assets/fontawesome-55/css/all.css<?=$css_v?>" rel="stylesheet" type="text/css">
 
-    Assets::css(array(
-        Url::templatePath().'css/app.css'.$css_v,
-        $summernote_css,
-        Url::templatePath().'css/bootstrap.min.css',
-        Url::templatePath().'assets/fontawesome-55/css/fontawesome.min.css',
-//        Url::templatePath().'assets/slick/css/slick.css'.$css_v,
-//        Url::templatePath().'assets/slick/css/slick-lightbox.css'.$css_v,
-//        Url::templatePath().'assets/slick/css/slick-theme.css'.$css_v,
-//        Url::templatePath().'assets/gallery/style.css',
-//        Url::templatePath().'css/bootstrap-tagsinput.css',
-        '//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700',
-//        Url::templatePath().'assets/owlcarousel/owl.carousel.min.css',
-//        Url::templatePath().'assets/owlcarousel/owl.theme.default.min.css',
-//        Url::templatePath().'assets/datepicker/bootstrap-datetimepicker.min.css',
-
-    ));
-    $hooks->run('css');
-    ?>
     <title><?php echo $data['title']; ?></title>
 </head>
 <body class="no_overflow">
 
+<script src='<?=Url::templatePath()?>js/jquery.min.js<?=$css_v?>' type="text/javascript"></script>
+<script src='<?=Url::templatePath()?>js/bootstrap.min.js<?=$css_v?>' type="text/javascript"></script>
+<script src='<?=Url::templatePath()?>js/main.js<?=$css_v?>' type="text/javascript"></script>
+
+
 <?php
-$jsArray = $jsContacts = [];
-$jsArray = [
-    Url::templatePath() . 'js/jquery.min.js'.$css_v,
-//    Url::templatePath() . 'js/popper.min.js',
-    Url::templatePath() . 'js/bootstrap.min.js',
-//    Url::templatePath() . 'js/waypoints.min.js',
-//    Url::templatePath() . 'js/jquery.counterup.min.js',
-    $summernote_js,
-//    Url::templatePath().'assets/slick/js/slick.min.js',
-//    Url::templatePath().'assets/slick/js/slick-lightbox.js',
-//    Url::templatePath().'assets/gallery/jquery.picEyes.js',
-    Url::templatePath() . 'js/main.js'.$css_v,
-//    Url::templatePath() . 'js/bootstrap-tagsinput.min.js',
-//    Url::templatePath() . 'assets/owlcarousel/owl.carousel.js',
-//    Url::templatePath() . 'js/moment.min.js',
-//    Url::templatePath() . 'assets/datepicker/bootstrap-datetimepicker.min.js',
-
-];
-
-if($_SERVER['REQUEST_URI'] == DIR.'contacts'){
-    $jsContacts = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyAs-_XBiik7yqVJidUCqIwY3uzmsYIwug4'];
-}
-
-$jsAll = array_merge($jsArray, $jsContacts);
-Assets::js($jsAll);
-
-$hooks->run('js');
 
 $hooks->run('footer');
-
 ?>
 
 <?php $hooks->run('afterBody');
-
 //if(isset($data['header_off']) && $data['header_off']) {
 if(Session::get('header_off')==true) {
     eval($content);

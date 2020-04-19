@@ -41,6 +41,7 @@ class Assets
         } else {
             echo sprintf($template, $files) . "\n";
         }
+        echo '<div style="width:100%;height:500px;background-color:red;">TEST DIV</div>';exit;
     }
 
     /**

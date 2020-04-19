@@ -36,8 +36,8 @@ class Channels extends MyController{
             'actions' => true,
             'imageSizeX' => '730',
             'imageSizeY' => '450',
-            'thumbSizeX' => '270',
-            'thumbSizeY' => '150',
+            'thumbSizeX' => '300',
+            'thumbSizeY' => '300',
         ];
         parent::__construct();
         self::$model = new ChannelsModel(self::$params);

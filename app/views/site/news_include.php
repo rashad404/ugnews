@@ -28,8 +28,8 @@ use Helpers\Format;
                 </div>
                 <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
 
-                    <?php if(!empty($list['image'])):?>
-                        <img class="news_image" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+                    <?php if(!empty($list['thumb'])):?>
+                        <img class="news_image" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
 
                         <div class="caption">
                             <div class="news_title">

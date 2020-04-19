@@ -40,7 +40,7 @@ use Helpers\Format;
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">
                                     <a href="/<?=Format::urlTextChannel($list['name_url'])?>">
-                                        <img src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+                                        <img src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
 
                                         <div class="news_title">
                                             <span>

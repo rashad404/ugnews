@@ -77,6 +77,7 @@ if (defined('ENVIRONMENT')) {
 
 }
 /** initiate config */
+
 new Core\Config();
 new Core\Params();
 //TextsModel initiated from main.php
