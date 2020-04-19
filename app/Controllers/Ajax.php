@@ -12,17 +12,10 @@ use Models\AjaxModel;
 
 class Ajax extends Controller
 {
-
-    public static $lng;
-    public static $userId;
-    public static $userInfo;
     // Call the parent construct
     public function __construct()
     {
         parent::__construct();
-        self::$lng = new Language();
-        self::$lng->load('app');
-        self::$userId = intval(Session::get("user_session_id"));
         new AjaxModel();
     }
 
@@ -52,6 +45,8 @@ class Ajax extends Controller
 
 
     public function search($text){
+        echo 'AJAX SEARCH CONTROLLER: '.microtime('return_float').'<br/>';
+        EXIT;
         echo AjaxModel::search($text);
     }
 

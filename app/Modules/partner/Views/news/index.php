@@ -6,7 +6,7 @@ use Models\LanguagesModel;
 $params = $data['params'];
 
 $lng = $data['lng'];
-$defaultLang = LanguagesModel::getDefaultLanguage();
+$defaultLang = LanguagesModel::getDefaultLanguage('partner');
 ?>
 
 
@@ -34,23 +34,23 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                 </div>
                             <?php exit;endif;?>
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
-                                <span>Actions...<i class="fa fa-caret-down"></i></span>
+                                <span><?=$lng->get('Actions');?>...<i class="fa fa-caret-down"></i></span>
                             </a>
                             <a href="<?php echo Url::to(MODULE_PARTNER."/".$params["name"]."/add")?>" class="btn btncolor secimetbtnadd">
-                                Add
+                                <?=$lng->get('Add');?>
                                 <i class="fa fa-plus afa"></i>
                             </a>
                             <ul class="dropdown-menu top-40">
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.acbtnhid').click()">Activate</a>
+                                    <a class="pointer" onclick="javascript:$('.acbtnhid').click()"><?=$lng->get('Activate');?></a>
                                     <input type="submit" class="hidden acbtnhid" name="active" value="1">
                                 </li>
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.deacbtnhid').click()">Deactivate</a>
+                                    <a class="pointer" onclick="javascript:$('.deacbtnhid').click()"><?=$lng->get('Deactivate');?></a>
                                     <input type="submit" class="hidden deacbtnhid" name="deactive" value="1">
                                 </li>
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.delbtnhid').click()">Delete</a>
+                                    <a class="pointer" onclick="javascript:$('.delbtnhid').click()"><?=$lng->get('Delete');?></a>
                                     <input type="submit" class="hidden delbtnhid" name="delete" value="1">
                                 </li>
                             </ul>
@@ -68,10 +68,10 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </div>
                                 </th>
                                 <th class="width-20">#</th>
-                                <th>Name</th>
-                                <?php if($params["position"]){ ?><th>Order</th><?php } ?>
-                                <?php if($params["status"]){ ?><th>Active</th><?php } ?>
-                                <?php if($params["actions"]){ ?><th>Actions</th><?php } ?>
+                                <th><?=$lng->get('Title');?></th>
+                                <?php if($params["position"]){ ?><th><?=$lng->get('Order');?></th><?php } ?>
+                                <?php if($params["status"]){ ?><th><?=$lng->get('Status');?></th><?php } ?>
+                                <?php if($params["actions"]){ ?><th><?=$lng->get('Operations');?></th><?php } ?>
                             </tr>
                             </thead>
                             <tbody>

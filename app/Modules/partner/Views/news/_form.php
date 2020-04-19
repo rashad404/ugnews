@@ -17,9 +17,9 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="image">Photo</label>
+                    <label for="image"><?=$lng->get('Photo');?></label>
                     <div class="slim" style="height:225px!important;"
-                         data-label="Choose a photo"
+                         data-label="<?=$lng->get('Choose a photo');?>"
                          data-label-loading=""
                          data-button-edit-label=""
                          data-button-remove-label=""
@@ -45,7 +45,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                             <label><strong><?=$lng->get($value['name'])?>:</strong></label><br/>
                             <?php if($value['type']=='select_box'):?>
                                 <select name="<?=$value['key']?>" class="form-control ">
-                                    <option value="0" <?=$item?'':'selected'?>><?=$lng->get('Not tenant')?></option>
+                                    <option value="0" <?=$item?'':'selected'?>><?=$lng->get('Not selected')?></option>
                                     <?php foreach($value['data'] as $data):?>
                                         <option <?=$item&&$item[$value['key']]==$data['key']?'selected':''?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$data['name']?></option>
                                     <?php endforeach;?>
@@ -62,7 +62,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                                 $selected = '';
                                             }
                                         ?>
-                                        <option <?=$selected?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$data['name']?></option>
+                                        <option <?=$selected?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$lng->get($data['name'])?></option>
                                     <?php endforeach;?>
                                 </select>
                             <?php elseif($value['type']=='textarea'):?>
@@ -87,12 +87,12 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
             <div class="input-group pull-left">
                 <input type="hidden" value="<?= \Helpers\Csrf::makeToken();?>" name="csrf_token">
                 <button type="submit" class="btn btncolor secimetbtnadd">
-                    Save
+                    <?=$lng->get('Save');?>
                 </button>
             </div>
             <div class="input-group pull-right">
                 <div class="pos-rel-top-6 ">
-                    <label class="padyan15">Active</label>
+                    <label class="padyan15"><?=$lng->get('Status');?></label>
                     <input class="admin-switch" data-on-text="" data-off-text="" id="status" type="checkbox" name="status" value="1" <?php if($item && $item["status"]==0) echo ""; else echo "checked";?>>
                 </div>
             </div>

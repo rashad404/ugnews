@@ -17,30 +17,34 @@ use Helpers\Url;
 
 class News extends MyController{
 
-    public static $params = [
-        'name' => 'news',
-        'searchFields' => ['id','title','text'],
-        'title' => 'News',
-        'position' => true,
-        'status' => true,
-        'actions' => true,
-        'imageSizeX' => '730',
-        'imageSizeY' => '450',
-        'thumbSizeX' => '270',
-        'thumbSizeY' => '150',
-    ];
 
 
     public static $model;
     public static $lng;
     public static $def_language;
     public static $rules;
+    public static $params;
 
     public function __construct(){
         self::$def_language = LanguagesModel::getDefaultLanguage('partner');
         self::$lng = new Language();
         self::$lng->load('partner');
         self::$rules = ['first_name' => ['required']];
+
+
+        self::$params = [
+            'name' => 'news',
+            'searchFields' => ['id','title','text'],
+            'title' => self::$lng->get('News'),
+            'position' => true,
+            'status' => true,
+            'actions' => true,
+            'imageSizeX' => '730',
+            'imageSizeY' => '450',
+            'thumbSizeX' => '270',
+            'thumbSizeY' => '150',
+        ];
+
         parent::__construct();
         self::$model = new NewsModel(self::$params);
     }
@@ -66,24 +70,6 @@ class News extends MyController{
     }
 
 
-    public function active(){
-        $model = self::$model;
-        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $data['list'] = $model::searchActive();
-            $pagination = new Pagination();
-            $data['pagination'] = $pagination;
-        }else {
-
-            $pagination = new Pagination();
-            $pagination->limit = 30;
-            $data['pagination'] = $pagination;
-            $limitSql = $pagination->getLimitSql($model::countListActive());
-            $data['list'] = $model::getListActive($limitSql);
-        }
-        $data['lng'] = self::$lng;
-        $data['params'] = self::$params;
-        View::renderPartner(self::$params['name'].'/active',$data);
-    }
 
     public function view($id){
 

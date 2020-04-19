@@ -27,23 +27,23 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                     <div class="box-body">
                         <div class="dropdown secimet">
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
-                                <span>Actions...<i class="fa fa-caret-down"></i></span>
+                                <span><?=$lng->get('Actions')?>...<i class="fa fa-caret-down"></i></span>
                             </a>
                             <a href="<?php echo Url::to(MODULE_PARTNER."/".$params["name"]."/add")?>" class="btn btncolor secimetbtnadd">
-                                Add
+                                <?=$lng->get('Add')?>
                                 <i class="fa fa-plus afa"></i>
                             </a>
                             <ul class="dropdown-menu top-40">
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.acbtnhid').click()">Activate</a>
+                                    <a class="pointer" onclick="javascript:$('.acbtnhid').click()"><?=$lng->get('Activate')?></a>
                                     <input type="submit" class="hidden acbtnhid" name="active" value="1">
                                 </li>
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.deacbtnhid').click()">Deactivate</a>
+                                    <a class="pointer" onclick="javascript:$('.deacbtnhid').click()"><?=$lng->get('Deactivate')?></a>
                                     <input type="submit" class="hidden deacbtnhid" name="deactive" value="1">
                                 </li>
                                 <li class="user-header admininbtn">
-                                    <a class="pointer" onclick="javascript:$('.delbtnhid').click()">Delete</a>
+                                    <a class="pointer" onclick="javascript:$('.delbtnhid').click()"><?=$lng->get('Delete')?></a>
                                     <input type="submit" class="hidden delbtnhid" name="delete" value="1">
                                 </li>
                             </ul>

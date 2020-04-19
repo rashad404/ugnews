@@ -18,7 +18,7 @@ return [
 
 	//Menus view search
 	'Search' => 'Axtarış',
-	'Detailed Search' => 'Ətraflı axtar',
+	'Detailed search' => 'Ətraflı axtar',
 
 	//Menus view index
 	'Choose' => 'Seçim edin',
@@ -33,6 +33,7 @@ return [
 	'Order' => 'Sıralama',
 	'Status' => 'Status',
 	'Operations' => 'Əməliyyatlar',
+	'Actions' => 'Əməliyyatlar',
 	'Subscribers' => 'Abunələr',
 	'subscriber' => 'abunə',
 	'Top' => 'Yuxarı',
@@ -71,11 +72,6 @@ return [
     'Select box'=>'Seçim',
     'Multi Select box'=>'Çoxlu Seçim',
 
-//    Feature Groups
-    'Feature Templates'=>'Xüsusiyyət şablonları',
-    'Feature Groups'=>'Xüsusiyyət qrupları',
-    'Feature Group\'s Name'=>'Xüsusiyyət qrupunun adı',
-    'Select Features'=>'Xüsusiyyətləri seçin',
 
 //    Categories
     'Categories'=>'Kateqoriyalar',
@@ -90,19 +86,40 @@ return [
     'Select photo'=> 'Şəkil seçin',
     'General'=> 'Ümumi',
 
-//    Tours
     'Title'=> 'Başlıq',
     'Price'=> 'Qiymət',
     'Country'=> 'Ölkə',
-    'Duration'=> 'Müddət',
-    'night'=> 'gecə',
-    'Services included'=> 'Xidmətə daxildir',
-    'Hotel star'=> 'Otel ulduzu',
-    'star'=> 'ulduz',
 
     //News
     'Please first create a news channel'=> 'Zəhmət olmasa, xəbər əlavə etmək üçün xəbər kanalı yaradın',
     'Create your first Channel'=> 'İlk xəbər kanalını yarat',
     'News'=> 'Xəbərlər',
+    'Select category'=> 'Kateqoriya seçin',
+    'Select Channel'=> 'Kanal seçin',
+    'Tags'=> 'Etiketlər',
+    'Select Country'=> 'Ölkə seçin',
+    'Select Language'=> 'Dil seçin',
+    'About'=> 'Haqqında',
+    'Choose a photo'=> 'Şəkil seçin',
 
+//    News Categories
+    'World'=>'Dünya',
+    'Politics'=>'Siyasət',
+    'Economy'=>'İqtisadiyyat',
+    'Sport'=>'İdman',
+    'Health'=>'Sağlamlıq',
+    'Entertainment'=>'Şou-Biznes',
+    'Technology'=>'Texnologiya',
+    'Interesting'=>'Maraqlı',
+    'Coronavirus'=>'Koronavirus',
+
+//    Channels
+    'Your Channels'=>'Sizin kanallar',
+
+//    Settings
+    'Settings for new posts'=>'Yeni xəbərlər üçün seçimlər',
+    'Default Channel'=>'Seçilmiş kanal',
+    'Default Language'=>'Seçilmiş dil',
+    'Update settings'=>'Ayarları dəyiş',
+    'Data has been saved successfully'=>'Məlumatlar yadda saxlanıldı',
 ];

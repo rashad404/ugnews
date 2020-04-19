@@ -14,20 +14,7 @@ use Helpers\Url;
 
 class Channels extends MyController{
 
-    public static $params = [
-        'name' => 'channels',
-        'searchFields' => ['id','title','text'],
-        'title' => 'Your Channels',
-        'position' => true,
-        'status' => true,
-        'actions' => true,
-        'imageSizeX' => '730',
-        'imageSizeY' => '450',
-        'thumbSizeX' => '270',
-        'thumbSizeY' => '150',
-    ];
-
-
+    public static $params;
     public static $model;
     public static $lng;
     public static $def_language;
@@ -38,6 +25,20 @@ class Channels extends MyController{
         self::$lng = new Language();
         self::$lng->load('partner');
         self::$rules = ['first_name' => ['required']];
+
+
+        self::$params = [
+            'name' => 'channels',
+            'searchFields' => ['id','title','text'],
+            'title' => self::$lng->get('Your Channels'),
+            'position' => true,
+            'status' => true,
+            'actions' => true,
+            'imageSizeX' => '730',
+            'imageSizeY' => '450',
+            'thumbSizeX' => '270',
+            'thumbSizeY' => '150',
+        ];
         parent::__construct();
         self::$model = new ChannelsModel(self::$params);
     }
