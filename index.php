@@ -1,6 +1,4 @@
 <?php
-echo  'START INDEX: '.microtime('return_float').'<br/>';
-
 ini_set("display_errors",1);
 
 /**
@@ -84,4 +82,3 @@ new Core\Params();
 //TextsModel initiated from main.php
 /** load routes */
 require SMVC.'app/Core/routes.php';
-echo  'END INDEX: '.microtime('return_float').'<br/>';
