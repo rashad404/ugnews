@@ -110,15 +110,15 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
         $summernote_css,
         Url::templatePath().'css/bootstrap.min.css',
         Url::templatePath().'assets/fontawesome-55/css/fontawesome.min.css',
-        Url::templatePath().'assets/slick/css/slick.css'.$css_v,
-        Url::templatePath().'assets/slick/css/slick-lightbox.css'.$css_v,
-        Url::templatePath().'assets/slick/css/slick-theme.css'.$css_v,
-        Url::templatePath().'assets/gallery/style.css',
-        Url::templatePath().'css/bootstrap-tagsinput.css',
+//        Url::templatePath().'assets/slick/css/slick.css'.$css_v,
+//        Url::templatePath().'assets/slick/css/slick-lightbox.css'.$css_v,
+//        Url::templatePath().'assets/slick/css/slick-theme.css'.$css_v,
+//        Url::templatePath().'assets/gallery/style.css',
+//        Url::templatePath().'css/bootstrap-tagsinput.css',
         '//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700',
-        Url::templatePath().'assets/owlcarousel/owl.carousel.min.css',
-        Url::templatePath().'assets/owlcarousel/owl.theme.default.min.css',
-        Url::templatePath().'assets/datepicker/bootstrap-datetimepicker.min.css',
+//        Url::templatePath().'assets/owlcarousel/owl.carousel.min.css',
+//        Url::templatePath().'assets/owlcarousel/owl.theme.default.min.css',
+//        Url::templatePath().'assets/datepicker/bootstrap-datetimepicker.min.css',
 
     ));
     $hooks->run('css');
@@ -131,19 +131,19 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 $jsArray = $jsContacts = [];
 $jsArray = [
     Url::templatePath() . 'js/jquery.min.js'.$css_v,
-    Url::templatePath() . 'js/popper.min.js',
+//    Url::templatePath() . 'js/popper.min.js',
     Url::templatePath() . 'js/bootstrap.min.js',
-    Url::templatePath() . 'js/waypoints.min.js',
-    Url::templatePath() . 'js/jquery.counterup.min.js',
+//    Url::templatePath() . 'js/waypoints.min.js',
+//    Url::templatePath() . 'js/jquery.counterup.min.js',
     $summernote_js,
-    Url::templatePath().'assets/slick/js/slick.min.js',
-    Url::templatePath().'assets/slick/js/slick-lightbox.js',
-    Url::templatePath().'assets/gallery/jquery.picEyes.js',
+//    Url::templatePath().'assets/slick/js/slick.min.js',
+//    Url::templatePath().'assets/slick/js/slick-lightbox.js',
+//    Url::templatePath().'assets/gallery/jquery.picEyes.js',
     Url::templatePath() . 'js/main.js'.$css_v,
-    Url::templatePath() . 'js/bootstrap-tagsinput.min.js',
-    Url::templatePath() . 'assets/owlcarousel/owl.carousel.js',
-    Url::templatePath() . 'js/moment.min.js',
-    Url::templatePath() . 'assets/datepicker/bootstrap-datetimepicker.min.js',
+//    Url::templatePath() . 'js/bootstrap-tagsinput.min.js',
+//    Url::templatePath() . 'assets/owlcarousel/owl.carousel.js',
+//    Url::templatePath() . 'js/moment.min.js',
+//    Url::templatePath() . 'assets/datepicker/bootstrap-datetimepicker.min.js',
 
 ];
 
@@ -159,77 +159,6 @@ $hooks->run('js');
 $hooks->run('footer');
 
 ?>
-
-<script>
-    $(document).ready(function() {
-        <?php if(in_array('summernote',$data['extra_js'])){?>
-        $('#summernote').summernote({
-            placeholder: '<?=$lng->get("Type")?>...',
-            tabsize: 2,
-            height: 200});
-        <?php }?>
-
-
-        $('.slider-for').slick({
-            slidesToShow: 10,
-            slidesToScroll: 1,
-            dots: false,
-            centerMode: false,
-            arrows:false,
-            focusOnSelect: true,
-            asNavFor: '.slider-nav'
-        });
-        $('.slider-nav').slickLightbox({
-            src: 'src',
-            itemSelector        : 'img',
-            navigateByKeyboard  : true
-        });
-        $('.slider-nav').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: false,
-            centerMode: true,
-            infinite: true,
-            focusOnSelect: true,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 2,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: false
-                    }
-                }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ],
-            asNavFor: '.slider-for'
-        });
-        $(function(){
-            $('li.media').picEyes();
-        });
-
-    });
-</script>
-
 
 <?php $hooks->run('afterBody');
 
@@ -251,88 +180,6 @@ if(Session::get('header_off')==true) {
 ?>
 
 <?php include_once 'inc/plugins.php';?>
-
-<script>
-    jQuery(document).ready(function($) {
-        if($("#count-1").length){
-            $("#count-1").counterUp({
-                delay: 10,
-                time: 1000
-            });
-        }
-        if($("#count-2").length){
-            $("#count-2").counterUp({
-                delay: 10,
-                time: 1000
-            });
-        }
-        if($("#count-3").length){
-            $("#count-3").counterUp({
-                delay: 10,
-                time: 1000
-            });
-        }
-        if($("#count-4").length){
-            $("#count-4").counterUp({
-                delay: 10,
-                time: 1000
-            });
-        }
-
-        $('#owl_1').owlCarousel({
-            items: 4,
-            autoplay:true,
-            autoplayTimeout:2000,
-            loop: true,
-            margin: 10,
-            callbacks: true,
-            // URLhashListener: true,
-            autoplayHoverPause: true,
-            // startPosition: 'URLHash',
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:2,
-                    nav:true
-                },
-                600:{
-                    items:3,
-                    nav:false
-                },
-                1000:{
-                    items:4,
-                    nav:true,
-                }
-            }
-        });
-        $('#owl_2').owlCarousel({
-            items: 6,
-            autoplay:true,
-            autoplaySpeed: 3000,
-            autoplayTimeout:3000,
-            loop: true,
-            margin: 0,
-            autoplayHoverPause: true,
-            responsiveClass:true,
-            dots: false,
-            slideTransition: 'linear',
-            responsive:{
-                0:{
-                    items:2,
-                    nav:true
-                },
-                600:{
-                    items:3,
-                    nav:false
-                },
-                1000:{
-                    items:6,
-                    nav:true,
-                }
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
