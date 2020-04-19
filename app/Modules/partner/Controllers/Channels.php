@@ -62,31 +62,9 @@ class Channels extends MyController{
     }
 
 
-    public function active(){
-        $model = self::$model;
-        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $data['list'] = $model::searchActive();
-            $pagination = new Pagination();
-            $data['pagination'] = $pagination;
-        }else {
-
-            $pagination = new Pagination();
-            $pagination->limit = 30;
-            $data['pagination'] = $pagination;
-            $limitSql = $pagination->getLimitSql($model::countListActive());
-            $data['list'] = $model::getListActive($limitSql);
-        }
-        $data['lng'] = self::$lng;
-        $data['params'] = self::$params;
-        View::renderPartner(self::$params['name'].'/active',$data);
-    }
-
-
     public function add(){
 
         $model = self::$model;
-//        echo $_POST['csrf_token'].' ||| ';
-//        echo Session::get('csrf_token');
 
         if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
             $modelArray = $model::add();
