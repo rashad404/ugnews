@@ -311,6 +311,7 @@ class NewsModel extends Model{
         } catch (\Exception $e) {
         }
 
+
         $sql_img = self::$tableName.'/'.$id.'/' . $file_name;
         $sql_thumb_img = self::$tableName.'/'.$id.'/thumbs/' . $file_name;
         self::$db->update(self::$tableName, ['image' => $sql_img, 'thumb' => $sql_thumb_img], ['id' => $id]);
