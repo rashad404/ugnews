@@ -20,7 +20,6 @@ MenusModel::buildMenuListMobile($_PARTNER['id']);
 $menuListMobile = ob_get_contents();
 ob_end_clean();
 
-$count_cart = CartModel::countItems();
 
 $data['contacts'] = SiteModel::getContacts();
 $region = '233';

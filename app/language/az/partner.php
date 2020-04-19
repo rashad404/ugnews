@@ -1,6 +1,10 @@
 <?php
 return [
 	//Menus
+    'Channels'=> 'Kanallar',
+    'Settings'=> 'Ayarlar',
+    'Logout'=> 'Çıxış',
+
 	'Data was saved' => 'Məlumatlar yadda saxlanıldı',
 	'Nothing selected' => 'Seçim edilməyib',
 	'Existent page' => 'Mövcud səhifə',

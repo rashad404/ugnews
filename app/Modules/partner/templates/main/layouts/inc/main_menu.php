@@ -1,26 +1,22 @@
 <?php
+
+use Core\Language;
 use Helpers\Url;
 use \Helpers\Session;
-use Modules\partner\Models\SmsModel;
-use Modules\partner\Models\WorkordersModel;
+
+$lng = \Models\LanguagesModel::getLanguages();
+$lng = new Language();
+$lng->load('partner');
 
 $admin_role = Session::get('user_session_role');
 
 
 $menu_list[] = ['name'=>'Admin panel', 'url'=>'main/index','icon'=>'home'];
-$menu_list[] = ['name'=>'News', 'url'=>'news/index','icon'=>'newspaper'];
-$menu_list[] = ['name'=>'Channels', 'url'=>'channels/index','icon'=>'broadcast-tower'];
-$menu_list[] = ['name'=>'Settings', 'url'=>'settings/defaults','icon'=>'tools'];
-//$menu_list[] = ['name'=>'Payments', 'url'=>'balance/index','icon'=>'dollar-sign'];
-$menu_list[] = ['name'=>'Logout', 'url'=>'main/logout','icon'=>'sign-out-alt'];
+$menu_list[] = ['name'=>$lng->get('News'), 'url'=>'news/index','icon'=>'newspaper'];
+$menu_list[] = ['name'=>$lng->get('Channels'), 'url'=>'channels/index','icon'=>'broadcast-tower'];
+$menu_list[] = ['name'=>$lng->get('Settings'), 'url'=>'settings/defaults','icon'=>'tools'];
+$menu_list[] = ['name'=>$lng->get('Logout'), 'url'=>'main/logout','icon'=>'sign-out-alt'];
 
-new SmsModel();
-$new_messages = SmsModel::countNewMessages();
-if ($new_messages == 0) $new_messages = '';
-
-new WorkordersModel();
-$new_work_orders = WorkordersModel::countNew();
-if ($new_work_orders == 0) $new_work_orders = '';
 
 ?>
 <!-- Left side column. contains the logo and sidebar -->
@@ -33,12 +29,6 @@ if ($new_work_orders == 0) $new_work_orders = '';
             <li class="treeview">
                 <a href="<?php echo Url::to('partner/'.$menu['url'])?>">
                     <i class="fas fa-<?=$menu['icon']?>"></i> <span><?=$menu['name']?></span>
-                    <?php if($menu['url'] == 'sms/index'):?>
-                        <span class="new_message_alert"><?=$new_messages?></span>
-                    <?php endif;?>
-                    <?php if($menu['url'] == 'workorders/index'):?>
-                        <span class="new_message_alert"><?=$new_work_orders?></span>
-                    <?php endif;?>
                 </a>
 
             </li>

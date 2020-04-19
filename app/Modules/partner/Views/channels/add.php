@@ -12,15 +12,10 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 </section>
 
 <section class="content">
-    <div class="row pad-top-15">
+    <div class="row">
         <div class="col-xs-12"><!-- /.box -->
 
             <div class="box">
-                <div class="box-header">
-                    <div class="col-xs-12">
-                        <h3 class="box-title">Add</h3>
-                    </div>
-                </div>
                 <?php
                 include("_form.php");
                 ?>

@@ -1,3 +1,15 @@
+:root {
+  --main-color: #730c2e;
+  --main-color-button: #ae072d;
+  --main-color-button-hover: #c70833;
+  --main-color-hover-on-white: rgba(255, 255, 255, 0.8);
+  --main-color-hover: #af1246;
+  --main-color-darker: #5c0a25;
+  --main-color-lighter: rgba(130, 14, 52, 0.81);
+  --main-color-lighter2: rgba(152, 0, 30, 0.96);
+  --main-color-even: #fffafa;
+}
+
 a{
   font-color: #000 !important;
 }
@@ -111,7 +123,8 @@ a.newLinks:hover{
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background-color: #331849;/*331849 222d32*/
+  background-color: #fff6f4;
+  border-right: 1px solid #e7e7e7;
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
@@ -192,13 +205,15 @@ a.newLinks:hover{
 }
 .skin-blue .sidebar-menu > li > a {
   border-left: 3px solid transparent;
+  color: var(--main-color);
+  font-weight: bold;
 }
 .skin-blue .sidebar-menu > li:hover > a{
   background: #ffffff;
 }
 .skin-blue .sidebar-menu > li:hover > a{
-  color: #ffffff;
-  background: #673194;/* #1e282c #673194*/
+  color: var(--main-color);
+  background-color: #eee;
   border-left-color: #fff;
 }
 .skin-blue .sidebar-menu > li.active > a {
@@ -436,17 +451,17 @@ a.newLinks:hover{
 
 .offcanvas{
   color: #fff !important;
-  background: #673194 !important;
+  background: var(--main-color-lighter2) !important;
 }
 .offcanvas:hover{
-  background: #b154ff !important;
+  background: var(--main-color)  !important;
   color: #fff !important;
 }
 .offcanvas:active{
-  background: #b154ff !important;
+  background: var(--main-color)  !important;
 }
 .offcanvas:focus{
-  background: #b154ff !important;
+  background: var(--main-color)  !important;
 }
 .skin-blue-light .sidebar-form {
   border-radius: 3px;
@@ -1998,7 +2013,7 @@ a.newLinks:hover{
   /*padding: 0 10px;*/
   /*border-left: 2px solid #8bc34a;*/
   /*font-size: 16px;*/
-  background-color: #cdb0e5;
+  background-color: var(--main-color-lighter2);
   padding: 10px 20px;
   border: 1px solid #cdb0e5;
   border-radius: 5px;
@@ -2128,20 +2143,20 @@ a.newLinks:hover{
   top: 6px;
 }
 .btncolor{
-  background: #8bc34a;
+  background: var(--main-color-button);
   color: #fff !important;
 }
 .btncolor:focus{
-  background: #8bc34a;
+  background: var(--main-color-button-hover);
   color: #fff;
   outline: 0 !important;
 }
 .btncolor:active{
-  background: #8bc34a;
+  background: var(--main-color-button-hover);
   color: #fff;
 }
 .btncolor:hover{
-  background: #8bc34a;
+  background: var(--main-color-button-hover);
   color: #fff;
 }
 .alabel{ padding: 0 10px; }

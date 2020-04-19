@@ -46,7 +46,6 @@ $lng = new Language();
 $lng->load('app');
 $hooks = Hooks::get();
 
-new TextsModel();//start Texts Model
 $userId = intval(Session::get("user_session_id"));
 
 if($userId>0) {

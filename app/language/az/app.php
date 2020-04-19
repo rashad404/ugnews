@@ -52,6 +52,7 @@ return [
     ' news' => ' xəbərləri',
     ' News' => ' Xəbərləri',
     'All rights reserved' => 'Bütün hüquqlar qorunur.',
+    'FooterAboutText' => 'UG.news xəbər sosial şəbəkəsidir. Öz xəbər kanalınızı yaradın və qazanmağa başlayın.',
 
 //    Categories
     'Coronavirus' => 'Koronavirus',

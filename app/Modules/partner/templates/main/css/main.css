@@ -152,16 +152,16 @@ ul {
     padding: 0;
 }
 .btn-primary {
-    background-color: #673194;
-    border-color: #673194;
+    background-color: var(--main-color-button);
+    border-color: var(--main-color-button-hover);
 }
 .btn-primary:hover{
-    background-color: #b055ff;
-    border-color: #b055ff;
+    background-color: var(--main-color-button-hover);
+    border-color: var(--main-color-button-hover);
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
-    background: #673194!important;
+    background: var(--main-color-button)!important;
 }
 .nav-features a{
     background-color: #3c8dbc !important;
@@ -535,7 +535,7 @@ span.notice_bed{
 }
 .half_box_title{
     border-radius:3px 3px 0 0;
-    background-color: #9972b5;
+    background-color: var(--main-color-lighter2);
     color: #fff;
     padding: 10px 0 10px 20px;
     font-size: 16px;

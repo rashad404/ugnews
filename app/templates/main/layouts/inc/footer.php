@@ -14,7 +14,7 @@ use Helpers\Format;
                             <img class="footer_logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
                         </a>
                     </div>
-                    <div class="footer_about"><?= TextsModel::getText(1,'About Us'); ?></div>
+                    <div class="footer_about"><?= $lng->get('FooterAboutText'); ?></div><br/>
                     <div class="footer_apps">
                         <a target="_blank" href="#">
                             <img src="<?=Url::templatePath()?>img/google_play.png" alt="<?=$lng->get('Android App')?>">
