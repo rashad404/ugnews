@@ -1,8 +1,6 @@
 <?php
 use Helpers\Url;
-use Models\ProductsModel;
 use Helpers\Format;
-use Models\TextsModel;
 ?>
 
 <main class="main">

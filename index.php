@@ -1,13 +1,4 @@
-
 <?php
-echo  'INDEX: '.microtime('return_float').'<br/>';
-//echo '
-//<div style="text-align: center">
-//    <img style="width: 300px;" src="https://ureb.com/app/templates/main//img/logo.png?9" alt="logo"/>
-//</div>
-//
-//';
-//exit;
 ini_set("display_errors",1);
 
 /**

@@ -2,8 +2,6 @@
 namespace Controllers;
 
 use Core\Controller;
-use Core\Language;
-use Helpers\Session;
 use Models\AjaxModel;
 
 /**
@@ -45,9 +43,6 @@ class Ajax extends Controller
 
 
     public function search($text){
-
-        echo 'AJAX SEARCH CONTROLLER: '.microtime('return_float').'<br/>';
-        EXIT;
         echo AjaxModel::search($text);
     }
 
