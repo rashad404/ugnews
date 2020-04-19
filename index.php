@@ -89,6 +89,6 @@ if (defined('ENVIRONMENT')) {
 new Core\Config();
 new Core\Params();
 //TextsModel initiated from main.php
-
 /** load routes */
 require SMVC.'app/Core/routes.php';
+

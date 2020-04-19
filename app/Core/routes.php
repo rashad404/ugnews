@@ -52,8 +52,8 @@ Router::any('(:any)', 'Controllers\Channels@inner');
 
 /** Module routes. */
 //Hooks::addHook('meta', 'Controllers\Site@meta');
-$hooks = Hooks::get();
-$hooks->run('routes');
+//$hooks = Hooks::get();
+//$hooks->run('routes');
 
 
 $module=Url::getModule();
