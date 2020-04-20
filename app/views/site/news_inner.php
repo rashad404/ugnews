@@ -13,7 +13,7 @@ use Helpers\Format;
                         <div class="row">
                             <div class="col-sx-12">
 
-                                <div class="channel_info remove_col_padding_mob" style="padding: 15px 10px;">
+                                <div class="channel_info_inner remove_col_padding_mob" style="padding: 12px 10px;">
                                     <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']);?>
 
 
@@ -25,16 +25,16 @@ use Helpers\Format;
                                             <div class="news_box_channel_title">
                                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                                             </div>
-                                            <div class="news_box_date"><?=date("H:i",$item['time'])?></div>
+                                            <div class="channel_info_news_date"><?=date("H:i",$item['time'])?></div>
                                         </div>
                                         <div class="col-xs-2  col-lg-1">
-                                            <div class="news_box_view">
+                                            <div class="channel_info_inner_view">
                                                 <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
                                                 <span style=""><?=$subscribe_count?><br/><?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-lg-2">
-                                            <div class="news_box_view" style="text-align: center">
+                                            <div class="channel_info_inner_view" style="text-align: center">
                                                 <?=$item['view']?><br/><i class="fas fa-signal"></i>
                                             </div>
                                         </div>
@@ -115,6 +115,9 @@ use Helpers\Format;
                     </div>
                 </div>
 
+
+
+
                 <div class="col-lg-4 remove_col_padding">
                     <div class="similar_news">
 
@@ -132,11 +135,11 @@ use Helpers\Format;
                                                             <img class="" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
                                                         </div>
                                                         <div class="col-xs-6 custom_padding_smilar_news">
-                                                            <div class="news_box_similar_title"><?=Format::listTitle($list['title'], 40)?></div>
+                                                            <div class="news_box_similar_title"><?=Format::listTitle($list['title'], 50)?></div>
                                                             <div class="news_box_similar_title_channel_name">
                                                                 <?=$channel_info['name']?>
                                                             </div>
-                                                            <div class="news_box_date"><?=$list['view']?> <?=$lng->get('view')?><?=date("H:i",$list['time'])?></div>
+                                                            <div class="news_box_similar_date"><?=$list['view']?> <?=$lng->get('view')?> <i class="fas fa-calendar"></i> <?=date("H:i",$list['time'])?></div>
                                                         </div>
                                                     </div>
                                                 </div>

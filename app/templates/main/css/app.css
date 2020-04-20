@@ -1286,6 +1286,17 @@ div.google_sign_in i {
     height: 100px;
 }
 
+.news_box_similar_date{
+    color: #a2a2a2;
+    font-size: 13px;
+    padding-top: 2px;
+}
+.news_box_similar_date i{
+    color: #d9d9d9;
+    padding-left: 10px;
+    padding-right: 3px;
+    font-size: 12px;
+}
 
 .news_box_similar_title{
     color: #000;
@@ -1345,11 +1356,59 @@ div.google_sign_in i {
     margin-bottom: 10px;
     font-weight: bold;
 }
+.channel_info_inner{
+    padding: 8px 10px;
+    font-weight: bold;
+    color: #2534b6;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: var(--main-color);
+    border-radius: 5px 5px 0 0;
+}
+.channel_info_inner a{
+    color: #fff;
+}
+.channel_info_inner a:hover{
+    color: var(--main-color-hover-on-white);
+}
+
+.channel_info_inner_view{
+    font-size: 14px;
+    color: #fff;
+    text-align: right;
+    font-weight: bold;
+    padding-top:5px;
+}
+
+.channel_info_inner img.channel_img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+    object-fit: contain;
+    border: 1px solid #ededed;
+    background-color: #fff;
+}
+
+
 .channel_info{
     padding: 8px 10px;
     font-weight: bold;
     color: #2534b6;
     border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+}
+.channel_info a{
+    color: var(--main-color);
+}
+.channel_info a:hover{
+    color: var(--main-color-hover);
+}
+
+.channel_info_news_date{
+    color: #efd4d1;
+    font-size: 13px;
+    padding-top: 2px;
+    padding-left: 5px;
 }
 .channel_info img.channel_img{
     border-radius: 50%;
@@ -1371,8 +1430,8 @@ div.google_sign_in i {
     padding-left: 5px;
 }
 .news_box_view{
-    font-size: 12px;
-    color: var(--main-color-lighter2);
+    font-size: 14px;
+    color: var(--main-color);
     text-align: right;
     font-weight: bold;
     padding-top:5px;
@@ -2070,6 +2129,10 @@ ul.search_result_modal_box a:hover{
     }
     .news_box_similar{
         height: 150px!important;
+    }
+    .news_box_similar_title {
+        font-size: 16px;
+        height: 80px!important;
     }
     .custom_padding_smilar_news{
         padding: 0 10px 0px 10px !important;
