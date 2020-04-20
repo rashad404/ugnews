@@ -101,7 +101,7 @@ class NewsModel extends Model{
         $default = $defaults['channel'];
 
         $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameChannels." WHERE `status`=1 ORDER BY `id` DESC");
+        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameChannels." WHERE `status`=1 AND `partner_id`='".self::$partner_id."' ORDER BY `id` DESC");
         foreach ($array as $item){
             $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($default==$item['id'])?'true':''];
         }
@@ -109,37 +109,6 @@ class NewsModel extends Model{
     }
 
 
-    public static function getBreakPredicts(){
-        $list = [];
-        $list[] = ['key'=>0, 'name'=>'Not selected', 'disabled'=>''];
-        $list[] = ['key'=>1, 'name'=>'Tenant wants', 'disabled'=>''];
-        $list[] = ['key'=>2, 'name'=>'Payment', 'disabled'=>''];
-        $list[] = ['key'=>3, 'name'=>'Cleaning', 'disabled'=>''];
-        $list[] = ['key'=>4, 'name'=>'Attitude', 'disabled'=>''];
-        $list[] = ['key'=>5, 'name'=>'Overnight guest', 'disabled'=>''];
-        $list[] = ['key'=>6, 'name'=>'More reasons', 'disabled'=>''];
-
-        return $list;
-    }
-
-    public static function getBedOptions(){
-        $list = [];
-        $list[] = ['key'=>0, 'name'=>'Not tenant', 'disabled'=>''];
-        new ApartmentsModel();
-        $apt_array = ApartmentsModel::getList();
-        foreach ($apt_array as $apt){
-            $room_array = RoomsModel::getList($apt['id']);
-            foreach ($room_array as $room){
-                $name = $apt['name'];
-                $list[] = ['key'=>'', 'name'=>$name, 'disabled'=>'disabled'];
-                $bed_array = BedsModel::getListByRoomVacant($room['id'],self::$user_id);
-                foreach ($bed_array as $bed){
-                    $list[] = ['key'=>$bed['id'], 'name'=>$name.', '.$room['name'].' '.$bed['name'], 'disabled'=>''];
-                }
-            }
-        }
-        return $list;
-    }
 
     public static function getSqlFields(){
         $input_list = self::getInputs();
