@@ -78,4 +78,5 @@ return [
     'Subscribe' => 'Abunə ol',
     'Subscribed' => 'Abunə olunub',
     'Share' => 'Paylaş',
+    'Similar News' => 'Oxşar xəbərlər',
 ];

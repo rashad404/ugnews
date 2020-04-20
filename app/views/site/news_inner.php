@@ -5,10 +5,10 @@ use Helpers\Format;
 
 <main class="main">
     <section xmlns="http://www.w3.org/1999/html">
-        <div class="container-fluid paddingX">
+        <div class="container paddingX">
             <div class="row paddingTop20 paddingBottom40">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7 news_inner_box">
+
+                <div class="col-lg-8 news_inner_box">
                     <div class="">
                         <div class="row">
                             <div class="col-sx-12">
@@ -114,7 +114,40 @@ use Helpers\Format;
                         <?php if($next_item['id']>0):?><div class="news_inner_title"><a href="news/<?=$next_item['id']?>/<?=Format::urlText($next_item['title'])?>"><?=$lng->get('Next News')?> >>></a></div><?php endif;?>
                     </div>
                 </div>
-                <div class="col-lg-4"></div>
+
+                <div class="col-lg-4 remove_col_padding">
+                    <div class="similar_news">
+
+                            <div class="similar_news_title"><?=$lng->get('Similar News')?>:</div>
+                            <?php foreach ($data['list'] as $list):?>
+
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
+                                    <div class="news_box_similar">
+                                            <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
+                                                <div class="">
+                                                    <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']);?>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-6 remove_col_padding_mob">
+                                                            <img class="" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
+                                                        </div>
+                                                        <div class="col-xs-6 custom_padding_smilar_news">
+                                                            <div class="news_box_similar_title"><?=Format::listTitle($list['title'], 40)?></div>
+                                                            <div class="news_box_similar_title_channel_name">
+                                                                <?=$channel_info['name']?>
+                                                            </div>
+                                                            <div class="news_box_date"><?=$list['view']?> <?=$lng->get('view')?><?=date("H:i",$list['time'])?></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                </div>
+                            <?php endforeach; ?>
+
+                    </div>
+                </div>
+
             </div>
         </div>
 

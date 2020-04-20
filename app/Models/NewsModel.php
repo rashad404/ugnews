@@ -30,6 +30,10 @@ class NewsModel extends Model{
         $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
         return $array;
     }
+    public static function getSimilarNews($id, $limit=6){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
+        return $array;
+    }
 
     //Cats
     public static function getListByCat($id, $limit = 'LIMIT 0,10'){

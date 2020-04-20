@@ -21,6 +21,7 @@ use Models\NewsModel;
 use Models\AboutModel;
 use Helpers\Pagination;
 use Helpers\Cookie;
+use Modules\partner\Controllers\News;
 
 
 /**
@@ -137,7 +138,7 @@ class Site extends Controller
         $data['item'] = NewsModel::getItem($id);
         $data['next_item'] = NewsModel::navigate($id,'next');
         $data['previous_item'] = NewsModel::navigate($id,'previous');
-//        $data['latest'] = ProductsModel::getProductListBySimilar($id,4);
+        $data['list'] = NewsModel::getSimilarNews($id, 5);
 
 
         $return = '';

@@ -1,5 +1,4 @@
 <?php
-use Helpers\Assets;
 use Helpers\Hooks;
 use Core\Language;
 use Models\LanguagesModel;
