@@ -47,6 +47,7 @@ class SettingsModel extends Model
             return $check;
         }else{
             $array = [
+                'channel'=>'233',
                 'country'=>'233',
                 'language'=>'3',
                 'partner_id'=>self::$partner_id,

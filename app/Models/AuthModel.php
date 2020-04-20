@@ -69,17 +69,18 @@ class AuthModel extends Model{
         $picture =  'https://graph.facebook.com/'.$fb_id.'/picture?width=1000';
 
 
-        $check_exists = self::$db->selectOne("SELECT `id`,`reg_type`,`password` FROM ".self::$tableName." WHERE `fb_id`=:fb_id",[":fb_id"=>$fb_id]);
+        $check_exists = self::$db->selectOne("SELECT `id`,`reg_type`,`password_hash` FROM ".self::$tableName." WHERE `fb_id`=:fb_id",[":fb_id"=>$fb_id]);
         if($check_exists){
             if($check_exists['reg_type']==2){
                 Session::set("user_session_id", intval($check_exists['id']));
-                Session::set("user_session_pass", $check_exists['password']);
+                Session::set("user_session_pass", Security::session_password($check_exists['password_hash']));
             }else {
                 $return['errors'] = self::$language->get('This email address is already registered');
             }
         }else {
             $new_password = Security::generatePassword(8);
             $new_password_hash = Security::password_hash($new_password);
+
             $array = array(
                 'password' => $new_password,
                 'password_hash' => $new_password_hash,
@@ -92,7 +93,7 @@ class AuthModel extends Model{
             $id = self::$db->insert(self::$tableName, $array);
 
             Session::set("user_session_id", intval($id));
-            Session::set("user_session_pass", $new_password);
+            Session::set("user_session_pass", Security::session_password($new_password_hash));
 
             $local_url = Url::uploadPath().'users/'.$id.'.jpg';
             Curl::saveFileFgc($picture, $local_url);
