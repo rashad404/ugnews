@@ -1359,21 +1359,21 @@ div.google_sign_in i {
 .channel_info_inner{
     padding: 8px 10px;
     font-weight: bold;
-    color: #2534b6;
+    color: #ccc;
     border-bottom: 1px solid #f0f0f0;
-    background-color: var(--main-color);
+    background-color: #fff;
     border-radius: 5px 5px 0 0;
 }
 .channel_info_inner a{
-    color: #fff;
+    color: var(--main-color);
 }
 .channel_info_inner a:hover{
-    color: var(--main-color-hover-on-white);
+    color: var(--main-color-hover);
 }
 
 .channel_info_inner_view{
     font-size: 14px;
-    color: #fff;
+    color: var(--main-color);
     text-align: right;
     font-weight: bold;
     padding-top:5px;
@@ -1390,6 +1390,13 @@ div.google_sign_in i {
 }
 
 
+.channel_info_inner_date{
+    color: #a5a5a5;
+    font-size: 13px;
+    padding-top: 2px;
+    padding-left: 5px;
+}
+
 .channel_info{
     padding: 8px 10px;
     font-weight: bold;
@@ -1404,12 +1411,6 @@ div.google_sign_in i {
     color: var(--main-color-hover);
 }
 
-.channel_info_news_date{
-    color: #efd4d1;
-    font-size: 13px;
-    padding-top: 2px;
-    padding-left: 5px;
-}
 .channel_info img.channel_img{
     border-radius: 50%;
     width: 50px;
@@ -1488,9 +1489,6 @@ div.google_sign_in i {
 }
 
 .news_inner_right_box{
-    border: 1px solid #f5f5f5;
-    border-radius: 4px;
-    background-color: #f5f5f5;
     color: #545454;
     padding:15px 10px;
     font-size: 12px;
@@ -1502,7 +1500,10 @@ div.google_sign_in i {
 }
 
 .share_btns a {
-    color: #fff;
+
+    border: 1px solid #efefef;
+    color: #404040;
+    background-color: #fff;
     padding: 8px;
     border-radius: 4px;
     margin-bottom: 5px;
@@ -1512,37 +1513,40 @@ div.google_sign_in i {
 }
 
 .share_btns a:hover {
-    color: #eaeaea;
+    color: var(--main-color-button-hover);
 }
 .share_btns a span {
     padding-left: 8px;
     border-left: 1px solid #fff;
     font-size: 13px;
 }
-.fb_share {
-    background: #4965b5;
+.share_btns i {
+    font-size: 15px;
+}
+.fb_share i {
+    color: #4965b5;
 }
 .fb_share, .wtp_share {
     margin-right: 8px;
 }
-.tw_share {
-    background: #1b95e0;
+.tw_share i{
+    color: #1b95e0;
 }
-.wtp_share {
-    background: #5cbe4a;
+.wtp_share i{
+    color: #5cbe4a;
 }
-.em_share {
-    background: #ea4335;
+.em_share i{
+    color: #ea4335;
 }
 
 .news_inner_subscribe_area{
-    /*padding-top:10px;*/
+
 }
 .news_inner_subscribe_area button.subscribe{
     color: #fff;
     font-size: 16px;
     background-color: var(--main-color-button);
-    padding: 5px 8px;
+    padding: 5px 8px!important;
     border: 1px solid var(--main-color-button);
     border-radius: 4px;
 }
@@ -1554,18 +1558,21 @@ div.google_sign_in i {
     color: #fff;
     background-color:  var(--main-color-button-hover);
 }
+.news_inner_subscribe_area button{
+    padding: 0 !important;
+}
 .news_inner_subscribe_area button.like{
     color: #727272;
     font-size: 24px;
     padding-left: 10px;
     border:0;
-    background-color: #f5f5f5;
+    background-color: #f6f6f6;
 }
 .news_inner_subscribe_area button.liked i{
     background-color: #00B600;
     color: #fff;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 5px;
 }
 .news_inner_subscribe_area button.like:hover{
@@ -1578,13 +1585,13 @@ div.google_sign_in i {
     padding: 0px;
     margin-left: 10px;
     border:0;
-    background-color: #f5f5f5;
+    background-color: #f6f6f6;
 }
 .news_inner_subscribe_area button.disliked i{
     background-color: red;
     color: #fff;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 5px;
 }
 

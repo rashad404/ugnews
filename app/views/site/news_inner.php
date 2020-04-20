@@ -12,10 +12,8 @@ use Helpers\Format;
                     <div class="">
                         <div class="row">
                             <div class="col-sx-12">
-
                                 <div class="channel_info_inner remove_col_padding_mob" style="padding: 12px 10px;">
                                     <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']);?>
-
 
                                     <div class="row">
                                         <div class="col-xs-2 col-lg-2 remove_col_padding_mob" style="text-align: right;width:12%;">
@@ -25,7 +23,7 @@ use Helpers\Format;
                                             <div class="news_box_channel_title">
                                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                                             </div>
-                                            <div class="channel_info_news_date"><?=date("H:i",$item['time'])?></div>
+                                            <div class="channel_info_inner_date"><?=date("H:i",$item['time'])?></div>
                                         </div>
                                         <div class="col-xs-2  col-lg-1">
                                             <div class="channel_info_inner_view">
@@ -44,7 +42,7 @@ use Helpers\Format;
                         </div>
                         <div class="news_inner_title"><?=$item['title']?></div>
 
-                        <div class="row">
+                        <div class="row" style="background-color: #f6f6f6; border: 1px solid #f0f0f0;">
                             <div class="col-sm-8 col-md-8 col-lg-8">
                                 <?php if(!empty($item['image'])):?>
                                     <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
@@ -64,25 +62,7 @@ use Helpers\Format;
                                 $like_check = \Models\NewsModel::likeCheck($item['id']);
                                 $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                                 ?>
-                                <div class="news_inner_right_box" style="padding: 5px 10px;">
-                                    <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
-                                            <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
-                                            <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="news_inner_right_box" style="padding: 5px 10px;">
-                                    <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="like_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> like <?=($like_check===true)?' liked':''?>">
-                                            <i class="fas fa-<?=($like_check===true)?'thumbs-up':'thumbs-up'?>"></i>
-                                        </button>
-                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="dislike_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> dislike <?=($dislike_check===true)?' disliked':''?>">
-                                            <i class="fas fa-<?=($dislike_check===true)?'thumbs-down':'thumbs-down'?>"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="news_inner_right_box">
+                                <div class="news_inner_right_box"style="padding: 0;">
                                     <div class="share_btns">
 
                                         <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="fb_share" target="_blank">
@@ -91,6 +71,12 @@ use Helpers\Format;
                                         <a href="https://twitter.com/intent/tweet?text=<?=Format::listTitle($item['title'])?>&url=https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" class="tw_share" target="_blank">
                                             <i class="fab fa-twitter" aria-hidden="true"></i> <span>Tweet</span>
                                         </a>
+                                    </div>
+                                    <div class="clearBoth"></div>
+                                </div>
+                                <div class="news_inner_right_box"style="padding: 0;">
+                                    <div class="share_btns">
+
                                         <a href="whatsapp://send?text=<?=Format::listTitle($item['title'])?> https://ug.news/news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" data-action="share/whatsapp/share" class="wtp_share">
                                             <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
                                         </a>
@@ -100,6 +86,25 @@ use Helpers\Format;
                                         </a>
                                     </div>
                                     <div class="clearBoth"></div>
+                                </div>
+                                <div class="news_inner_right_box" style="padding: 0;">
+                                    <div class="news_inner_subscribe_area">
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="subscribe_button" channel_id="<?=$item['channel']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
+                                            <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?>"></i>
+                                            <span><?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="news_inner_right_box" style="padding: 0;">
+                                    <div class="news_inner_subscribe_area">
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="like_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> like <?=($like_check===true)?' liked':''?>">
+                                            <i class="fas fa-<?=($like_check===true)?'thumbs-up':'thumbs-up'?>"></i>
+                                        </button>
+                                        <button redirect_url="news/<?=$item['id']?>/<?=Format::urlText($item['title'])?>" id="dislike_button" news_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> dislike <?=($dislike_check===true)?' disliked':''?>">
+                                            <i class="fas fa-<?=($dislike_check===true)?'thumbs-down':'thumbs-down'?>"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
