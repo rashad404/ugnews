@@ -69,10 +69,11 @@ class AuthModel extends Model{
         $picture =  'https://graph.facebook.com/'.$fb_id.'/picture?width=1000';
 
 
-        $check_exists = self::$db->selectOne("SELECT `id`,`reg_type` FROM ".self::$tableName." WHERE `fb_id`=:fb_id",[":fb_id"=>$fb_id]);
+        $check_exists = self::$db->selectOne("SELECT `id`,`reg_type`,`password` FROM ".self::$tableName." WHERE `fb_id`=:fb_id",[":fb_id"=>$fb_id]);
         if($check_exists){
             if($check_exists['reg_type']==2){
                 Session::set("user_session_id", intval($check_exists['id']));
+                Session::set("user_session_pass", $check_exists['password']);
             }else {
                 $return['errors'] = self::$language->get('This email address is already registered');
             }
