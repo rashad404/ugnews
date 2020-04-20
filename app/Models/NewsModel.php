@@ -31,7 +31,15 @@ class NewsModel extends Model{
         return $array;
     }
     public static function getSimilarNews($id, $limit=6){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
+        $array = self::getItem($id);
+        $title = $array['title'];
+        //SELECT *,
+        //MATCH(`name`, `middlename`, `surname`) AGAINST ('John' IN NATURAL LANGUAGE MODE) AS score
+        //FROM person
+        //ORDER BY score DESC;
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel`,
+ MATCH(`title`,`text`) AGAINST ('".$title."' IN NATURAL LANGUAGE MODE) AS score
+ FROM `".self::$tableName."` WHERE `id`!=".$id." AND `status`=1 AND `country`='".self::$region."' ORDER BY `score` DESC LIMIT $limit");
         return $array;
     }
 
