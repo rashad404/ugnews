@@ -55,7 +55,7 @@ class Channels extends Controller
             exit;
         }
         $pagination = new Pagination();
-        $pagination->limit = 20;
+        $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByChannel($data['item']['id']));
         $data['list'] = NewsModel::getListByChannel($data['item']['id'], $limitSql);

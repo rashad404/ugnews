@@ -53,7 +53,7 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 6;
+        $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countList());
         $data['list'] = NewsModel::getList($limitSql);
@@ -74,7 +74,7 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 20;
+        $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
         $data['list'] = NewsModel::getListByCat($id, $limitSql);
@@ -90,7 +90,7 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 20;
+        $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByTagCat($id));
         $data['list'] = NewsModel::getListByTagCat($id, $limitSql);
@@ -106,7 +106,7 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 20;
+        $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByTag($name));
         $data['list'] = NewsModel::getListByTag($name, $limitSql);
