@@ -1284,6 +1284,18 @@ div.google_sign_in i {
 .news_box_similar img{
     width: 100%;
     height: 100px;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+.news_box_similar:hover img {
+    transform: scale(1.03);
+}
+.news_box_similar:hover {
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
 
 .news_box_similar_date{
