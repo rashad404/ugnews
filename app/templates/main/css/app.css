@@ -2065,6 +2065,12 @@ ul.search_result_modal_box a:hover{
         margin-left: 0px!important;
         margin-right: 10px!important;
     }
+    .news_box_similar img{
+        height: 150px;
+    }
+    .news_box_similar{
+        height: 150px!important;
+    }
     .custom_padding_smilar_news{
         padding: 0 10px 0px 10px !important;
     }
