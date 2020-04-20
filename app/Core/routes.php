@@ -6,6 +6,9 @@ use Helpers\Url;
 
 /** Define routes. */
 
+Router::any('privacy-policy', 'Controllers\Site@privacy');
+Router::any('refund-policy', 'Controllers\Site@refund');
+
 //AJAX
 Router::any('ajax/subscribe/(:num)', 'Controllers\Ajax@subscribe');
 Router::any('ajax/un_subscribe/(:num)', 'Controllers\Ajax@un_subscribe');
