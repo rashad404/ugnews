@@ -36,6 +36,14 @@ use Helpers\Format;
 
 
                     <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                            <a href="create/channel">
+                            <div class="new_channel_box">
+                                <i class="fas fa-plus"></i><br/>
+                                <?=$lng->get('Create Your<br/>Channel')?>
+                            </div>
+                            </a>
+                        </div>
                         <?php foreach ($data['channel_list'] as $list):?>
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">

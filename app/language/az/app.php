@@ -2,6 +2,7 @@
 return [
 
     //index
+    'Create Your<br/>Channel' => 'Öz Kanalını<br/>Yarat',
     'Popular Channels' => 'Məşhur kanallar',
     'Featured' => 'Seçilmişlər',
     'Latest News' => 'Son xəbərlər',

@@ -1788,6 +1788,32 @@ ul.search_result_modal_box a:hover{
 
 
 /*Index Channels*/
+.new_channel_box{
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
+    padding-top: 30px;
+    background-color: #fff;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--main-color);
+}
+.new_channel_box i{
+    font-size: 22px;
+}
+.new_channel_box:hover{
+    color: var(--main-color-lighter);
+    background-color: var(--main-color-hover-on-white);
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+}
+
 .channel_box{
     text-align: center;
 }

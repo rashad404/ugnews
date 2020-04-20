@@ -58,7 +58,7 @@ class Site extends Controller
         $limitSql = $pagination->getLimitSql(NewsModel::countList());
         $data['list'] = NewsModel::getList($limitSql);
 
-        $data['channel_list'] = ChannelsModel::getList(6);
+        $data['channel_list'] = ChannelsModel::getList(5);
 
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
