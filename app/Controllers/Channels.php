@@ -34,22 +34,8 @@ class Channels extends Controller
         $this->lng->load('app');
         self::$userId = intval(Session::get("user_session_id"));;
         new ChannelsModel();
+        new NewsModel();
     }
-
-    public function index()
-    {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-
-        $data['list'] = ChannelsModel::getList(100);
-
-
-
-        View::render('channels/'.__FUNCTION__, $data);
-    }
-
 
     // News inner page
     public function inner($url)
@@ -69,10 +55,11 @@ class Channels extends Controller
             exit;
         }
         $pagination = new Pagination();
-        $pagination->limit = 70;
+        $pagination->limit = 20;
         $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByChannel($data['item']['id']));
+        $data['list'] = NewsModel::getListByChannel($data['item']['id'], $limitSql);
 
-        $data['list'] = NewsModel::getListByChannel($data['item']['id']);
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
 

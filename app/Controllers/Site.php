@@ -51,11 +51,13 @@ class Site extends Controller
     {
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
-        $pagination = new Pagination();
-        $pagination->limit = 70;
-        $data['pagination'] = $pagination;
 
-        $data['list'] = NewsModel::getList();
+        $pagination = new Pagination();
+        $pagination->limit = 6;
+        $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countList());
+        $data['list'] = NewsModel::getList($limitSql);
+
         $data['channel_list'] = ChannelsModel::getList(6);
 
         $data['region'] = Cookie::get('set_region');
@@ -72,10 +74,11 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 72;
+        $pagination->limit = 20;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
         $data['list'] = NewsModel::getListByCat($id, $limitSql);
+
         $data['cat_name'] = NewsModel::getCatName($id);
         View::render('site/'.__FUNCTION__, $data);
     }
@@ -87,10 +90,11 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 72;
+        $pagination->limit = 20;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByTagCat($id));
         $data['list'] = NewsModel::getListByTagCat($id, $limitSql);
+
         $data['cat_name'] = NewsModel::getTagName($id);
         View::render('site/'.__FUNCTION__, $data);
     }
@@ -102,25 +106,11 @@ class Site extends Controller
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
-        $pagination->limit = 72;
+        $pagination->limit = 20;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByTag($name));
         $data['list'] = NewsModel::getListByTag($name, $limitSql);
         $data['cat_name'] = $name;
-        View::render('site/'.__FUNCTION__, $data);
-    }
-
-
-    public function news()
-    {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-        $data['def_language'] = self::$def_language;
-
-        $data['list'] = NewsModel::getList();
-
-        Session::set('cat',0);
         View::render('site/'.__FUNCTION__, $data);
     }
 

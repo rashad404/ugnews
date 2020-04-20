@@ -26,8 +26,8 @@ class NewsModel extends Model{
         if(self::$region==0)self::$region = DEFAULT_COUNTRY;
     }
 
-    public static function getList($limit=10){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC LIMIT $limit");
+    public static function getList($limit = 'LIMIT 0,10'){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC $limit");
         return $array;
     }
     public static function getSimilarNews($id, $limit=6){
@@ -57,6 +57,16 @@ class NewsModel extends Model{
 
     public static function countListByCat($cat){
         $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$cat."'");
+        return $array;
+    }
+
+    public static function countListByChannel($id){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `channel`='".$id."'");
+        return $array;
+    }
+
+    public static function countList(){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."'");
         return $array;
     }
 

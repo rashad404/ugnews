@@ -50,3 +50,8 @@ use Helpers\Format;
             </div>
         </div>
     <?php endforeach; ?>
+
+    <div class="clearBoth"></div>
+    <div style="text-align:center;">
+        <?php echo $data["pagination"]->pageNavigation('pagination')?>
+    </div>

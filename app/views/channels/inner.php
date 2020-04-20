@@ -42,6 +42,13 @@ $subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
                 <div class="row">
                     <?php include_once 'app/views/site/news_include.php';?>
                 </div>
+
+
+                <div class="clearBoth"></div>
+                <div style="text-align:center;">
+                    <?php echo $data["pagination"]->pageNavigation('pagination')?>
+                </div>
+
             </div>
         </div>
     </div>
