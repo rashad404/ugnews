@@ -73,7 +73,7 @@ class RegistrationModel extends Model{
                 $email_text = $this->lng->get('Hi').' '.$post_data['first_name'].' '.$post_data['last_name'].', ';
                 $email_text .= $this->lng->get('Thank you for registering on our site. In order to complete your registration, please click the confirmation link below').':<br/>';
                 $email_text .= SITE_URL.'/confirm_email/'.$confirmation_code;
-                Mail::sendMail(SITE_EMAIL, $post_data['email'], PROJECT_NAME.' '.$this->lng->get('Registration mail'), $email_text);
+//                Mail::sendMail(SITE_EMAIL, $post_data['email'], PROJECT_NAME.' '.$this->lng->get('Registration mail'), $email_text);
                 Session::set("user_session_id", intval($userId));
                 Session::set("user_session_pass", Security::session_password($mysql_data['password_hash']));
 			}

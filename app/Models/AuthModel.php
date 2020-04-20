@@ -2,6 +2,7 @@
 namespace Models;
 use Core\Model;
 use Core\Language;
+use Helpers\Security;
 use Helpers\Url;
 use Helpers\Session;
 use Helpers\Curl;
@@ -76,7 +77,11 @@ class AuthModel extends Model{
                 $return['errors'] = self::$language->get('This email address is already registered');
             }
         }else {
+            $new_password = Security::generatePassword(8);
+            $new_password_hash = Security::password_hash($new_password);
             $array = array(
+                'password' => $new_password,
+                'password_hash' => $new_password_hash,
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'fb_id' => $fb_id,
@@ -84,7 +89,10 @@ class AuthModel extends Model{
                 'reg_type' => 2,
             );
             $id = self::$db->insert(self::$tableName, $array);
+
             Session::set("user_session_id", intval($id));
+            Session::set("user_session_pass", $new_password);
+
             $local_url = Url::uploadPath().'users/'.$id.'.jpg';
             Curl::saveFileFgc($picture, $local_url);
         }

@@ -22,7 +22,6 @@ class Main extends MyController
 
     public function __construct()
     {
-
         parent::__construct();
     }
 
