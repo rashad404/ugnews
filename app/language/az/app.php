@@ -80,4 +80,9 @@ return [
     'Subscribed' => 'Abunə olunub',
     'Share' => 'Paylaş',
     'Similar News' => 'Oxşar xəbərlər',
+
+//    Help
+    'Make Your Voice Heard' => 'Xəbər Kanalı Yarat',
+    'Create your own news channel and make your voice heard by millions' => 'Öz xəbər kanalını yarat və səsini milyonlara çatdır',
+
 ];

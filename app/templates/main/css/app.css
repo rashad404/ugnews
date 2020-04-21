@@ -1886,6 +1886,28 @@ ul.search_result_modal_box a:hover{
     background-color: #d40000;
 }
 
+/*Help*/
+.help_title{
+
+}
+
+.help_title h1{
+    font-size: 96px;
+    color: #000;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 500;
+}
+.help_title h2{
+    font-size: 32px;
+    color: #000;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: normal;
+    padding: 0 90px;
+}
+
+
 @media screen and (min-width: 767px) {
     .visible-xs-flex, .mobile_menu_icon{
         display: block!important;
@@ -2183,4 +2205,17 @@ ul.search_result_modal_box a:hover{
         padding: 0 10px 0px 10px !important;
     }
 
+    /*Help*/
+
+    .help_title h1{
+        font-size: 48px;
+        /*padding: 0 30px;*/
+
+        margin-top: 30px;
+    }
+    .help_title h2{
+        margin-top: 20px;
+        font-size: 22px;
+        padding: 0 30px;
+    }
 }

@@ -339,5 +339,12 @@ class Site extends Controller
 
         View::render('site/'.__FUNCTION__, $data);
     }
+    public function create_channel(){
+        $data['title'] = $this->lng->get("Create Channel Help").' '.PROJECT_NAME;
+        $data['keywords'] = $this->lng->get("Create Channel Help").' '.SITE_TITLE;
+        $data['description'] = $this->lng->get("Create Channel Help").' '.SITE_TITLE;
+        $data['def_language'] = self::$def_language;
+        View::render('help/'.__FUNCTION__, $data);
+    }
 
 }
