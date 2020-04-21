@@ -2,9 +2,9 @@
 use Helpers\Csrf;
 use Helpers\Date;
 ?>
-<main class="main">
+<main class="main paddingBottom40">
     <section xmlns="http://www.w3.org/1999/html">
-        <div class="container small_width default">
+        <div class="container small_width default custom_block">
             <div class="row paddingBottom40">
                 <div class="col-sm-12">
                     <h1 class="title"><?=$lng->get('Registration')?></h1>

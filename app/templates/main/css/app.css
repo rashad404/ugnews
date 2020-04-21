@@ -1888,7 +1888,7 @@ ul.search_result_modal_box a:hover{
 
 /*Help*/
 .help_title{
-
+    text-align: center;
 }
 
 .help_title h1{
@@ -1903,8 +1903,22 @@ ul.search_result_modal_box a:hover{
     color: #000;
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 30px;
     font-weight: normal;
     padding: 0 90px;
+}
+
+.help_title button{
+    padding: 9px 40px;
+    color: #fff;
+    background-color: var(--main-color-hover);
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid var(--main-color-hover);
+}
+.help_title button:hover{
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
 }
 
 

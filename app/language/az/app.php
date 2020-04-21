@@ -34,6 +34,7 @@ return [
     'Choose Photo' => 'Şəkil seçin',
 
 //    Register
+    'Registration' => 'Qeydiyyat',
     'Register' => 'Qeydiyyat',
     'First name' => 'Ad',
     'Last name' => 'Soyad',
@@ -84,5 +85,6 @@ return [
 //    Help
     'Make Your Voice Heard' => 'Xəbər Kanalı Yarat',
     'Create your own news channel and make your voice heard by millions' => 'Öz xəbər kanalını yarat və səsini milyonlara çatdır',
+    "Let's Start" => 'İndi Başla',
 
 ];
