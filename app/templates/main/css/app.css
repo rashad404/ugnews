@@ -1975,7 +1975,7 @@ ul.search_result_modal_box a:hover{
 
 .help_block_2_div_1 {
     background-color: var(--main-color);
-    height: 400px;
+    height: 500px;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -1993,7 +1993,7 @@ ul.search_result_modal_box a:hover{
 }
 
 .help_block_2_div_2 {
-    height: 400px;
+    height: 500px;
     margin: 0 auto;
     padding: 20px 300px;
     display: flex;
