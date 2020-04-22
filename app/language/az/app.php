@@ -86,5 +86,7 @@ return [
     'Make Your Voice Heard' => 'Xəbər Kanalı Yarat',
     'Create your own news channel and make your voice heard by millions' => 'Öz xəbər kanalını yarat və səsini milyonlara çatdır',
     "Let's Start" => 'İndi Başla',
+    "is Social Network which is focusing on News" => "Xəbər sahəsi üzrə ixtisaslaşmış Sosial şəbəkədir",
+    "Everyone can create News Channel in minutes and start to write news. It's free and unlimited." => "İndi hərkəs öz Xəbər Kanalını bir neçə dəqiqəyə yarada bilər. Bu pulsuz və limitsizdir.",
 
 ];
