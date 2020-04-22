@@ -28,7 +28,7 @@
             <div class="row ">
                 <div class="col-sm-6 help_block_2_div_1">
                     <div class="help_block_2_text_1">
-                        <h1 class="">Ug.news <?=$lng->get("CreateChannelText2")?></h1>
+                        Ug.news <?=$lng->get("CreateChannelText2")?>
                     </div>
                 </div>
                 <div class="col-sm-6 help_block_2_div_2">

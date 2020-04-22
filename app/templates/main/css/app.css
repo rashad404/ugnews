@@ -1926,7 +1926,7 @@ ul.search_result_modal_box a:hover{
 
 .help_block_1{
     color: #401e20;
-    background-color: rgba(223, 97, 87, 0.31);
+    background-color: rgba(239, 174, 169, 0.31);
     font-size: 64px;
     font-weight: 500;
 }
@@ -1944,9 +1944,6 @@ ul.search_result_modal_box a:hover{
 .help_block_text_1 {
     width: 100%;
     padding: 40px;
-}
-.help_block_text_1 h1 {
-    font-size: 48px!important;
 }
 
 .help_block_div_2 {
@@ -1971,11 +1968,13 @@ ul.search_result_modal_box a:hover{
 
 .help_block_2{
     color: #fff;
+    font-weight: bold;
+    font-size: 56px;
 }
 
 .help_block_2_div_1 {
     background-color: var(--main-color);
-    height: 500px;
+    height: 600px;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -1988,19 +1987,14 @@ ul.search_result_modal_box a:hover{
     width: 100%;
     padding: 40px;
 }
-.help_block_2_text_1 h1 {
-    font-size: 48px!important;
-}
 
 .help_block_2_div_2 {
-    height: 500px;
+    height: 600px;
     margin: 0 auto;
     padding: 20px 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.help_block_2_div_2 {
     top:50%;
     width: 100%;
 }
@@ -2319,5 +2313,12 @@ ul.search_result_modal_box a:hover{
         margin-top: 20px;
         font-size: 22px;
         padding: 0 30px;
+    }
+    .help_block_2_div_2{
+        width:70%;
+    }
+    .help_block_div_1, .help_block_2_div_1, .help_block_2_div_2{
+        height: 350px;
+        font-size: 32px;
     }
 }
