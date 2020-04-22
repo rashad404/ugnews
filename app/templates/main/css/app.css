@@ -2303,6 +2303,10 @@ ul.search_result_modal_box a:hover{
 
     /*Help*/
 
+
+    .help_title{
+        padding: 40px 0;
+    }
     .help_title h1{
         font-size: 48px;
         /*padding: 0 30px;*/
