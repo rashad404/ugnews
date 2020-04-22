@@ -2305,7 +2305,7 @@ ul.search_result_modal_box a:hover{
 
 
     .help_title{
-        padding: 40px 0;
+        padding: 40px 20px;
     }
     .help_title h1{
         font-size: 48px;
@@ -2322,7 +2322,10 @@ ul.search_result_modal_box a:hover{
         width:70%;
     }
     .help_block_div_1, .help_block_2_div_1, .help_block_2_div_2{
-        height: 350px;
+        height: unset!important;
         font-size: 32px;
+    }
+    .help_block_2_div_2{
+        padding: 150px 0;
     }
 }
