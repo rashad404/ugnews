@@ -136,6 +136,7 @@ use Helpers\Format;
                                                     <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']);?>
 
                                                     <div class="row">
+                                                        <?php if (!empty($list['thumb'])): ?>
                                                         <div class="col-xs-6 remove_col_padding_mob">
                                                             <img class="" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
                                                         </div>
@@ -146,6 +147,15 @@ use Helpers\Format;
                                                             </div>
                                                             <div class="news_box_similar_date"><?=$list['view']?> <?=$lng->get('view')?> <i class="fas fa-calendar"></i> <?=date("H:i",$list['time'])?></div>
                                                         </div>
+                                                        <?php else: ?>
+                                                            <div class="col-xs-12 custom_padding_smilar_news remove_col_padding_mob" style="padding-left: 30px!important;">
+                                                                <div class="news_box_similar_title"><?=Format::listText($list['text'], 90)?>...</div>
+                                                                <div class="news_box_similar_title_channel_name">
+                                                                    <?=$channel_info['name']?>
+                                                                </div>
+                                                                <div class="news_box_similar_date"><?=$list['view']?> <?=$lng->get('view')?> <i class="fas fa-calendar"></i> <?=date("H:i",$list['time'])?></div>
+                                                            </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                             </a>
