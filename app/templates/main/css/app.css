@@ -2045,8 +2045,18 @@ ul.search_result_modal_box a:hover{
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
-.rating_item_count{
+.rating_item a{
+   color: #000;
+}
 
+.rating_item_img img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
+    object-fit: contain;
+    object-position: center;
 }
 .rating_item_count span{
     color: #fff;
@@ -2057,11 +2067,15 @@ ul.search_result_modal_box a:hover{
 
 
 .rating_box td{
-    padding: 15px!important;
+    padding: 25px 15px!important;
+    vertical-align: middle!important;
+}
+.rating_box td.rating_item_img{
+    padding: 10px 0 10px 15px!important;
 }
 
 .rating_box tr:hover td{
-    background-color: #e2e2e2 !important;
+    background-color: #eeeeee !important;
 }
 
 

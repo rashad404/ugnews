@@ -1,3 +1,8 @@
+<?php
+
+use Helpers\Url;
+
+?>
 <main class="main">
     <div class="container paddingBottom20 paddingTop40">
         <div class="row paddingBottom40">
@@ -9,6 +14,7 @@
                     <table class="table table-striped">
                         <tr>
                             <th style="width: 10px;padding: 10px!important;"></th>
+                            <th style="width: 5px;"></th>
                             <th><?=$lng->get('Channel')?></th>
                             <th><?=$lng->get('Subscribers')?></th>
                         </tr>
@@ -26,7 +32,12 @@
                             ?>
                             <tr>
                                 <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
-                                <td class="rating_item"><?=$list['name']?></td>
+                                <td class="rating_item_img">
+                                    <?php if (!empty($list['thumb'])): ?>
+                                        <img src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
+                                    <?php endif;?>
+                                </td>
+                                <td class="rating_item"><a href=""><?=$list['name']?></a> </td>
                                 <td class="rating_item"><?=$list['subscribers']?></td>
                             </tr>
                         <?php $c++;endforeach; ?>
