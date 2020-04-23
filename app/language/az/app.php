@@ -93,4 +93,5 @@ return [
 
 //    Channel
     "Channel" => "Kanal",
+    "TOP Channels" => "TOP Kanallar",
 ];

@@ -12,7 +12,7 @@
                             <th><?=$lng->get('Channel')?></th>
                             <th><?=$lng->get('Subscribers')?></th>
                         </tr>
-                        <?php $c=1; foreach ($data['list'] as $list):?>
+                        <?php $c=$data['startRow']+1; foreach ($data['list'] as $list):?>
                             <?php
                                 if($c==1){
                                     $color = 'red';

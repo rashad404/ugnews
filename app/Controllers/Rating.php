@@ -39,9 +39,13 @@ class Rating extends Controller
         $data['userId'] = self::$userId;
 
         $pagination = new Pagination();
-        $pagination->limit = 24;
+        $pagination->limit = 10;
         $data['pagination'] = $pagination;
+        $data['startRow'] = $pagination->getStartRow();
+
         $limitSql = $pagination->getLimitSql(RatingModel::countChannels());
+        $data['startRow'] = $pagination->getStartRow();
+
         $data['list'] = RatingModel::topChannels($limitSql);
 
         View::render('rating/'.__FUNCTION__, $data);

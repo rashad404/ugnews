@@ -37,6 +37,18 @@ body{
 a:hover{
     text-decoration: none!important;
 }
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: var(--main-color-lighter2)!important;
+    border: var(--main-color-lighter2)!important;
+    color: #fff!important;
+}
+.pagination>li>a, .pagination>li>span{
+    color: var(--main-color-lighter2)!important;
+}
+
+
 .remove_col_padding{
     padding-left: 0!important;
     padding-right: 0!important;
@@ -2051,6 +2063,9 @@ ul.search_result_modal_box a:hover{
 .rating_box tr:hover td{
     background-color: #e2e2e2 !important;
 }
+
+
+
 
 
 
