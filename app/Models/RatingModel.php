@@ -6,7 +6,7 @@ use Core\Language;
 class RatingModel extends Model{
 
     private static $tableNameChannels = 'channels';
-    private static $tableNameSubscribers = 'subscribers';
+    private static $tableNameNews = 'news';
     public $lng;
     public function __construct(){
         parent::__construct();
@@ -22,6 +22,15 @@ class RatingModel extends Model{
     }
     public static function countChannels(){
         $array = self::$db->count("SELECT count(`id`) FROM `".self::$tableNameChannels."` WHERE `status`=1 ");
+        return $array;
+    }
+
+    public static function topNews($limit='0,10'){
+        $array = self::$db->select("SELECT `id`,`title`,`view` FROM `".self::$tableNameNews."` WHERE `status`=1 ORDER BY `view` DESC $limit");
+        return $array;
+    }
+    public static function countNews(){
+        $array = self::$db->count("SELECT count(`id`) FROM `".self::$tableNameNews."` WHERE `status`=1 ");
         return $array;
     }
 

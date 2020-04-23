@@ -94,4 +94,6 @@ return [
 //    Channel
     "Channel" => "Kanal",
     "TOP Channels" => "TOP Kanallar",
+    "News title" => "Xəbər başlığı",
+    "View" => "Baxış",
 ];

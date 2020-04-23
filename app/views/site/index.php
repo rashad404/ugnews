@@ -101,6 +101,7 @@ use Helpers\Format;
                             <div class="page_title paddingBottom20">
                                 <h2>
                                     <?=$lng->get('Latest News')?>
+                                    <a href="rating/news" target="_blank">(<?=$lng->get('TOP')?> <i class="fas fa-chart-bar"></i>)</a>
                                 </h2>
                                 <hr/>
                             </div>
