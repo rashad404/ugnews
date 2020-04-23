@@ -1195,6 +1195,19 @@ div.page_title hr{
     float: left;
     margin-top: -5px;
 }
+div.page_title a{
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--main-color);
+}
+div.page_title i{
+    font-size: 18px;
+    font-weight: normal;
+    color: #ff0200;
+}
+.page_title:hover a, .page_title:hover i{
+    font-weight: bold;
+}
 
 
 div.page_title_select h2{
@@ -2003,328 +2016,365 @@ ul.search_result_modal_box a:hover{
     top:50%;
 }
 
-
-@media screen and (min-width: 767px) {
-    .visible-xs-flex, .mobile_menu_icon{
-        display: block!important;
-    }
-    .web_pl_remove{
-        padding-left: 0!important;
-    }
+/*Rating*/
+.rating_box_title{
+    padding: 25px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fff;
+    color: var(--main-color);
+    border-radius: 5px 5px 0px 0;
 }
-@media screen and (max-width: 767px) {
-    .visible-xs-flex {
-        display: flex; !important
-    }
 
-    .container-fluid, .container{
-        padding-left: 0!important;
-        padding-right: 0!important;
-    }
-    .paddingTop40{
-        padding-top: 10px;
-    }
-    .paddingBottom40{
-        padding-bottom: 10px;
-    }
-    .main{
-        padding: 65px 0px 0px 0px!important;
-    }
-
-    .inner_background{
-        padding: 5px;
-    }
-    /*h3{*/
-    /*    margin-top: 10px!important;*/
-    /*}*/
-    .row{
-        margin-right: 0!important;
-        margin-left: 0!important;
-    }
-    .col-sm-12, .col-lg-3, .col-xs-6{
-        padding-right: 3px!important;
-        padding-left: 3px!important;
-    }
-    .col-xs-4, .col-md-4, .col-xs-8, .col-md-8{
-        padding-right: 0px!important;
-        padding-left: 0px!important;
-    }
-
-    .header_logo{
-        margin-left: 0;
-        margin-top: 12px;
-    }
-    .header_logo img{
-        width: 130px;
-    }
-    .footer_block{
-        padding: 0;
-    }
-    img.footer_logo {
-        width: 100px;
-    }
-    .header_cart a{
-        padding: 25px 6px 16px 6px
-    }
-    .header_cart_count{
-        right: 20px
-    }
-    .account_area {
-        right: 13%;
-    }
-    .account_area .sub_menu{
-        margin-left: 0px;
-        min-width: 160px!important;
-    }
-
-    hr.dark_gray{
-        margin: 20px 0 20px 0;
-    }
-    .footer{
-        padding: 20px 10px;
-    }
-    .footer_alt{
-        padding: 20px;
-    }
-    .mobile_menu_icon{
-        display: block;
-        text-align: right;
-        padding: 0px;
-    }
-    .login-buttons, .menu{
-        /*display: none;*/
-    }
-    .navbar-brand{
-        padding: 0 0px 0 10px!important;
-    }
-    .navbar-brand img{
-        padding-top: 8px;
-        width: 150px;
-    }
-    div.header{
-        padding: 0px 10px 0 0 !important;
-    }
-    .header-notifications{
-        font-size: 12px;
-    }
-    .left-sidebar{
-        display: none;
-    }
-    .paddingTop20{
-        padding-top: 0;
-    }
-    .paddingRight100{
-        padding-right: 0!important;
-    }
-
-    h2.content{
-        margin-top:0;!important;
-    }
-
-    /*About*/
-    div.about{
-        padding:0;
-    }
-
-
-    /*Shopping cart*/
-    input.cart_quantity{
-        width: 70px;
-    }
-    td.cart_price{
-        width: 20px;
-    }
-    td.actions{
-        width: 300px;
-    }
-
-    h3.heading{
-        margin-top: 0!important;
-    }
-    ul.media li{
-        text-align: center;
-    }
-    ul.media>li img {
-        width: 100%;
-        height: 195px;
-        padding: 3px 30px;
-    }
-    .sidebar_search .btn {
-        right: 0px;
-    }
-
-
-    /*About*/
-    div.about {
-        padding: 0 20px;
-    }
-    div.about_img{
-        padding: 0 20px;
-    }
-    div.about_img img{
-        max-width: 100%;
-    }
-
-    /*Section*/
-    .section-title h2 {
-        font-size: 2rem;
-    }
-    h1.page_title{
-        font-size: 24px;
-    }
-
-    div.schedule_app{
-        font-size: 22px;
-    }
-    div.schedule_app_text{
-        margin-bottom: 20px;
-    }
-
-
-    /*DEFAULT CSS*/
-    .custom_block{
-        margin: 10px 0;
-    }
-
-    .remove_col_padding{
-        padding-left: 0!important;
-        padding-right: 0!important;
-    }
-    .remove_col_padding_mob{
-        padding-left: 0!important;
-        padding-right: 0!important;
-    }
-    .remove_col_padding_web{
-        padding-left: 15px!important;
-        padding-right: 15px!important;
-    }
-
-    .sidebar_info_block{
-        order: 3;
-    }
-    .sidebar_model_block{
-        order: 2;
-    }
-    .sidebar_amenities_block{
-        order: 1;
-    }
-
-    div.how_it_works * div.step_title {
-        font-size: 24px;
-    }
-    div.how_it_works * div.step_text {
-        padding-top: 20px;
-        font-size: 18px;
-    }
-
-
-    div.page_title_select h2{
-        font-weight: bold;
-        letter-spacing: 1px;
-        color:#000;
-        font-size: 26px;
-        text-align:left;
-        line-height: 56px;
-        padding-top: 0px;
-
-    }
-    div.page_title_select h4{
-        letter-spacing: 1px;
-        font-size: 24px;
-        line-height: 22px;
-        margin-bottom: 30px;
-    }
-
-    div.select_service i{
-        font-size: 64px;
-        color: #7d49c0;
-    }
-    div.select_service_box h2{
-        font-size: 18px;
-    }
-
-    div.roommate_list_title h3{
-        font-size: 18px;
-    }
-
-    div.umodal {
-        margin-left: 0;
-        left: 0;
-    }
-
-    /*News*/
-    .news_title{
-        font-size: 16px;
-        /*height: 70px;*/
-    }
-    .news_box{
-        margin: 10px 5px;
-        height: 330px;
-    }
-    .news_image{
-        height: 200px;
-    }
-
-    .news_only_text{
-        font-size: 18px;
-    }
-    .news_cat{
-        bottom: 70px;
-    }
-
-    .search_result_modal_box{
-        left: 2%;
-        width: 95%;
-        max-width:100%;
-        top: 132px;
-    }
-    .search_news_name{
-        padding-left: 10px;
-    }
-
-    .similar_news{
-        margin-top: 10px!important;
-        margin-left: 0px!important;
-        margin-right: 10px!important;
-    }
-    .news_box_similar img{
-        height: 150px;
-    }
-    .news_box_similar{
-        height: 150px!important;
-    }
-    .news_box_similar_title {
-        font-size: 16px;
-        height: 80px!important;
-    }
-    .custom_padding_smilar_news{
-        padding: 0 10px 0px 10px !important;
-    }
-
-    /*Help*/
-
-
-    .help_title{
-        padding: 60px 20px;
-    }
-    .help_title h1{
-        font-size: 48px;
-        margin-top: 30px;
-    }
-    .help_title h2{
-        margin-top: 20px;
-        font-size: 22px;
-        padding: 0 30px;
-    }
-    .help_block_2_div_2{
-        width:70%;
-    }
-    .help_block_div_1, .help_block_2_div_1, .help_block_2_div_2{
-        height: unset!important;
-        min-height: 400px!important;
-        font-size: 32px;
-    }
-    .help_block_2_div_2{
-        padding: 150px 0;
-    }
+.rating_box{
+    background-color: #fff;
+    padding: 0 5px;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
+.rating_item_count{
+
+}
+.rating_item_count span{
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+
+.rating_box td{
+    padding: 15px!important;
+}
+
+.rating_box tr:hover td{
+    background-color: #e2e2e2 !important;
+}
+
+
+
+    @media screen and (min-width: 767px) {
+        .visible-xs-flex, .mobile_menu_icon{
+            display: block!important;
+        }
+        .web_pl_remove{
+            padding-left: 0!important;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .visible-xs-flex {
+            display: flex; !important
+        }
+
+        .container-fluid, .container{
+            padding-left: 0!important;
+            padding-right: 0!important;
+        }
+        .paddingTop40{
+            padding-top: 10px;
+        }
+        .paddingBottom40{
+            padding-bottom: 10px;
+        }
+        .main{
+            padding: 65px 0px 0px 0px!important;
+        }
+
+        .inner_background{
+            padding: 5px;
+        }
+        /*h3{*/
+        /*    margin-top: 10px!important;*/
+        /*}*/
+        .row{
+            margin-right: 0!important;
+            margin-left: 0!important;
+        }
+        .col-sm-12, .col-lg-3, .col-xs-6{
+            padding-right: 3px!important;
+            padding-left: 3px!important;
+        }
+        .col-xs-4, .col-md-4, .col-xs-8, .col-md-8{
+            padding-right: 0px!important;
+            padding-left: 0px!important;
+        }
+
+        .header_logo{
+            margin-left: 0;
+            margin-top: 12px;
+        }
+        .header_logo img{
+            width: 130px;
+        }
+        .footer_block{
+            padding: 0;
+        }
+        img.footer_logo {
+            width: 100px;
+        }
+        .header_cart a{
+            padding: 25px 6px 16px 6px
+        }
+        .header_cart_count{
+            right: 20px
+        }
+        .account_area {
+            right: 13%;
+        }
+        .account_area .sub_menu{
+            margin-left: 0px;
+            min-width: 160px!important;
+        }
+
+        hr.dark_gray{
+            margin: 20px 0 20px 0;
+        }
+        .footer{
+            padding: 20px 10px;
+        }
+        .footer_alt{
+            padding: 20px;
+        }
+        .mobile_menu_icon{
+            display: block;
+            text-align: right;
+            padding: 0px;
+        }
+        .login-buttons, .menu{
+            /*display: none;*/
+        }
+        .navbar-brand{
+            padding: 0 0px 0 10px!important;
+        }
+        .navbar-brand img{
+            padding-top: 8px;
+            width: 150px;
+        }
+        div.header{
+            padding: 0px 10px 0 0 !important;
+        }
+        .header-notifications{
+            font-size: 12px;
+        }
+        .left-sidebar{
+            display: none;
+        }
+        .paddingTop20{
+            padding-top: 0;
+        }
+        .paddingRight100{
+            padding-right: 0!important;
+        }
+
+        h2.content{
+            margin-top:0;!important;
+        }
+
+        /*About*/
+        div.about{
+            padding:0;
+        }
+
+
+        /*Shopping cart*/
+        input.cart_quantity{
+            width: 70px;
+        }
+        td.cart_price{
+            width: 20px;
+        }
+        td.actions{
+            width: 300px;
+        }
+
+        h3.heading{
+            margin-top: 0!important;
+        }
+        ul.media li{
+            text-align: center;
+        }
+        ul.media>li img {
+            width: 100%;
+            height: 195px;
+            padding: 3px 30px;
+        }
+        .sidebar_search .btn {
+            right: 0px;
+        }
+
+
+        /*About*/
+        div.about {
+            padding: 0 20px;
+        }
+        div.about_img{
+            padding: 0 20px;
+        }
+        div.about_img img{
+            max-width: 100%;
+        }
+
+        /*Section*/
+        .section-title h2 {
+            font-size: 2rem;
+        }
+        h1.page_title{
+            font-size: 24px;
+        }
+
+        div.schedule_app{
+            font-size: 22px;
+        }
+        div.schedule_app_text{
+            margin-bottom: 20px;
+        }
+
+
+        /*DEFAULT CSS*/
+        .custom_block{
+            margin: 10px 0;
+        }
+
+        .remove_col_padding{
+            padding-left: 0!important;
+            padding-right: 0!important;
+        }
+        .remove_col_padding_mob{
+            padding-left: 0!important;
+            padding-right: 0!important;
+        }
+        .remove_col_padding_web{
+            padding-left: 15px!important;
+            padding-right: 15px!important;
+        }
+
+        .sidebar_info_block{
+            order: 3;
+        }
+        .sidebar_model_block{
+            order: 2;
+        }
+        .sidebar_amenities_block{
+            order: 1;
+        }
+
+        div.how_it_works * div.step_title {
+            font-size: 24px;
+        }
+        div.how_it_works * div.step_text {
+            padding-top: 20px;
+            font-size: 18px;
+        }
+
+
+        div.page_title_select h2{
+            font-weight: bold;
+            letter-spacing: 1px;
+            color:#000;
+            font-size: 26px;
+            text-align:left;
+            line-height: 56px;
+            padding-top: 0px;
+
+        }
+        div.page_title_select h4{
+            letter-spacing: 1px;
+            font-size: 24px;
+            line-height: 22px;
+            margin-bottom: 30px;
+        }
+
+        div.select_service i{
+            font-size: 64px;
+            color: #7d49c0;
+        }
+        div.select_service_box h2{
+            font-size: 18px;
+        }
+
+        div.roommate_list_title h3{
+            font-size: 18px;
+        }
+
+        div.umodal {
+            margin-left: 0;
+            left: 0;
+        }
+
+        /*News*/
+        .news_title{
+            font-size: 16px;
+            /*height: 70px;*/
+        }
+        .news_box{
+            margin: 10px 5px;
+            height: 330px;
+        }
+        .news_image{
+            height: 200px;
+        }
+
+        .news_only_text{
+            font-size: 18px;
+        }
+        .news_cat{
+            bottom: 70px;
+        }
+
+        .search_result_modal_box{
+            left: 2%;
+            width: 95%;
+            max-width:100%;
+            top: 132px;
+        }
+        .search_news_name{
+            padding-left: 10px;
+        }
+
+        .similar_news{
+            margin-top: 10px!important;
+            margin-left: 0px!important;
+            margin-right: 10px!important;
+        }
+        .news_box_similar img{
+            height: 150px;
+        }
+        .news_box_similar{
+            height: 150px!important;
+        }
+        .news_box_similar_title {
+            font-size: 16px;
+            height: 80px!important;
+        }
+        .custom_padding_smilar_news{
+            padding: 0 10px 0px 10px !important;
+        }
+
+        /*Help*/
+
+
+        .help_title{
+            padding: 60px 20px;
+        }
+        .help_title h1{
+            font-size: 48px;
+            margin-top: 30px;
+        }
+        .help_title h2{
+            margin-top: 20px;
+            font-size: 22px;
+            padding: 0 30px;
+        }
+        .help_block_2_div_2{
+            width:70%;
+        }
+        .help_block_div_1, .help_block_2_div_1, .help_block_2_div_2{
+            height: unset!important;
+            min-height: 400px!important;
+            font-size: 32px;
+        }
+        .help_block_2_div_2{
+            padding: 150px 0;
+        }
+    }

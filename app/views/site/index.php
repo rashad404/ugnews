@@ -27,6 +27,7 @@ use Helpers\Format;
                             <div class="page_title paddingTop20 paddingBottom20">
                                 <h2>
                                     <?=$lng->get('Popular Channels')?>
+                                    <a href="rating/channels" target="_blank">(<?=$lng->get('TOP')?> <i class="fas fa-chart-bar"></i>)</a>
                                 </h2>
                                 <hr/>
                             </div>

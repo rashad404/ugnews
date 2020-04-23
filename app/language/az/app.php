@@ -7,6 +7,7 @@ return [
     'Featured' => 'Seçilmişlər',
     'Latest News' => 'Son xəbərlər',
     'Read more' => 'Ardını oxu',
+    'Rating' => 'Reytinq',
 
     //header
     'Select Region' => 'Ölkə seçin',
@@ -88,7 +89,8 @@ return [
     "Let's Start" => 'İndi Başla',
     "CreateChannelText1" => "İndi hərkəs öz Xəbər Kanalını bir neçə dəqiqəyə yarada bilər. Bu pulsuz və limitsizdir.",
     "CreateChannelText2" => "Xəbər sahəsi üzrə ixtisaslaşmış Sosial şəbəkədir",
-//    "CreateChannelText3" => "It's time to earn money online. Share your channel, increase your subscribers, views and earn from advertisement and also from paid subscribers.",
     "CreateChannelText3" => "Onlayn pul qazanmaq vaxtıdır. Kanalınızı paylaşın. Abunə, oxucularınızı artırın və reklam, eləcə də ödənişli abunələrdən pul qazanın.",
 
+//    Channel
+    "Channel" => "Kanal",
 ];
