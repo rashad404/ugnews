@@ -4,7 +4,7 @@ namespace Modules\partner\Models;
 
 use Core\Language;
 use Core\Model;
-use Helpers\Security;
+use Helpers\Format;use Helpers\Security;
 use Helpers\FileUploader;
 use Helpers\Session;
 use Helpers\Url;
@@ -230,6 +230,7 @@ class ChannelsModel extends Model{
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
             $insert_data['name_code'] = strtolower(preg_replace("/[ *()\-_.,]/","",$insert_data['name']));
+            $insert_data['name_url'] = Format::urlTextChannel($insert_data['name']);
 
 //            echo $insert_data['name_code'];exit;
 
@@ -265,6 +266,8 @@ class ChannelsModel extends Model{
 
             $update_data = $post_data;
             $update_data['name_code'] = strtolower(preg_replace("/[ *()\-_.,]/","",$update_data['name']));
+            $update_data['name_url'] = Format::urlTextChannel($update_data['name']);
+
 
             $check = self::$db->selectOne("SELECT `id` FROM ".self::$tableName." WHERE `name_code`='".$update_data['name_code']."' AND `id`!=".$id);
             if($check){
@@ -445,39 +448,6 @@ class ChannelsModel extends Model{
             echo '<hr/>';
             $c++;
             self::$db->raw("UPDATE ".self::$tableName." SET `password`='".$new_password."',  `password_hash`='".$new_password_hash."' WHERE `id` ='".$item['id']."'");
-        }
-
-    }
-    public static function showPass(){
-        $partner_id = 338;
-
-        $array = self::$db->select("SELECT `id`,`email`,`first_name`,`last_name`,`phone`,`email`,`gender`,`password`,`password_hash` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".$partner_id."' ORDER BY `id` DESC");
-        $c = 1;
-        foreach ($array as $item){
-
-
-            echo $c.'<br/>';
-            echo $item['id'].'<br/>';
-            echo $item['email'].'<br/>';
-            echo 'New Tenant Portal is ready | Coronavirus<br/>';
-            echo $item['first_name'].'<br/>';
-            echo $item['last_name'].'<br/>';
-            echo 'Username: '.$item['email'].'<br/>';
-            echo 'Password: '.$item['password'].'<br/>';
-            echo '<hr/>';
-            $c++;
-        }
-
-    }
-
-    public static function activatePortalAll(){
-        $partner_id = 338;
-
-        $array = self::$db->select("SELECT `id` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".$partner_id."' ORDER BY `id` DESC");
-        $c = 1;
-        foreach ($array as $item){
-
-            self::$db->raw("UPDATE ".self::$tableName." SET `tenant_portal`='1' WHERE `id` ='".$item['id']."'");
         }
 
     }
