@@ -2048,6 +2048,10 @@ ul.search_result_modal_box a:hover{
 .rating_item a{
    color: #000;
 }
+.rating_item a:hover{
+   color: var(--main-color-lighter2);
+    text-decoration: underline!important;
+}
 
 .rating_item_img img{
     width: 45px;

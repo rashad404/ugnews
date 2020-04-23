@@ -1,5 +1,6 @@
 <?php
 
+use Helpers\Format;
 use Helpers\Url;
 
 ?>
@@ -37,18 +38,18 @@ use Helpers\Url;
                                         <img src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
                                     <?php endif;?>
                                 </td>
-                                <td class="rating_item"><a href=""><?=$list['name']?></a> </td>
+                                <td class="rating_item"><a target="_blank" href="/<?=Format::urlTextChannel($list['name_url'])?>"><?=$list['name']?></a> </td>
                                 <td class="rating_item"><?=$list['subscribers']?></td>
                             </tr>
                         <?php $c++;endforeach; ?>
                     </table>
+
+                    <div class="clearBoth"></div>
+                    <div style="text-align:center;">
+                        <?php echo $data["pagination"]->pageNavigation('pagination')?>
+                    </div>
                 </div>
 
-
-                <div class="clearBoth"></div>
-                <div style="text-align:center;">
-                    <?php echo $data["pagination"]->pageNavigation('pagination')?>
-                </div>
 
             </div>
         </div>
