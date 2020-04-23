@@ -2045,10 +2045,13 @@ ul.search_result_modal_box a:hover{
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
-.rating_item a{
+.rating_item_title{
+    /*width: 100%!important;*/
+}
+.rating_item_title a{
    color: #000;
 }
-.rating_item a:hover{
+.rating_item_title a:hover{
    color: var(--main-color-lighter2);
     text-decoration: underline!important;
 }
@@ -2071,7 +2074,7 @@ ul.search_result_modal_box a:hover{
 
 
 .rating_box td{
-    padding: 25px 15px!important;
+    height: 70px!important;
     vertical-align: middle!important;
 }
 .rating_box td.rating_item_img{

@@ -38,7 +38,7 @@ use Helpers\Url;
                                         <img src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
                                     <?php endif;?>
                                 </td>
-                                <td class="rating_item"><a target="_blank" href="/<?=Format::urlTextChannel($list['name_url'])?>"><?=$list['name']?></a> </td>
+                                <td class="rating_item_title"><a target="_blank" href="/<?=Format::urlTextChannel($list['name_url'])?>"><?=Format::listTitle($list['name'],30)?></a> </td>
                                 <td class="rating_item"><?=$list['subscribers']?></td>
                             </tr>
                         <?php $c++;endforeach; ?>

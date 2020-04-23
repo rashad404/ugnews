@@ -11,7 +11,7 @@ use Helpers\Url;
 
                 <div class="rating_box_title"><?=$lng->get('TOP News')?></div>
 
-                <div class="rating_box table-responsive">
+                <div class="rating_box">
                     <table class="table table-striped">
                         <tr>
                             <th style="width: 10px;padding: 10px!important;"></th>
@@ -33,7 +33,7 @@ use Helpers\Url;
                             <tr>
                                 <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
 
-                                <td class="rating_item"><a target="_blank" href="/<?=Format::urlTextChannel($list['name_url'])?>"><?=$list['title']?></a> </td>
+                                <td class="rating_item_title"><a target="_blank" href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>"><?=Format::listTitle($list['title'],60)?></a> </td>
                                 <td class="rating_item"><?=$list['view']?></td>
                             </tr>
                         <?php $c++;endforeach; ?>
