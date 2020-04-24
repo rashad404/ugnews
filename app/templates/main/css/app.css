@@ -1297,13 +1297,18 @@ div.google_sign_in i {
 /*SIMILAR NEWS*/
 .similar_news{
     margin-left: 5px!important;
+    background-color: #fff;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 5px;
 }
 .custom_padding_smilar_news{
     padding-left: 0px!important;
 }
 .similar_news_title{
     padding: 10px 20px;
-    margin-left: 10px!important;
+
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -1313,7 +1318,6 @@ div.google_sign_in i {
 }
 .news_box_similar{
     margin-bottom: 15px;
-    margin-left: 10px!important;
     height: 100px;
     background-color: #fff;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -1521,6 +1525,10 @@ div.google_sign_in i {
 /*News inner*/
 .news_inner_box{
     background-color: #fff;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 5px;
 }
 .news_inner_img{
     width: 100%;
@@ -1617,7 +1625,7 @@ div.google_sign_in i {
     font-size: 24px;
     padding-left: 10px;
     border:0;
-    background-color: #f6f6f6;
+    background-color: #fff;
 }
 .news_inner_subscribe_area button.liked i{
     background-color: #00B600;
@@ -1636,7 +1644,7 @@ div.google_sign_in i {
     padding: 0px;
     margin-left: 10px;
     border:0;
-    background-color: #f6f6f6;
+    background-color: #fff;
 }
 .news_inner_subscribe_area button.disliked i{
     background-color: red;
@@ -2381,8 +2389,8 @@ ul.search_result_modal_box a:hover{
 
         .similar_news{
             margin-top: 10px!important;
-            margin-left: 0px!important;
-            margin-right: 10px!important;
+            margin-left: 5px!important;
+            margin-right: 5px!important;
         }
         .news_box_similar img{
             height: 150px;

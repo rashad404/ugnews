@@ -42,7 +42,7 @@ use Helpers\Format;
                         </div>
                         <div class="news_inner_title"><?=$item['title']?></div>
 
-                        <div class="row" style="background-color: #f6f6f6; border: 1px solid #f0f0f0;">
+                        <div class="row">
                             <div class="col-sm-8 col-md-8 col-lg-8">
                                 <?php if(!empty($item['image'])):?>
                                     <img class="news_inner_img" src="<?=Url::filePath()?>/<?=$item['image']?>" alt="" />
@@ -162,6 +162,7 @@ use Helpers\Format;
                                         </div>
                                 </div>
                             <?php endforeach; ?>
+                        <div class="clearBoth"></div>
 
                     </div>
                 </div>
