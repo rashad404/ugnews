@@ -1944,11 +1944,11 @@ ul.search_result_modal_box a:hover{
 /*Help*/
 .help_title{
     text-align: center;
-    padding: 50px;
+    padding: 100px 100px;
 }
 
 .help_title h1{
-    font-size: 96px;
+    font-size: 72px;
     color: #000;
     text-align: center;
     margin-top: 50px;
@@ -1987,7 +1987,7 @@ ul.search_result_modal_box a:hover{
 }
 
 .help_block_div_1 {
-    height: 600px;
+    height: 500px;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
