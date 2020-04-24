@@ -58,7 +58,7 @@ $(document).ready(function() {
         if($("#subscribe_button").hasClass('subscribed')){
 
             $.ajax({
-                url: "ajax/un_subscribe/" + channelId,
+                url: "/ajax/un_subscribe/" + channelId,
                 type: "POST",
                 data: "channel=" + channelId,
                 success: function (response) {
@@ -74,7 +74,7 @@ $(document).ready(function() {
         }else{
 
             $.ajax({
-                url: "ajax/subscribe/" + channelId,
+                url: "/ajax/subscribe/" + channelId,
                 type: "POST",
                 data: "channel=" + channelId,
                 success: function (response) {
@@ -102,7 +102,7 @@ $(document).ready(function() {
         if($("#like_button").hasClass('liked')){
             // alert('REMOVE LIKE');
             $.ajax({
-                url: "ajax/remove_like/" + newsId,
+                url: "/ajax/remove_like/" + newsId,
                 type: "POST",
                 data: "news_id=" + newsId,
                 success: function (response) {
@@ -121,7 +121,7 @@ $(document).ready(function() {
         }else{
             // alert('LIKE');
             $.ajax({
-                url: "ajax/like/" + newsId,
+                url: "/ajax/like/" + newsId,
                 type: "POST",
                 data: "news_id=" + newsId,
                 success: function (response) {
@@ -151,7 +151,7 @@ $(document).ready(function() {
         if($("#dislike_button").hasClass('disliked')){
             // alert('REMOVE DISLIKE');
             $.ajax({
-                url: "ajax/remove_dislike/" + newsId,
+                url: "/ajax/remove_dislike/" + newsId,
                 type: "POST",
                 data: "news_id=" + newsId,
                 success: function (response) {
@@ -168,7 +168,7 @@ $(document).ready(function() {
         }else{
             // alert('DISLIKE');
             $.ajax({
-                url: "ajax/dislike/" + newsId,
+                url: "/ajax/dislike/" + newsId,
                 type: "POST",
                 data: "news_id=" + newsId,
                 success: function (response) {
@@ -198,7 +198,7 @@ $(document).ready(function() {
             $(".all_site_no_bg").show();
             $("#headerSearchDropDown").show();
             $.ajax({
-                url: "ajax/search/" + inputVal,
+                url: "/ajax/search/" + inputVal,
                 type: "POST",
                 data: "text=",
                 success: function (response) {
@@ -228,7 +228,7 @@ $(document).ready(function() {
             $(".all_site_no_bg").show();
             $("#headerSearchDropDown").show();
             $.ajax({
-                url: "ajax/search/" + inputVal,
+                url: "/ajax/search/" + inputVal,
                 type: "POST",
                 data: "text=",
                 success: function (response) {

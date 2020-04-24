@@ -78,7 +78,7 @@ if($user_id>0){
                                 <ul class="sub_menu" style="max-height: 500px;right: 0px;">
                                     <li class="li_title"><?=$lng->get('Select Region')?>:</li>
                                     <?php foreach (CountryModel::getList() as $country) :?>
-                                        <li><a href="set/region/<?=$country['id']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
+                                        <li><a href="/set/region/<?=$country['id']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
                                     <?php endforeach;?>
                                 </ul>
                             </li>
