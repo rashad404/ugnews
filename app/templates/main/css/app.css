@@ -383,7 +383,7 @@ div.new_message_inner{
     background: var(--main-color);
     color: #FFFFFF;
     padding: 20px 122px 30px 122px;
-    margin-top:200px;
+    margin-top:50px;
 }
 
 .footer_logo{
@@ -462,7 +462,7 @@ div.new_message_inner{
     /*margin: 50px 0;*/
     background-color: #ededed;
     padding-top: 65px;
-    padding-left: 15px;
+    padding-left: 5px;
 }
 
 
@@ -1827,19 +1827,29 @@ ul.search_result_modal_box a:hover{
 
 
 /*Index Channels*/
-.new_channel_box{
-    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
-    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .03);
-    padding-top: 30px;
+.top_channels{
     background-color: #fff;
-    width: 130px;
-    height: 130px;
+    padding: 20px 10px 0 10px;
+    margin-left: -5px!important;
+    margin-right: -5px!important;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 5px;
+}
+.new_channel_box{
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    padding-top: 30px;
+    background-color: #f8f8f8;
+    width: 120px;
+    height: 120px;
     margin: 0 auto;
     text-align: center;
     border-radius: 50%;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--main-color);
 }
 .new_channel_box i{
@@ -1847,19 +1857,14 @@ ul.search_result_modal_box a:hover{
 }
 .new_channel_box:hover{
     color: var(--main-color-lighter);
-    background-color: var(--main-color-hover-on-white);
-    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
-    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 45%;
 }
 
 .channel_box{
     text-align: center;
 }
 .channel_box:hover img{
-    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
-    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    border-radius: 45%;
 }
 .channel_box img{
     border-radius: 50%;
@@ -1867,7 +1872,10 @@ ul.search_result_modal_box a:hover{
     height: 100px;
     vertical-align: top;
     object-fit: contain;
-    background-color: #fff;
+    background-color: #efefef;
+    -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
 
 

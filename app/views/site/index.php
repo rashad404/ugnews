@@ -36,7 +36,7 @@ use Helpers\Format;
 
 
 
-                    <div class="row">
+                    <div class="row top_channels">
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                             <a href="create/channel">
                             <div class="new_channel_box">
