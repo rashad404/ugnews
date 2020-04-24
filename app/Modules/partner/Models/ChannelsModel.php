@@ -317,8 +317,8 @@ class ChannelsModel extends Model{
         self::$db->update(self::$tableName, ['image' => $sql_img, 'thumb' => $sql_thumb_img], ['id' => $id]);
 
         //Optimize images
-        FileUploader::imageResizeProportional($new_dir.'/'.$file_name, $new_dir.'/'.$file_name, 80, $params['imageSizeX'], $params['imageSizeY']);
-        FileUploader::imageResizeProportional($new_thumb_dir.'/'.$file_name, $new_thumb_dir.'/'.$file_name, 80, $params['thumbSizeX'], $params['thumbSizeY']);
+        FileUploader::imageResizeProportional($new_dir.'/'.$file_name, $new_dir.'/'.$file_name, 90, $params['imageSizeX'], $params['imageSizeY']);
+        FileUploader::imageResizeProportional($new_thumb_dir.'/'.$file_name, $new_thumb_dir.'/'.$file_name, 90, $params['thumbSizeX'], $params['thumbSizeY']);
     }
 
     public static function search(){

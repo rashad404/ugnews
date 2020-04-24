@@ -40,10 +40,6 @@ class Channels extends Controller
     // News inner page
     public function inner($url)
     {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
-
         $data['def_language'] = self::$def_language;
 
         $data['userId'] = self::$userId;
@@ -54,6 +50,13 @@ class Channels extends Controller
             echo 'Wrong Channel';
             exit;
         }
+
+        $data['meta_img'] = $data['item']['image'];
+        $data['title'] = $data['item']['name'];
+
+        $data['keywords'] = $data['item']['name'];
+        $data['description'] = $data['item']['name'];
+
         $pagination = new Pagination();
         $pagination->limit = 24;
         $data['pagination'] = $pagination;

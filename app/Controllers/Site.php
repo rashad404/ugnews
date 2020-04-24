@@ -119,14 +119,17 @@ class Site extends Controller
     // News inner page
     public function news_inner($id)
     {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
 
         $data['def_language'] = self::$def_language;
         $data['userId'] = $this->userId;
 
         $data['item'] = NewsModel::getItem($id);
+        $data['meta_img'] = $data['item']['image'];
+
+        $data['title'] = $data['item']['title'];
+        $data['keywords'] = $data['item']['title'];
+        $data['description'] = $data['item']['title'];
+
         $data['next_item'] = NewsModel::navigate($id,'next');
         $data['previous_item'] = NewsModel::navigate($id,'previous');
         $data['list'] = NewsModel::getSimilarNews($id, 5);
