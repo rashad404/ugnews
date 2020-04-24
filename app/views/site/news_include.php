@@ -11,7 +11,7 @@ use Helpers\Format;
 
                     <div class="row">
                         <div class="col-xs-2 remove_col_padding_mob">
-                            <img class="channel_img" src="<?=Url::filePath()?>/<?=$channel_info['thumb']?>" alt=""/>
+                            <img class="channel_img" src="<?=Url::filePath()?><?=$channel_info['thumb']?>" alt=""/>
                         </div>
                         <div class="col-xs-7">
                             <div class="news_box_channel_title">
@@ -29,7 +29,7 @@ use Helpers\Format;
                 <a href="news/<?=$list['id']?>/<?=Format::urlText($list['title'])?>">
 
                     <?php if(!empty($list['thumb'])):?>
-                        <img class="news_image" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="" />
+                        <img class="news_image" src="<?=Url::filePath()?><?=$list['thumb']?>" alt="" />
 
                         <div class="caption">
                             <div class="news_title">

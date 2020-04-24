@@ -17,7 +17,7 @@ use Helpers\Format;
 
                                     <div class="row">
                                         <div class="col-xs-2 col-lg-2 remove_col_padding_mob" style="text-align: right;width:12%;">
-                                            <img class="channel_img" src="<?=Url::filePath()?>/<?=$channel_info['thumb']?>" alt=""/>
+                                            <img class="channel_img" src="<?=Url::filePath()?><?=$channel_info['thumb']?>" alt=""/>
                                         </div>
                                         <div class="col-xs-6 col-lg-7 remove_col_padding_web" >
                                             <div class="news_box_channel_title">
