@@ -18,7 +18,7 @@ body{
     color: #07253F!important;
     background-color: #fff!important;
     font-size: 16px !important;
-    margin: 0;
+    margin-left: 230px!important;
     padding:0;
 }
 @font-face{
@@ -60,6 +60,10 @@ a:hover{
 
 .container{
     max-width: 1200px;
+    width: unset!important;
+}
+.container-fluid{
+    width: unset!important;
 }
 
 .container.small_width{
@@ -148,6 +152,7 @@ div#redirect_url{
     z-index: 100;
     height: 66px;
     width: 100%;
+    right:0;
     padding: 3px 10px;
     color: #000;
     background-color: var(--main-color);
@@ -157,8 +162,7 @@ div#redirect_url{
 
 
 .header_logo{
-    margin-top: 3px;
-    margin-left: 25%;
+    margin-top: 10px;
 }
 
 div.menu{
@@ -271,7 +275,7 @@ span.logo_letter{
 }
 
 .header_logo img{
-    width: 150px;
+    width: 110px;
 }
 img.footer_logo{
     width: 150px;
@@ -455,7 +459,8 @@ div.new_message_inner{
     /*padding: 20px 20px 0px 20px;*/
     /*margin: 50px 0;*/
     background-color: #ededed;
-    padding-top:65px;
+    padding-top: 65px;
+    padding-left: 15px;
 }
 
 
@@ -726,14 +731,13 @@ div.flash_notification{
 
 /*MOBILE MENU*/
 .mobile_menu{
-    display: none;
     background-color: #fff;
-    top: 0;
-    right: 0;
-    width: 300px;
-    position: absolute;
+    top: 66px;
+    left: 0;
+    width: 230px;
+    position: fixed;
     text-align: left;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     height: 100%;
     z-index: 1003;
     overflow-y: auto;
@@ -750,9 +754,8 @@ div.flash_notification{
     text-decoration: none;
 }
 .mobile_menu_icon{
-    margin-top: 20px;
     text-align: center;
-    padding: 0px 15px 0px 2px;
+    padding: 7px 15px 0px 2px;
     z-index: 102;
     font-size: 14px;
 }
@@ -765,15 +768,15 @@ div.flash_notification{
 }
 
 .mobile_menu_header{
-    padding: 0 20px 10px 20px;
-    border-bottom: 1px solid #ffffff;
+    padding: 15px 20px 10px 25px;
+    background-color: var(--main-color);
 }
 .mobile_menu_header i{
     vertical-align: middle;
     padding-right: 10px
 }
 .mobile_menu_header img{
-    width: 150px;
+    width: 110px;
 }
 .sign_in_mob{
     margin: 0;
@@ -789,12 +792,15 @@ div.flash_notification{
     color: var(--main-color-hover-on-white);
 }
 .mobile_menu_body{
-    padding: 10px 0;
+    padding: 25px 0;
     font-size: 16px;
+    border-right: 1px solid #ddd;
+    height: 100%;
 }
 .mobile_menu_body .nav>li>a {
-    padding: 10px 30px!important;
+    padding: 14px 30px!important;
     font-weight: bold;
+    border-bottom: 1px solid #f4f4f4;
 }
 .mobile_sub_menu{
     display: none;
@@ -1191,7 +1197,7 @@ h3.heading, h4.img_title{
 div.page_title{
     text-align: left;
     display: inline-block;
-    margin-top: 10px;
+    padding-top:10px;
 
 }
 div.page_title h2{
@@ -2113,6 +2119,15 @@ ul.search_result_modal_box a:hover{
         .paddingBottom40{
             padding-bottom: 10px;
         }
+
+
+        body{
+            margin-left: 0!important;
+        }
+        #mobile_menu{
+            display:none;
+        }
+
         .main{
             padding: 65px 0px 0px 0px!important;
         }
@@ -2136,25 +2151,13 @@ ul.search_result_modal_box a:hover{
             padding-left: 0px!important;
         }
 
-        .header_logo{
-            margin-left: 0;
-            margin-top: 12px;
-        }
-        .header_logo img{
-            width: 130px;
-        }
         .footer_block{
             padding: 0;
         }
         img.footer_logo {
             width: 100px;
         }
-        .header_cart a{
-            padding: 25px 6px 16px 6px
-        }
-        .header_cart_count{
-            right: 20px
-        }
+
         .account_area {
             right: 13%;
         }
@@ -2172,11 +2175,6 @@ ul.search_result_modal_box a:hover{
         .footer_alt{
             padding: 20px;
         }
-        .mobile_menu_icon{
-            display: block;
-            text-align: right;
-            padding: 0px;
-        }
         .login-buttons, .menu{
             /*display: none;*/
         }
@@ -2186,9 +2184,6 @@ ul.search_result_modal_box a:hover{
         .navbar-brand img{
             padding-top: 8px;
             width: 150px;
-        }
-        div.header{
-            padding: 0px 10px 0 0 !important;
         }
         .header-notifications{
             font-size: 12px;

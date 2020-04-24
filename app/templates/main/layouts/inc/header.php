@@ -27,22 +27,16 @@ $region = '233';
 
 <div class="flash_notification"><?=Session::getFlash()?></div>
 
+
 <div class="all_site"></div>
 <div class="all_site_no_bg"></div>
-<div class="mobile_menu">
-    <div class="mobile_menu_header">
-        <div class="login-buttons-mobile">
-        </div>
-        <a href=""><img src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/></a>
-    </div>
+<div id="mobile_menu" class="mobile_menu mobile_menu_open">
     <div class="mobile_menu_body">
         <div class="sign_in_mob">
             <?php if($userId>0):?>
                 <a href="user_panel/profile" style="float: left"><i class="fas fa-user-alt"></i> <?=$userInfo['first_name']?></a>
                 <a style="float:right;" href="user_panel/logout"><i class="fas fa-sign-out"></i> <?=$lng->get('Logout')?></a>
             <?php else:?>
-<!--                <a style="float:left;" href="login">login</a>-->
-<!--                <a style="float: right;" href="login"><i class="fas fa-sign-in-alt"></i> register</a>-->
                 <a style="float: left;" href="login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
             <?php endif;?>
         </div>
@@ -57,18 +51,6 @@ $region = '233';
 </div>
 
 
-
-<div class="header-notifications remove_col_padding" style="display: none">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <i class="fa fa-phone"></i> <?=$data['contacts']['home_tel']?>
-                <i class="fa fa-envelope"></i> <?=$data['contacts']['email']?>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="header">
     <div class="container-fluid">
         <div class="row">
@@ -76,6 +58,11 @@ $region = '233';
             <div class="col-xs-5 col-sm-4">
                 <div class="header_logo">
                     <div>
+                        <div class="mobile_menu_icon" style="float: left">
+                            <a href="javascript:void(0);" class="icon">
+                                <i class="fa fa-bars fa-2x"></i>
+                            </a>
+                        </div>
                         <a href="">
                             <img class="logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
                         </a>
@@ -97,11 +84,6 @@ $region = '233';
 
             <div class="col-xs-6 col-sm-3 ">
 
-                <div class="mobile_menu_icon" style="float: right">
-                    <a href="javascript:void(0);" class="icon">
-                        <i class="fa fa-bars fa-2x"></i>
-                    </a>
-                </div>
                 <div class="icons_area" style="float: right">
                     <ul class="menu">
                         <li class="menu_li">
