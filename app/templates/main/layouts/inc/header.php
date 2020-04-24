@@ -66,7 +66,7 @@ $region = '233';
                                 <i class="fa fa-bars fa-2x"></i>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="/">
                             <img class="logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
                         </a>
                     </div>
