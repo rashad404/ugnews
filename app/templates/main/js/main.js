@@ -262,14 +262,13 @@ $(document).ready(function() {
 
     $(".mobile_menu_icon").click(function() {
         if(parseInt($("body").css('margin-left'))>0){
-            $("body").attr('style', 'margin-left: 0px !important');
             $("#mobile_menu").hide("fast");
+            $("body").attr('style', 'margin-left: 0px !important');
         }else{
             if($( window ).width()>767){
                 $("body").attr('style', 'margin-left: 230px !important');
             }else{
                 $(".all_site").css('display','block');
-
             }
             $("#mobile_menu").show("fast");
         }

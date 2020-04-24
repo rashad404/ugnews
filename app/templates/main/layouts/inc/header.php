@@ -1,9 +1,7 @@
 <?php
 
-use Helpers\Csrf;
 use Helpers\Session;
 use Helpers\Url;
-use Models\CartModel;
 use Models\MenusModel;
 use Models\SiteModel;
 use Models\CountryModel;
@@ -55,7 +53,7 @@ $region = '233';
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-xs-5 col-sm-4">
+            <div class="col-xs-6 col-sm-4">
                 <div class="header_logo">
                     <div>
                         <div class="mobile_menu_icon" style="float: left">
@@ -82,7 +80,7 @@ $region = '233';
                 </div>
             </div>
 
-            <div class="col-xs-6 col-sm-3 ">
+            <div class="col-xs-5 col-sm-3 ">
 
                 <div class="icons_area" style="float: right">
                     <ul class="menu">

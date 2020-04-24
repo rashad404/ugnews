@@ -84,7 +84,7 @@ a:hover{
     clear:both;
 }
 .wrapper{
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: space-between;
 }
@@ -153,6 +153,7 @@ div#redirect_url{
     height: 66px;
     width: 100%;
     right:0;
+    top:0;
     padding: 3px 10px;
     color: #000;
     background-color: var(--main-color);

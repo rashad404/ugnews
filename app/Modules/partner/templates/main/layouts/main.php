@@ -1,9 +1,16 @@
 <?php
+
+use Core\Language;
 use Helpers\Assets;
+use Helpers\Cookie;
 use Helpers\Session;
 use Helpers\Url;
-$user_id = Session::get('user_session_id');
+use Models\UserModel;
+
+$user_id = $userId = Session::get('user_session_id');
 $css_v = '?v='.UPDATE_VERSION;
+$lng = new Language();
+$lng->load('app');
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo LANGUAGE_CODE; ?>">
@@ -28,6 +35,7 @@ $css_v = '?v='.UPDATE_VERSION;
         Url::templatePartnerPath() . 'semantic-ui/transition.min.css',
         Url::templatePartnerPath() . 'photos/css/elan.css',
         Url::templatePartnerPath() . 'css/main.css'.$css_v,
+        Url::templatePath() . 'css/app.css'.$css_v,
         Url::templatePartnerPath() . 'css/bootstrap-tagsinput.css',
     ]);
     ?>
@@ -46,6 +54,7 @@ $css_v = '?v='.UPDATE_VERSION;
         Url::templatePartnerPath() . 'js/script_yuel.js',
         Url::templatePartnerPath() . 'js/summernote.min.js',
         Url::templatePartnerPath() . 'js/main.js',
+        Url::templatePath() . 'js/main.js'.$css_v,
         Url::templatePartnerPath() . 'js/bootstrap-tagsinput.min.js',
         Url::templatePartnerPath() . 'semantic-ui/dropdown.min.js',
         Url::templatePartnerPath() . 'semantic-ui/transition.min.js',
@@ -84,6 +93,44 @@ $css_v = '?v='.UPDATE_VERSION;
 
 <div class="wrapper">
 
+    <?php
+
+    //Country settings
+    $_SETTINGS = [];
+    if(Cookie::has('set_region')===true){
+        $_SETTINGS['region'] = Cookie::get('set_region');
+    }else{
+        Cookie::set('set_region', DEFAULT_COUNTRY);
+        $_SETTINGS['region'] = DEFAULT_COUNTRY;
+    }
+
+    if($userId>0) {
+        //Timeout for inactivity START
+        if(Session::get("timestamp")>0 && time() - Session::get("timestamp") > LOGOUT_TIME) { //subtract new timestamp from the old one
+            Session::destroy();
+            header("Location: ".DIR); //redirect to index.php
+            exit;
+        } else {
+            Session::set("timestamp",time());//set new timestamp
+        }
+        //Timeout for inactivity END
+
+        $userModel = new UserModel();
+        $userInfo = $userModel->getInfo($userId);
+        if($userInfo['block']==1){
+            echo $lng->get("Your account has been blocked");exit;
+        }else{
+            UserModel::updateOnline();
+        }
+    }
+    $_PARTNER = [];
+
+
+    Cookie::set('partner_id', 1);
+    $_PARTNER['id'] = 1;
+
+    $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
+    ?>
     <!-- Header -->
         <?php include("inc/main_header.php"); ?>
     <!-- Header end -->
