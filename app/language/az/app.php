@@ -96,4 +96,11 @@ return [
     "TOP Channels" => "TOP Kanallar",
     "News title" => "Xəbər başlığı",
     "View" => "Baxış",
+
+    //Menu
+    "Author Portal" => "Yazar Portalı",
+    "Your News" => "Sizin Xəbərlər",
+    "Your Channels" => "Sizin Kanallar",
+    "Channel Settings" => "Kanal ayarları",
+    "Categories" => "Kateqoriyalar",
 ];

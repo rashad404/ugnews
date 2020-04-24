@@ -793,13 +793,12 @@ div.flash_notification{
     color: var(--main-color-hover-on-white);
 }
 .mobile_menu_body{
-    padding: 25px 0;
     font-size: 16px;
     border-right: 1px solid #ddd;
     height: 100%;
 }
 .mobile_menu_body .nav>li>a {
-    padding: 14px 30px!important;
+    padding: 12px 30px!important;
     font-weight: bold;
     border-bottom: 1px solid #f4f4f4;
 }
@@ -822,7 +821,14 @@ i.sub_menu_toggle{
 i.sub_menu_toggle:hover{
     color: #c7c7c7;
 }
-
+.menu_sub_total{
+    color: #000;
+    padding: 15px 0 15px 0px;
+    font-weight: bold;
+    font-family: monospace, Arial, sans-serif;
+    text-align: center;
+    background-color: rgb(244, 245, 244);
+}
 
 /*About*/
 div.about{
@@ -1203,9 +1209,9 @@ div.page_title{
 }
 div.page_title h2{
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #242424;
-    font-size: 32px;
+    font-size: 26px;
 }
 div.page_title hr{
     width: 105%;
