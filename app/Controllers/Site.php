@@ -51,6 +51,7 @@ class Site extends Controller
     {
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
+        $data['meta_img'] = 'logo/logo-fb.png';
 
         $pagination = new Pagination();
         $pagination->limit = 24;

@@ -78,11 +78,16 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <meta name="description" content="<?=$data['description']?>">
     <meta name="copyright" content="<?=SITE_NAME?>" />
 
+
+
+
     <meta property="og:title" content="<?=$data['title']?>">
     <meta property="og:description" content="<?=$data['description']?>">
     <?= isset($data['meta_img'])?'<meta property="og:image" content="https://'.$_SERVER['HTTP_HOST'].'/'.Url::uploadPath().$data['meta_img'].'">':'';?>
 
     <meta property="og:url" content="https://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">
+    <meta property="og:site_name" content="<?=SITE_NAME?>">
+
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?=Url::templatePath()?>img/favicon/favicon-32x32.png">
