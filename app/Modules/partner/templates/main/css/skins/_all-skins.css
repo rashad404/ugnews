@@ -2010,14 +2010,8 @@ a.newLinks:hover{
 
 /* content pages */
 .headtext{
-  /*padding: 0 10px;*/
-  /*border-left: 2px solid #8bc34a;*/
-  /*font-size: 16px;*/
-  background-color: var(--main-color-lighter);
-  padding: 16px 20px;
-  border: 1px solid #cdb0e5;
-  border-radius: 5px;
-  color: #fff;
+  padding: 10px 20px;
+  color: #000;
   margin-top: 17px;
   font-weight: bold;
 }
@@ -2028,7 +2022,7 @@ a.newLinks:hover{
   color: #9745e1;
 }
 .headtext > span{
-  font-size: 16px;
+  font-size: 26px;
 }
 .panelitembox{
   position: relative;

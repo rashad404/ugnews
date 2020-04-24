@@ -4,14 +4,17 @@ $item = $data['item'];
 $lng = $data['lng'];
 ?>
 
-
+<section class="content-header">
+    <div class="headtext">
+        <span><?=$lng->get('Settings for new posts')?></span>
+    </div>
+</section>
 <section class="content">
     <form action="" method="post">
         <div class="row">
 
             <div class="col-sm-12">
-                <div class="half_box_with_title">
-                    <div class="half_box_title"><?=$lng->get('Settings for new posts')?></div>
+                <div class="half_box">
                     <div class="half_box_body">
                         <table class="default_vertical default">
                             <tr>

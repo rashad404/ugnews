@@ -16,7 +16,7 @@ body{
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: #07253F!important;
-    background-color: #fff!important;
+    background-color: #ededed!important;
     font-size: 16px !important;
     margin-left: 230px!important;
     padding:0;
@@ -383,6 +383,7 @@ div.new_message_inner{
     background: var(--main-color);
     color: #FFFFFF;
     padding: 20px 122px 30px 122px;
+    margin-top:200px;
 }
 
 .footer_logo{
@@ -780,7 +781,7 @@ div.flash_notification{
     width: 110px;
 }
 .sign_in_mob{
-    margin: 0;
+    margin: 10px 0;
     padding:15px 30px 40px 30px;
     background-color: var(--main-color-lighter);
 
@@ -1927,7 +1928,7 @@ ul.search_result_modal_box a:hover{
 /*Help*/
 .help_title{
     text-align: center;
-    padding: 80px;
+    padding: 50px;
 }
 
 .help_title h1{
@@ -1965,7 +1966,7 @@ ul.search_result_modal_box a:hover{
 .help_block_1{
     color: #401e20;
     background-color: rgba(239, 174, 169, 0.31);
-    font-size: 64px;
+    font-size: 56px;
     font-weight: 500;
 }
 

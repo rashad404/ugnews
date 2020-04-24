@@ -132,7 +132,7 @@ $lng->load('app');
     $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     ?>
     <!-- Header -->
-        <?php include("inc/main_header.php"); ?>
+        <?php include "app/templates/main/layouts/inc/header.php";?>
     <!-- Header end -->
 
     <!-- Content Wrapper. Contains page content -->
@@ -148,5 +148,6 @@ $lng->load('app');
 
 <input type="hidden" id="baseUrl" value="<?= Url::to(Url::getModuleController()) ?>"/>
 
+<?php include "app/templates/main/layouts/inc/footer.php";?>
 </body>
 </html>

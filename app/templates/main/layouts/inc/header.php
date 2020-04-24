@@ -32,22 +32,22 @@ $region = '233';
     <div class="mobile_menu_body">
         <div class="sign_in_mob">
             <?php if($userId>0):?>
-                <a href="user_panel/profile" style="float: left"><i class="fas fa-user-alt"></i> <?=$userInfo['first_name']?></a>
-                <a style="float:right;" href="user_panel/logout"><i class="fas fa-sign-out"></i> <?=$lng->get('Logout')?></a>
+                <a href="/user_panel/profile" style="float: left"><i class="fas fa-user-alt"></i> <?=$userInfo['first_name']?></a>
+                <a style="float:right;" href="/user_panel/logout"><i class="fas fa-sign-out"></i> <?=$lng->get('Logout')?></a>
             <?php else:?>
-                <a style="float: left;" href="login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
+                <a style="float: left;" href="/login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
             <?php endif;?>
         </div>
         <?php if($userId>0):?>
-        <ul class="nav">
-            <?php if($userInfo['landlord_portal']==1):?>
-                <li class="menu_sub_total"><?=$lng->get('Author Portal')?></li>
-                <li><a href="/partner/news/index"><?=$lng->get('Your News')?></a></li>
-                <li><a href="/partner/channels/index"><?=$lng->get('Your Channels')?></a></li>
-                <li><a href="/partner/settings/defaults"><?=$lng->get('Channel Settings')?></a></li>
-                <li class="menu_sub_total"><?=$lng->get('Categories')?></li>
-            <?php endif;?>
-        </ul>
+            <ul class="nav">
+                <?php if($userInfo['landlord_portal']==1):?>
+                    <li class="menu_sub_total"><?=$lng->get('Author Portal')?></li>
+                    <li><a href="/partner/news/index"><?=$lng->get('Your News')?></a></li>
+                    <li><a href="/partner/channels/index"><?=$lng->get('Your Channels')?></a></li>
+                    <li><a href="/partner/settings/defaults"><?=$lng->get('Channel Settings')?></a></li>
+                    <li class="menu_sub_total"><?=$lng->get('Categories')?></li>
+                <?php endif;?>
+            </ul>
         <?php endif;?>
         <?= $menuListMobile;?>
     </div>

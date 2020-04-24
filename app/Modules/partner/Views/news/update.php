@@ -8,7 +8,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="headtext">
-        <span><a href="index"><span style="color:var(--main-color-hover-on-white);"><?= $params["title"]; ?></span></a> / <?=$lng->get('Edit');?></span>
+        <span><a href="index"><span style="color:var(--main-color-hover);"><?= $params["title"]; ?></span></a> / <?=$lng->get('Edit');?></span>
     </div>
 </section>
 

@@ -97,6 +97,7 @@ body {
   min-height: 100%;
   background-color: #f6f5f7;
   z-index: 800;
+  margin-top: 70px;
 }
 .main-footer {
   background: #fff;
@@ -316,8 +317,8 @@ a:focus {
 }
 .content-header {
   position: relative;
-  padding: 10px 15px 0 5px;
-  margin-top: 65px;
+  /*padding: 10px 15px 0 5px;*/
+  /*margin-top: 65px;*/
 }
 .content-header > h1 {
   margin: 0;
