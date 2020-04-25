@@ -1535,7 +1535,7 @@ div.google_sign_in i {
     height: 300px;
 }
 .news_inner_box img{
-    width: 100%;
+    width: 100%!important;
 }
 .news_inner_title{
     font-size: 25px;
