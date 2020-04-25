@@ -32,6 +32,9 @@ class AjaxModel extends Model{
             $data = ['liked'=>1, 'disliked'=>0, 'time'=>time()];
             $where = ['news_id'=>$id, 'user_id'=>$user_id];
             self::$db->update(self::$tableNameLikes, $data, $where);
+
+            self::$db->raw("UPDATE `".self::$tableNameNews."` SET `likes`=`likes`+1 WHERE `id`= '".$id."'");
+
         }else{
             $data = ['liked'=>1, 'news_id'=>$id, 'user_id'=>$user_id, 'time'=>time()];
             self::$db->insert(self::$tableNameLikes, $data);
@@ -49,6 +52,7 @@ class AjaxModel extends Model{
             $data = ['liked'=>0, 'time'=>time()];
             $where = ['news_id'=>$id, 'user_id'=>$user_id];
             self::$db->update(self::$tableNameLikes, $data, $where);
+            self::$db->raw("UPDATE `".self::$tableNameNews."` SET `likes`=`likes`-1 WHERE `id`= '".$id."'");
         }
 
         return self::$lng->get('Like');
@@ -64,6 +68,7 @@ class AjaxModel extends Model{
             $data = ['liked'=>0, 'disliked'=>1, 'time'=>time()];
             $where = ['news_id'=>$id, 'user_id'=>$user_id];
             self::$db->update(self::$tableNameLikes, $data, $where);
+            self::$db->raw("UPDATE `".self::$tableNameNews."` SET `dislikes`=`dislikes`+1 WHERE `id`= '".$id."'");
         }else{
             $data = ['disliked'=>1, 'news_id'=>$id, 'user_id'=>$user_id, 'time'=>time()];
             self::$db->insert(self::$tableNameLikes, $data);
@@ -81,6 +86,7 @@ class AjaxModel extends Model{
             $data = ['disliked'=>0, 'time'=>time()];
             $where = ['news_id'=>$id, 'user_id'=>$user_id];
             self::$db->update(self::$tableNameLikes, $data, $where);
+            self::$db->raw("UPDATE `".self::$tableNameNews."` SET `dislikes`=`dislikes`-1 WHERE `id`= '".$id."'");
         }
 
         return self::$lng->get('Dislike');
