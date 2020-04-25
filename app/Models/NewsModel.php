@@ -97,6 +97,10 @@ class NewsModel extends Model{
     public static function getItem($id){
         $update = self::$db->raw("UPDATE `".self::$tableName."` SET `view`=`view`+1 WHERE `id`='".$id."'");
         $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
+
+        if($array) {
+            self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
+        }
         return $array;
     }
 

@@ -27,8 +27,7 @@ use Helpers\Format;
                                         </div>
                                         <div class="col-xs-2  col-lg-1">
                                             <div class="channel_info_inner_view">
-                                                <?php $subscribe_count = \Models\ChannelsModel::countSubscribers($item['channel']);?>
-                                                <span style=""><?=$subscribe_count?><br/><?=$lng->get('subscribers')?></span>
+                                                <span style=""><?=$channel_info['subscribers']?><br/><?=$lng->get('subscribers')?></span>
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-lg-2">
@@ -112,6 +111,7 @@ use Helpers\Format;
                     <?php if(!empty($item['image'])):?>
                     <div class="news_inner_text">
                         <?=html_entity_decode($item['text'])?>
+                        <div class="clearBoth"></div>
                     </div>
                     <?php endif;?>
                     <div class="news_inner_navigate" style="display: none">
@@ -119,9 +119,6 @@ use Helpers\Format;
                         <?php if($next_item['id']>0):?><div class="news_inner_title"><a href="news/<?=$next_item['id']?>/<?=Format::urlText($next_item['title'])?>"><?=$lng->get('Next News')?> >>></a></div><?php endif;?>
                     </div>
                 </div>
-
-
-
 
                 <div class="col-lg-4 remove_col_padding">
                     <div class="similar_news">

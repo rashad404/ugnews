@@ -65,6 +65,8 @@ return [
     'Sport' => 'İdman',
     'Health' => 'Sağlamlıq',
     'Entertainment' => 'Şou-biznes',
+    'Interesting' => 'Maraqlı',
+    'General' => 'Ümumi',
 
 //    Right menu
     'Admin Portal' => 'Admin Paneli',

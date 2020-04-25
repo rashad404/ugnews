@@ -95,6 +95,7 @@ class AjaxModel extends Model{
         if(!$check) {
             $data = ['channel'=>$id, 'user_id'=>$user_id, 'time'=>time()];
             self::$db->insert(self::$tableNameSubscribers, $data);
+            self::$db->raw("UPDATE `".self::$tableNameChannels."` SET `subscribers`=`subscribers`+1 WHERE `id`= '".$id."'");
             return self::$lng->get('Subscribed');
         }else{
             return self::$lng->get('Subscribe');
@@ -106,6 +107,7 @@ class AjaxModel extends Model{
         if($user_id<1)exit;
         $where = ['channel'=>$id, 'user_id'=>$user_id];
         self::$db->delete(self::$tableNameSubscribers, $where);
+        self::$db->raw("UPDATE `".self::$tableNameChannels."` SET `subscribers`=`subscribers`-1 WHERE `id`= '".$id."'");
         return self::$lng->get('Subscribe');
     }
 

@@ -1439,7 +1439,7 @@ div.google_sign_in i {
     width: 50px;
     height: 50px;
     vertical-align: top;
-    object-fit: contain;
+    object-fit: fill;
     border: 1px solid #ededed;
     background-color: #fff;
 }
@@ -1471,7 +1471,7 @@ div.google_sign_in i {
     width: 50px;
     height: 50px;
     vertical-align: top;
-    object-fit: contain;
+    object-fit: fill;
     border: 1px solid #ededed;
     background-color: #fff;
 }
@@ -1879,7 +1879,7 @@ ul.search_result_modal_box a:hover{
     width: 100px;
     height: 100px;
     vertical-align: top;
-    object-fit: contain;
+    object-fit: fill;
     background-color: #efefef;
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
@@ -1908,7 +1908,7 @@ ul.search_result_modal_box a:hover{
     width: 100px;
     height: 100px;
     vertical-align: top;
-    object-fit: contain;
+    object-fit: fill;
     border: 1px solid #fff;
     background-color: #fff;
     /*object-position: center; !* Center the image within the element *!*/
@@ -2092,7 +2092,7 @@ ul.search_result_modal_box a:hover{
     border-radius: 50%;
     background-color: #fff;
     border: 1px solid #dfdfdf;
-    object-fit: contain;
+    object-fit: fill;
     object-position: center;
 }
 .rating_item_count span{
