@@ -732,10 +732,8 @@ div.flash_notification{
 }
 
 /*MOBILE MENU*/
-#mobile_menu
-{
-    overflow: hidden;
-}
+
+
 #mobile_menu:hover
 {
     overflow-y: scroll;
@@ -760,6 +758,7 @@ div.flash_notification{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #eee;
 }
+
 .mobile_menu{
     background-color: #fff;
     top: 66px;
@@ -767,8 +766,7 @@ div.flash_notification{
     width: 230px;
     position: fixed;
     text-align: left;
-    /*padding-top: 30px;*/
-    height: 100%;
+    height: calc(100% - 66px);
     z-index: 1003;
     overflow-y: auto;
     overflow-x: hidden;
@@ -2154,6 +2152,10 @@ ul.search_result_modal_box a:hover{
         }
         .web_pl_remove{
             padding-left: 0!important;
+        }
+
+        #mobile_menu{
+            overflow: hidden;
         }
     }
     @media screen and (max-width: 767px) {
