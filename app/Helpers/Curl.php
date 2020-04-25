@@ -24,12 +24,12 @@ class Curl
 
     public static function getRequest($url)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT,self::$timeout);
-        $server_output = curl_exec ($curl);
-        curl_close($curl);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT,self::$timeout);
+        $server_output = curl_exec ($ch);
+        curl_close($ch);
 
         return $server_output;
     }
