@@ -124,6 +124,7 @@ class Site extends Controller
         $data['userId'] = $this->userId;
 
         $data['item'] = NewsModel::getItem($id);
+
         $data['meta_img'] = $data['item']['image'];
 
         $data['title'] = $data['item']['title'];
@@ -133,7 +134,6 @@ class Site extends Controller
         $data['next_item'] = NewsModel::navigate($id,'next');
         $data['previous_item'] = NewsModel::navigate($id,'previous');
         $data['list'] = NewsModel::getSimilarNews($id, 5);
-
 
         $return = '';
         $data['countryList'] = Sms::getCountryList();
@@ -194,6 +194,7 @@ class Site extends Controller
         $loginUrl = $helper->getLoginUrl('https://ug.news/auth/facebook/callback', $permissions);
 
         $data['postData']['facebook_url'] = htmlspecialchars($loginUrl);
+
 
         View::render('site/'.__FUNCTION__, $data);
     }

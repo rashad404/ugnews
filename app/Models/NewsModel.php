@@ -31,7 +31,7 @@ class NewsModel extends Model{
         return $array;
     }
     public static function getSimilarNews($id, $limit=6){
-        $array = self::getItem($id);
+        $array = self::getItem($id, false);
         $title = $array['title'];
         //SELECT *,
         //MATCH(`name`, `middlename`, `surname`) AGAINST ('John' IN NATURAL LANGUAGE MODE) AS score
@@ -94,11 +94,13 @@ class NewsModel extends Model{
         return $array;
     }
 
-    public static function getItem($id){
-        $update = self::$db->raw("UPDATE `".self::$tableName."` SET `view`=`view`+1 WHERE `id`='".$id."'");
+    public static function getItem($id, $count=true){
+        if($count) {
+            $update = self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $id . "'");
+        }
         $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
 
-        if($array) {
+        if($array && $count) {
             self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
         }
         return $array;
