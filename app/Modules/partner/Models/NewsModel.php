@@ -28,7 +28,7 @@ class NewsModel extends Model{
         parent::__construct();
         self::$rules = [
             'title' => ['required','min_length(5)', 'max_length(100)'],
-            'text' => ['required','min_length(50)', 'max_length(100000)'],
+            'text' => ['required','min_length(50)', 'max_length(1000000)'],
         ];
         self::$db->createTable(self::$tableName,self::getInputs());
         self::$params = $params;

@@ -41,7 +41,7 @@ class ChannelsModel extends Model{
     }
 
     public static function getItemByUrl($url){
-        $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`name_url` FROM `".self::$tableName."` WHERE `name_url`='".$url."' AND `status`=1");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`name`,`thumb`,`image`,`name_url`,`subscribers` FROM `".self::$tableName."` WHERE `name_url`='".$url."' AND `status`=1");
         return $array;
     }
 

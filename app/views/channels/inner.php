@@ -3,7 +3,6 @@ use Helpers\Url;
 use Helpers\Format;
 use Models\ProductsModel;
 $subscribe_check = \Models\NewsModel::subscribeCheck($item['id']);
-$subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
 
 ?>
 
@@ -12,7 +11,7 @@ $subscriber_count = \Models\ChannelsModel::countSubscribers($item['id']);
         <img src="<?=Url::uploadPath().$item['thumb']?>?a" alt=""><br/>
         <span class="title"><?=$item['name']?></span><br/>
         <span class="subscribe_url">https://ug.news/<?=strtolower($item['name_url'])?></span><br/>
-        <span class="subscribe_count"><?=$subscriber_count?> <?=$lng->get('subscribers')?></span>
+        <span class="subscribe_count"><?=$item['subscribers']?> <?=$lng->get('subscribers')?></span>
 
         <div class="channel_title_subscribe">
             <button redirect_url="<?=Format::urlText($item['name_url'])?>" id="subscribe_button" channel_id="<?=$item['id']?>" class="<?=($data['userId']>0)?'':'umodal_toggle'?> subscribe <?=($subscribe_check===true)?' subscribed':''?>">
