@@ -84,7 +84,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                         <a target="_blank" href="<?=SITE_URL?>/channels/<?= $item["id"]?>/<?=Format::urlText($item['name'])?>"><?= $item["name"]?></a><br/>
                                     </td>
                                     <td class="admin-arrow-box">
-                                        <?= \Modules\partner\Models\ChannelsModel::countSubscribers($item["id"])?> <?=$lng->get('subscriber');?><br/>
+                                        <?=$item["subscribers"].' '.$lng->get('subscriber');?><br/>
                                     </td>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>
