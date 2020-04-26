@@ -316,7 +316,6 @@ class Site extends Controller
     public function about(){
         $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
-        $data['item'] = AboutModel::getItem();
 
         View::render('site/'.__FUNCTION__, $data);
     }

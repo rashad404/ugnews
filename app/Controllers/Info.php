@@ -8,6 +8,7 @@ use Helpers\Pagination;
 use Helpers\Session;
 use Models\InfoModel;
 use Models\RatingModel;
+use Models\SeoModel;
 
 
 /**
@@ -31,9 +32,7 @@ class Info extends Controller
 
     public function coronavirus()
     {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
+        $data = SeoModel::coronavirus();
 
         $data['def_language'] = self::$def_language;
 
@@ -49,9 +48,7 @@ class Info extends Controller
 
     public function namaz()
     {
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
+        $data = SeoModel::namaz();
 
         $data['def_language'] = self::$def_language;
 

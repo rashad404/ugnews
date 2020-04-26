@@ -41,6 +41,22 @@ class SeoModel extends Model{
     }
 
 
+    public static function coronavirus(){
+        $array['title'] = self::$add_prefix.' Koronavirus statistikası, koronavirus xəbərləri';
+        $array['keywords'] = self::$add_prefix.' en son koronavirus statistikaları, koronavirus xeberleri, son koronavirus yenilikleri, koronavirus baki, koronavirus azerbaycan';
+        $array['description'] = self::$add_prefix.'Ən son koronavirus statistikaları, canlı statistika';
+        $array['meta_img'] = 'logo/logo-fb.png';
+        return $array;
+    }
+    public static function namaz(){
+        $array['title'] = self::$add_prefix.' Namaz vaxtı, Bakı Namaz vaxtı';
+        $array['keywords'] = self::$add_prefix.' namaz vaxti, namaz vaxtlari, bugun namaz, subh, zohr,esr,şam,xuften namazi vaxti, namaz teqvimi';
+        $array['description'] = self::$add_prefix.'Namaz vaxtları, Aylıq namaz təqvimi';
+        $array['meta_img'] = 'logo/logo-fb.png';
+        return $array;
+    }
+
+
 
 
 
