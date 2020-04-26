@@ -16,7 +16,7 @@ class InfoModel extends Model{
 
 
     public static function coronavirusList(){
-        $array = self::$db->select("SELECT `id`,`country`,`total_cases` FROM `".self::$tableNameCorona."` ORDER BY `total_cases` DESC");
+        $array = self::$db->select("SELECT * FROM `".self::$tableNameCorona."` ORDER BY `total_cases` DESC");
         return $array;
     }
 

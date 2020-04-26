@@ -1711,6 +1711,10 @@ a.tag_box_a:hover{
 
 
 /*Info box*/
+.rating_box.info_box_table td{
+    height: 50px!important;
+}
+
 .info_box{
     padding: 5px 0;
     border: 1px solid rgba(115, 12, 46, 0.23);

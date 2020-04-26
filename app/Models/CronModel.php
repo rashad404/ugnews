@@ -49,13 +49,13 @@ class CronModel extends Model{
 
                 array_push($dataArray, array(
                     "country"      => $country,
-                    "total_cases"    => preg_replace("/,/","",$total_cases),
-                    "new_cases"    => $new_cases,
-                    "total_deaths"      => $total_deaths,
-                    "new_deaths"      => $new_deaths,
-                    "total_recovered"      => $total_recovered,
-                    "active_cases"   => $active_cases,
-                    "critical"   => $critical
+                    "total_cases"    => preg_replace("/[,+]/","",$total_cases),
+                    "new_cases"    => preg_replace("/[,+]/","",$new_cases),
+                    "total_deaths"      => preg_replace("/[,+]/","",$total_deaths),
+                    "new_deaths"      => preg_replace("/[,+]/","",$new_deaths),
+                    "total_recovered"      => preg_replace("/[,+]/","",$total_recovered),
+                    "active_cases"   => preg_replace("/[,+]/","",$active_cases),
+                    "critical"   => preg_replace("/[,+]/","",$critical),
                 ));
             }
             $c++;

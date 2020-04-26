@@ -106,4 +106,14 @@ return [
     "Your Channels" => "Sizin Kanallar",
     "Channel Settings" => "Kanal ayarları",
     "Categories" => "Kateqoriyalar",
+
+    //Info
+    "Total" => "Cəm",
+    "New" => "Yeni",
+    "New Death" => "Yeni Ölüm",
+    "Total Death" => "Cəm Ölüm",
+    "Death Rate" => "Ölüm Faizi",
+    "Total Recovered" => "Cəm sağalan",
+    "Active" => "Müalicədə",
+    "Critical" => "Kritik",
 ];
