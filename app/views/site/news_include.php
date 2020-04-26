@@ -34,7 +34,7 @@ use Helpers\Format;
                         <div class="caption">
                             <div class="news_title">
                             <span>
-                                <?=Format::listTitle($list['title'], 50)?>
+                                <?=Format::listTitle($list['title'], 70)?>
                             </span>
                             </div>
                         </div>

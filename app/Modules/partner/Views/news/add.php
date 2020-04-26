@@ -1,8 +1,7 @@
 <?php
 use Models\LanguagesModel;
 $params = $data["params"];
-$languages = LanguagesModel::getLanguages('partner');
-$defaultLanguage = LanguagesModel::getDefaultLanguage('partner');
+$lng = $data['lng'];
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
