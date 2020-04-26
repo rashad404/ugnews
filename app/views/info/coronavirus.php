@@ -46,14 +46,14 @@ use Helpers\Url;
                             <tr>
                                 <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
                                 <td class="rating_item_title"><?=$lng->get($list['country'])?></td>
-                                <td class="rating_item"><?=$list['total_cases']?></td>
-                                <td class="rating_item"><?=$list['new_cases']?></td>
-                                <td class="rating_item"><?=$list['new_deaths']?></td>
-                                <td class="rating_item"><?=$list['total_deaths']?></td>
+                                <td class="rating_item"><?=number_format($list['total_cases'],'0','', ',')?></td>
+                                <td class="rating_item"><?=number_format($list['new_cases'],'0','', ',')?></td>
+                                <td class="rating_item"><?=number_format($list['new_deaths'],'0','', ',')?></td>
+                                <td class="rating_item"><?=number_format($list['total_deaths'],'0','', ',')?></td>
                                 <td class="rating_item"><?=$death_rate?></td>
-                                <td class="rating_item"><?=$list['total_recovered']?></td>
-                                <td class="rating_item"><?=$list['active_cases']?></td>
-                                <td class="rating_item"><?=$list['critical']?></td>
+                                <td class="rating_item"><?=number_format($list['total_recovered'],'0','', ',')?></td>
+                                <td class="rating_item"><?=number_format($list['active_cases'],'0','', ',')?></td>
+                                <td class="rating_item"><?=number_format($list['critical'],'0','', ',')?></td>
                             </tr>
                         <?php $c++;endforeach; ?>
                     </table>
