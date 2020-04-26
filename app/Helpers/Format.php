@@ -63,7 +63,7 @@ class Format{
         return $text;
     }
     public static function shortText($text,$length=100){
-        if(strlen($text)>$length){
+        if(mb_strlen($text)>$length){
             return mb_substr($text,0,$length).'.';
         }else {
             return $text;

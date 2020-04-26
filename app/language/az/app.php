@@ -117,4 +117,5 @@ return [
     "Total Recovered" => "Cəm sağalan",
     "Active" => "Müalicədə",
     "Critical" => "Kritik",
+    "Azerbaijan" => "Azərbaycan",
 ];

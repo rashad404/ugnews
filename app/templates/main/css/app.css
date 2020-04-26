@@ -1713,6 +1713,7 @@ a.tag_box_a:hover{
 /*Info box*/
 .rating_box.info_box_table th{
     width: 50px!important;
+    vertical-align: middle;
 }
 .rating_box.info_box_table td{
     height: 50px!important;

@@ -41,6 +41,7 @@ class Info extends Controller
 
 
         $data['list'] = InfoModel::coronavirusList();
+        $data['listSelected'] = InfoModel::coronavirusSelected();
 
         View::render('info/'.__FUNCTION__, $data);
     }
