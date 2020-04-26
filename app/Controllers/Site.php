@@ -51,7 +51,6 @@ class Site extends Controller
     {
         $data = SeoModel::index();
         $data['def_language'] = self::$def_language;
-        $data['meta_img'] = 'logo/logo-fb.png';
 
         $pagination = new Pagination();
         $pagination->limit = 24;
@@ -71,7 +70,7 @@ class Site extends Controller
 
     // Index page
     public function cat($id=0, $name=''){
-        $data = SeoModel::index();
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
@@ -87,7 +86,7 @@ class Site extends Controller
 
     // Tag cat page
     public function tag_cat($id=0, $name=''){
-        $data = SeoModel::index();
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
@@ -103,7 +102,7 @@ class Site extends Controller
     // Tag page
     public function tags($name=''){
         $name = Format::deUrlText($name);
-        $data = SeoModel::index();
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
@@ -119,7 +118,6 @@ class Site extends Controller
     // News inner page
     public function news_inner($id)
     {
-
         $data['def_language'] = self::$def_language;
         $data['userId'] = $this->userId;
 
@@ -269,9 +267,7 @@ class Site extends Controller
         if($this->userId>0){
             Url::redirect("user/dashboard");exit;
         }
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
+        $data = SeoModel::general();
         $data['countryList'] = Sms::getCountryList();
         $data['def_language'] = self::$def_language;
 
@@ -296,9 +292,7 @@ class Site extends Controller
     }
 
     public function contacts(){
-        $data['title'] = SITE_TITLE;
-        $data['keywords'] = SITE_TITLE;
-        $data['description'] = SITE_TITLE;
+        $data = SeoModel::general();
         $data['contacts'] = $this->siteModel->getContacts();
         $data['def_language'] = self::$def_language;
 
@@ -320,34 +314,26 @@ class Site extends Controller
     }
 
     public function about(){
-        $data['title'] = $this->lng->get("About").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("About").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("About").' '.SITE_TITLE;
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
         $data['item'] = AboutModel::getItem();
 
         View::render('site/'.__FUNCTION__, $data);
     }
     public function privacy(){
-        $data['title'] = $this->lng->get("Privacy").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("Privacy").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("Privacy").' '.SITE_TITLE;
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
 
         View::render('site/'.__FUNCTION__, $data);
     }
     public function refund(){
-        $data['title'] = $this->lng->get("Refund").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("Refund").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("Refund").' '.SITE_TITLE;
+        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
 
         View::render('site/'.__FUNCTION__, $data);
     }
     public function create_channel(){
-        $data['title'] = $this->lng->get("Create Channel Help").' '.PROJECT_NAME;
-        $data['keywords'] = $this->lng->get("Create Channel Help").' '.SITE_TITLE;
-        $data['description'] = $this->lng->get("Create Channel Help").' '.SITE_TITLE;
+        $data = SeoModel::create_channel();
         $data['def_language'] = self::$def_language;
         View::render('help/'.__FUNCTION__, $data);
     }
