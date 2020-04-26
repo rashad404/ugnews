@@ -38,4 +38,48 @@ class InfoModel extends Model{
         return $array;
     }
 
+
+    public static function getRamazanText(){
+        $namaz_time = self::getNamazTime();
+
+        $megrib_time = strtotime($namaz_time['date'].' '.$namaz_time['megrib']);
+        $imsak_time = strtotime($namaz_time['date'].' '.$namaz_time['imsak']);
+
+        if(time()<=$imsak_time){
+            return 'İmsak: '.$namaz_time['imsak'];
+        }elseif(time()>$imsak_time && time()<=$megrib_time){
+            return 'Məğrib : '.$namaz_time['megrib'];
+        }else{
+            $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
+            return 'İmsak: '.$namaz_time_tomorrow['imsak'];
+        }
+    }
+
+
+    public static function getNamazText(){
+        $namaz_time = self::getNamazTime();
+
+        $subh = strtotime($namaz_time['date'].' '.$namaz_time['subh']);
+        $zohr = strtotime($namaz_time['date'].' '.$namaz_time['zohr']);
+        $esr = strtotime($namaz_time['date'].' '.$namaz_time['esr']);
+        $megrib = strtotime($namaz_time['date'].' '.$namaz_time['megrib']);
+        $isha = strtotime($namaz_time['date'].' '.$namaz_time['isha']);
+
+
+        if(time()<=$subh){
+            return 'Sübh: '.$namaz_time['subh'];
+        }elseif(time()>$subh && time()<=$zohr){
+            return 'Zöhr : '.$namaz_time['zohr'];
+        }elseif(time()>$zohr && time()<=$esr){
+            return 'Əsr : '.$namaz_time['esr'];
+        }elseif(time()>$esr && time()<=$megrib){
+            return 'Məğrib : '.$namaz_time['megrib'];
+        }elseif(time()>$megrib && time()<=$isha){
+            return 'İşa : '.$namaz_time['isha'];
+        }else{
+            $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
+            return 'Sübh: '.$namaz_time_tomorrow['subh'];
+        }
+    }
+
 }
