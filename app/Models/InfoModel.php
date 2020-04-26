@@ -58,12 +58,12 @@ class InfoModel extends Model{
         $imsak_time = strtotime($namaz_time['date'].' '.$namaz_time['imsak']);
 
         if(time()<=$imsak_time){
-            return 'İmsak: '.$namaz_time['imsak'];
+            return 'İmsak '.$namaz_time['imsak'];
         }elseif(time()>$imsak_time && time()<=$megrib_time){
-            return 'Məğrib : '.$namaz_time['maghrib'];
+            return 'Məğrib '.$namaz_time['maghrib'];
         }else{
             $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
-            return 'İmsak: '.$namaz_time_tomorrow['imsak'];
+            return 'İmsak '.$namaz_time_tomorrow['imsak'];
         }
     }
 
@@ -79,15 +79,15 @@ class InfoModel extends Model{
 
 
         if(time()<=$fajr){
-            return 'Sübh: '.$namaz_time['fajr'];
+            return 'Sübh '.$namaz_time['fajr'];
         }elseif(time()>$fajr && time()<=$zohr){
-            return 'Zöhr : '.$namaz_time['dhuhr'];
+            return 'Zöhr '.$namaz_time['dhuhr'];
         }elseif(time()>$dhuhr && time()<=$asr){
-            return 'Əsr : '.$namaz_time['asr'];
+            return 'Əsr '.$namaz_time['asr'];
         }elseif(time()>$asr && time()<=$maghrib){
-            return 'Məğrib : '.$namaz_time['maghrib'];
+            return 'Məğrib '.$namaz_time['maghrib'];
         }elseif(time()>$maghrib && time()<=$isha){
-            return 'İşa : '.$namaz_time['isha'];
+            return 'İşa '.$namaz_time['isha'];
         }else{
             $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
             return 'Sübh: '.$namaz_time_tomorrow['subh'];

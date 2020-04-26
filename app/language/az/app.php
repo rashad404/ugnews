@@ -121,6 +121,7 @@ return [
 
     "Baku" => "Bakı",
     "Namaz Times" => "Namaz Vaxtları",
+    "Next prayer" => "Növbəti Namaz",
     "Today" => "Bugün",
     "Date" => "Tarix",
     "Fajr" => "Sübh",

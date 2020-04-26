@@ -9,7 +9,13 @@ use Helpers\Url;
         <div class="row paddingBottom40">
             <div class="col-sm-12">
 
-                <div class="rating_box_title"><?=$lng->get('Baku')?> <?=$lng->get('Namaz Times')?></div>
+                <div class="info_selected">
+                    <?=$lng->get('Next prayer')?><br/>
+                    <span><?=$data['now']?></span>
+                </div>
+                <div class="rating_box_title">
+                    <?=$lng->get('Baku')?> <?=$lng->get('Namaz Times')?>
+                </div>
 
                 <div class="rating_box info_box_table table-responsive">
                     <table class="table table-striped"  >

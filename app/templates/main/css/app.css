@@ -1719,6 +1719,20 @@ a.tag_box_a:hover{
     height: 50px!important;
 }
 
+
+.info_selected{
+    padding-top: 20px;
+    font-size: 18px;
+    background-color: #fff;
+    color: #919191;
+    text-align: center;
+}
+.info_selected span{
+    font-size: 24px;
+    font-weight: bold;
+    color:red;
+}
+
 .info_box{
     padding: 5px 0;
     border: 1px solid rgba(115, 12, 46, 0.23);
