@@ -42,13 +42,30 @@ use Helpers\Url;
                                 }else{
                                     $death_rate = 0;
                                 }
+
+
+                                if($list['new_cases']>0){
+                                    $bg_color_new = 'color:#ff8712;font-weight:bold;';
+                                    $plus_new = '+';
+                                }else{
+                                    $bg_color_new = '';
+                                    $plus_new = '';
+                                }
+
+                                if($list['new_deaths']>0){
+                                    $bg_color_death = 'color:red;font-weight:bold;';
+                                    $plus_death = '+';
+                                }else{
+                                    $bg_color_death = '';
+                                    $plus_death = '';
+                                }
                             ?>
                             <tr>
                                 <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
-                                <td class="rating_item_title"><?=$lng->get($list['country'])?></td>
+                                <td class="rating_item_title"><?=Format::shortText($lng->get($list['country']),10)?></td>
                                 <td class="rating_item"><?=number_format($list['total_cases'],'0','', ',')?></td>
-                                <td class="rating_item"><?=number_format($list['new_cases'],'0','', ',')?></td>
-                                <td class="rating_item"><?=number_format($list['new_deaths'],'0','', ',')?></td>
+                                <td class="rating_item" style="<?=$bg_color_new?>"><?=$plus_new.number_format($list['new_cases'],'0','', ',')?></td>
+                                <td class="rating_item" style="<?=$bg_color_death?>"><?=$plus_death.number_format($list['new_deaths'],'0','', ',')?></td>
                                 <td class="rating_item"><?=number_format($list['total_deaths'],'0','', ',')?></td>
                                 <td class="rating_item"><?=$death_rate?></td>
                                 <td class="rating_item"><?=number_format($list['total_recovered'],'0','', ',')?></td>
