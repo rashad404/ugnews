@@ -119,7 +119,9 @@ return [
     "Critical" => "Kritik",
     "Azerbaijan" => "Azərbaycan",
 
-    "Namaz Times" => "Namaz vaxtları",
+    "Baku" => "Bakı",
+    "Namaz Times" => "Namaz Vaxtları",
+    "Today" => "Bugün",
     "Date" => "Tarix",
     "Fajr" => "Sübh",
     "Sunrise" => "Gün çıxır",

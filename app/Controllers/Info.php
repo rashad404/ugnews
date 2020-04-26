@@ -59,6 +59,7 @@ class Info extends Controller
 
 
         $data['list'] = InfoModel::namazList();
+        $data['today'] = InfoModel::getNamazTime();
         $data['selected'] = InfoModel::getNamazText();
 
         View::render('info/'.__FUNCTION__, $data);

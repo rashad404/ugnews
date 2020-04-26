@@ -36,7 +36,9 @@ class InfoModel extends Model{
     //Namaz
 
     public static function namazList(){
-        $array = self::$db->select("SELECT * FROM `".self::$tableNameNamaz."` WHERE `date`='".date('Y-m-d')."'");
+        $begin_date = date("Y-m")."-01";
+        $end_date = date("Y-m-t");
+        $array = self::$db->select("SELECT * FROM `".self::$tableNameNamaz."` WHERE `date`>='".$begin_date."' AND  `date`<='".$end_date."'");
         return $array;
     }
 

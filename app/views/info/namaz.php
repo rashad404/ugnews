@@ -9,12 +9,11 @@ use Helpers\Url;
         <div class="row paddingBottom40">
             <div class="col-sm-12">
 
-                <div class="rating_box_title"><?=$lng->get('Namaz Times')?></div>
+                <div class="rating_box_title"><?=$lng->get('Baku')?> <?=$lng->get('Namaz Times')?></div>
 
                 <div class="rating_box info_box_table table-responsive">
                     <table class="table table-striped"  >
                         <tr>
-                            <th style="width: 10px;padding: 10px!important;"></th>
                             <th><?=$lng->get('Date')?></th>
                             <th><?=$lng->get('Fajr')?></th>
                             <th><?=$lng->get('Sunrise')?></th>
@@ -24,9 +23,24 @@ use Helpers\Url;
                             <th><?=$lng->get('Isha')?></th>
                         </tr>
 
-                        <?php $c=1; foreach ($data['list'] as $list):?>
-                            <tr>
-                                <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
+                        <tr style="color:red;font-weight: bold">
+                            <td class="rating_item_title"><?=$lng->get('Today')?></td>
+                            <td class="rating_item"><?=$data['today']['fajr']?></td>
+                            <td class="rating_item"><?=$data['today']['sunrise']?></td>
+                            <td class="rating_item"><?=$data['today']['dhuhr']?></td>
+                            <td class="rating_item"><?=$data['today']['asr']?></td>
+                            <td class="rating_item"><?=$data['today']['maghrib']?></td>
+                            <td class="rating_item"><?=$data['today']['isha']?></td>
+                        </tr>
+                        <?php foreach ($data['list'] as $list):?>
+                            <?php
+                                if($list['date']==date('Y-m-d')){
+                                    $style = 'color:red';
+                                }else{
+                                    $style = '';
+                                }
+                            ?>
+                            <tr style="<?=$style?>">
                                 <td class="rating_item_title"><?=$list['date']?></td>
                                 <td class="rating_item"><?=$list['fajr']?></td>
                                 <td class="rating_item"><?=$list['sunrise']?></td>
@@ -35,7 +49,7 @@ use Helpers\Url;
                                 <td class="rating_item"><?=$list['maghrib']?></td>
                                 <td class="rating_item"><?=$list['isha']?></td>
                             </tr>
-                        <?php $c++;endforeach; ?>
+                        <?php endforeach; ?>
                     </table>
 
                     <div class="clearBoth"></div>
