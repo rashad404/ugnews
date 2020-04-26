@@ -53,6 +53,7 @@ $lng->load('app');
         Url::templatePartnerPath() . 'js/scr.js',
         Url::templatePartnerPath() . 'js/script_yuel.js',
         Url::templatePartnerPath() . 'js/summernote.min.js',
+        Url::templatePartnerPath() . 'js/summernote-cleaner.js',
         Url::templatePartnerPath() . 'js/main.js',
         Url::templatePath() . 'js/main.js'.$css_v,
         Url::templatePartnerPath() . 'js/bootstrap-tagsinput.min.js',
@@ -72,19 +73,28 @@ $lng->load('app');
                 minHeight: 100,             // set minimum height of editor
                 maxHeight: 400,             // set maximum height of editor
                 focus: true,                  // set focus to editable area after initializing summernote
-                fontSizes: ['6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30', '36', '48' , '64', '82', '150'],
                 toolbar: [
                     ['font', ['bold', 'italic', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video', 'hr']],
-                    ['view', ['fullscreen', 'codeview']],
+                    ['insert', ['picture', 'hr']],
+                    ['view', ['fullscreen']],
                     // ['help', ['help']]
                 ],
+                cleaner:{
+                    action: 'both', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+                    newline: '<br/>', // Summernote's default is to use '<p><br></p>'
+                    notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+                    icon: '<i class="note-icon">[Your Button]</i>',
+                    keepHtml: true, // Remove all Html formats
+                    keepOnlyTags: ['<p>', '<br>', '<ul>', '<li>', '<b>', '<i>', '<strong>'], // If keepHtml is true, remove all tags except these
+                    keepClasses: false, // Remove Classes
+                    badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+                    badAttributes: ['style', 'start'], // Remove attributes from remaining tags
+                    limitChars: false, // 0/false|# 0/false disables option
+                    limitDisplay: 'both', // text|html|both
+                    limitStop: false // true/false
+                },
             });
         });
     </script>
