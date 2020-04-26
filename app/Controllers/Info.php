@@ -47,4 +47,22 @@ class Info extends Controller
     }
 
 
+    public function namaz()
+    {
+        $data['title'] = SITE_TITLE;
+        $data['keywords'] = SITE_TITLE;
+        $data['description'] = SITE_TITLE;
+
+        $data['def_language'] = self::$def_language;
+
+        $data['userId'] = self::$userId;
+
+
+        $data['list'] = InfoModel::namazList();
+        $data['selected'] = InfoModel::getNamazText();
+
+        View::render('info/'.__FUNCTION__, $data);
+    }
+
+
 }

@@ -26,10 +26,20 @@ class InfoModel extends Model{
         return $array;
     }
 
-    public static function getMost(){
+    public static function getMostCorona(){
         $array = self::$db->selectOne("SELECT `total_cases` FROM `".self::$tableNameCorona."` WHERE `id`=2");
         return $array['total_cases'];
     }
+
+
+
+    //Namaz
+
+    public static function namazList(){
+        $array = self::$db->select("SELECT * FROM `".self::$tableNameNamaz."` WHERE `date`='".date('Y-m-d')."'");
+        return $array;
+    }
+
     public static function getNamazTime($date=''){
         if(empty($date)){
             $date = date('Y-m-d');
@@ -42,13 +52,13 @@ class InfoModel extends Model{
     public static function getRamazanText(){
         $namaz_time = self::getNamazTime();
 
-        $megrib_time = strtotime($namaz_time['date'].' '.$namaz_time['megrib']);
+        $megrib_time = strtotime($namaz_time['date'].' '.$namaz_time['maghrib']);
         $imsak_time = strtotime($namaz_time['date'].' '.$namaz_time['imsak']);
 
         if(time()<=$imsak_time){
             return 'İmsak: '.$namaz_time['imsak'];
         }elseif(time()>$imsak_time && time()<=$megrib_time){
-            return 'Məğrib : '.$namaz_time['megrib'];
+            return 'Məğrib : '.$namaz_time['maghrib'];
         }else{
             $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
             return 'İmsak: '.$namaz_time_tomorrow['imsak'];
@@ -59,22 +69,22 @@ class InfoModel extends Model{
     public static function getNamazText(){
         $namaz_time = self::getNamazTime();
 
-        $subh = strtotime($namaz_time['date'].' '.$namaz_time['subh']);
-        $zohr = strtotime($namaz_time['date'].' '.$namaz_time['zohr']);
-        $esr = strtotime($namaz_time['date'].' '.$namaz_time['esr']);
-        $megrib = strtotime($namaz_time['date'].' '.$namaz_time['megrib']);
+        $fajr = strtotime($namaz_time['date'].' '.$namaz_time['fajr']);
+        $dhuhr = strtotime($namaz_time['date'].' '.$namaz_time['dhuhr']);
+        $asr = strtotime($namaz_time['date'].' '.$namaz_time['asr']);
+        $maghrib = strtotime($namaz_time['date'].' '.$namaz_time['maghrib']);
         $isha = strtotime($namaz_time['date'].' '.$namaz_time['isha']);
 
 
-        if(time()<=$subh){
-            return 'Sübh: '.$namaz_time['subh'];
-        }elseif(time()>$subh && time()<=$zohr){
-            return 'Zöhr : '.$namaz_time['zohr'];
-        }elseif(time()>$zohr && time()<=$esr){
-            return 'Əsr : '.$namaz_time['esr'];
-        }elseif(time()>$esr && time()<=$megrib){
-            return 'Məğrib : '.$namaz_time['megrib'];
-        }elseif(time()>$megrib && time()<=$isha){
+        if(time()<=$fajr){
+            return 'Sübh: '.$namaz_time['fajr'];
+        }elseif(time()>$fajr && time()<=$zohr){
+            return 'Zöhr : '.$namaz_time['dhuhr'];
+        }elseif(time()>$dhuhr && time()<=$asr){
+            return 'Əsr : '.$namaz_time['asr'];
+        }elseif(time()>$asr && time()<=$maghrib){
+            return 'Məğrib : '.$namaz_time['maghrib'];
+        }elseif(time()>$maghrib && time()<=$isha){
             return 'İşa : '.$namaz_time['isha'];
         }else{
             $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));

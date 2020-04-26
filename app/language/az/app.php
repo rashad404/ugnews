@@ -118,4 +118,13 @@ return [
     "Active" => "Müalicədə",
     "Critical" => "Kritik",
     "Azerbaijan" => "Azərbaycan",
+
+    "Namaz Times" => "Namaz vaxtları",
+    "Date" => "Tarix",
+    "Fajr" => "Sübh",
+    "Sunrise" => "Gün çıxır",
+    "Dhuhr" => "Zöhr",
+    "Asr" => "Əsr",
+    "Maghrib" => "Məğrib",
+    "Isha" => "İşa",
 ];
