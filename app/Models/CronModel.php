@@ -93,6 +93,7 @@ class CronModel extends Model{
                     'active_cases' =>$active_cases,
                     'total' =>$total,
                     'critical' =>$critical,
+                    'last_updated' =>time(),
                 ];
                 $insert = self::$db->insert(self::$tableNameCorona,$insert_data);
 
