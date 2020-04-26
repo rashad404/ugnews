@@ -108,6 +108,7 @@ return [
     "Categories" => "Kateqoriyalar",
 
     //Info
+    "Coronavirus Statistics" => "Koronavirus Statistikası",
     "Total" => "Cəm",
     "New" => "Yeni",
     "New Death" => "Yeni Ölüm",
