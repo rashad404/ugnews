@@ -14,14 +14,12 @@ if ($data['region'] == 16) {
 }
 
 $world_corona = \Models\InfoModel::getMost();
-$info_list = [
-    'Koronavirus'=>$world_corona.' '.$lng->get('cases'),
-    'Ramazan'=>'Məğrib: 19:00',
-    'Namaz'=>'Sübh: 14:20',
-    'Valyuta'=>'1 USD = 1.7 AZN',
-    'Hava'=>'Bakı 13 °',
-];
 
+$info_list[] = ['Koronavirus',$world_corona.' '.$lng->get('cases'), 'info/coronavirus'];
+$info_list[] = ['Ramazan','Məğrib: 19:45', 'tags/ramazan'];
+$info_list[] = ['Namaz','Zöhr: 12:39', 'tags/namaz'];
+$info_list[] = ['Valyuta','1 USD = 1.7 AZN', 'tags/valyuta'];
+$info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
 
 ?>
 
@@ -29,13 +27,13 @@ $info_list = [
     <div class="container paddingBottom20">
 
         <div class="row">
-            <?php foreach ($info_list as $key => $val):?>
+            <?php foreach ($info_list as $list):?>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 0 5px;">
 
-                    <a class="info_box_a" href="tags/<?=Format::urlTextTag($key)?>">
+                    <a class="info_box_a" href="<?=$list['2']?>">
                         <div class="info_box">
-                            <?=Format::shortText($key,20)?><br/>
-                            <span><?=$val?></span>
+                            <?=$list['0']?><br/>
+                            <span><?=$list['1']?></span>
                         </div>
                     </a>
                 </div>
