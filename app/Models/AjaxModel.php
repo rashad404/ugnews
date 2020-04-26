@@ -21,8 +21,6 @@ class AjaxModel extends Model{
     }
 
 
-
-
     public static function like($id){
         $user_id = intval(Session::get("user_session_id"));
         if($user_id<1)exit;

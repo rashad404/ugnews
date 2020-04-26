@@ -8,6 +8,7 @@ return [
     'Latest News' => 'Son xəbərlər',
     'Read more' => 'Ardını oxu',
     'Rating' => 'Reytinq',
+    'cases' => 'yoluxma',
 
     //header
     'Select Region' => 'Ölkə seçin',

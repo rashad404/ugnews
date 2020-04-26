@@ -36,14 +36,14 @@ class Curl
 
     public static function saveFile($url, $local_url)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
 
         $fp = fopen($local_url, 'wb');
-        curl_setopt($curl, CURLOPT_FILE, $fp);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_exec($curl);
-        curl_close($curl);
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_exec($ch);
+        curl_close($ch);
         fclose($fp);
     }
     public static function saveFileFgc($url, $local_url)

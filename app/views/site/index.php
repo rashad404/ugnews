@@ -1,21 +1,49 @@
 <?php
 use Helpers\Url;
 use Helpers\Format;
+
+
+if ($data['region'] == 16) {
+    $tag_list = [
+        'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlət yardımı', '8103 SMS'
+    ];
+} else {
+    $tag_list = [
+        'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
+    ];
+}
+
+$world_corona = \Models\InfoModel::getMost();
+$info_list = [
+    'Koronavirus'=>$world_corona.' '.$lng->get('cases'),
+    'Ramazan'=>'Məğrib: 19:00',
+    'Namaz'=>'Sübh: 14:20',
+    'Valyuta'=>'1 USD = 1.7 AZN',
+    'Hava'=>'Bakı 13 °',
+];
+
+
 ?>
 
 <main class="main">
+    <div class="container paddingBottom20">
 
-    <?php
-    if($data['region']==16) {
-        $tag_list = [
-            'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlət yardımı', '8103 SMS'
-        ];
-    }else{
-        $tag_list = [
-            'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
-        ];
-    }
-    ?>
+        <div class="row">
+            <?php foreach ($info_list as $key => $val):?>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 0 5px;">
+
+                    <a class="info_box_a" href="tags/<?=Format::urlTextTag($key)?>">
+                        <div class="info_box">
+                            <?=Format::shortText($key,20)?><br/>
+                            <span><?=$val?></span>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+
 
     <div class="container paddingBottom20">
             <div class="row paddingBottom40">

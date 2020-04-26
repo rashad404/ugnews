@@ -26,6 +26,7 @@ class MyController extends Controller
         $getSessionPass = Security::safe(Session::get('user_session_pass'));
          $getAuthInfo = Database::get()->selectOne("SELECT * FROM `users` WHERE id=:id",["id" => $getSessionId]);
         if($getSessionPass != Security::session_password($getAuthInfo["password_hash"])){
+            var_dump($getAuthInfo);
 //            echo $getSessionId;echo '<br/>';
 //            echo $getAuthInfo["password"];echo '<br/>';
 //            echo Security::session_password($getAuthInfo["password"]);echo '<br/>';
