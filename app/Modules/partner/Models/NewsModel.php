@@ -3,6 +3,9 @@
 namespace Modules\partner\Models;
 
 use Core\Model;
+use DateTime;
+use Helpers\Console;
+use Helpers\Date;
 use Helpers\Security;
 use Helpers\FileUploader;
 use Helpers\Session;
@@ -44,17 +47,22 @@ class NewsModel extends Model{
      *If sql_type is empty, will not create field on sql table
      */
     public static function getInputs(){
-        $array[] = ['type'=>'text',         'name'=>'Title',       'key'=>'title',        'sql_type'=>'varchar(100)'];
-        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'image',             'sql_type'=>'varchar(200)'];
-        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'thumb',             'sql_type'=>'varchar(200)'];
-        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'position',            'sql_type'=>'int(11)'];
-        $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',            'sql_type'=>'int(5)', 'data' => self::getCategories()];
+        $array[] = ['type'=>'text',         'name'=>'Title',            'key'=>'title',           'sql_type'=>'varchar(100)'];
+        $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',             'sql_type'=>'int(5)', 'data' => self::getCategories()];
+        $array[] = ['type'=>'select2',      'name'=>'Select Channel',   'key'=>'channel',         'sql_type'=>'varchar(2)', 'data' => self::getChannels()];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'image',           'sql_type'=>'varchar(200)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'thumb',           'sql_type'=>'varchar(200)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'position',        'sql_type'=>'int(11)'];
+
         $array[] = ['type'=>'tags',         'name'=>'Tags',             'key'=>'tags',            'sql_type'=>'varchar(255)'];
-        $array[] = ['type'=>'select2',      'name'=>'Select Channel',   'key'=>'channel',            'sql_type'=>'varchar(2)', 'data' => self::getChannels()];
+        $array[] = ['type'=>'datetime',         'name'=>'Publish Date',     'key'=>'publish_time',    'sql_type'=>'int(11)'];
+
+
+
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'status',          'sql_type'=>'tinyint(2)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
-        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',           'sql_type'=>'int(11)'];
-        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',           'sql_type'=>'int(11)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',            'sql_type'=>'int(11)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',      'sql_type'=>'int(11)'];
 
         $array[] = ['type'=>'textarea',      'name'=>'Text',           'key'=>'text',            'sql_type'=>'text'];
 //        $array[] = ['type'=>'date',         'name'=>'Notice Date',    'key'=>'notice_date',          'sql_type'=>'varchar(20)'];
@@ -125,9 +133,14 @@ class NewsModel extends Model{
         extract($_POST);
         $skip_list = ['csrf_token','image'];
         $array = [];
+
         foreach($_POST as $key=>$value){
             if (in_array($key, $skip_list)) continue;
-            $array[$key] = Security::safe($_POST[$key]);
+            if(Date::validateDate($_POST[$key])){
+                $array[$key] = strtotime($_POST[$key]);
+            }else {
+                $array[$key] = Security::safe($_POST[$key]);
+            }
         }
         return $array;
     }
@@ -195,6 +208,8 @@ class NewsModel extends Model{
         $return = [];
         $return['errors'] = null;
         $post_data = self::getPost();
+        $post_data['publish_time'] = strtotime($post_data['publish_time']);
+
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $return['errors'] = null;
@@ -231,6 +246,8 @@ class NewsModel extends Model{
         $return = [];
         $return['errors'] = null;
         $post_data = self::getPost();
+        $post_data['publish_time'] = strtotime($post_data['publish_time']);
+
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $return['errors'] = null;

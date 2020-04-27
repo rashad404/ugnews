@@ -90,7 +90,7 @@ class InfoModel extends Model{
             return 'İşa '.$namaz_time['isha'];
         }else{
             $namaz_time_tomorrow = self::getNamazTime(date('Y-m-d', strtotime(' +1 day')));
-            return 'Sübh: '.$namaz_time_tomorrow['subh'];
+            return 'Sübh: '.$namaz_time_tomorrow['fajr'];
         }
     }
 

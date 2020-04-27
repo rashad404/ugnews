@@ -14,7 +14,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 </script>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form_box">
-        <div class="row">
+        <div class="row ">
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="image"><?=$lng->get('Photo');?></label>
@@ -35,11 +35,35 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                     </div>
                 </div>
             </div>
-            <?php foreach ($data['input_list'] as $value) :?>
+            <?php $dp_c=0;$dtp_c=0;foreach ($data['input_list'] as $value) :?>
                 <?php if(!empty($value['name'])):?>
                     <?php if($value['key']=='notice_date'):?>
                         </div><div class="row">
                     <?php endif;?>
+
+                    <?php
+                    if(!$item){
+                        $input_value = '';
+                        if($value['type']=='datetime'){
+        //                            $input_value = date('Y-m-d', time()).'T'.date('h:i', time());
+                            $input_value = date('m/d/Y h:i A');
+        //                            echo $input_value;
+                        }
+                        if($value['type']=='date'){
+                            $input_value = date('m/d/Y');
+                        }
+                    }else{
+                        if($value['type']=='datetime'){
+                            $input_value = date('m/d/Y h:i A',$item[$value['key']]);
+                        }
+                        elseif($value['type']=='date'){
+                            $input_value = strtotime($item[$value['key']]);
+                            $input_value = date('m/d/Y',$input_value);
+                        }else{
+                            $input_value = $item[$value['key']];
+                        }
+                    }?>
+
                     <div class="col-sm-<?=($value['type']=='textarea')?'12':'4'?>">
                         <div class="form-group">
                             <label><strong><?=$lng->get($value['name'])?>:</strong></label><br/>
@@ -65,10 +89,32 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                         <option <?=$selected?> value="<?=$data['key']?>" <?=$data['disabled']?>><?=$lng->get($data['name'])?></option>
                                     <?php endforeach;?>
                                 </select>
+                            <?php elseif($value['type']=='datetime'):?>
+                                <div class="form-group default_date default" style="margin-top: 0px!important;margin-bottom: 0px!important;">
+                                    <div class='input-group date' id='datetimepicker<?=$dp_c?>'>
+                                        <input style="padding: 5px 15px!important;" type='text' name="<?=$value['key']?>" value="<?=$input_value?>"/>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <?php  $dp_c++;?>
+
+                            <?php elseif($value['type']=='date'):?>
+                                <div class="form-group default_date">
+                                    <div class="input-group date" id="datepicker<?=$dtp_c?>">
+                                        <input value="<?=$input_value?>" name="<?=$value['key']?>" type="text">
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <?php  $dtp_c++;?>
+
                             <?php elseif($value['type']=='textarea'):?>
                                 <textarea id="summernote" name="<?=$value['key']?>"><?=$item?$item[$value['key']]:''?></textarea>
                             <?php elseif($value['type']=='tags'):?>
-                                <input class="tags_input" value="<?=$item?$item[$value['key']]:''?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/><br/>
+                                <input class="tags_input" value="<?=$item?$item[$value['key']]:''?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/>
                             <?php else: ?>
                                 <input class="form-control admininput" type="<?=$value['type']?>" placeholder="" name="<?=$value['key']?>" value="<?=$item?$item[$value['key']]:''?>">
                             <?php endif; ?>

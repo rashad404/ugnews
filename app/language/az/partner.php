@@ -101,6 +101,7 @@ return [
     'Select Language'=> 'Dil seçin',
     'About'=> 'Haqqında',
     'Choose a photo'=> 'Şəkil seçin',
+    'Publish Date'=> 'Yayım vaxtı',
 
 //    News Categories
     'World'=>'Dünya',
