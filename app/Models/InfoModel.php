@@ -80,7 +80,7 @@ class InfoModel extends Model{
 
         if(time()<=$fajr){
             return 'Sübh '.$namaz_time['fajr'];
-        }elseif(time()>$fajr && time()<=$zohr){
+        }elseif(time()>$fajr && time()<=$dhuhr){
             return 'Zöhr '.$namaz_time['dhuhr'];
         }elseif(time()>$dhuhr && time()<=$asr){
             return 'Əsr '.$namaz_time['asr'];
