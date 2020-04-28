@@ -8,8 +8,8 @@ class CityModel extends Model{
         parent::__construct();
     }
 
-    public static function getList($limit=100){
-        $row = self::$db->select("SELECT `id`,`name` FROM `".self::$tableName."` ORDER BY `name` ASC LIMIT ".$limit);
+    public static function getList($limit='LIMIT 0,100'){
+        $row = self::$db->select("SELECT `id`,`name` FROM `".self::$tableName."` ORDER BY `name` ASC ".$limit);
         return $row;
     }
     public static function getName($id){

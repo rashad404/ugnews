@@ -63,7 +63,8 @@ class Site extends Controller
 
         $data['channel_list'] = ChannelsModel::getList(5);
         new CityModel();
-        $data['city_list'] = CityModel::getList();
+        $data['city_list_1'] = CityModel::getList('LIMIT 0,18');
+        $data['city_list_2'] = CityModel::getList('LIMIT 18,100');
 
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;

@@ -153,8 +153,8 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                         </div>
                     </div>
 
-                    <div class="row top_channels">
-                        <?php foreach ($data['city_list'] as $list):?>
+                    <div class="row top_channels" style="border-radius: 5px 5px 0 0">
+                        <?php foreach ($data['city_list_1'] as $list):?>
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">
                                     <a href="/city/<?=$list['id']?>/<?=Format::urlText($list['name'])?>">
@@ -167,6 +167,14 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="show_more">
+                                <button><?=$lng->get('Show more')?></button>
+                            </div>
+                        </div>
                     </div>
                     <?php endif;?>
                 </div>

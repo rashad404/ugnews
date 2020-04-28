@@ -1916,6 +1916,27 @@ ul.search_result_modal_box a:hover{
 
 
 /*Index Channels*/
+.show_more{
+    background-color: #fff;
+    text-align: center;
+    margin-left: -5px!important;
+    margin-right: -5px!important;
+    padding: 0px 20px 20px 20px;
+}
+
+.show_more button{
+    background-color: #fff;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.show_more button:hover{
+    /*color: var(--main-color-lighter2);*/
+    background-color: #fff4f3;
+}
+
 .top_channels{
     background-color: #fff;
     padding: 20px 10px 0 10px;

@@ -10,6 +10,7 @@ return [
     'Rating' => 'Reytinq',
     'cases' => 'yoluxma',
     'Local News' => 'Yerli Xəbərlər',
+    'Show more' => 'Ardını göstər',
 
     //header
     'Select Region' => 'Ölkə seçin',
