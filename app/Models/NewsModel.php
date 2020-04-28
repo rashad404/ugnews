@@ -83,6 +83,17 @@ class NewsModel extends Model{
         return $array;
     }
 
+    //City
+    public static function getListBCity($id, $limit = 'LIMIT 0,10'){
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `city`='".$id."' ORDER BY `id` DESC $limit");
+        return $array;
+    }
+
+    public static function countListByCity($id){
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `city`='".$id."'");
+        return $array;
+    }
+
     //Tags
     public static function getListByTag($tag, $limit = 'LIMIT 0,10'){
         $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");

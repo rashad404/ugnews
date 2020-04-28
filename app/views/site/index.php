@@ -49,6 +49,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
             <div class="row paddingBottom40">
                 <div class="col-sm-12">
 
+                    <?php if($data['current_page']<=1):?>
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -61,8 +62,6 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                             </div>
                         </div>
                     </div>
-
-
 
                     <div class="row top_channels">
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
@@ -122,6 +121,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <?php endif;?>
 
                     <div class="row">
 

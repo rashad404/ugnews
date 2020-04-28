@@ -24,7 +24,6 @@ Router::any('ajax/remove_dislike/(:num)', 'Controllers\Ajax@remove_dislike');
 
 
 //SEO
-Router::any('sitemaps/update_list', 'Controllers\Sitemap@update');
 
 
 Router::any('/', 'Controllers\Site@index');
@@ -41,6 +40,9 @@ Router::any('auth/facebook/callback', 'Controllers\Auth@facebook_callback');
 
 Router::any('news', 'Controllers\Site@news');
 Router::any('news/(:num)/(:any)', 'Controllers\Site@news_inner');
+
+Router::any('city/(:num)/(:any)', 'Controllers\Site@city');
+
 
 Router::any('cat/(:num)/(:any)', 'Controllers\Site@cat');
 Router::any('tags/(:num)/(:any)', 'Controllers\Site@tag_cat');

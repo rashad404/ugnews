@@ -56,7 +56,9 @@ class Site extends Controller
         $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countList());
+        $data['current_page'] = $pagination->currentPage;
         $data['list'] = NewsModel::getList($limitSql);
+
 
         $data['channel_list'] = ChannelsModel::getList(5);
 
@@ -111,6 +113,18 @@ class Site extends Controller
         $limitSql = $pagination->getLimitSql(NewsModel::countListByTag($name));
         $data['list'] = NewsModel::getListByTag($name, $limitSql);
         $data['cat_name'] = $name;
+        View::render('site/'.__FUNCTION__, $data);
+    }
+    // cities
+    public function city($id){
+        $data = SeoModel::general();
+        $data['def_language'] = self::$def_language;
+
+        $pagination = new Pagination();
+        $pagination->limit = 24;
+        $data['pagination'] = $pagination;
+        $limitSql = $pagination->getLimitSql(NewsModel::countListByCity($id));
+        $data['list'] = NewsModel::getListBCity($id, $limitSql);
         View::render('site/'.__FUNCTION__, $data);
     }
 
