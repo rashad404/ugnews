@@ -9,6 +9,7 @@ return [
     'Read more' => 'Ardını oxu',
     'Rating' => 'Reytinq',
     'cases' => 'yoluxma',
+    'Local News' => 'Yerli Xəbərlər',
 
     //header
     'Select Region' => 'Ölkə seçin',

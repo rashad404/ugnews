@@ -139,6 +139,36 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                     <div class="row">
                         <?php include 'news_include.php';?>
                     </div>
+
+
+                    <?php if($data['current_page']<=1):?>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page_title paddingBottom20">
+                                <h2>
+                                    <?=$lng->get('Local News')?>
+                                </h2>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top_channels">
+                        <?php foreach ($data['city_list'] as $list):?>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                                <div class="channel_box">
+                                    <a href="/city/<?=$list['id']?>/<?=Format::urlText($list['name'])?>">
+                                        <div class="news_title">
+                                        <span>
+                                            <?=Format::listTitle($list['name'], 50)?>
+                                        </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif;?>
                 </div>
             </div>
     </div>

@@ -12,6 +12,7 @@ use Helpers\Url;
 use Helpers\Csrf;
 use Helpers\Session;
 use Models\ChannelsModel;
+use Models\CityModel;
 use Models\RegistrationModel;
 use Models\SeoModel;
 use Models\SiteModel;
@@ -61,6 +62,8 @@ class Site extends Controller
 
 
         $data['channel_list'] = ChannelsModel::getList(5);
+        new CityModel();
+        $data['city_list'] = CityModel::getList();
 
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
@@ -124,7 +127,8 @@ class Site extends Controller
         $pagination->limit = 24;
         $data['pagination'] = $pagination;
         $limitSql = $pagination->getLimitSql(NewsModel::countListByCity($id));
-        $data['list'] = NewsModel::getListBCity($id, $limitSql);
+        $data['list'] = NewsModel::getListByCity($id, $limitSql);
+        $data['name'] = CityModel::getName($id);
         View::render('site/'.__FUNCTION__, $data);
     }
 

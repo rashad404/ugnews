@@ -1955,6 +1955,9 @@ ul.search_result_modal_box a:hover{
 .channel_box:hover img{
     border-radius: 45%;
 }
+.channel_box:hover span{
+    color: red;
+}
 .channel_box img{
     border-radius: 50%;
     width: 100px;

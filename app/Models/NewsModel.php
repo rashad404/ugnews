@@ -84,7 +84,7 @@ class NewsModel extends Model{
     }
 
     //City
-    public static function getListBCity($id, $limit = 'LIMIT 0,10'){
+    public static function getListByCity($id, $limit = 'LIMIT 0,10'){
         $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `city`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
     }
