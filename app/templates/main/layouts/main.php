@@ -74,15 +74,15 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="author" content="<?=SITE_NAME?>">
-    <meta name="keywords" content="<?=$data['keywords']?>">
-    <meta name="description" content="<?=$data['description']?>">
+    <meta name="keywords" content='<?=$data['keywords']?>'>
+    <meta name="description" content='<?=$data['description']?>'>
     <meta name="copyright" content="<?=SITE_NAME?>" />
 
 
 
 
-    <meta property="og:title" content="<?=$data['title']?>">
-    <meta property="og:description" content="<?=$data['description']?>">
+    <meta property="og:title" content='<?=$data['title']?>'>
+    <meta property="og:description" content='<?=$data['description']?>'>
     <?= isset($data['meta_img'])?'<meta property="og:image" content="https://'.$_SERVER['HTTP_HOST'].'/'.Url::uploadPath().$data['meta_img'].'">':'';?>
 
     <meta property="og:url" content="https://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">

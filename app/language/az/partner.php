@@ -102,6 +102,7 @@ return [
     'About'=> 'Haqqında',
     'Choose a photo'=> 'Şəkil seçin',
     'Publish Date'=> 'Yayım vaxtı',
+    'City'=> 'Şəhər',
 
 //    News Categories
     'World'=>'Dünya',

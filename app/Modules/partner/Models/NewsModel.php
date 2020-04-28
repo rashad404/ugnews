@@ -20,6 +20,7 @@ class NewsModel extends Model{
     private static $tableName = 'news';
     private static $tableNameCategories = 'categories';
     private static $tableNameCountries = 'countries';
+    private static $tableNameCities = 'cities';
     private static $tableNameLanguages = 'languages';
     private static $tableNameChannels = 'channels';
 
@@ -50,6 +51,7 @@ class NewsModel extends Model{
         $array[] = ['type'=>'text',         'name'=>'Title',            'key'=>'title',           'sql_type'=>'varchar(100)'];
         $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',             'sql_type'=>'int(5)', 'data' => self::getCategories()];
         $array[] = ['type'=>'select2',      'name'=>'Select Channel',   'key'=>'channel',         'sql_type'=>'varchar(2)', 'data' => self::getChannels()];
+        $array[] = ['type'=>'select2',      'name'=>'City',   'key'=>'city',         'sql_type'=>'int(11)', 'data' => self::getcities()];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'image',           'sql_type'=>'varchar(200)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'thumb',           'sql_type'=>'varchar(200)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'position',        'sql_type'=>'int(11)'];
@@ -88,6 +90,16 @@ class NewsModel extends Model{
         $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCountries);
         foreach ($array as $item){
             $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_country==$item['id'])?'true':''];
+        }
+        return $list;
+    }
+    public static function getCities(){
+
+        $list = [];
+        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCities);
+        $list[] = ['key'=>0, 'name'=>'---', 'disabled'=>''];
+        foreach ($array as $item){
+            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>''];
         }
         return $list;
     }

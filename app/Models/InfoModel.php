@@ -22,7 +22,7 @@ class InfoModel extends Model{
     }
 
     public static function coronavirusSelected(){
-        $array = self::$db->select("SELECT * FROM `".self::$tableNameCorona."` WHERE `id`=2 OR `id`=70");
+        $array = self::$db->select("SELECT * FROM `".self::$tableNameCorona."` WHERE `country`='World' OR `country`='Azerbaijan'");
         return $array;
     }
 
