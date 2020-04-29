@@ -2,6 +2,19 @@
 
 $(document).ready(function() {
 
+    $("#city_show_more").click(function() {
+        const link = $("#city_show_more");
+        const linkTextMore = link.attr('more_text');
+        const linkTextLess =link.attr('less_text');
+        $('.city_list_2').slideToggle('fast', function() {
+            if ($(this).is(':visible')) {
+                link.text(linkTextLess);
+            } else {
+                link.text(linkTextMore);
+            }
+        });
+    });
+
 //Umodal
     $(".umodal_toggle").click(function() {
         $(".umodal").show();

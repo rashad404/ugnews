@@ -1916,6 +1916,9 @@ ul.search_result_modal_box a:hover{
 
 
 /*Index Channels*/
+.city_list_2{
+    display: none;
+}
 .show_more{
     background-color: #fff;
     text-align: center;

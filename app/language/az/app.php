@@ -11,6 +11,7 @@ return [
     'cases' => 'yoluxma',
     'Local News' => 'Yerli Xəbərlər',
     'Show more' => 'Ardını göstər',
+    'Show less' => 'Bağla',
 
     //header
     'Select Region' => 'Ölkə seçin',
