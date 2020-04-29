@@ -183,7 +183,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
 
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 remove_col_padding_mob">
                             <div class="show_more">
                                 <button id="city_show_more" more_text="<?=$lng->get('Show more')?>" less_text="<?=$lng->get('Show less')?>"><?=$lng->get('Show more')?></button>
                             </div>
