@@ -17,7 +17,14 @@ use Helpers\Format;
                             <div class="news_box_channel_title">
                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                             </div>
-                            <div class="news_box_date"><?=date("H:i",$list['time'])?></div>
+                            <?php
+                                if(date("d",$list['time'])==date('d')){
+                                    $news_date = date("H:i",$list['time']);
+                                }else{
+                                    $news_date = date("d.m.Y",$list['time']);
+                                }
+                            ?>
+                            <div class="news_box_date"><?=$news_date?></div>
                         </div>
                         <div class="col-xs-3">
                             <div class="news_box_view">
