@@ -116,7 +116,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                             <?php elseif($value['type']=='tags'):?>
                                 <input class="tags_input" value="<?=$item?$item[$value['key']]:''?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/>
                             <?php else: ?>
-                                <input class="form-control admininput" type="<?=$value['type']?>" placeholder="" name="<?=$value['key']?>" value="<?=$item?$item[$value['key']]:''?>">
+                                <input class="form-control admininput" type="<?=$value['type']?>" placeholder="" name="<?=$value['key']?>" value='<?=$item?$item[$value['key']]:''?>'>
                             <?php endif; ?>
 
                         </div>

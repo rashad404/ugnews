@@ -34,9 +34,9 @@ class Security
     {
         $value=htmlentities( $value, ENT_QUOTES, 'utf-8' );
         if($strip) $value=strip_tags($value);
-        $from=['&Uuml;','&Ouml;','&Ccedil;','&uuml;','&ouml;','&ccedil;',"\0","\x1a", "\x00","\x0B","&#039;",'&quot;','”','“',"’","‘",'&amp;lsquo;'];
-        $to=['Ü','Ö','Ç','ü','ö','ç','\\0','\\Z',"\\0","","'",'"','"','"',"'","'","'"];
-        $value=str_replace($from, $to, $value);
+//        $from=['&Uuml;','&Ouml;','&Ccedil;','&uuml;','&ouml;','&ccedil;',"\0","\x1a", "\x00","\x0B","&#039;",'&quot;','”','“',"’","‘",'&amp;lsquo;'];
+//        $to=['Ü','Ö','Ç','ü','ö','ç','\\0','\\Z',"\\0","","'",'"','"','"',"'","'","'"];
+//        $value=str_replace($from, $to, $value);
         return $value;
     }
 
