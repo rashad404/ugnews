@@ -88,6 +88,7 @@ return [
     'Subscribed' => 'Abunə olunub',
     'Share' => 'Paylaş',
     'Similar News' => 'Oxşar xəbərlər',
+    'Tags' => 'Etiketlər',
 
 //    Help
     'Make Your Voice Heard' => 'Xəbər Kanalı Yarat',

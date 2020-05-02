@@ -114,6 +114,17 @@ use Helpers\Format;
                         <div class="clearBoth"></div>
                     </div>
                     <?php endif;?>
+
+                    <div class="news_inner_tag_box">
+                        <?php $tags = explode(',',$item['tags']);?>
+                        <h2><?=$lng->get('Tags')?>:</h2>
+                        <ul class="news_inner_tags">
+                            <?php foreach ($tags as $tag):?>
+                            <li><a href="#" class="news_inner_tag"><?=$tag?></a></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
+
                     <div class="news_inner_navigate" style="display: none">
                         <?php if($previous_item['id']>0):?><div class="news_inner_date"><a href="news/<?=$previous_item['id']?>/<?=Format::urlText($previous_item['title'])?>"><<< <?=$lng->get('Previous News')?></a></div><?php endif;?>
                         <?php if($next_item['id']>0):?><div class="news_inner_title"><a href="news/<?=$next_item['id']?>/<?=Format::urlText($next_item['title'])?>"><?=$lng->get('Next News')?> >>></a></div><?php endif;?>
