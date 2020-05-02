@@ -115,6 +115,7 @@ use Helpers\Format;
                     </div>
                     <?php endif;?>
 
+                    <?php if(!empty($item['tags'])):?>
                     <div class="news_inner_tag_box">
                         <?php $tags = explode(',',$item['tags']);?>
                         <h2><?=$lng->get('Tags')?>:</h2>
@@ -124,6 +125,7 @@ use Helpers\Format;
                             <?php endforeach;?>
                         </ul>
                     </div>
+                    <?php endif;?>
 
                     <div class="news_inner_navigate" style="display: none">
                         <?php if($previous_item['id']>0):?><div class="news_inner_date"><a href="news/<?=$previous_item['id']?>/<?=Format::urlText($previous_item['title'])?>"><<< <?=$lng->get('Previous News')?></a></div><?php endif;?>
