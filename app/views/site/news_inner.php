@@ -121,7 +121,7 @@ use Helpers\Format;
                         <h2><?=$lng->get('Tags')?>:</h2>
                         <ul class="news_inner_tags">
                             <?php foreach ($tags as $tag):?>
-                            <li><a href="#" class="news_inner_tag"><?=$tag?></a></li>
+                            <li><a href="/tags/<?=Format::urlTextTag($tag)?>" class="news_inner_tag"><?=$tag?></a></li>
                             <?php endforeach;?>
                         </ul>
                     </div>

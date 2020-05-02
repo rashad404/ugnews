@@ -1438,6 +1438,8 @@ div.google_sign_in i {
     color: #000;
     margin-bottom: 10px;
     font-weight: bold;
+    overflow: hidden;
+    height: 60px;
 }
 .channel_info_inner{
     padding: 8px 10px;
@@ -1740,12 +1742,12 @@ div.google_sign_in i {
 }
 
 .news_inner_tag:hover {
-    background-color: crimson;
+    background-color: var(--main-color-lighter2);
     color: white;
 }
 
 .news_inner_tag:hover::after {
-    border-left-color: crimson;
+    border-left-color: var(--main-color-lighter2);
 }
 
 
