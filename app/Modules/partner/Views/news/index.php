@@ -26,6 +26,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
             <form action="<?php echo Url::to(MODULE_PARTNER."/".$params["name"]."/operation")?>" method="post">
                 <div class="box">
                     <div class="box-body">
+
                         <div class="secimet">
                             <?php if($data['channel_count']==0):?>
                                 <div class="create_notice">

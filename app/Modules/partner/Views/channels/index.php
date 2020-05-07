@@ -26,6 +26,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                 <div class="box">
                     <div class="box-body">
                         <div class="secimet">
+
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
                                 <span><?=$lng->get('Actions')?>...<i class="fa fa-caret-down"></i></span>
                             </a>
