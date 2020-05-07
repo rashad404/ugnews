@@ -41,8 +41,8 @@ class News extends MyController{
             'actions' => true,
             'imageSizeX' => '730',
             'imageSizeY' => '450',
-            'thumbSizeX' => '340',
-            'thumbSizeY' => '180',
+            'thumbSizeX' => '640',
+            'thumbSizeY' => '340',
         ];
 
         parent::__construct();

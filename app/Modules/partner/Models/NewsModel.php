@@ -316,7 +316,7 @@ class NewsModel extends Model{
 
         //Optimize images
         FileUploader::imageResizeProportional($new_dir.'/'.$file_name, $new_dir.'/'.$file_name, 90, $params['imageSizeX'], $params['imageSizeY']);
-        FileUploader::imageResize($new_thumb_dir.'/'.$file_name, $new_thumb_dir.'/'.$file_name, 90, $params['thumbSizeX'], $params['thumbSizeY']);
+        FileUploader::imageResizeProportional($new_dir.'/'.$file_name, $new_thumb_dir.'/'.$file_name, 90, $params['thumbSizeX'], $params['thumbSizeY']);
     }
 
     public static function search(){
@@ -424,63 +424,6 @@ class NewsModel extends Model{
             $where = 'AND `balance`>0';
         }
         return self::$db->select("SELECT `id`,`first_name`,`phone`,`email`,`gender` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".self::$partner_id."' ".$where." ORDER BY `id` DESC");
-    }
-
-    public static function setPasswords(){
-        $partner_id = 338;
-
-        $array = self::$db->select("SELECT `id`,`first_name`,`phone`,`email`,`gender`,`password`,`password_hash` FROM ".self::$tableName." WHERE `password`='' and `status`=1 AND `bed_id`>0 AND `partner_id`='".$partner_id."' ORDER BY `id` DESC");
-        $c = 1;
-        foreach ($array as $item){
-
-            $new_password = Security::generatePassword(6);
-            $new_password_hash = Security::password_hash($new_password);
-
-            echo $c.'<br/>';
-            echo $item['id'].'<br/>';
-            echo $item['first_name'].'<br/>';
-            echo $item['password'].'<br/>';
-            echo $item['password_hash'].'<br/>';
-            echo $new_password.'<br/>';
-            echo $new_password_hash.'<br/>';
-            echo '<hr/>';
-            $c++;
-            self::$db->raw("UPDATE ".self::$tableName." SET `password`='".$new_password."',  `password_hash`='".$new_password_hash."' WHERE `id` ='".$item['id']."'");
-        }
-
-    }
-    public static function showPass(){
-        $partner_id = 338;
-
-        $array = self::$db->select("SELECT `id`,`email`,`first_name`,`last_name`,`phone`,`email`,`gender`,`password`,`password_hash` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".$partner_id."' ORDER BY `id` DESC");
-        $c = 1;
-        foreach ($array as $item){
-
-
-            echo $c.'<br/>';
-            echo $item['id'].'<br/>';
-            echo $item['email'].'<br/>';
-            echo 'New Tenant Portal is ready | Coronavirus<br/>';
-            echo $item['first_name'].'<br/>';
-            echo $item['last_name'].'<br/>';
-            echo 'Username: '.$item['email'].'<br/>';
-            echo 'Password: '.$item['password'].'<br/>';
-            echo '<hr/>';
-            $c++;
-        }
-
-    }
-
-    public static function activatePortalAll(){
-        $partner_id = 338;
-
-        $array = self::$db->select("SELECT `id` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".$partner_id."' ORDER BY `id` DESC");
-        $c = 1;
-        foreach ($array as $item){
-
-            self::$db->raw("UPDATE ".self::$tableName." SET `tenant_portal`='1' WHERE `id` ='".$item['id']."'");
-        }
-
     }
 }
 
