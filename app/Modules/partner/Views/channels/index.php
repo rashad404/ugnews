@@ -25,7 +25,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
             <form action="<?php echo Url::to(MODULE_PARTNER."/".$params["name"]."/operation")?>" method="post">
                 <div class="box">
                     <div class="box-body">
-                        <div class="dropdown secimet">
+                        <div class="secimet">
                             <a class="dropdown-toggle pointer secimetbtn" data-toggle="dropdown">
                                 <span><?=$lng->get('Actions')?>...<i class="fa fa-caret-down"></i></span>
                             </a>
