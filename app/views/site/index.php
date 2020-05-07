@@ -28,7 +28,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
 <main class="main">
     <div class="container paddingBottom20">
 
-        <div class="row">
+        <div class="row info_box_area">
             <?php foreach ($info_list as $list):?>
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding: 0 5px;">
 

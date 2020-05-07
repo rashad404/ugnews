@@ -1798,6 +1798,9 @@ a.tag_box_a:hover{
     color:red;
 }
 
+.info_box_area{
+    padding-top: 7px;
+}
 .info_box{
     padding: 5px 0;
     border: 1px solid rgba(115, 12, 46, 0.23);
@@ -1811,7 +1814,7 @@ a.tag_box_a:hover{
     font-size: 16px;
     /*height: 50px;*/
     line-height: 25px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 }
 .info_box span{
     color: #424242;
