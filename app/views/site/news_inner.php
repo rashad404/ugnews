@@ -145,7 +145,9 @@ $ad = $data['ad'];
                             <?php if($c==2):?>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
                                         <div class="ad_box_horizontal_1">
-                                            <div class="sponsored"><?=$lng->get('Sponsored')?></div>
+                                            <div class="sponsored">
+                                                <i class="fas fa-info-circle"></i> <?=$lng->get('Sponsored')?>
+                                            </div>
                                             <a href="<?=$ad['link']?>" target="_blank">
                                                 <div class="">
 

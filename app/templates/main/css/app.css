@@ -1338,6 +1338,9 @@ div.google_sign_in i {
     font-size: 14px;
     padding-bottom: 5px;
 }
+.ad_box_horizontal_1 div.sponsored i{
+    color: #878787;
+}
 
 .ad_box_horizontal_1 img{
     width: 100%;
@@ -1350,6 +1353,9 @@ div.google_sign_in i {
 .ad_box_horizontal_1:hover img {
     transform: scale(1.03);
 }
+.ad_box_horizontal_1:hover div.ad_title {
+    text-decoration: underline;
+}
 .ad_box_horizontal_1:hover {
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
@@ -1359,7 +1365,7 @@ div.google_sign_in i {
 .ad_box_horizontal_1 div.ad_title {
     font-size: 16px;
     font-weight: bold;
-    color:#000;
+    color: #000;
 }
 
 .ad_box_horizontal_1 div.ad_text {
