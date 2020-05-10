@@ -139,4 +139,5 @@ return [
     "Ad Portal" => "Reklam Portalı",
     "Create ads" => "Reklam yarat",
     "Your ads" => "Sizin reklamlar",
+    "Sponsored" => "Reklam",
 ];

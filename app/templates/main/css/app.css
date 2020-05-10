@@ -1356,6 +1356,18 @@ div.google_sign_in i {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
 }
 
+.ad_box_horizontal_1 div.ad_title {
+    font-size: 16px;
+    font-weight: bold;
+    color:#000;
+}
+
+.ad_box_horizontal_1 div.ad_text {
+    padding-top: 10px;
+    font-size: 13px;
+    color:#000;
+}
+
 
 
 /*SIMILAR NEWS*/

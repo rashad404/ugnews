@@ -145,28 +145,18 @@ $ad = $data['ad'];
                             <?php if($c==2):?>
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
                                         <div class="ad_box_horizontal_1">
-                                            <div class="sponsored">Sponsored</div>
+                                            <div class="sponsored"><?=$lng->get('Sponsored')?></div>
                                             <a href="<?=$ad['link']?>" target="_blank">
                                                 <div class="">
 
                                                     <div class="row">
-                                                        <?php if (!empty($ad['thumb'])): ?>
-                                                            <div class="col-xs-6 remove_col_padding_mob">
-                                                                <img class="" src="<?=Url::filePath()?>/<?=$ad['thumb']?>" alt="" />
-                                                            </div>
-                                                            <div class="col-xs-6 custom_padding_smilar_news">
-                                                                <div class="news_box_similar_title"><?=Format::listTitle($ad['title'], 50)?></div>
-                                                                <div class="news_box_similar_date"><?=$ad['text']?></div>
-                                                            </div>
-                                                        <?php else: ?>
-                                                            <div class="col-xs-12 custom_padding_smilar_news remove_col_padding_mob" style="padding-left: 30px!important;">
-                                                                <div class="news_box_similar_title"><?=Format::listText($list['text'], 90)?>...</div>
-                                                                <div class="news_box_similar_title_channel_name">
-                                                                    <?=$channel_info['name']?>
-                                                                </div>
-                                                                <div class="news_box_similar_date"><?=$list['view']?> <?=$lng->get('view')?> <i class="fas fa-calendar"></i> <?=date("H:i",$list['time'])?></div>
-                                                            </div>
-                                                        <?php endif; ?>
+                                                        <div class="col-xs-6 remove_col_padding_mob">
+                                                            <img class="" src="<?=Url::filePath()?>/<?=$ad['thumb']?>" alt="" />
+                                                        </div>
+                                                        <div class="col-xs-6 custom_padding_smilar_news">
+                                                            <div class="ad_title"><?=Format::listTitle($ad['title'], 20)?></div>
+                                                            <div class="ad_text"><?=Format::listText($ad['text'], 50)?></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
