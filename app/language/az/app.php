@@ -134,4 +134,9 @@ return [
     "Asr" => "Əsr",
     "Maghrib" => "Məğrib",
     "Isha" => "İşa",
+
+    //Ads
+    "Ad Portal" => "Reklam Portalı",
+    "Create ads" => "Reklam yarat",
+    "Your ads" => "Sizin reklamlar",
 ];

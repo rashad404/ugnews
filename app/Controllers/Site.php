@@ -11,6 +11,7 @@ use Helpers\Sms;
 use Helpers\Url;
 use Helpers\Csrf;
 use Helpers\Session;
+use Models\AdsModel;
 use Models\ChannelsModel;
 use Models\CityModel;
 use Models\RegistrationModel;
@@ -151,6 +152,7 @@ class Site extends Controller
         $data['next_item'] = NewsModel::navigate($id,'next');
         $data['previous_item'] = NewsModel::navigate($id,'previous');
         $data['list'] = NewsModel::getSimilarNews($id, 5);
+        $data['ad'] = AdsModel::getItem();
 
         $return = '';
         $data['countryList'] = Sms::getCountryList();

@@ -124,4 +124,10 @@ return [
     'Default Language'=>'Seçilmiş dil',
     'Update settings'=>'Ayarları dəyiş',
     'Data has been saved successfully'=>'Məlumatlar yadda saxlanıldı',
+
+//    Ads
+    'Ads'=>'Reklamlar',
+    'Ad Title'=>'Reklam başlığı',
+    'Ad Text'=>'Reklam mətni',
+    'Ad Link'=>'Reklam linki',
 ];

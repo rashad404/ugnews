@@ -110,7 +110,6 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 
 
 <?php
-
 $hooks->run('footer');
 ?>
 
