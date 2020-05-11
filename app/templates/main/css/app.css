@@ -1341,6 +1341,10 @@ div.google_sign_in i {
 .ad_box_horizontal_1 div.sponsored i{
     color: #878787;
 }
+.ad_box_horizontal_1 a.sponsored_create_ad{
+    float: right;
+    padding-right: 5px;
+}
 
 .ad_box_horizontal_1 img{
     width: 100%;

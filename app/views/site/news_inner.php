@@ -147,8 +147,9 @@ $ad = $data['ad'];
                                         <div class="ad_box_horizontal_1">
                                             <div class="sponsored">
                                                 <i class="fas fa-info-circle"></i> <?=$lng->get('Sponsored')?>
+                                                <a href="partner/ads/add" class="sponsored_create_ad"><?=$lng->get('Create ad')?></a>
                                             </div>
-                                            <a href="<?=$ad['link']?>" target="_blank">
+                                            <a href="ads/click/<?=$ad['id']?>" target="_blank">
                                                 <div class="">
 
                                                     <div class="row">

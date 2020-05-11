@@ -61,6 +61,7 @@ class AdsModel extends Model{
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'status',          'sql_type'=>'tinyint(2)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',            'sql_type'=>'int(11)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'click',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',      'sql_type'=>'int(11)'];
 
         return $array;

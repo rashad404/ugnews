@@ -130,4 +130,5 @@ return [
     'Ad Title'=>'Reklam başlığı',
     'Ad Text'=>'Reklam mətni',
     'Ad Link'=>'Reklam linki',
+    'Click'=>'Keçid',
 ];

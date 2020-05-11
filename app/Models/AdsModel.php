@@ -38,5 +38,9 @@ class AdsModel extends Model{
 //        }
         return $array;
     }
+    public static function updateClick($id){
+        self::$db->raw("UPDATE `" . self::$tableName . "` SET `click`=`click`+1 WHERE `id`='" . $id . "'");
+        return true;
+    }
 
 }

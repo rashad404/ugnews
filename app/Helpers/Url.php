@@ -26,7 +26,6 @@ class Url
         if ($fullpath == false) {
             $url = DIR.$url;
         }
-
         header('Location: '.$url);
         exit;
     }

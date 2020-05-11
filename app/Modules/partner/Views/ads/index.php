@@ -70,6 +70,8 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                 </th>
                                 <th class="width-20">#</th>
                                 <th><?=$lng->get('Title');?></th>
+                                <th><?=$lng->get('Click');?></th>
+                                <th><?=$lng->get('View');?></th>
                                 <?php if($params["position"]){ ?><th><?=$lng->get('Order');?></th><?php } ?>
                                 <?php if($params["status"]){ ?><th><?=$lng->get('Status');?></th><?php } ?>
                                 <?php if($params["actions"]){ ?><th><?=$lng->get('Operations');?></th><?php } ?>
@@ -87,9 +89,10 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                         </div>
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
-                                    <td class="admin-arrow-box">
-                                        <?= $item["title"]?>
-                                    </td>
+                                    <td class="admin-arrow-box"><?= $item["title"]?></td>
+                                    <td class="admin-arrow-box"><?= $item["click"]?></td>
+                                    <td class="admin-arrow-box"><?= $item["view"]?></td>
+
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getPositionIcons($item["id"],MODULE_PARTNER."/".$params["name"])?></td>
