@@ -80,7 +80,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                                         <a href="/<?=Format::urlTextChannel($list['name_url'])?>">
                                             <img src="<?=Url::filePath()?>/<?=$list['thumb']?>?aas" alt="" />
 
-                                            <div class="news_title">
+                                            <div class="channel_box_title">
                                                 <span>
                                                     <?=Format::listTitle($list['name'], 50)?>
                                                 </span>
