@@ -71,6 +71,7 @@ return [
     'Entertainment' => 'Şou-biznes',
     'Interesting' => 'Maraqlı',
     'General' => 'Ümumi',
+    'Tourism' => 'Turizm',
 
 //    Right menu
     'Admin Portal' => 'Admin Paneli',

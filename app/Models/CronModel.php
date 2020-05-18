@@ -38,14 +38,14 @@ class CronModel extends Model{
         $c = 0;
         foreach ($tr as $element) {
             if($c > 0){
-                $country       = $element->getElementsByTagName('td')->item(0)->textContent;
-                $total_cases     = $element->getElementsByTagName('td')->item(1)->textContent;
-                $new_cases     = $element->getElementsByTagName('td')->item(2)->textContent;
-                $total_deaths       = $element->getElementsByTagName('td')->item(3)->textContent;
-                $new_deaths       = $element->getElementsByTagName('td')->item(4)->textContent;
-                $total_recovered       = $element->getElementsByTagName('td')->item(5)->textContent;
-                $active_cases    = $element->getElementsByTagName('td')->item(6)->textContent;
-                $critical    = $element->getElementsByTagName('td')->item(7)->textContent;
+                $country       = $element->getElementsByTagName('td')->item(1)->textContent;
+                $total_cases     = $element->getElementsByTagName('td')->item(2)->textContent;
+                $new_cases     = $element->getElementsByTagName('td')->item(3)->textContent;
+                $total_deaths       = $element->getElementsByTagName('td')->item(4)->textContent;
+                $new_deaths       = $element->getElementsByTagName('td')->item(5)->textContent;
+                $total_recovered       = $element->getElementsByTagName('td')->item(6)->textContent;
+                $active_cases    = $element->getElementsByTagName('td')->item(7)->textContent;
+                $critical    = $element->getElementsByTagName('td')->item(8)->textContent;
 
                 array_push($dataArray, array(
                     "country"      => $country,

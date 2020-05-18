@@ -114,6 +114,7 @@ return [
     'Technology'=>'Texnologiya',
     'Interesting'=>'Maraqlı',
     'Coronavirus'=>'Koronavirus',
+    'Tourism'=>'Turizm',
 
 //    Channels
     'Your Channels'=>'Sizin kanallar',

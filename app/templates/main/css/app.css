@@ -200,7 +200,7 @@ ul.menu li.li_title{
 
 div.icons_area ul.menu > li >a {
     padding: 38px 16px 22px 0px!important;
-    margin-top: -16px;
+    margin-top: -20px;
 }
 ul.menu li a:hover {
     /*background-color: #f7f7f7;*/
@@ -303,7 +303,7 @@ img.footer_logo{
 }
 
 .search_icon{
-    padding: 22px 16px 22px 0px!important;
+    padding: 15px 16px 0px 0px!important
 }
 .icons_area{
     /*text-align: right;*/
@@ -1914,7 +1914,7 @@ a.info_box_a:hover{
 .search_box_mobile{
     position: fixed;
     z-index: 1000!important;
-    top:67px;
+    top:50px;
     left:0;
     width: 95%;
     margin-top: 15px;
@@ -2048,8 +2048,8 @@ ul.search_result_modal_box a:hover{
 .show_more{
     background-color: #fff;
     text-align: center;
-    margin-left: -5px!important;
-    margin-right: -5px!important;
+    /*margin-left: -5px!important;*/
+    /*margin-right: -5px!important;*/
     padding: 0px 20px 20px 20px;
 }
 
@@ -2069,8 +2069,8 @@ ul.search_result_modal_box a:hover{
 .top_channels{
     background-color: #fff;
     padding: 20px 10px 0 10px;
-    margin-left: -5px!important;
-    margin-right: -5px!important;
+    margin-left: 0px!important;
+    margin-right: 0px!important;
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
@@ -2389,9 +2389,34 @@ ul.search_result_modal_box a:hover{
         #mobile_menu{
             display:none;
         }
+        .mobile_menu{
+            top: 51px;
+            height: calc(100% - 51px);
+        }
 
         .main{
-            padding: 65px 0px 0px 0px!important;
+            padding: 50px 0px 0px 0px!important;
+        }
+
+        .header{
+            height: 50px;
+            padding: 0 10px;
+        }
+        div.icons_area ul.menu > li >a {
+            padding: 15px 16px 15px 0px!important;
+            margin-top: 0;
+        }
+        .header_logo img {
+            width: 90px;
+        }
+        .mobile_menu_icon {
+            padding: 3px 15px 0px 2px;
+        }
+        .mobile_menu_icon i{
+            font-size: 26px;
+        }
+        .icons_area i, .search_icon i {
+            font-size: 22px;
         }
 
         .inner_background{
@@ -2405,8 +2430,8 @@ ul.search_result_modal_box a:hover{
             margin-left: 0!important;
         }
         .col-sm-12, .col-lg-3, .col-xs-6{
-            padding-right: 3px!important;
-            padding-left: 3px!important;
+            padding-right: 0px!important;
+            padding-left: 0px!important;
         }
         .col-xs-4, .col-md-4, .col-xs-8, .col-md-8{
             padding-right: 0px!important;
@@ -2601,7 +2626,7 @@ ul.search_result_modal_box a:hover{
             /*height: 70px;*/
         }
         .news_box{
-            margin: 10px 5px;
+            margin: 5px 0px;
             height: 330px;
         }
         .news_image{

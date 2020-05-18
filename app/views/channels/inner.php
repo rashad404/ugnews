@@ -44,9 +44,6 @@ $subscribe_check = \Models\NewsModel::subscribeCheck($item['id']);
 
 
                 <div class="clearBoth"></div>
-                <div style="text-align:center;">
-                    <?php echo $data["pagination"]->pageNavigation('pagination')?>
-                </div>
 
             </div>
         </div>

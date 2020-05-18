@@ -64,7 +64,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                     </div>
 
                     <div class="row top_channels">
-                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                        <div class="col-xs-4 col-sm-6 col-md-4 col-lg-2">
                             <a href="create/channel">
                             <div class="new_channel_box">
                                 <i class="fas fa-plus"></i><br/>
@@ -73,7 +73,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                             </a>
                         </div>
                         <?php foreach ($data['channel_list'] as $list):?>
-                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2">
+                            <div class="col-xs-4 col-sm-6 col-md-4 col-lg-2">
                                 <div class="channel_box">
                                     <a href="/<?=Format::urlTextChannel($list['name_url'])?>">
                                         <img src="<?=Url::filePath()?>/<?=$list['thumb']?>?aas" alt="" />
