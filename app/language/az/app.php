@@ -4,6 +4,7 @@ return [
     //index
     'Create Your<br/>Channel' => 'Öz Kanalını<br/>Yarat',
     'Popular Channels' => 'Məşhur kanallar',
+    'Channels' => 'Kanallar',
     'Featured' => 'Seçilmişlər',
     'Latest News' => 'Son xəbərlər',
     'Read more' => 'Ardını oxu',

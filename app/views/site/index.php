@@ -55,7 +55,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                         <div class="col-lg-12">
                             <div class="page_title paddingBottom20">
                                 <h2>
-                                    <?=$lng->get('Popular Channels')?>
+                                    <?=$lng->get('Channels')?>
                                     <a href="rating/channels" target="_blank">(<?=$lng->get('TOP')?> <i class="fas fa-chart-bar"></i>)</a>
                                 </h2>
                                 <hr/>

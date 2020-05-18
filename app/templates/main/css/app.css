@@ -2081,7 +2081,7 @@ ul.search_result_modal_box a:hover{
 
 .top_channels_add{
     position: absolute;
-    z-index: 100;
+    z-index: 10;
     height: 100%;
     background-color: #fff;
     padding: 25px 20px 0px 20px;
