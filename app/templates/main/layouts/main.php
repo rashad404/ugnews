@@ -122,11 +122,11 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
             dots: false,
             items: 5,
 
-            // autoplay : true,
-            // slideTransition: 'linear',
-            // autoplayTimeout : 1000,
-            // autoplayHoverPause : false,
-            // autoplaySpeed : 1000,
+            autoplay : true,
+            slideTransition: 'linear',
+            autoplayTimeout : 5000,
+            autoplayHoverPause : false,
+            autoplaySpeed : 5000,
 
             margin:0,
             responsiveClass:true,
