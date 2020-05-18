@@ -99,6 +99,8 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <link href="<?=Url::templatePath()?>css/app.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>css/bootstrap.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>assets/fontawesome-55/css/all.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.theme.default.css<?=$css_v?>" rel="stylesheet" type="text/css">
 
     <title><?php echo $data['title']; ?></title>
 </head>
@@ -106,8 +108,47 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 
 <script src='<?=Url::templatePath()?>js/jquery.min.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/bootstrap.min.js<?=$css_v?>' type="text/javascript"></script>
+<script src='<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/main.js<?=$css_v?>' type="text/javascript"></script>
 
+
+<script>
+    $(document).ready(function(){
+        // $(".top_channel_carousel").owlCarousel();
+        $('.top_channel_carousel').owlCarousel({
+            loop:true,
+            pagination: false,
+            nav: false,
+            dots: false,
+            items: 5,
+
+            // autoplay : true,
+            // slideTransition: 'linear',
+            // autoplayTimeout : 1000,
+            // autoplayHoverPause : false,
+            // autoplaySpeed : 1000,
+
+            margin:0,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:3,
+                    nav:false
+                },
+                600:{
+                    items:4,
+                    nav:false
+                },
+                1000:{
+                    items:5,
+                    nav:false,
+                    loop:false
+                }
+            }
+        })
+    });
+
+</script>
 
 <?php
 $hooks->run('footer');

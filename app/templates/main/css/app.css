@@ -2068,14 +2068,39 @@ ul.search_result_modal_box a:hover{
 
 .top_channels{
     background-color: #fff;
-    padding: 20px 10px 0 10px;
+    padding: 0px 10px 0 10px;
     margin-left: 0px!important;
     margin-right: 0px!important;
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 }
+
+.top_channels_add{
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px 20px 0px 20px
+}
+
+
+/*Owl carousel*/
+.top_channel_carousel{
+    /*padding-left: 180px;*/
+}
+.top_channel_carousel div{
+    display: flex;
+}
+.disabled{
+    display: none!important;
+}
+
+
+
 .new_channel_box{
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
     -moz-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .13);
@@ -2101,6 +2126,7 @@ ul.search_result_modal_box a:hover{
 
 .channel_box{
     text-align: center;
+    padding-top: 20px;
 }
 .channel_box:hover img{
     border-radius: 45%;
@@ -2348,8 +2374,6 @@ ul.search_result_modal_box a:hover{
 .rating_box tr:hover td{
     background-color: #eeeeee !important;
 }
-
-
 
 
 
@@ -2694,5 +2718,14 @@ ul.search_result_modal_box a:hover{
         }
         .help_block_2_div_2{
             padding: 150px 0;
+        }
+
+        .new_channel_box{
+            /*width: 80px;*/
+            /*height: 80px;*/
+        }
+        .channel_box img{
+            width: 80px;
+            height: 80px;
         }
     }
