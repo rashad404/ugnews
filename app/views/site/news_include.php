@@ -18,10 +18,10 @@ use Helpers\Format;
                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                             </div>
                             <?php
-                                if(date("d",$list['time'])==date('d')){
-                                    $news_date = date("H:i",$list['time']);
+                                if(date("d",$list['publish_time'])==date('d')){
+                                    $news_date = date("H:i",$list['publish_time']);
                                 }else{
-                                    $news_date = date("d.m.Y",$list['time']);
+                                    $news_date = date("d.m.Y",$list['publish_time']);
                                 }
                             ?>
                             <div class="news_box_date"><?=$news_date?></div>

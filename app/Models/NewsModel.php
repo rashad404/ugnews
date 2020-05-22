@@ -27,7 +27,7 @@ class NewsModel extends Model{
     }
 
     public static function getList($limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `country`='".self::$region."' ORDER BY `publish_time` DESC $limit");
         return $array;
     }
     public static function getSimilarNews($id, $limit=6){
@@ -109,7 +109,7 @@ class NewsModel extends Model{
         if($count) {
             $update = self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $id . "'");
         }
-        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
+        $array = self::$db->selectOne("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
 
         if($array && $count) {
             self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");

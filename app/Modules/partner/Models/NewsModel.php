@@ -221,7 +221,7 @@ class NewsModel extends Model{
         $return['errors'] = null;
         $post_data = self::getPost();
         $post_data['publish_time'] = strtotime($post_data['publish_time']);
-
+        if($post_data['publish_time']<time())$post_data['publish_time'] = time();
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $return['errors'] = null;
@@ -259,6 +259,7 @@ class NewsModel extends Model{
         $return['errors'] = null;
         $post_data = self::getPost();
         $post_data['publish_time'] = strtotime($post_data['publish_time']);
+        if($post_data['publish_time']<time())$post_data['publish_time'] = time();
 
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
