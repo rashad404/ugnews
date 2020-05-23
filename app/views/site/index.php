@@ -143,7 +143,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                     </div>
 
 
-                    <?php if($data['current_page']<=1):?>
+                    <?php if($data['current_page']<=1 && count($data['city_list_1'])>0):?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="page_title paddingBottom20">

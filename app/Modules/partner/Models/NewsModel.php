@@ -4,6 +4,7 @@ namespace Modules\partner\Models;
 
 use Core\Model;
 use DateTime;
+use function GuzzleHttp\Psr7\str;
 use Helpers\Console;
 use Helpers\Date;
 use Helpers\Security;
@@ -258,8 +259,13 @@ class NewsModel extends Model{
         $return = [];
         $return['errors'] = null;
         $post_data = self::getPost();
+        $old_data = self::getItem($id);
+        $old_publish_time = strtotime(date('m/d/Y H:i', $old_data['publish_time']));
         $post_data['publish_time'] = strtotime($post_data['publish_time']);
-        if($post_data['publish_time']<time())$post_data['publish_time'] = time();
+
+        if($post_data['publish_time']<time() && $old_publish_time!=$post_data['publish_time']){
+            $post_data['publish_time'] = $old_publish_time;
+        }
 
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {

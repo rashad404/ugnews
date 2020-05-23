@@ -143,4 +143,7 @@ return [
     "Create ad" => "Reklam yarat",
     "Your ads" => "Sizin reklamlar",
     "Sponsored" => "Reklam",
+
+    //Rating
+    "TOP News" => "TOP Xəbərlər",
 ];
