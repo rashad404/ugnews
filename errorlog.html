@@ -23,3 +23,28 @@
 #8 {main}</pre>
 
            <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> May 25, 2020 6:38AM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[HY000] [1049] Unknown database 'ug'</p>
+
+           <p><strong>Code:</strong> 1049</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/ug.loc/app/Helpers/Database.php</p>
+
+           <p><strong>Line:</strong> 53</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/ug.loc/app/Helpers/Database.php(53): PDO->__construct('mysql:host=loca...', '********', '********')
+#1 /Applications/MAMP/htdocs/ug.loc/app/Models/LanguagesModel.php(50): Helpers\Database::get()
+#2 /Applications/MAMP/htdocs/ug.loc/app/Core/Controller.php(22): Models\LanguagesModel::defaultLanguage()
+#3 /Applications/MAMP/htdocs/ug.loc/app/Controllers/Site.php(41): Core\Controller->__construct()
+#4 /Applications/MAMP/htdocs/ug.loc/app/Core/Router.php(122): Controllers\Site->__construct(NULL)
+#5 /Applications/MAMP/htdocs/ug.loc/app/Core/Router.php(247): Core\Router::invokeObject('Controllers\\Sit...', Array)
+#6 /Applications/MAMP/htdocs/ug.loc/app/Core/routes.php(77): Core\Router::dispatch('')
+#7 /Applications/MAMP/htdocs/ug.loc/index.php(85): require('/Applications/M...')
+#8 {main}</pre>
+
+           <hr />
