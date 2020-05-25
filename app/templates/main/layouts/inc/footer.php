@@ -69,3 +69,22 @@ use Helpers\Format;
     | <?=$lng->get('Created by')?> <a target="_blank" href="https://websiteca.com" title="Small business websites, website development">WebsiteCA</a>
     <?php endif;?>
 </div>
+
+<footer class="d-flex justify-content-around d-none d-md-block mobile mobile_only">
+    <a href="/">
+        <i class="fas fa-home"></i>
+        <span class="text"><?=$lng->get('Home')?></span>
+    </a>
+    <a href="/">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="text"><?=$lng->get('Local')?></span>
+    </a>
+    <a id="mobile_search_icon">
+        <i class="fas fa-search"></i>
+        <span class="text"><?=$lng->get('Search')?></span>
+    </a>
+    <a href="/create/channel">
+        <i class="fas fa-plus"></i>
+        <span class="text"><?=$lng->get('Create')?></span>
+    </a>
+</footer>

@@ -90,11 +90,11 @@ $region = '233';
                     </ul>
                 </div>
 
-                <div id="mobile_search_icon" class="search_icon visible-xs" style="float: right">
-                    <a href="javascript:void(0);" class="icon">
-                        <i class="fa fa-search fa-2x"></i>
-                    </a>
-                </div>
+<!--                <div id="mobile_search_icon2" class="search_icon visible-xs" style="float: right">-->
+<!--                    <a href="javascript:void(0);" class="icon">-->
+<!--                        <i class="fa fa-search fa-2x"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
