@@ -108,6 +108,7 @@ class NewsModel extends Model{
     public static function getItem($id, $count=true){
         if($count) {
             $update = self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $id . "'");
+            VisitorsModel::updateView();
         }
         $array = self::$db->selectOne("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
 

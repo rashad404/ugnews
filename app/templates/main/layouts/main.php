@@ -7,7 +7,7 @@ use Helpers\Session;
 use Models\UserModel;
 use Helpers\Url;
 use Helpers\Cookie;
-use Helpers\Security;
+use Models\VisitorsModel;
 
 //Country settings
 $_SETTINGS = [];
@@ -18,10 +18,9 @@ if(Cookie::has('set_region')===true){
     $_SETTINGS['region'] = DEFAULT_COUNTRY;
 }
 
+//UniqueID set
+VisitorsModel::uniqueID();
 
-if(Cookie::has('uniqueId')===false){
-    Cookie::set('uniqueId', Security::generateHash());
-}
 $css_v = '?v='.UPDATE_VERSION;
 $lng = new Language();
 $lng->load('app');

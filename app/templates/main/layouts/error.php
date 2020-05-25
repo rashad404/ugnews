@@ -22,6 +22,7 @@ $hooks = Hooks::get();
         Url::templatePath().'css/owl.theme.css',
     ));
     $hooks->run('css');
+
     ?>
 </head>
 <body>
