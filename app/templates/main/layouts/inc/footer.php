@@ -4,7 +4,7 @@ use Models\TextsModel;
 use Models\BlogModel;
 use Helpers\Format;
 ?>
-<footer class="footer">
+<footer class="footer web_only">
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-4">
