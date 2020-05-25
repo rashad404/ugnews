@@ -53,16 +53,7 @@ use Helpers\Format;
         </div>
     </div>
 </footer>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?= GOOGLE_ANALYTICS;?>"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '<?= GOOGLE_ANALYTICS;?>');
-</script>
-<div class="footer_alt">
+<div class="footer_alt web_only">
     <?= date("Y")?> <?=$_PARTNER['name']?>
     © <?=$lng->get('All rights reserved')?>
     <?php if($_PARTNER['id']==0):?>
@@ -88,3 +79,13 @@ use Helpers\Format;
         <span class="text"><?=$lng->get('Create')?></span>
     </a>
 </footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= GOOGLE_ANALYTICS;?>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<?= GOOGLE_ANALYTICS;?>');
+</script>
