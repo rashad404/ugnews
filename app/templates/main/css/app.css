@@ -396,7 +396,7 @@ footer.mobile a {
     flex-direction: column;
     align-items: center;
     width: 25%;
-    padding: 10px 0;
+    padding: 20px 0 15px 0;
     color: #fff;
     font-size: 14px;
     text-decoration: none;
