@@ -70,6 +70,7 @@ $lng->load('app');
         $(document).ready(function() {
             $('#summernote,#summernote0,#summernote1,#summernote2').summernote({
                 height: null,                 // set editor height
+                enterHtml: '<p><br></p>',
                 minHeight: 100,             // set minimum height of editor
                 maxHeight: 400,             // set maximum height of editor
                 focus: true,                  // set focus to editable area after initializing summernote
