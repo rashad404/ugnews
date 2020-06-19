@@ -402,6 +402,9 @@ footer.mobile a {
     text-decoration: none;
     transition: background-color .3s;
 }
+footer.mobile a.selected_menu {
+    background-color: var(--main-color-hover);
+}
 footer.mobile a:hover {
     background-color: var(--main-color-hover);
     cursor: pointer;

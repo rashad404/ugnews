@@ -78,8 +78,37 @@ $lng->load('app');
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
                     ['insert', ['picture', 'hr']],
+                    ['embed', ['embedCode']], // custom button
                     // ['help', ['help']]
                 ],
+                buttons: {
+                    embedCode: function(context) {
+                        var ui = $.summernote.ui;
+                        var button = ui.button({
+                            contents: ' Embed',
+                            tooltip: 'Embed code',
+
+                            click: function() {
+                                var div = document.createElement('div');
+                                div.classList.add('embed-container');
+                                var iframe = document.createElement('iframe');
+
+                                var frameCode = prompt('Enter embed code:');
+
+                                iframe.src = $(frameCode).attr("src");
+                                if(!iframe.src.includes("undefined")){
+                                    iframe.setAttribute('frameborder', 0);
+                                    iframe.setAttribute('width', '100%');
+                                    iframe.setAttribute('allowfullscreen', true);
+                                    div.appendChild(iframe);
+                                    context.invoke('editor.insertNode', div);
+                                }
+                            }
+                        });
+
+                        return button.render();
+                    }
+                },
                 callbacks: {
                     onPaste: function (e) {
                         var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');

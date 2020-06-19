@@ -62,7 +62,7 @@ use Helpers\Format;
 </div>
 
 <footer class="d-flex justify-content-around d-none d-md-block mobile mobile_only">
-    <a href="/">
+    <a href="/" class="selected_menu">
         <i class="fas fa-home"></i>
         <span class="text"><?=$lng->get('Home')?></span>
     </a>
