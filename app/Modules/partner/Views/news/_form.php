@@ -150,7 +150,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                             toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
 
                         /* without images_upload_url set, Upload tab won't show up*/
-                        images_upload_url: '/partner/news/upload_image',
+                        images_upload_url: 'https://ug.news/partner/news/upload_image',
                         images_upload_credentials: true
                     });
 

@@ -221,6 +221,11 @@ class NewsModel extends Model{
         $return = [];
         $return['errors'] = null;
         $post_data = self::getPost();
+
+        //textarea image url fix
+        $post_data['text'] = preg_replace('/..\/..\/..\//','/',$post_data['text']);
+        $post_data['text'] = preg_replace('/..\/..\//','/',$post_data['text']);
+
         $post_data['publish_time'] = strtotime($post_data['publish_time']);
         if($post_data['publish_time']<time())$post_data['publish_time'] = time();
         $validator = Validator::validate($post_data, self::$rules, self::naming());
@@ -259,6 +264,11 @@ class NewsModel extends Model{
         $return = [];
         $return['errors'] = null;
         $post_data = self::getPost();
+
+        //textarea image url fix
+        $post_data['text'] = preg_replace('/..\/..\/..\//','/',$post_data['text']);
+        $post_data['text'] = preg_replace('/..\/..\//','/',$post_data['text']);
+
         $old_data = self::getItem($id);
         $old_publish_time = strtotime(date('m/d/Y H:i', $old_data['publish_time']));
         $post_data['publish_time'] = strtotime($post_data['publish_time']);

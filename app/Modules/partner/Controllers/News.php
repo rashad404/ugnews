@@ -69,26 +69,6 @@ class News extends MyController{
         View::renderPartner(self::$params['name'].'/index',$data);
     }
 
-    public function upload_file(){
-
-        $files = [];
-        if (isset($_FILES['file']))
-        {
-            foreach ($_FILES['file']['name'] as $key => $name)
-            {
-                move_uploaded_file($_FILES['file']['tmp_name'][$key], Url::uploadPath().'/redactor/files/'.$name);
-
-                $files['file-'.$key] = [
-                    'url' => Url::uploadPath().'/redactor/files/'.$name,
-                    'name' => $name,
-                    'id' => md5(date('YmdHis'))
-                ];
-            }
-        }
-
-        echo stripslashes(json_encode($files));
-    }
-
 
     public function upload_image(){
         $accepted_origins = array("http://ug.loc", "https://ug.news");
@@ -125,7 +105,7 @@ class News extends MyController{
             $filetowrite = $imageFolder . $temp['name'];
             move_uploaded_file($temp['tmp_name'], $filetowrite);
 
-            $filetowrite = 'https://ug.news/'.$filetowrite;
+            $filetowrite = 'https://ug.news/Web/uploads/redactor/images/'.$temp['name'];
             echo json_encode(array('location' => $filetowrite));
         } else {
             // Notify editor that the upload failed
