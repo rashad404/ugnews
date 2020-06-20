@@ -91,15 +91,9 @@ class News extends MyController{
 
 
     public function upload_image(){
-        /***************************************************
-         * Only these origins are allowed to upload images *
-         ***************************************************/
         $accepted_origins = array("http://localhost", "http://ug.loc", "https://ug.news");
 
-        /*********************************************
-         * Change this line to set the upload folder *
-         *********************************************/
-        $imageFolder = "/Web/uploads/redactor/images";
+        $imageFolder = "Web/uploads/redactor/images";
 
         reset ($_FILES);
         $temp = current($_FILES);
@@ -114,12 +108,6 @@ class News extends MyController{
                 }
             }
 
-            /*
-              If your script needs to receive cookies, set images_upload_credentials : true in
-              the configuration and enable the following two headers.
-            */
-            // header('Access-Control-Allow-Credentials: true');
-            // header('P3P: CP="There is no P3P policy."');
 
             // Sanitize input
             if (preg_match("/([^\w\s\d\-_~,;:\[\]\(\).])|([\.]{2,})/", $temp['name'])) {
@@ -137,9 +125,6 @@ class News extends MyController{
             $filetowrite = $imageFolder . $temp['name'];
             move_uploaded_file($temp['tmp_name'], $filetowrite);
 
-            // Respond to the successful upload with JSON.
-            // Use a location key to specify the path to the saved image resource.
-            // { location : '/your/uploaded/image/file'}
             echo json_encode(array('location' => $filetowrite));
         } else {
             // Notify editor that the upload failed

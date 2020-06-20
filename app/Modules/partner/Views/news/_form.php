@@ -209,7 +209,6 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
                         /* without images_upload_url set, Upload tab won't show up*/
                         images_upload_url: '/partner/news/upload_image',
-                        images_upload_base_path: '/Web/uploads/redactor/images',
                         images_upload_credentials: true
                     });
 
