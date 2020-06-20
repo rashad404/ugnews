@@ -91,9 +91,9 @@ class News extends MyController{
 
 
     public function upload_image(){
-        $accepted_origins = array("http://localhost", "http://ug.loc", "https://ug.news");
+        $accepted_origins = array("http://ug.loc", "https://ug.news");
 
-        $imageFolder = "Web/uploads/redactor/images";
+        $imageFolder = "Web/uploads/redactor/images/";
 
         reset ($_FILES);
         $temp = current($_FILES);
@@ -125,6 +125,7 @@ class News extends MyController{
             $filetowrite = $imageFolder . $temp['name'];
             move_uploaded_file($temp['tmp_name'], $filetowrite);
 
+            $filetowrite = 'https://ug.news/'.$filetowrite;
             echo json_encode(array('location' => $filetowrite));
         } else {
             // Notify editor that the upload failed

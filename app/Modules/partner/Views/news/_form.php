@@ -112,7 +112,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                 <?php  $dtp_c++;?>
 
                             <?php elseif($value['type']=='textarea'):?>
-<!--                                <textarea id="summernote" class="form-control" name="--><?//=$value['key']?><!--">--><?//=$item?$item[$value['key']]:''?><!--</textarea>-->
+                                <textarea id="mytextarea" class="form-control" name="<?=$value['key']?>"><?=$item?$item[$value['key']]:''?></textarea>
 
 <!--                                <textarea id="summernote" name="--><?//=$value['key']?><!--">--><?//=$item?$item[$value['key']]:''?><!--</textarea>-->
                             <?php elseif($value['type']=='tags'):?>
@@ -132,67 +132,9 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
     <div class="box-footer">
         <div class="col-xs-12">
 
-
-            <!DOCTYPE html>
-            <html>
-            <head>
                 <script src='https://cdn.tiny.cloud/1/ycixhg2pmyspjzcbhfduh2s53r2ctqjw8fqwrljbgrnlpypt/tinymce/5/tinymce.min.js' referrerpolicy="origin">
                 </script>
                 <script>
-                    // tinymce.init({
-                    //     selector: '#mytextarea',
-                    //     content_css: '//www.tiny.cloud/css/codepen.min.css',
-                    //     plugins: 'image code',
-                    //     toolbar: 'undo redo | link image | code',
-                    //     /* enable title field in the Image dialog*/
-                    //     image_title: true,
-                    //     /* enable automatic uploads of images represented by blob or data URIs*/
-                    //     automatic_uploads: true,
-                    //     /*
-                    //       URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-                    //       images_upload_url: 'postAcceptor.php',
-                    //       here we add custom filepicker only to Image dialog
-                    //     */
-                    //     file_picker_types: 'image',
-                    //     /* and here's our custom image picker*/
-                    //     file_picker_callback: function (cb, value, meta) {
-                    //         var input = document.createElement('input');
-                    //         input.setAttribute('type', 'file');
-                    //         input.setAttribute('accept', 'image/*');
-                    //
-                    //         /*
-                    //           Note: In modern browsers input[type="file"] is functional without
-                    //           even adding it to the DOM, but that might not be the case in some older
-                    //           or quirky browsers like IE, so you might want to add it to the DOM
-                    //           just in case, and visually hide it. And do not forget do remove it
-                    //           once you do not need it anymore.
-                    //         */
-                    //
-                    //         input.onchange = function () {
-                    //             var file = this.files[0];
-                    //
-                    //             var reader = new FileReader();
-                    //             reader.onload = function () {
-                    //                 /*
-                    //                   Note: Now we need to register the blob in TinyMCEs image blob
-                    //                   registry. In the next release this part hopefully won't be
-                    //                   necessary, as we are looking to handle it internally.
-                    //                 */
-                    //                 var id = 'blobid' + (new Date()).getTime();
-                    //                 var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                    //                 var base64 = reader.result.split(',')[1];
-                    //                 var blobInfo = blobCache.create(id, file, base64);
-                    //                 blobCache.add(blobInfo);
-                    //
-                    //                 /* call the callback and populate the Title field with the file name */
-                    //                 cb(blobInfo.blobUri(), { title: file.name });
-                    //             };
-                    //             reader.readAsDataURL(file);
-                    //         };
-                    //
-                    //         input.click();
-                    //     }
-                    // });
 
                     tinymce.init({
                         selector: '#mytextarea',
@@ -212,29 +154,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                         images_upload_credentials: true
                     });
 
-
-                    // tinymce.init({
-                    //     selector: '#mytextarea',
-                    //     height: 500,
-                    //     plugins: [
-                    //         "advlist autolink lists link image charmap print preview anchor",
-                    //         "searchreplace visualblocks code fullscreen",
-                    //         "insertdatetime media table paste imagetools wordcount"
-                    //     ],
-                    //     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-                    //     content_css: '//www.tiny.cloud/css/codepen.min.css'
-                    // });
                 </script>
-            </head>
-
-            <body>
-            <form method="post">
-    <textarea id="mytextarea" name="mytextarea">
-      Hello, World!
-    </textarea>
-            </form>
-            </body>
-            </html>
 
             <div class="input-group pull-left">
                 <input type="hidden" value="<?= \Helpers\Csrf::makeToken();?>" name="csrf_token">
