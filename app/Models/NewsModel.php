@@ -27,7 +27,7 @@ class NewsModel extends Model{
     }
 
     public static function getList($limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `country`='".self::$region."' ORDER BY `publish_time` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `country`='".self::$region."' ORDER BY `publish_time` DESC $limit");
         return $array;
     }
     public static function getSimilarNews($id, $limit=6){
@@ -37,21 +37,21 @@ class NewsModel extends Model{
         //MATCH(`name`, `middlename`, `surname`) AGAINST ('John' IN NATURAL LANGUAGE MODE) AS score
         //FROM person
         //ORDER BY score DESC;
-        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel`,
- MATCH(`title`,`text`) AGAINST ('".$title."' IN NATURAL LANGUAGE MODE) AS score
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel`,
+ MATCH(`title`,`title_extra`,`text`) AGAINST ('".$title."' IN NATURAL LANGUAGE MODE) AS score
  FROM `".self::$tableName."` WHERE `id`!=".$id." AND `status`=1 AND `country`='".self::$region."' ORDER BY `score` DESC LIMIT $limit");
         return $array;
     }
 
     //Cats
     public static function getListByCat($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `country`='".self::$region."' AND `cat`='".$id."' ORDER BY `publish_time` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `country`='".self::$region."' AND `cat`='".$id."' ORDER BY `publish_time` DESC $limit");
         return $array;
     }
 
     //Cats
     public static function getListByChannel($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `channel`='".$id."' ORDER BY `publish_time` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND `channel`='".$id."' ORDER BY `publish_time` DESC $limit");
         return $array;
     }
 
@@ -73,7 +73,7 @@ class NewsModel extends Model{
     //Tags cat
     public static function getListByTagCat($id, $limit = 'LIMIT 0,10'){
         $tag = self::getTagName($id);
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `id` DESC $limit");
         return $array;
     }
 
@@ -85,7 +85,7 @@ class NewsModel extends Model{
 
     //City
     public static function getListByCity($id, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `city`='".$id."' ORDER BY `id` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `status`=1 AND `city`='".$id."' ORDER BY `id` DESC $limit");
         return $array;
     }
 
@@ -96,7 +96,7 @@ class NewsModel extends Model{
 
     //Tags
     public static function getListByTag($tag, $limit = 'LIMIT 0,10'){
-        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `publish_time` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `publish_time`<=".time()." AND `status`=1 AND  FIND_IN_SET ('".$tag."', `tags`) ORDER BY `publish_time` DESC $limit");
         return $array;
     }
 
@@ -110,7 +110,7 @@ class NewsModel extends Model{
             $update = self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $id . "'");
 //            VisitorsModel::updateView();
         }
-        $array = self::$db->selectOne("SELECT `id`,`publish_time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
+        $array = self::$db->selectOne("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
 
         if($array && $count) {
             self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
@@ -133,7 +133,7 @@ class NewsModel extends Model{
         }else{
             $action_symbol = '<';
         }
-        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`text`,`tags`,`thumb`,`image`,`partner_id` FROM `".self::$tableName."` WHERE `id` ".$action_symbol." '".$id."' AND `status`=1 ORDER BY `id` DESC");
+        $array = self::$db->selectOne("SELECT `id`,`time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id` FROM `".self::$tableName."` WHERE `id` ".$action_symbol." '".$id."' AND `status`=1 ORDER BY `id` DESC");
         return $array;
     }
 
