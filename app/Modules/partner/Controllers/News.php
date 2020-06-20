@@ -69,6 +69,58 @@ class News extends MyController{
         View::renderPartner(self::$params['name'].'/index',$data);
     }
 
+    public function upload_file(){
+
+        $files = [];
+        if (isset($_FILES['file']))
+        {
+            foreach ($_FILES['file']['name'] as $key => $name)
+            {
+                move_uploaded_file($_FILES['file']['tmp_name'][$key], Url::uploadPath().'/redactor/files/'.$name);
+
+                $files['file-'.$key] = [
+                    'url' => Url::uploadPath().'/redactor/files/'.$name,
+                    'name' => $name,
+                    'id' => md5(date('YmdHis'))
+                ];
+            }
+        }
+
+        echo stripslashes(json_encode($files));
+    }
+
+
+    public function upload_image(){
+
+// files storage folder
+        $dir = Url::uploadPath().'/redactor/images/';
+        $files = [];
+        $types = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg', 'image/pjpeg'];
+
+        if (isset($_FILES['file']))
+        {
+            foreach ($_FILES['file']['name'] as $key => $name)
+            {
+                $type = strtolower($_FILES['file']['type'][$key]);
+                if (in_array($type, $types))
+                {
+                    // setting file's mysterious name
+                    $filename = md5(date('YmdHis')).'.jpg';
+                    $path = $dir.$filename;
+
+                    // copying
+                    move_uploaded_file($_FILES['file']['tmp_name'][$key], $path);
+
+                    $files['file-'.$key] = array(
+                        'url' => Url::uploadPath().'/redactor/images/'.$filename.'.jpg', 'id' => $id
+                    );
+                }
+            }
+        }
+
+        echo stripslashes(json_encode($files));
+    }
+
 
 
     public function view($id){

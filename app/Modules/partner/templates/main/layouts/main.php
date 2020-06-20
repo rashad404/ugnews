@@ -31,6 +31,7 @@ $lng->load('app');
         Url::templatePartnerPath() . 'css/skins/_all-skins.css'.$css_v,
         Url::templatePartnerPath() . 'css/style_r.css',
         Url::templatePartnerPath() . 'css/summernote.css',
+        Url::templatePartnerPath() . 'assets/redactor/redactor.min.css',
         Url::templatePartnerPath() . 'semantic-ui/dropdown.min.css',
         Url::templatePartnerPath() . 'semantic-ui/transition.min.css',
         Url::templatePartnerPath() . 'photos/css/elan.css',
@@ -53,6 +54,7 @@ $lng->load('app');
         Url::templatePartnerPath() . 'js/scr.js',
         Url::templatePartnerPath() . 'js/script_yuel.js',
         Url::templatePartnerPath() . 'js/summernote.min.js',
+        Url::templatePartnerPath() . 'assets/redactor/redactor.min.js',
 //        Url::templatePartnerPath() . 'js/summernote-cleaner.js',
         Url::templatePartnerPath() . 'js/main.js',
         Url::templatePath() . 'js/main.js'.$css_v,
@@ -68,56 +70,74 @@ $lng->load('app');
 
     <script>
         $(document).ready(function() {
-            $('#summernote,#summernote0,#summernote1,#summernote2').summernote({
-                height: null,                 // set editor height
-                enterHtml: '<p><br></p>',
-                minHeight: 100,             // set minimum height of editor
-                maxHeight: 400,             // set maximum height of editor
-                focus: true,                  // set focus to editable area after initializing summernote
-                toolbar: [
-                    ['font', ['bold', 'italic', 'underline', 'clear']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['picture', 'hr']],
-                    ['embed', ['embedCode']], // custom button
-                    // ['help', ['help']]
-                ],
-                buttons: {
-                    embedCode: function(context) {
-                        var ui = $.summernote.ui;
-                        var button = ui.button({
-                            contents: ' Embed',
-                            tooltip: 'Embed code',
-
-                            click: function() {
-                                var div = document.createElement('div');
-                                div.classList.add('embed-container');
-                                var iframe = document.createElement('iframe');
-
-                                var frameCode = prompt('Enter embed code:');
-
-                                iframe.src = $(frameCode).attr("src");
-                                if(!iframe.src.includes("undefined")){
-                                    iframe.setAttribute('frameborder', 0);
-                                    iframe.setAttribute('width', '100%');
-                                    iframe.setAttribute('allowfullscreen', true);
-                                    div.appendChild(iframe);
-                                    context.invoke('editor.insertNode', div);
-                                }
-                            }
-                        });
-
-                        return button.render();
-                    }
+            //actually it's not summernote, it's redactor
+            $('#summernote,#summernote0,#summernote1,#summernote2').redactor({
+                "minHeight": 400,
+                "plugins": ["clips", "fontcolor", "filemanager", "video", "textexpinder", "table", "fontfamily", "imagemanager", "counter", "fullscreen", "limiter", "defindedlinks"],
+                "imageUpload": "/partner/news/upload_image",
+                "fileUpload": "/redactor/upload/file",
+                "imageUploadErrorCallback": function(json) {
+                    alert(json.error);
                 },
-                callbacks: {
-                    onPaste: function (e) {
-                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-                        e.preventDefault();
-                        document.execCommand('insertText', false, bufferText);
-                    }
-                }
+                "fileUploadErrorCallback": function(json) {
+                    alert(json.error);
+                },
+                "imageManagerJson": "<?=Url::templatePartnerPath()?>assets/redactor/imagemanager.min.js",
+                "fileManagerJson": "/redactor/upload/file-json",
+                // "lang": "az"
             });
+
+
+            // $('#summernote,#summernote0,#summernote1,#summernote2').summernote({
+            //     height: null,                 // set editor height
+            //     enterHtml: '<br/>',
+            //     minHeight: 100,             // set minimum height of editor
+            //     maxHeight: 400,             // set maximum height of editor
+            //     focus: true,                  // set focus to editable area after initializing summernote
+            //     toolbar: [
+            //         ['font', ['bold', 'italic', 'underline', 'clear']],
+            //         ['para', ['ul', 'ol', 'paragraph']],
+            //         ['table', ['table']],
+            //         ['insert', ['picture', 'hr']],
+            //         ['embed', ['embedCode']], // custom button
+            //         // ['help', ['help']]
+            //     ],
+            //     buttons: {
+            //         embedCode: function(context) {
+            //             var ui = $.summernote.ui;
+            //             var button = ui.button({
+            //                 contents: ' Embed',
+            //                 tooltip: 'Embed code',
+            //
+            //                 click: function() {
+            //                     var div = document.createElement('div');
+            //                     div.classList.add('embed-container');
+            //                     var iframe = document.createElement('iframe');
+            //
+            //                     var frameCode = prompt('Enter embed code:');
+            //
+            //                     iframe.src = $(frameCode).attr("src");
+            //                     if(!iframe.src.includes("undefined")){
+            //                         iframe.setAttribute('frameborder', 0);
+            //                         iframe.setAttribute('width', '100%');
+            //                         iframe.setAttribute('allowfullscreen', true);
+            //                         div.appendChild(iframe);
+            //                         context.invoke('editor.insertNode', div);
+            //                     }
+            //                 }
+            //             });
+            //
+            //             return button.render();
+            //         }
+            //     },
+            //     callbacks: {
+            //         onPaste: function (e) {
+            //             var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+            //             e.preventDefault();
+            //             document.execCommand('insertText', false, bufferText);
+            //         }
+            //     }
+            // });
         });
     </script>
 </head>

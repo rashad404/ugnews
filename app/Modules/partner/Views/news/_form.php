@@ -112,7 +112,9 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                                 <?php  $dtp_c++;?>
 
                             <?php elseif($value['type']=='textarea'):?>
-                                <textarea id="summernote" name="<?=$value['key']?>"><?=$item?$item[$value['key']]:''?></textarea>
+                                <textarea id="summernote" class="form-control" name="<?=$value['key']?>"><?=$item?$item[$value['key']]:''?></textarea>
+
+<!--                                <textarea id="summernote" name="--><?//=$value['key']?><!--">--><?//=$item?$item[$value['key']]:''?><!--</textarea>-->
                             <?php elseif($value['type']=='tags'):?>
                                 <input class="tags_input" value="<?=$item?$item[$value['key']]:''?>" data-role="tagsinput" type="text" name="<?=$value['key']?>"/><br/>
                             <?php else: ?>
@@ -127,9 +129,32 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
         </div>
 
     </div>
-
     <div class="box-footer">
         <div class="col-xs-12">
+
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <script src='https://cdn.tiny.cloud/1/ycixhg2pmyspjzcbhfduh2s53r2ctqjw8fqwrljbgrnlpypt/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+                </script>
+                <script>
+                    tinymce.init({
+                        selector: '#mytextarea'
+                    });
+                </script>
+            </head>
+
+            <body>
+            <h1>TinyMCE Quick Start Guide</h1>
+            <form method="post">
+    <textarea id="mytextarea" name="mytextarea">
+      Hello, World!
+    </textarea>
+            </form>
+            </body>
+            </html>
+
             <div class="input-group pull-left">
                 <input type="hidden" value="<?= \Helpers\Csrf::makeToken();?>" name="csrf_token">
                 <button type="submit" class="btn btncolor secimetbtnadd">
