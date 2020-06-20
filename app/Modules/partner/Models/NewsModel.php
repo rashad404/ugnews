@@ -50,6 +50,7 @@ class NewsModel extends Model{
      */
     public static function getInputs(){
         $array[] = ['type'=>'text',         'name'=>'Title',            'key'=>'title',           'sql_type'=>'varchar(100)'];
+        $array[] = ['type'=>'text',         'name'=>'Extra Title',            'key'=>'title_extra',           'sql_type'=>'varchar(100)'];
         $array[] = ['type'=>'select2',      'name'=>'Select category',  'key'=>'cat',             'sql_type'=>'int(5)', 'data' => self::getCategories()];
         $array[] = ['type'=>'select2',      'name'=>'Select Channel',   'key'=>'channel',         'sql_type'=>'varchar(2)', 'data' => self::getChannels()];
         $array[] = ['type'=>'select2',      'name'=>'City',   'key'=>'city',         'sql_type'=>'int(11)', 'data' => self::getcities()];

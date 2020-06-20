@@ -87,6 +87,7 @@ return [
     'General'=> 'Ümumi',
 
     'Title'=> 'Başlıq',
+    'Extra Title:'=> 'Əlavə Başlıq',
     'Price'=> 'Qiymət',
     'Country'=> 'Ölkə',
 
