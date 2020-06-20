@@ -40,7 +40,7 @@ $ad = $data['ad'];
                                 </div>
                             </div>
                         </div>
-                        <div class="news_inner_title"><?=$item['title']?></div>
+                        <div class="news_inner_title"><?=$item['title']?> <span style="color:red;"><?=$item['title_extra']?></span></div>
 
                         <div class="row">
                             <div class="col-sm-8 col-md-8 col-lg-8">

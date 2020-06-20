@@ -44,12 +44,24 @@ class LanguagesModel extends Model{
             }
             Cookie::set('lang', $language);
 
-        }elseif(Cookie::has($admin_key.'lang')) {
-            $language = Cookie::get($admin_key.'lang');
-        } else {
-            $get_language = Database::get()->selectOne('SELECT `code` FROM '.$table.' WHERE `default` = 1');
-            $language = $get_language['code'];
+        }else{
+            $region = DEFAULT_COUNTRY;
         }
+
+        if($region==16){
+            $language = 'az';
+        }else{
+            $language = 'en';
+        }
+        Cookie::set('lang', $language);
+
+
+//        elseif(Cookie::has($admin_key.'lang')) {
+//            $language = Cookie::get($admin_key.'lang');
+//        } else {
+//            $get_language = Database::get()->selectOne('SELECT `code` FROM '.$table.' WHERE `default` = 1');
+//            $language = $get_language['code'];
+//        }
         return $language;
     }
 

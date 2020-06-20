@@ -1,5 +1,12 @@
 
 $(document).ready(function(){
+
+    setTimeout(function() {
+        $('.alert').fadeOut('fast');
+        $('.all_site').fadeOut('fast');
+    }, 1000); // <-- time in milliseconds
+
+
     $('input[type=checkbox][name=urlhave]').change(function() {
 
         var $check = $(this),

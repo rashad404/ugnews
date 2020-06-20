@@ -56,7 +56,7 @@ $lng->load('app');
         Url::templatePartnerPath() . 'js/summernote.min.js',
         Url::templatePartnerPath() . 'assets/redactor/redactor.min.js',
 //        Url::templatePartnerPath() . 'js/summernote-cleaner.js',
-        Url::templatePartnerPath() . 'js/main.js',
+        Url::templatePartnerPath() . 'js/main.js'.$css_v,
         Url::templatePath() . 'js/main.js'.$css_v,
         Url::templatePartnerPath() . 'js/bootstrap-tagsinput.min.js',
         Url::templatePartnerPath() . 'semantic-ui/dropdown.min.js',

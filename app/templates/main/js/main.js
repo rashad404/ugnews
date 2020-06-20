@@ -275,7 +275,7 @@ $(document).ready(function() {
     });
 
     if ($("div.flash_notification").html().length > 0){
-        $(".all_site").css('display','block');
+        // $(".all_site").css('display','block');
     };
 
 

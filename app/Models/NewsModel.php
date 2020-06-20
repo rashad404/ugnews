@@ -38,7 +38,7 @@ class NewsModel extends Model{
         //FROM person
         //ORDER BY score DESC;
         $array = self::$db->select("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel`,
- MATCH(`title`,`title_extra`,`text`) AGAINST ('".$title."' IN NATURAL LANGUAGE MODE) AS score
+ MATCH(`title`,`text`) AGAINST ('".$title."' IN NATURAL LANGUAGE MODE) AS score
  FROM `".self::$tableName."` WHERE `id`!=".$id." AND `status`=1 AND `country`='".self::$region."' ORDER BY `score` DESC LIMIT $limit");
         return $array;
     }
