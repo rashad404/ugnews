@@ -61,7 +61,8 @@ use Helpers\Format;
     <?php endif;?>
 </div>
 
-<footer class="d-flex justify-content-around d-none d-md-block mobile mobile_only">
+<!--<footer class="d-flex justify-content-around d-none d-md-block mobile mobile_only">-->
+<footer style="display: none">
     <a href="/" class="selected_menu">
         <i class="fas fa-home"></i>
         <span class="text"><?=$lng->get('Home')?></span>

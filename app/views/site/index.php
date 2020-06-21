@@ -5,11 +5,11 @@ use Helpers\Format;
 
 if ($data['region'] == 16) {
     $tag_list = [
-        'Koronavirus', 'Türkiyə', 'New York', 'Hava', 'Neft qiyməti', 'Evdə qal', 'Dövlət yardımı', '8103 SMS'
+        'Koronavirus', 'Türkiyə', 'Hava', 'Neft qiyməti', 'Evdə qal'
     ];
 } else {
     $tag_list = [
-        'Coronavirus', 'Donald Trump', 'New York', 'Italy', 'Boris Johnson', 'Oil price'
+        'Coronavirus', 'Donald Trump', 'New York', 'Oil price'
     ];
 }
 
@@ -18,7 +18,7 @@ $namaz_text = \Models\InfoModel::getNamazText();
 $ramazan_text = \Models\InfoModel::getRamazanText();
 
 $info_list[] = ['Koronavirus',$world_corona.' '.$lng->get('cases'), 'info/coronavirus'];
-$info_list[] = ['Ramazan',$ramazan_text, 'tags/ramazan'];
+//$info_list[] = ['Ramazan',$ramazan_text, 'tags/ramazan'];
 $info_list[] = ['Namaz',$namaz_text, 'info/namaz'];
 $info_list[] = ['Valyuta','1 USD = 1.7 AZN', 'tags/valyuta'];
 $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];

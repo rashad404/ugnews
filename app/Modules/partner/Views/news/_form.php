@@ -138,6 +138,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
                     tinymce.init({
                         selector: '#mytextarea',
+                        contextmenu: false,
                         content_css: '//www.tiny.cloud/css/codepen.min.css',
                         // plugins: 'image code',
 
@@ -151,7 +152,8 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
                         /* without images_upload_url set, Upload tab won't show up*/
                         images_upload_url: 'https://ug.news/partner/news/upload_image',
-                        images_upload_credentials: true
+                        images_upload_credentials: true,
+                        invalid_elements: "a"
                     });
 
                 </script>
