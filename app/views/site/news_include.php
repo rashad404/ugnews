@@ -21,7 +21,7 @@ use Helpers\Format;
                                 if(date("d",$list['publish_time'])==date('d')){
                                     $news_date = date("H:i",$list['publish_time']);
                                 }else{
-                                    $news_date = date("d.m.Y",$list['publish_time']);
+                                    $news_date = date("d.m.Y H:i",$list['publish_time']);
                                 }
                             ?>
                             <div class="news_box_date"><?=$news_date?></div>
