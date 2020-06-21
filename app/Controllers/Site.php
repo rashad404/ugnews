@@ -122,8 +122,9 @@ class Site extends Controller
     }
     // cities
     public function city($id){
-        $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
+
+        $data = SeoModel::city(CityModel::getName($id));
 
         $pagination = new Pagination();
         $pagination->limit = 24;
@@ -131,6 +132,9 @@ class Site extends Controller
         $limitSql = $pagination->getLimitSql(NewsModel::countListByCity($id));
         $data['list'] = NewsModel::getListByCity($id, $limitSql);
         $data['name'] = CityModel::getName($id);
+
+
+
         View::render('site/'.__FUNCTION__, $data);
     }
 

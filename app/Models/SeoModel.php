@@ -55,6 +55,13 @@ class SeoModel extends Model{
         $array['meta_img'] = 'logo/logo-fb.png';
         return $array;
     }
+    public static function city($name=''){
+        $array['title'] = $name.' xəbərləri, '.$name.' son xəbərlər';
+        $array['keywords'] = $name.' xəbərləri, '.$name.' son xəbərlər';
+        $array['description'] = $name.' xəbərləri, '.$name.' son xəbərlər';
+        $array['meta_img'] = 'logo/logo-fb.png';
+        return $array;
+    }
 
 
 
