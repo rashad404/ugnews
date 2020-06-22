@@ -140,7 +140,9 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
                         selector: '#mytextarea',
                         contextmenu: false,
                         content_css: '//www.tiny.cloud/css/codepen.min.css',
-                        // plugins: 'image code',
+                        mobile: {
+                            menubar: true
+                        },
 
                         height: 500,
                         plugins: [

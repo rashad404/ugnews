@@ -24,7 +24,7 @@ $ad = $data['ad'];
                                             <div class="news_box_channel_title">
                                                 <a href="/<?=Format::urlTextChannel($channel_info['name_url'])?>"><?=$channel_info['name'];?></a>
                                             </div>
-                                            <div class="channel_info_inner_date"><?=date("H:i",$item['publish_time'])?></div>
+                                            <div class="channel_info_inner_date"><?=date("d.m.Y H:i",$item['publish_time'])?></div>
                                         </div>
                                         <div class="col-xs-2  col-lg-1">
                                             <div class="channel_info_inner_view">
