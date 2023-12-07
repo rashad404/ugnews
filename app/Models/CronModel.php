@@ -20,9 +20,9 @@ class CronModel extends Model{
     public static function coronavirus(){
         include 'static_php/simple_html_dom.php';
         $output = file_get_contents('https://www.worldometers.info/coronavirus');
-//echo $output;
-        $output = str_replace('main_table_countries_today', 'maintablecountriestoday', $output);
 
+        $output = str_replace('main_table_countries_today', 'maintablecountriestoday', $output);
+        echo $output;exit;
 
         $html = str_get_html($output);
         $data = $html->find('table[id=maintablecountriestoday]', 0);

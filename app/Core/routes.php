@@ -56,6 +56,9 @@ Router::any('user_panel/profile', 'Controllers\UserPanel@profile');
 
 Router::any('set/region/(:any)', 'Controllers\Settings@region');
 
+// Crons
+Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
+
 Router::any('(:any)', 'Controllers\Channels@inner');
 
 
