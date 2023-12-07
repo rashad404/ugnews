@@ -10,6 +10,7 @@ $smvc = '.';
 /** Set the full path to the docroot */
 define('ROOT', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 
+
 /** Make the application relative to the docroot, for symlink'd index.php */
 if (!is_dir($smvc) and is_dir(ROOT.$smvc)) {
     $smvc = ROOT.$smvc;
@@ -67,6 +68,7 @@ if (defined('ENVIRONMENT')) {
     switch (ENVIRONMENT) {
         case 'development':
             error_reporting(E_ALL);
+            // error_reporting(0);
             break;
         case 'production':
             error_reporting(0);

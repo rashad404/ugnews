@@ -53,7 +53,8 @@ class InfoModel extends Model{
 
     public static function getRamazanText(){
         $namaz_time = self::getNamazTime();
-
+        if (!$namaz_time) return '';
+        
         $megrib_time = strtotime($namaz_time['date'].' '.$namaz_time['maghrib']);
         $imsak_time = strtotime($namaz_time['date'].' '.$namaz_time['imsak']);
 
@@ -70,6 +71,7 @@ class InfoModel extends Model{
 
     public static function getNamazText(){
         $namaz_time = self::getNamazTime();
+        if (!$namaz_time) return '';
 
         $fajr = strtotime($namaz_time['date'].' '.$namaz_time['fajr']);
         $dhuhr = strtotime($namaz_time['date'].' '.$namaz_time['dhuhr']);

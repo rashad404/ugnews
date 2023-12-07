@@ -187,7 +187,7 @@ class Session
     {
         $session = self::get('flash_message');
         self::destroy('flash_message');
-        if($session["message"]!=''){
+        if($session && $session["message"]!=''){
             if($session["type"]=='error'){
                 $es = 'background: #e83d35;color:#fff;';
             }elseif($session["type"]=='warning'){

@@ -22,6 +22,8 @@ Router::any('ajax/remove_like/(:num)', 'Controllers\Ajax@remove_like');
 Router::any('ajax/dislike/(:num)', 'Controllers\Ajax@dislike');
 Router::any('ajax/remove_dislike/(:num)', 'Controllers\Ajax@remove_dislike');
 
+Router::any('ajax/search/(:any)', 'Controllers\Ajax@search');
+
 
 //SEO
 

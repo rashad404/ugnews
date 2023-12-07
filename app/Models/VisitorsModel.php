@@ -39,8 +39,9 @@ class VisitorsModel extends Model{
         $length = @round($length);
         $code = '';
         for ($i = 0; $i < $length; $i++) {
-            $code .= $str{rand(0, $max - 1)};
+            $code .= $str[rand(0, $max - 1)];
         }
+        
 
         $code1 = substr($code,0,8);
         $code2 = substr($code,9,5);

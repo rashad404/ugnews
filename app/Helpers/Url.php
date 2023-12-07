@@ -15,6 +15,12 @@ namespace Helpers;
  */
 class Url
 {
+    private static function getUriParams() {
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = explode("/", trim($uri, "/"));
+        return $uri;
+    }
+
     /**
      * Redirect to chosen url.
      *
@@ -203,8 +209,8 @@ class Url
 	
 	public static function getController()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
-		$uri=explode("/",$uri);
+        $uri = self::getUriParams();
+
 		if(is_dir('app/Modules/'.$uri[0]))
 		{
 			if(isset($uri[1]) && $uri[1]!='') $controller=$uri[1];
@@ -223,8 +229,8 @@ class Url
 	
 	public static function getMethod()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
-		$uri=explode("/",$uri);
+        $uri = self::getUriParams();
+
 		if(is_dir('app/Modules/'.$uri[0]))
 		{
 			if(isset($uri[2]) && $uri[2]!='') $method=$uri[2];
@@ -243,8 +249,8 @@ class Url
 	
 	public static function getModule()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
-		$uri=explode("/",$uri);
+        $uri = self::getUriParams();
+
 		if(is_dir('app/Modules/'.$uri[0]))
 		{
 			$module=$uri[0];
@@ -258,8 +264,8 @@ class Url
 
     public static function getModuleController()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
-        $uri=explode("/",$uri);
+        $uri = self::getUriParams();
+        
         $moduleController='';
         if(is_dir('app/Modules/'.$uri[0])){
             $moduleController.=$uri[0].'/';
@@ -281,28 +287,33 @@ class Url
 	
 	public static function getArgs()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
-		$uri=explode("/",$uri);
+        $uri = self::getUriParams();
+
 		if(is_dir('app/Modules/'.$uri[0]))
 		{
 			if(count($uri)>3){
-				array_shift($uri);	array_shift($uri);	array_shift($uri);	$args=$uri;
+				array_shift($uri);
+                array_shift($uri);
+                array_shift($uri);
+                $args=$uri;
 			}
 			else $args=array();
 		}
 		else
 		{
 			if(count($uri)>2){
-				array_shift($uri);	array_shift($uri);	$args=$uri;
+				array_shift($uri);
+                $args=$uri;
 			}
 			else $args=array();
 		}
+
 		return $args;
     }
 
     public static function getFullUrl()
     {
-        $uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         return $uri;
     }
 
