@@ -324,6 +324,7 @@ class Url
             $uri.='&'.$variable.'='.$value;
         }
         if(strpos($uri,"&")>0) $uri=substr_replace($uri,"?",strpos($uri,"&"),1);
+        $uri = str_replace("/", "", $uri);
         return $uri;
     }
 

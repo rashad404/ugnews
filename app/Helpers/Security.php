@@ -119,7 +119,7 @@ class Security
         $length = @round($length);
         $code = '';
         for ($i = 0; $i < $length; $i++) {
-            $code .= $str{rand(0, $max - 1)};
+            $code .= $str[rand(0, $max - 1)];
         }
         return $code;
     }
