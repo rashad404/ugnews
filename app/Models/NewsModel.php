@@ -16,6 +16,7 @@ class NewsModel extends Model{
     private static $tableNameChannels = 'channels';
     private static $tableNameSubscribers = 'subscribers';
     private static $tableNameLikes = 'likes';
+    private static $tableNameUniequeViews = 'unique_views';
     private static $region;
     public $lng;
     public function __construct(){
@@ -105,15 +106,62 @@ class NewsModel extends Model{
         return $array;
     }
 
-    public static function getItem($id, $count=true){
-        if($count) {
-            $update = self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $id . "'");
-//            VisitorsModel::updateView();
+    private static function calculateUniqueView($newsId) {
+       // Check if the user has a cookie named "ugnews_uv1"; if not, generate one
+        if (!isset($_COOKIE['ugnews_uv1'])) {
+            $cookieIdentifier = uniqid(); // Generate a unique identifier
+            setcookie('ugnews_uv1', $cookieIdentifier, time() + 86400, '/'); // Set the cookie to expire in 24 hours
+        } else {
+            $cookieIdentifier = $_COOKIE['ugnews_uv1'];
         }
+
+        $userIP = $_SERVER['REMOTE_ADDR'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $currentTime = time();
+
+        // Check if there is a recent record in the unique_views table with the same IP, user agent, and "ugnews_uv1" cookie identifier
+
+        $where = "`news_id`='$newsId' AND `ip`='$userIP' AND `browser`='$userAgent' AND `cookie`='$cookieIdentifier' AND `create_time` > ($currentTime - 3600)";
+
+        $previousView = self::$db->selectOne("SELECT id FROM `".self::$tableNameUniequeViews."` WHERE ".$where." ");
+
+        if ($previousView == 0) {
+            // If there are no recent previous views, increment the visit_count and record the unique views
+
+            // Insert Unique Views
+            $insert_data = [
+                'ip' => $userIP,
+                'browser' => $userAgent,
+                'cookie' => $cookieIdentifier,
+                'visit_count' => 1,
+                'create_time' => $currentTime,
+                'news_id' => $newsId,
+            ];
+            self::$db->insert('unique_views', $insert_data);
+
+            // Update News view count
+            self::$db->raw("UPDATE `" . self::$tableName . "` SET `view`=`view`+1 WHERE `id`='" . $newsId . "'");
+
+            // If inserted, return true
+        } else {
+
+            // Update Unique Views
+            self::$db->raw("UPDATE `".self::$tableNameUniequeViews."` SET `visit_count`=`visit_count`+1, `update_time`= '".time()."' WHERE ".$where." ");
+            
+            // If inserted, return false
+            return false;
+        }
+
+    }
+    public static function getItem($id, $count=true){
+
         $array = self::$db->selectOne("SELECT `id`,`publish_time`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `".self::$tableName."` WHERE `id`='".$id."' AND `status`=1");
 
-        if($array && $count) {
-            self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
+        if($count) {
+            $isUniqueView = self::calculateUniqueView($id);
+            if ($isUniqueView) {
+                self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
+            }
         }
         return $array;
     }
