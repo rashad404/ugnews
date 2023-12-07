@@ -5,7 +5,7 @@ use Helpers\Format;
 
 if ($data['region'] == 16) {
     $tag_list = [
-        'Bakı', 'Türkiyə', 'Hava', 'Neft qiyməti', 'Evdə qal'
+        'Bakı', 'Türkiyə', 'Hava', 'Neft qiyməti'
     ];
 } else {
     $tag_list = [
