@@ -5,7 +5,7 @@ use Helpers\Format;
 
 if ($data['region'] == 16) {
     $tag_list = [
-        'Koronavirus', 'Türkiyə', 'Hava', 'Neft qiyməti', 'Evdə qal'
+        'Bakı', 'Türkiyə', 'Hava', 'Neft qiyməti', 'Evdə qal'
     ];
 } else {
     $tag_list = [
@@ -13,9 +13,9 @@ if ($data['region'] == 16) {
     ];
 }
 
-$world_corona = \Models\InfoModel::getMostCorona();
-$namaz_text = \Models\InfoModel::getNamazText();
-$ramazan_text = \Models\InfoModel::getRamazanText();
+// $world_corona = \Models\InfoModel::getMostCorona();
+// $namaz_text = \Models\InfoModel::getNamazText();
+// $ramazan_text = \Models\InfoModel::getRamazanText();
 
 // $info_list[] = ['Koronavirus',$world_corona.' '.$lng->get('cases'), 'info/coronavirus'];
 //$info_list[] = ['Ramazan',$ramazan_text, 'tags/ramazan'];
