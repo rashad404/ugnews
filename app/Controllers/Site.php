@@ -109,7 +109,12 @@ class Site extends Controller
     // Tag page
     public function tags($name=''){
         $name = Format::deUrlText($name);
-        $data = SeoModel::general();
+        $data = [];
+
+        $data['title'] = $name . ' Xəbərləri, ' . $name . ' xeberleri';
+        $data['keywords'] = $name . ' Xəbərləri, ' . $name . ' xeberleri';
+        $data['description'] = $name . ' Xəbərləri, ' . $name . ' xeberleri';
+
         $data['def_language'] = self::$def_language;
 
         $pagination = new Pagination();
