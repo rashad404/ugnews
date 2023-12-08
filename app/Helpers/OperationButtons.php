@@ -8,6 +8,7 @@ class OperationButtons
 	public static $language;
 
 	public function __construct() {
+        echo 1;exit;
 		self::$language = new Language();
 		self::$language->load('partner');
 	}
