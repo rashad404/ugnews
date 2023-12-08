@@ -77,7 +77,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                 <?php if($params["actions"]){ ?><th><?=$lng->get('Operations');?></th><?php } ?>
                             </tr>
                             </thead>
-                            <tbody><?php echo 99; exit;?>
+                            <tbody>
                             <?php foreach($data["list"]  as $item){ ?>
                                 <tr>
                                     <td class="admin-arrow-box width-20">
@@ -113,7 +113,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                         </td>
                                     <?php } ?>
                                 </tr>
-                            <?php } ?>
+                            <?php } ?><?php echo 99; exit;?>
                             </tbody>
                         </table>
                         </div>
