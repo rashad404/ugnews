@@ -33,7 +33,7 @@ class Language
         
         /** lang file */
         $file = SMVC."app/language/$code/$name.php";
-        echo $code;exit;
+        echo $file;exit;
         /** check if is readable */
         if (is_readable($file)) {
             /** require file */
