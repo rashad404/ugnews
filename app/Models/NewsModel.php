@@ -106,7 +106,25 @@ class NewsModel extends Model{
         return $array;
     }
 
+    private static function isBrowserAllowed() {
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $skipList = [
+            'Wget'
+        ];
+
+        $pattern = '/' . implode('|', array_map('preg_quote', $skipList)) . '/i';
+        $matches = preg_grep($pattern, [$userAgent]);
+
+        if (!empty($matches)) {
+            return false;
+        }
+
+        return true;
+    }
     private static function calculateUniqueView($newsId) {
+        // We don't want to process for bots, search engines etc.
+        if(!self::isBrowserAllowed()) return false;
+
        // Check if the user has a cookie named "ugnews_uv1"; if not, generate one
         if (!isset($_COOKIE['ugnews_uv1'])) {
             $cookieIdentifier = uniqid(); // Generate a unique identifier
