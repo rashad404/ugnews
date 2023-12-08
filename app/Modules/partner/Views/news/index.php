@@ -8,7 +8,7 @@ $params = $data['params'];
 
 $lng = $data['lng'];
 $defaultLang = LanguagesModel::getDefaultLanguage('partner');
-echo 2;exit;
+
 ?>
 
 
@@ -21,7 +21,7 @@ echo 2;exit;
 <section class="content">
 
 
-    <?php include "_search.php"; ?>
+    <?php include "_search.php"; echo 4;exit;?>
 
     <div class="row pad-top-15">
         <div class="col-xs-12"><!-- /.box -->
