@@ -107,7 +107,7 @@ class Security
         }
         $password = '';
         for ($i = 0; $i < $length; $i++) {
-            $password .= $str{rand(0, $max - 1)};
+            $password .= $str[rand(0, $max - 1)];
         }
         return $password;
     }
@@ -130,7 +130,7 @@ class Security
         $length = @round($length);
         $code = '';
         for ($i = 0; $i < $length; $i++) {
-            $code .= $str{rand(0, $max - 1)};
+            $code .= $str[rand(0, $max - 1)];
         }
         return $code;
     }
@@ -142,7 +142,7 @@ class Security
         $length = @round($length);
         $code = '';
         for ($i = 0; $i < $length; $i++) {
-            $code .= $str{rand(0, $max - 1)};
+            $code .= $str[rand(0, $max - 1)];
         }
         return $code;
     }
