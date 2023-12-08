@@ -13,7 +13,7 @@ class UserModel extends Model{
 
 	public static function getInfo($id){
 		$row = self::$db->selectOne("SELECT `id`,`balance`,`first_name`,`last_name`,
-            `country_code`,`phone`,`email`,`birthday`,`gender`,`block`,`time`,`landlord_portal`,`tenant_portal` FROM ".self::$tableName." WHERE `id`=:id",[":id"=>$id]);
+            `country_code`,`phone`,`email`,`birthday`,`gender`,`block`,`time` FROM ".self::$tableName." WHERE `id`=:id",[":id"=>$id]);
         if($row) {
             $row['prefix'] = substr($row['phone'], 0, 5);
             $row['number'] = substr($row['phone'], 5, 7);

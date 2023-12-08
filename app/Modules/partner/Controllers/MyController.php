@@ -36,12 +36,6 @@ class MyController extends Controller
             Session::set("partner_session_role",intval($getAuthInfo["role"]));
         }
 
-
-        if($getAuthInfo['landlord_portal']!=1){
-            Url::redirect("login");
-            exit;
-        }
-
     }
 
     public function adminRole()

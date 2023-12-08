@@ -1,6 +1,6 @@
 <?php if($userId>0):?>
     <ul class="nav">
-        <?php if($userInfo['landlord_portal']==1):?>
+        
             <li class="menu_sub_total"><?=$lng->get('Author Portal')?></li>
             <li><a href="/partner/news/index"><?=$lng->get('Your News')?></a></li>
             <li><a href="/partner/channels/index"><?=$lng->get('Your Channels')?></a></li>
@@ -10,7 +10,7 @@
             <li><a href="/partner/ads/index"><?=$lng->get('Your ads')?></a></li>
 
             <li class="menu_sub_total"><?=$lng->get('Categories')?></li>
-        <?php endif;?>
+        
     </ul>
 <?php endif;?>
 <?= $menuListMobile;?>
