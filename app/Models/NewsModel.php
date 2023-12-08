@@ -109,7 +109,7 @@ class NewsModel extends Model{
     private static function isBrowserAllowed() {
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         $skipList = [
-            'Wget', 'SemrushBot', 'Barkrowler', 'AhrefsBot', 'YandexBot', 'MJ12bot', 'DotBot'
+            'Wget', 'SemrushBot', 'Barkrowler', 'AhrefsBot', 'YandexBot', 'MJ12bot', 'DotBot', 'ImagesiftBot'
         ];
 
         $pattern = '/' . implode('|', array_map('preg_quote', $skipList)) . '/i';
