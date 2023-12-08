@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 use \Helpers\Url;
 use \Helpers\OperationButtons;
@@ -10,7 +8,7 @@ $params = $data['params'];
 
 $lng = $data['lng'];
 $defaultLang = LanguagesModel::getDefaultLanguage('partner');
-
+echo 2;exit;
 ?>
 
 
