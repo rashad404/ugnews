@@ -5,6 +5,13 @@ error_reporting(E_ALL);
 ini_set('memory_limit', '-1');
 
 
+echo '<pre>';
+print_r($_SERVER);
+echo '<pre>';
+exit;
+
+
+
 function isBrowserAllowed() {
     // $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36';
