@@ -110,7 +110,8 @@ class NewsModel extends Model{
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         $skipList = [
             'Wget', 'SemrushBot', 'Barkrowler', 'AhrefsBot', 'YandexBot', 'MJ12bot', 'DotBot', 'ImagesiftBot',
-            'ClaudeBot', 'bingbot', 'Googlebot'
+            'ClaudeBot', 'bingbot', 'Googlebot',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
         ];
 
         $pattern = '/' . implode('|', array_map('preg_quote', $skipList)) . '/i';
