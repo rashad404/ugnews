@@ -87,7 +87,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                                 <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                                             </label>
                                         </div>
-                                    </td><?php echo 99; exit;?>
+                                    </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
                                         <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
@@ -99,7 +99,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                         }
                                         ?>
                                         <span style="color:#aaaaaa;font-size: 13px;"><?=$news_date?></span>
-                                    </td>
+                                    </td><?php echo 99; exit;?>
                                     <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getPositionIcons($item["id"],MODULE_PARTNER."/".$params["name"])?></td>
