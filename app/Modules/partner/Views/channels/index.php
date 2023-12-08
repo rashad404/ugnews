@@ -82,7 +82,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage();
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        <a target="_blank" href="<?=SITE_URL?>/channels/<?= $item["id"]?>/<?=Format::urlText($item['name'])?>"><?= $item["name"]?></a><br/>
+                                        <a target="_blank" href="<?=SITE_URL?>/<?=Format::urlText($item['name'])?>"><?= $item["name"]?></a><br/>
                                     </td>
                                     <td class="admin-arrow-box">
                                         <?=$item["subscribers"].' '.$lng->get('subscriber');?><br/>
