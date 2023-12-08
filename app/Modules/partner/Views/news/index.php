@@ -112,7 +112,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                             <?= $opButtons->getCrudIconsEditDel($item["id"],MODULE_PARTNER."/".$params["name"])?>
                                         </td>
                                     <?php } ?>
-                                </tr><?php echo 99; exit;?>
+                                </tr>
                             <?php } ?>
                             </tbody>
                         </table>
