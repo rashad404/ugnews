@@ -106,13 +106,13 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     <?php } ?>
                                     <?php if($params["status"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getStatusIcons($item["id"],$item["status"]); ?> </td>
-                                    <?php } ?><?php echo 99; exit;?>
+                                    <?php } ?>
                                     <?php if($params["actions"]){ ?>
                                         <td class="admin-arrow-box">
                                             <?= $opButtons->getCrudIconsEditDel($item["id"],MODULE_PARTNER."/".$params["name"])?>
                                         </td>
                                     <?php } ?>
-                                </tr>
+                                </tr><?php echo 99; exit;?>
                             <?php } ?>
                             </tbody>
                         </table>
