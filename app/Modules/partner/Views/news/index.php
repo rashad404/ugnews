@@ -21,7 +21,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
 <section class="content">
 
 
-    <?php include "_search.php"; echo 4;exit;?>
+    <?php include "_search.php";?>
 
     <div class="row pad-top-15">
         <div class="col-xs-12"><!-- /.box -->
@@ -57,7 +57,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     <input type="submit" class="hidden delbtnhid" name="delete" value="1">
                                 </li>
                             </ul>
-                        </div>
+                        </div><?php echo 99; exit;?>
                         <div class="table-responsive">
                             <table id="datatable2" class="table table-striped">
                             <thead>
