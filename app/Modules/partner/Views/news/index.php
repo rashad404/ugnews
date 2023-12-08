@@ -57,7 +57,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     <input type="submit" class="hidden delbtnhid" name="delete" value="1">
                                 </li>
                             </ul>
-                        </div><?php echo 99; exit;?>
+                        </div>
                         <div class="table-responsive">
                             <table id="datatable2" class="table table-striped">
                             <thead>
@@ -77,7 +77,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                 <?php if($params["actions"]){ ?><th><?=$lng->get('Operations');?></th><?php } ?>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody><?php echo 99; exit;?>
                             <?php foreach($data["list"]  as $item){ ?>
                                 <tr>
                                     <td class="admin-arrow-box width-20">
