@@ -14,16 +14,13 @@ class OperationButtons
 
 	public static function getPositionIcons($id,$path)
     {
-        echo 1;exit;
-        $return =
-	        '<span onclick="javascript:window.location.href = \''.Url::to($path."/up/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowtop.png"></i></span>'
-            .'<span onclick="javascript:window.location.href = \''.Url::to($path."/down/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowdown.png"></span>';
-        return $return;
+        // $return =
+	    //     '<span onclick="javascript:window.location.href = \''.Url::to($path."/up/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowtop.png"></i></span>'
+        //     .'<span onclick="javascript:window.location.href = \''.Url::to($path."/down/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowdown.png"></span>';
+        return 1;
     }
 
     public static function getStatusIcons($id,$status,$readOnly=''){
-
-        echo 2;exit;
         if($status==1) $checked='checked'; else $checked='';
         if(intval($readOnly)==1) $readOnly='readOnly';
         return '
