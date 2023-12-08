@@ -107,6 +107,11 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     <?php if($params["status"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getStatusIcons($item["id"],$item["status"]); ?> </td>
                                     <?php } ?>
+                                    <?php if($params["actions"]){ ?>
+                                        <td class="admin-arrow-box">
+                                            <?= $opButtons->getCrudIconsEditDel($item["id"],MODULE_PARTNER."/".$params["name"])?>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php } ?>
                             </tbody>
