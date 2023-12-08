@@ -114,7 +114,7 @@ class NewsModel extends Model{
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
         ];
 
-        $pattern = '/' . implode('|', array_map('preg_quote', $skipList)) . '/i';
+        $pattern = '~' . implode('|', array_map('preg_quote', $skipList, array_fill(0, count($skipList), '~'))) . '~i';
         $matches = preg_grep($pattern, [$userAgent]);
 
         if (!empty($matches)) {
