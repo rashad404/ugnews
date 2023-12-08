@@ -14,13 +14,15 @@ class OperationButtons
 
 	public static function getPositionIcons($id,$path)
     {
-        // $return =
-	    //     '<span onclick="javascript:window.location.href = \''.Url::to($path."/up/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowtop.png"></i></span>'
-        //     .'<span onclick="javascript:window.location.href = \''.Url::to($path."/down/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowdown.png"></span>';
         return 1;
+        $return =
+	        '<span onclick="javascript:window.location.href = \''.Url::to($path."/up/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowtop.png"></i></span>'
+            .'<span onclick="javascript:window.location.href = \''.Url::to($path."/down/".$id).'\'" class="pointer admin-arrow"><img src="'.Url::templatePartnerPath().'icons/arrowdown.png"></span>';
+        return $return;
     }
 
     public static function getStatusIcons($id,$status,$readOnly=''){
+        return 2;
         if($status==1) $checked='checked'; else $checked='';
         if(intval($readOnly)==1) $readOnly='readOnly';
         return '
@@ -31,6 +33,7 @@ class OperationButtons
 
     public static function getCrudIcons($id,$path)
     {
+        return 3;
     	$return = '<a href="'.Url::to($path."/view/".$id).'" title="'.self::$language->get("View").'" data-toggle="tooltip" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a> '
             .'<a href="'.Url::to($path."/update/".$id).'" title="'.self::$language->get("Edit").'" data-toggle="tooltip" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a> '
             .'<a href="'.Url::to($path."/delete/".$id).'" title="'.self::$language->get("Delete").'" data-toggle="tooltip" class="btn btn-xs btn-danger btn-delete delete_confirm"><i class="fa fa-trash"></i></a>';
@@ -40,6 +43,7 @@ class OperationButtons
 
     public static function getCrudIconsViewEdit($id,$path)
     {
+        return 4;
         $return =
             '<a href="'.Url::to($path."/view/".$id).'" title="'.self::$language->get("View").'" data-toggle="tooltip" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a> '
             .'<a href="'.Url::to($path."/update/".$id).'" title="'.self::$language->get("Edit").'" data-toggle="tooltip" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>';
@@ -49,6 +53,7 @@ class OperationButtons
 
     public static function getCrudIconsEditDel($id,$path)
     {
+        return 5;
         $return =
             '<a href="'.Url::to($path."/update/".$id).'" title="'.self::$language->get("Edit").'" data-toggle="tooltip" class="btn btn-xs btn-primary"><i class="fas fa-pencil-alt"></i></a> '
             .'<a href="'.Url::to($path."/delete/".$id).'" title="'.self::$language->get("Delete").'" data-toggle="tooltip" class="btn btn-xs btn-danger btn-delete delete_confirm"><i class="fa fa-trash"></i></a>';
@@ -58,6 +63,7 @@ class OperationButtons
 
     public static function getCrudIconsEdit($id,$path)
     {
+        return 6;
         $return =
             '<a href="'.Url::to($path."/update/".$id).'" title="'.self::$language->get("Edit").'" data-toggle="tooltip" class="btn btn-xs btn-primary"><i class="fas fa-pencil-alt"></i></a> ';
 
@@ -66,11 +72,13 @@ class OperationButtons
 
     public static function getCrudIconsDel($id,$path)
     {
+        return 7;
         return '<a href="'.Url::to($path."/delete/".$id).'" title="'.self::$language->get("Delete").'" data-toggle="tooltip" class="btn btn-xs btn-danger btn-delete delete_confirm"><i class="fa fa-trash"></i></a>';
     }
 
     public static function getCrudIconsquestions($id,$path)
     {
+        return 8;
         $return =
 	        '<div class="operation-buttons">'
 	        .'<a href="'.Url::to($path."/update/".$id).'" class="btn btn-warning btn-circle">'
@@ -86,6 +94,7 @@ class OperationButtons
 
     public static function getCrudIconsnotedit($id,$path)
     {
+        return 9;
         $return =
 	        '<div class="operation-buttons">'
 	        .'<a href="'.Url::to($path."/sendMessage/".$id).'" class="btn btn-warning btn-circle">'
