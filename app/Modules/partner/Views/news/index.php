@@ -87,7 +87,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                                 <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                                             </label>
                                         </div>
-                                    </td>
+                                    </td><?php echo 99; exit;?>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
                                         <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
@@ -113,7 +113,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                         </td>
                                     <?php } ?>
                                 </tr>
-                            <?php } ?><?php echo 99; exit;?>
+                            <?php } ?>
                             </tbody>
                         </table>
                         </div>
