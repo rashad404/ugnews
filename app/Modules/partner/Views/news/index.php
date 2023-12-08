@@ -7,6 +7,7 @@ $params = $data['params'];
 
 $lng = $data['lng'];
 $defaultLang = LanguagesModel::getDefaultLanguage('partner');
+echo 3;exit;
 ?>
 
 
