@@ -53,6 +53,7 @@ class Language
      */
     public function get($value)
     {
+        return 1;
         if (!empty($this->array[$value])) {
             return $this->array[$value];
         } else {
@@ -71,6 +72,7 @@ class Language
      */
     public static function show($value, $name, $code = LANGUAGE_CODE)
     {
+        return 2;
         /** lang file */
         $file = SMVC."app/language/$code/$name.php";
 
