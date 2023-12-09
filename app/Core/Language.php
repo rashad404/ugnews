@@ -30,19 +30,18 @@ class Language
     public function load($name)
     {
         $code = LanguagesModel::defaultLanguage($name);
-
         /** lang file */
-        // $file = SMVC."app/language/$code/$name.php";
+        $file = SMVC."app/language/$code/$name.php";
 
         /** check if is readable */
-        // if (is_readable($file)) {
-        //     /** require file */
-        //     $this->array = include($file);
-        // } else {
-        //     /** display error */
-        //     echo Error::display("Could not load language file '$code/$name.php'");
-        //     die;
-        // }
+        if (is_readable($file)) {
+            /** require file */
+            $this->array = include($file);
+        } else {
+            /** display error */
+            echo Error::display("Could not load language file '$code/$name.php'");
+            die;
+        }
     }
 
     /**
