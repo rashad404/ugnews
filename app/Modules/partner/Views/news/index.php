@@ -79,7 +79,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                             <?php $c=1;foreach($data["list"]  as $item){ $c++;?>
                                 
                                 <?php 
-                                    if($c==30) {
+                                    if($c==31) {
                                 ?>
                                 <tr>
                                     <td class="admin-arrow-box width-20">
