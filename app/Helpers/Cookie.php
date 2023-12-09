@@ -132,7 +132,7 @@ class Cookie {
      */
     public static function set($name, $value, $expire = NULL)
     {
-         setcookie("user", "JohnDoe", time() + 3600, "/", "", true, true);
+        //  setcookie("user", "JohnDoe", time() + 3600, "/", "", true, true);
         // if ($expire == NULL)
         // {
         //     // Use the default expiration
