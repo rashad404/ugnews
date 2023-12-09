@@ -34,7 +34,7 @@ Assets::js(array(
     Url::templatePath() . 'js/masonry.min.js',
     Url::templatePath() . 'js/jquery.fancybox.js',
     Url::templatePath() . 'js/touch-sideswipe.js',
-    Url::templatePath() . 'js/owl.carousel.js',
+    Url::templatePath() . 'js/owl.carousel.min.js',
     Url::templatePath() . 'js/main.js',
 ));
 $hooks->run('js');
