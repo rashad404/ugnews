@@ -20,7 +20,7 @@ class Cookie {
      * Restrict domain for cookies
      */
 
-    public static $domain = NULL;
+    public static $domain = "";
 
     /**
      * Define secure default true
