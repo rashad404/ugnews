@@ -98,7 +98,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                         ?>
                                         <span style="color:#aaaaaa;font-size: 13px;"><?=$news_date?></span>
                                     </td>
-                                    
+                                    <?php $opButtons = new OperationButtons();?>
                                     <?php if($params["position"]){ ?>
                                         <td class="admin-arrow-box"> <?= $opButtons->getPositionIcons($item["id"],MODULE_PARTNER."/".$params["name"])?></td>
                                     <?php } ?>
