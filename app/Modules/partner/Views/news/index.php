@@ -95,8 +95,6 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                    
                                         <span style="color:#aaaaaa;font-size: 13px;"><?=$news_date?></span>
                                     </td>
-                                    <?php $opButtons = new OperationButtons();?>
-
                                 </tr>
                                 <?php 
                                     }
