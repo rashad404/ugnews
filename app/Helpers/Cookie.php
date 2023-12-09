@@ -144,13 +144,10 @@ class Cookie {
             // The expiration is expected to be a UNIX timestamp
             $expire += static::_time();
         }
-        echo $name;
-        echo $value;
-        exit;
         // Add the salt to the cookie value
         $value = self::salt($name, $value).'~'.$value;
 
-        return static::_setcookie($name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp);
+        // return static::_setcookie($name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp);
     }
 
     /**
