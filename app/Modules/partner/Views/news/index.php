@@ -76,11 +76,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $c=1;foreach($data["list"]  as $item){ $c++;?>
-                                
-                                <?php 
-                                    if($c>1 && $c<31) {
-                                ?>
+                            <?php foreach($data["list"]  as $item){ ?>
                                 <tr>
                                     <td class="admin-arrow-box width-20">
                                         <div class="checkboxum">
@@ -92,13 +88,29 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                   
+                                        <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
+                                        <?php
+                                        if(date("d",$item['publish_time'])==date('d')){
+                                            $news_date = date("H:i",$item['publish_time']);
+                                        }else{
+                                            $news_date = date("d.m.Y H:i",$item['publish_time']);
+                                        }
+                                        ?>
                                         <span style="color:#aaaaaa;font-size: 13px;"><?=$news_date?></span>
                                     </td>
+                                    <?php $opButtons = new OperationButtons();?>
+                                    <?php if($params["position"]){ ?>
+                                        <td class="admin-arrow-box"> <?= $opButtons->getPositionIcons($item["id"],MODULE_PARTNER."/".$params["name"])?></td>
+                                    <?php } ?>
+                                    <?php if($params["status"]){ ?>
+                                        <td class="admin-arrow-box"> <?= $opButtons->getStatusIcons($item["id"],$item["status"]); ?> </td>
+                                    <?php } ?>
+                                    <?php if($params["actions"]){ ?>
+                                        <td class="admin-arrow-box">
+                                            <?= $opButtons->getCrudIconsEditDel($item["id"],MODULE_PARTNER."/".$params["name"])?>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
-                                <?php 
-                                    }
-                                ?>
                             <?php } ?>
                             </tbody>
                         </table>
