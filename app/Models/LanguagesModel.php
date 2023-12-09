@@ -54,6 +54,7 @@ class LanguagesModel extends Model{
         }else{
             $language = 'en';
         }
+        echo $language;exit;
         Cookie::set('lang', $language);
 
         return 'az';
