@@ -76,7 +76,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $c=1;foreach($data["list"]  as $item){ $c++; if($c>5) break;?>
+                            <?php $c=1;foreach($data["list"]  as $item){ $c++; if($c>10) break;?>
                                 
 
                                 <tr>
