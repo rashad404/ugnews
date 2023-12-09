@@ -42,7 +42,7 @@ class LanguagesModel extends Model{
             }else{
                 $language = 'en';
             }
-            Cookie::getInstance()->set('lang', $language);
+            // Cookie::set('lang', $language);
 
         }else{
             $region = DEFAULT_COUNTRY;
@@ -53,7 +53,7 @@ class LanguagesModel extends Model{
         }else{
             $language = 'en';
         }
-        Cookie::set('lang', $language);
+        // Cookie::set('lang', $language);
 
 
 //        elseif(Cookie::has($admin_key.'lang')) {
