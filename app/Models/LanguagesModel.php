@@ -34,7 +34,6 @@ class LanguagesModel extends Model{
 
     public static function defaultLanguage($app='app')
     {
-        
 	    if($app=='admin'){$table = self::$adminTableName;$admin_key='admin_';}else{$table = self::$tableName;$admin_key='';}
         if(Cookie::has('set_region')) {
             $region = Cookie::get('set_region');
@@ -54,10 +53,8 @@ class LanguagesModel extends Model{
         }else{
             $language = 'en';
         }
-        echo $language;exit;
         Cookie::set('lang', $language);
 
-        return 'az';
 
 //        elseif(Cookie::has($admin_key.'lang')) {
 //            $language = Cookie::get($admin_key.'lang');

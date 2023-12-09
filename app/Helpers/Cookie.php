@@ -132,6 +132,9 @@ class Cookie {
      */
     public static function set($name, $value, $expire = NULL)
     {
+        echo $name;
+        echo $value;
+        exit;
         if ($expire == NULL)
         {
             // Use the default expiration
