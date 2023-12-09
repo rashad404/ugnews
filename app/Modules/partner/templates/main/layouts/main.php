@@ -36,8 +36,8 @@ $lng->load('app');
         Url::templatePartnerPath() . 'semantic-ui/transition.min.css',
         Url::templatePartnerPath() . 'photos/css/elan.css',
         Url::templatePartnerPath() . 'css/main.css'.$css_v,
-        Url::templatePath() . 'css/app.css'.$css_v,
-        Url::templatePartnerPath() . 'css/bootstrap-tagsinput.css',
+        Url::templatePath() . 'css/app.min.css'.$css_v,
+        Url::templatePartnerPath() . 'css/bootstrap-tagsinput.min.css',
     ]);
     ?>
 
