@@ -146,11 +146,11 @@ class Cookie {
 
         // Add the salt to the cookie value
         $value = self::salt($name, $value).'~'.$value;
-        setcookie('lang', '22044f935519516a8910ce0b8c872b0ce4f10e2c~az', '1733669631', '', '', '', '');
         echo '<pre>';
         
 print_r ([$name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp]);
 echo '</pre>';
+exit;
         // return static::_setcookie($name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp);
     }
 
