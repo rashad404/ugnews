@@ -8,7 +8,7 @@ class OperationButtons
 
 	public function __construct() {
 		self::$language = new Language();
-		self::$language->load('partner');
+		// self::$language->load('partner');
 	}
 
 
