@@ -92,7 +92,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        <a target="_blank" href="<?=SITE_URL?>/news/<?= $item["id"]?>/<?=Format::urlText($item['title'])?>"><?= $item["title"]?></a><br/>
+                                        
                                         <?php
                                         if(date("d",$item['publish_time'])==date('d')){
                                             $news_date = date("H:i",$item['publish_time']);
