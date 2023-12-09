@@ -54,9 +54,9 @@ class LanguagesModel extends Model{
         }else{
             $language = 'en';
         }
-        return 'az';
         Cookie::set('lang', $language);
 
+        return 'az';
 
 //        elseif(Cookie::has($admin_key.'lang')) {
 //            $language = Cookie::get($admin_key.'lang');
