@@ -92,14 +92,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                                     </td>
                                     <td class="admin-arrow-box width-20"><?= $item["id"]?></td>
                                     <td class="admin-arrow-box">
-                                        
-                                        <?php
-                                        if(date("d",$item['publish_time'])==date('d')){
-                                            $news_date = date("H:i",$item['publish_time']);
-                                        }else{
-                                            $news_date = date("d.m.Y H:i",$item['publish_time']);
-                                        }
-                                        ?>
+                   
                                         <span style="color:#aaaaaa;font-size: 13px;"><?=$news_date?></span>
                                     </td>
                                     <?php $opButtons = new OperationButtons();?>
