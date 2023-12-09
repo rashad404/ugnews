@@ -48,12 +48,13 @@ class LanguagesModel extends Model{
         }else{
             $region = DEFAULT_COUNTRY;
         }
-        return 'az';
+
         if($region==16){
             $language = 'az';
         }else{
             $language = 'en';
         }
+        return 'az';
         Cookie::set('lang', $language);
 
 
