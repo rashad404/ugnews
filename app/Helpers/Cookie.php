@@ -26,13 +26,13 @@ class Cookie {
      * Define secure default true
      */
 
-    public static $secure = false;
+    public static $secure = true;
 
     /**
      * Define only http or not. if true - only http, if false both http or https
      */
 
-    public static $onlyHttp = false;
+    public static $onlyHttp = true;
 
     /**
      * Define salt for cookie
@@ -132,22 +132,22 @@ class Cookie {
      */
     public static function set($name, $value, $expire = NULL)
     {
+        return setcookie("user", "JohnDoe", time() + 3600, "/", "", true, true);
+        // if ($expire == NULL)
+        // {
+        //     // Use the default expiration
+        //     $expire = self::$expire;
+        // }
 
-        if ($expire == NULL)
-        {
-            // Use the default expiration
-            $expire = self::$expire;
-        }
+        // if ($expire != 0)
+        // {
+        //     // The expiration is expected to be a UNIX timestamp
+        //     $expire += static::_time();
+        // }
+        // // Add the salt to the cookie value
+        // $value = self::salt($name, $value).'~'.$value;
 
-        if ($expire != 0)
-        {
-            // The expiration is expected to be a UNIX timestamp
-            $expire += static::_time();
-        }
-        // Add the salt to the cookie value
-        $value = self::salt($name, $value).'~'.$value;
-
-        return static::_setcookie($name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp);
+        // return static::_setcookie($name, $value, $expire, self::$path, self::$domain, self::$secure, self::$onlyHttp);
     }
 
     /**
