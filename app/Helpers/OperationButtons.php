@@ -9,7 +9,7 @@ class OperationButtons
 
 	public function __construct() {
 		self::$language = new Language();
-		self::$language->load('app');
+		// self::$language->load('app');
 	}
 
 	public static function getPositionIcons($id,$path)
