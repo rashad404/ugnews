@@ -26,6 +26,7 @@ body{
     font-weight:normal;
     font-style:normal;
     src: url('../fonts/Montserrat/Montserrat-Regular-webfont.woff') format("woff");
+    font-display: swap;
 }
 
 @font-face{
@@ -33,6 +34,7 @@ body{
     font-weight:normal;
     font-style:normal;
     src: url('../fonts/Montserrat/Montserrat-Bold-webfont.woff') format("woff");
+    font-display: swap;
 }
 a:hover{
     text-decoration: none!important;
