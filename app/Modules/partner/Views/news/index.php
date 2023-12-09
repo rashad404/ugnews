@@ -1,5 +1,4 @@
 <?php
-
 use \Helpers\Url;
 use \Helpers\OperationButtons;
 use Helpers\Format;
@@ -8,7 +7,6 @@ $params = $data['params'];
 
 $lng = $data['lng'];
 $defaultLang = LanguagesModel::getDefaultLanguage('partner');
-
 ?>
 
 
@@ -21,7 +19,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
 <section class="content">
 
 
-    <?php include "_search.php";?>
+    <?php include "_search.php"; ?>
 
     <div class="row pad-top-15">
         <div class="col-xs-12"><!-- /.box -->
