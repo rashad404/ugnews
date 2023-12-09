@@ -116,6 +116,7 @@ return [
     'Interesting'=>'Maraqlı',
     'Coronavirus'=>'Koronavirus',
     'Tourism'=>'Turizm',
+    'Education'=>'Təhsil',
 
 //    Channels
     'Your Channels'=>'Sizin kanallar',
