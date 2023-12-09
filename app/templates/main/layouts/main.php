@@ -98,8 +98,8 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <link href="<?=Url::templatePath()?>css/app.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>css/bootstrap.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>assets/fontawesome-55/css/all.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
-    <!-- <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.min.css<?=$css_v?>" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.theme.default.css<?=$css_v?>" rel="stylesheet" type="text/css"> -->
+    <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.theme.default.css<?=$css_v?>" rel="stylesheet" type="text/css">
 
     <title><?php echo $data['title']; ?></title>
 </head>
@@ -107,7 +107,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 
 <script src='<?=Url::templatePath()?>js/jquery.min.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/bootstrap.min.js<?=$css_v?>' type="text/javascript"></script>
-<!-- <script src='<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.js<?=$css_v?>' type="text/javascript"></script> -->
+<script src='<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/main.min.js<?=$css_v?>' type="text/javascript"></script>
 
 
