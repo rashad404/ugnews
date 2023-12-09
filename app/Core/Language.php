@@ -29,11 +29,11 @@ class Language
      */
     public function load($name)
     {
-        // $code = LanguagesModel::defaultLanguage($name);
-        // /** lang file */
-        // $file = SMVC."app/language/$code/$name.php";
+        $code = LanguagesModel::defaultLanguage($name);
+        /** lang file */
+        $file = SMVC."app/language/$code/$name.php";
 
-        // /** check if is readable */
+        /** check if is readable */
         // if (is_readable($file)) {
         //     /** require file */
         //     $this->array = include($file);
