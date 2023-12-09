@@ -41,6 +41,21 @@ class Cookie {
 
     public static $salt = '778fb1870187f2c7f5ed4f7cd20607fc';
 
+    private static $instance = null;
+
+    // Rest of your class properties and methods...
+
+    // Private constructor to prevent external instantiation
+    private function __construct() {}
+
+    // Public static method to get the singleton instance
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    
     /**
      * @param $key
      * @return null
