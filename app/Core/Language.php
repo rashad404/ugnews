@@ -31,7 +31,7 @@ class Language
     {
         $code = LanguagesModel::defaultLanguage($name);
         /** lang file */
-        $file = SMVC."app/language/$code/$name.php";
+        // $file = SMVC."app/language/$code/$name.php";
 
         /** check if is readable */
         // if (is_readable($file)) {
