@@ -29,7 +29,8 @@ class Language
      */
     public function load($name)
     {
-        // $code = LanguagesModel::defaultLanguage($name);
+        $code = LanguagesModel::defaultLanguage($name);
+        echo $code;exit;
         /** lang file */
         // $file = SMVC."app/language/$code/$name.php";
 
