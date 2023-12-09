@@ -9,7 +9,7 @@ setcookie("user", "JohnDoe", time() + 3600, "/", "", true, true);
 // Retrieve the value of the "user" cookie
 if (isset($_COOKIE["lang"])) {
     $username = $_COOKIE["lang"];
-    echo "Welcome back, $username!";
+    echo "!!!Welcome back, $username!";
 } else {
     echo "Cookie not set.";
 }
