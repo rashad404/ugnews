@@ -1,11 +1,10 @@
 <?php
+namespace Helpers;
+use Core\Language;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ini_set('memory_limit', '-1');
-namespace Helpers;
-use Core\Language;
-
 class OperationButtons
 {
 	public static $language;
