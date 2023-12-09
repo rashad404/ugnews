@@ -10,7 +10,6 @@ class OperationButtons
 	public function __construct() {
 		self::$language = new Language();
 		self::$language->load('partner');
-        echo self::$language->get("View");exit;
 	}
 
 	public static function getPositionIcons($id,$path)
