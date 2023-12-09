@@ -78,7 +78,7 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
                             <tbody>
                             <?php $c=1;foreach($data["list"]  as $item){ $c++; if($c<30 && $c>31) continue;?>
                                 
-
+                                <?=$item['title']?>
                                 <tr>
                                 </tr>
                             <?php } ?>
