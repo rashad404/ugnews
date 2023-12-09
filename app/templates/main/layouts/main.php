@@ -107,7 +107,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 
 <script src='<?=Url::templatePath()?>js/jquery.min.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/bootstrap.min.js<?=$css_v?>' type="text/javascript"></script>
-<script src='<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.min.js<?=$css_v?>' type="text/javascript"></script>
+<script src='<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.js<?=$css_v?>' type="text/javascript"></script>
 <script src='<?=Url::templatePath()?>js/main.min.js<?=$css_v?>' type="text/javascript"></script>
 
 
