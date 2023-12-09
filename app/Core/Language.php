@@ -42,12 +42,6 @@ class Language
             echo Error::display("Could not load language file '$code/$name.php'");
             die;
         }
-        echo '<pre>';
-        print_r($this->array);
-        echo '<pre>';
-        exit;
-        
-
     }
 
     /**
