@@ -144,6 +144,7 @@ class NewsModel extends Model{
 
     protected static function getPost()
     {
+        
         extract($_POST);
         $skip_list = ['csrf_token','image'];
         $array = [];
@@ -153,9 +154,10 @@ class NewsModel extends Model{
             if(Date::validateDate($_POST[$key])){
                 $array[$key] = strtotime($_POST[$key]);
             }else {
-                $array[$key] = Security::safe($_POST[$key]);
+                $array[$key] = Security::safeText($_POST[$key]);
             }
         }
+        // Console::varDump($array);
         return $array;
     }
 

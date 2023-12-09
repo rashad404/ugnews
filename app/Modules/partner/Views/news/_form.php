@@ -138,6 +138,7 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
 
                     tinymce.init({
                         selector: '#mytextarea',
+                        entity_encoding : "raw",
                         contextmenu: false,
                         content_css: '//www.tiny.cloud/css/codepen.min.css',
                         mobile: {

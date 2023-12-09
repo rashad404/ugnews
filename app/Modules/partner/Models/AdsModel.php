@@ -147,7 +147,7 @@ class AdsModel extends Model{
             if(Date::validateDate($_POST[$key])){
                 $array[$key] = strtotime($_POST[$key]);
             }else {
-                $array[$key] = Security::safe($_POST[$key]);
+                $array[$key] = Security::safeText($_POST[$key]);
             }
         }
         return $array;

@@ -50,7 +50,6 @@ class News extends MyController{
     }
 
     public function index(){
-        
         $model = self::$model;
         if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
             $data['list'] = $model::search();

@@ -26,7 +26,7 @@ class CategoriesModel extends Model{
         $skip_list = ['submit','csrf_token'];
         foreach($_POST as $key=>$value){
             if (in_array($key, $skip_list)) continue;
-            $array[$key] = Security::safe($_POST[$key]);
+            $array[$key] = Security::safeText($_POST[$key]);
         }
         return $array;
     }

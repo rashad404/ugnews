@@ -23,10 +23,10 @@ class Security
     }
     public static function safeText($value)
     {
+        // Define a list of allowed HTML tags and attributes
+        $allowedTags = '<b><i><strong><em><u><h1><h2><h3><h4><h5><h6><ul><ol><li><a><p><br><img><blockquote><code><pre><table><thead><tbody><tr><th><td><div><span>';
 
-        $value = self::safe($value);
-        $value = addslashes($value);
-        $value = htmlspecialchars($value);
+        $value = strip_tags($value, $allowedTags);
         return $value;
     }
 

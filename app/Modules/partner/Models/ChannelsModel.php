@@ -151,7 +151,7 @@ class ChannelsModel extends Model{
         $array = [];
         foreach($_POST as $key=>$value){
             if (in_array($key, $skip_list)) continue;
-            $array[$key] = Security::safe($_POST[$key]);
+            $array[$key] = Security::safeText($_POST[$key]);
         }
         return $array;
     }
@@ -230,10 +230,8 @@ class ChannelsModel extends Model{
 
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
-            $insert_data['name_code'] = strtolower(preg_replace("/[ *()\-_.,]/","",$insert_data['name']));
+            $insert_data['name_code'] = mb_strtolower(preg_replace("/[ *()\-_.,]/","",$insert_data['name']));
             $insert_data['name_url'] = Format::urlTextChannel($insert_data['name']);
-
-//            echo $insert_data['name_code'];exit;
 
             $check = self::$db->selectOne("SELECT `id` FROM ".self::$tableName." WHERE `name_code`='".$insert_data['name_code']."'");
             if($check){
