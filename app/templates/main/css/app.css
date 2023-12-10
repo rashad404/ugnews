@@ -816,7 +816,6 @@ div.flash_notification{
     color: #FFFFFF;
 }
 .mobile_menu_body a{
-    color: var(--main-color);
     display: block;
 }
 .mobile_menu_body a:hover{
