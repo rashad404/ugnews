@@ -1026,6 +1026,8 @@ ul.dash_style > li:before {
 
 }
 .bootstrap-tagsinput{
+
+    border: 1px solid #ccc!important;
     font-size: 14px;
     padding: 5px!important;
     width: 100%;
