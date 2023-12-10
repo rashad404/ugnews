@@ -816,6 +816,7 @@ div.flash_notification{
     color: #FFFFFF;
 }
 .mobile_menu_body a{
+    color: var(--main-color);
     display: block;
 }
 .mobile_menu_body a:hover{
@@ -856,7 +857,7 @@ div.flash_notification{
 
 }
 .sign_in_mob a{
-    color: #fff;
+    color: #fff!important;
 }
 .sign_in_mob a:hover{
     background-color: unset;
