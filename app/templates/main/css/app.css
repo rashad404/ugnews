@@ -2509,7 +2509,7 @@ ul.search_result_modal_box a:hover{
         }
 
         .visible-xs-flex {
-            display: flex; !important
+            display: flex !important
         }
 
         .container-fluid, .container{
@@ -2632,7 +2632,7 @@ ul.search_result_modal_box a:hover{
         }
 
         h2.content{
-            margin-top:0;!important;
+            margin-top:0 !important;
         }
 
         /*About*/

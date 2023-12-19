@@ -18,7 +18,7 @@ use Helpers\Url;
                 </div>
 
                 <div class="rating_box info_box_table table-responsive">
-                    <table class="table table-striped"  >
+                    <table class="table table-striped">
                         <tr>
                             <th><?=$lng->get('Date')?></th>
                             <th><?=$lng->get('Fajr')?></th>
