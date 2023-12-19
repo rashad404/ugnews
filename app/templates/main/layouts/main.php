@@ -172,6 +172,7 @@ if(Session::get('header_off')==true) {
 ?>
 
 <?php include_once 'inc/plugins.php';?>
-
+<script src="<?=Url::templatePath()?>js/valyuta.js<?=$css_v?>"></script>
+<script src="<?=Url::templatePath()?>js/weather.js<?=$css_v?>"></script>
 </body>
 </html>

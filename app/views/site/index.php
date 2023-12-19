@@ -35,7 +35,7 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                     <a class="info_box_a" href="<?=$list['2']?>">
                         <div class="info_box">
                             <?=$list['0']?><br/>
-                            <span><?=$list['1']?></span>
+                            <span class="<?=strtolower($list['0'])?>"><?=$list['1']?></span>
                         </div>
                     </a>
                 </div>
