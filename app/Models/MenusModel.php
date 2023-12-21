@@ -81,7 +81,7 @@ class MenusModel extends Model{
 
     public static function buildMenuListMobile($partner_id=0){
         $array = self::buildCategoryList();
-        echo ' <ul class="nav"> ';
+        echo ' <ul class="nav flex-column"> ';
         foreach ($array as $key=>$value){
             if(count($value)>2){
 
