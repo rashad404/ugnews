@@ -29,10 +29,10 @@ use Models\TextsModel;
                                                                 <span style="color:gray"><?=ProductsModel::formatListText($list['text_'.$data['def_language']], 100)?></span></p>
                                                         </div>
                                                         <div class="row news_list_bottom">
-                                                            <div class="col-6 col-md-6">
+                                                            <div class="col-xs-6 col-md-6">
                                                                 <p class="date"><?=date("M d Y",$list['time'])?></p>
                                                             </div>
-                                                            <div class="col-6 col-md-6">
+                                                            <div class="col-xs-6 col-md-6">
                                                                 <a class="news_read_more" href="news/<?=$list['id']?>/<?=Format::urlText($list['title_'.$data['def_language']])?>"><?=strtoupper($lng->get('Read More'))?></a>
                                                             </div>
                                                         </div>

@@ -3,6 +3,7 @@ use Helpers\Csrf;
 ?>
 <div class="row pad-top-15" style="<?php if(isset($data['page']) and $data['page']){ echo 'display:block;';} ?>">
     <div class="col-12"><!-- /.box -->
+
         <div class="box nopadbot">
             <div class="box-body">
                 <form action="<?=\Helpers\Url::to('partner/news/index')?>" method="POST" >

@@ -58,4 +58,3 @@ if (valyutaTable) {
     }, "")
 }
 
-console.log('sadasd');
