@@ -106,7 +106,6 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                     <div class="row">
                         <?php foreach ($tag_list as $key => $val):?>
                             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-
                                 <a class="tag_box_a" href="tags/<?=Format::urlTextTag($val)?>">
                                     <?php
                                         $rand = rand(13,22);
@@ -182,14 +181,10 @@ $info_list[] = ['Hava','Bakı 13 °', 'tags/hava'];
                                 </div>
                             </div>
                         <?php endforeach; ?>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 remove_col_padding_mob">
-                            <div class="show_more">
-                                <button id="city_show_more" more_text="<?=$lng->get('Show more')?>" less_text="<?=$lng->get('Show less')?>"><?=$lng->get('Show more')?></button>
-                            </div>
-                        </div>
+                            
+                        <div class="show_more">
+                                    <button id="city_show_more" more_text="Ardını göstər" less_text="Bağla">Ardını göstər</button>
+                                </div>
                     </div>
                     <?php endif;?>
                 </div>

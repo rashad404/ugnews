@@ -19,11 +19,13 @@ const valyutaData = {
                 code: "USD",
                 name: "1 ABŞ dolları",
                 value: 1.69,
+                change: "constant"
             },
             {
                 code: "EUR",
                 name: "1 Avro",
                 value: 1.8568,
+                change: "increased"
             },
         ]
     },
@@ -39,11 +41,19 @@ const valyutaTable = document.getElementById("valyuta-table");
 if (valyutaElement) valyutaElement.innerHTML = `1 USD = ${usd} AZN`;
 if (valyutaTable) {
     valyutaTable.innerHTML += note.reduce((total, item) => {
-        total += "<tr>";
-        total += `<td>${item.name}</td>`
-        total += `<td>${item.code}</td>`
-        total += `<td>${item.value} AZN</td>`
-        total += `</tr>`
+        total += `<tr>
+        <td>
+        <div class="d-flex">
+        <img src="/app/templates/main/img/currency/${item.code.toLowerCase()}.png" />
+        <p class="ps-2">
+        ${item.name}
+        </p>
+        </div>
+        </td>
+            <td class="fw-semibold">${item.code}</td>
+            <td class="fw-semibold">${item.value}</td>
+            <td><i class="fa-solid ${item.change == "increased" ? "fa-chevron-up" : item.change == "decreased" ? "fa-chevron-down" : "fa-circle"}"></i></td>
+                </tr>`
         return total
     }, "")
 }
