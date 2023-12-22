@@ -1,0 +1,20 @@
+{
+  "require": {
+    "monolog/monolog": "1.25.*",
+    "google/apiclient": "^2.4",
+    "facebook/graph-sdk": "^5.7",
+    "ext-curl": "*",
+    "twilio/sdk": "^5.42",
+    "dompdf/dompdf": "^0.8.1",
+    "square/connect": "^3.20200226"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "app/Core",
+      "Helpers\\": "app/Helpers",
+      "Controllers\\": "app/Controllers",
+      "Models\\": "app/Models",
+      "Modules\\": "app/Modules"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.idea
+.git
+errorlog.html
+composer.lock
+package-lock.json
+vendor
+app/Core/Config.php
+test
+Web
