@@ -62,11 +62,8 @@ $region = '233';
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="col-0 col-sm-5">
-=======
-            <div class="col-xs-0 col-sm-5">
->>>>>>> 62d0417c631ddb4e8a1571bf477e72be3ef602e2
+
 
                 <div class="search_area hidden-xs hidden-sm">
                         <input class="" type="text" name="search" id="header_search_input" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
@@ -78,11 +75,8 @@ $region = '233';
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="col-5 col-sm-3 ">
-=======
-            <div class="col-xs-5 col-sm-3 ">
->>>>>>> 62d0417c631ddb4e8a1571bf477e72be3ef602e2
+
 
                 <div class="icons_area" style="float: right">
                     <ul class="menu">

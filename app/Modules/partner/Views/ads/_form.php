@@ -123,10 +123,8 @@ $defaultLanguage = LanguagesModel::getDefaultLanguage();
     </div>
 
     <div class="box-footer">
-        <<<<<<< HEAD <div class="col-12">
-            =======
-            <div class="col-xs-12">
-                >>>>>>> 62d0417c631ddb4e8a1571bf477e72be3ef602e2
+         <div class="col-12">
+            
                 <div class="input-group pull-left">
                     <input type="hidden" value="<?= \Helpers\Csrf::makeToken(); ?>" name="csrf_token">
                     <button type="submit" class="btn btncolor secimetbtnadd">

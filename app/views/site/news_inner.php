@@ -76,7 +76,7 @@ $ad = $data['ad'];
                                     </div>
                                 </div>
                                 <div class="news_inner_right_box" style="padding: 0;">
-                                    <div class="share_btns d-flex gap-2 flex-wrap">
+                                    <div class="share_btns d-flex gap-2 flex-wrap flex-column flex-md-row">
 
                                         <a href="whatsapp://send?text=<?= Format::listTitle($item['title']) ?> https://ug.news/news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" data-action="share/whatsapp/share" class="wtp_share">
                                             <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
@@ -86,7 +86,6 @@ $ad = $data['ad'];
                                             <i class="fas fa-envelope" aria-hidden="true"></i> <span>E-mail</span>
                                         </a>
                                     </div>
-                                    <div class="clearBoth"></div>
                                 </div>
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="news_inner_subscribe_area">
@@ -141,6 +140,7 @@ $ad = $data['ad'];
                     <div class="similar_news">
 
                         <div class="similar_news_title"><?= $lng->get('Similar News') ?>:</div>
+                        <div class="row m-0 row-gap-3 flex-lg-column pe-12">
                         <?php $c = 1;
                         foreach ($data['list'] as $list) : ?>
 
@@ -156,7 +156,7 @@ $ad = $data['ad'];
                                         <a href="ads/click/<?= $ad['id'] ?>" target="_blank">
                                             <div class="">
 
-                                                <div class="row">
+                                                <div class="row m-0">
                                                     <div class="col-6 remove_col_padding_mob">
                                                         <img class="" src="<?= Url::filePath() ?>/<?= $ad['thumb'] ?>" alt="" />
                                                     </div>
@@ -172,14 +172,12 @@ $ad = $data['ad'];
                             <?php endif; ?>
                             <!--                            AD END-->
 
-
                             <div class="col-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
                                 <div class="news_box_similar">
                                     <a href="news/<?= $list['id'] ?>/<?= Format::urlText($list['title']) ?>">
-                                        <div class="">
                                             <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
 
-                                            <div class="row">
+                                            <div class="row m-0">
                                                 <?php if (!empty($list['thumb'])) : ?>
                                                     <div class="col-6 remove_col_padding_mob">
                                                         <img class="" src="<?= Url::filePath() ?>/<?= $list['thumb'] ?>" alt="" />
@@ -201,13 +199,12 @@ $ad = $data['ad'];
                                                     </div>
                                                 <?php endif; ?>
                                             </div>
-                                        </div>
                                     </a>
                                 </div>
                             </div>
                         <?php $c++;
                         endforeach; ?>
-                        <div class="clearBoth"></div>
+                        </div>
 
                     </div>
                 </div>
