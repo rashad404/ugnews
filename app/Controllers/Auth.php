@@ -5,7 +5,6 @@ use Core\Controller;
 use Core\Language;
 use Google_Client;
 use Google_Service_Oauth2;
-use Facebook\Facebook;
 use Helpers\Console;
 use Helpers\Session;
 use Helpers\Url;
@@ -33,107 +32,107 @@ class Auth extends Controller
 
 
     public function facebook_login(){
-        $fb = new Facebook([
-            'app_id' => '977943965970059', // Replace {app-id} with your app id
-            'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
-            'default_graph_version' => 'v3.2',
-        ]);
+        // $fb = new Facebook([
+        //     'app_id' => '977943965970059', // Replace {app-id} with your app id
+        //     'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
+        //     'default_graph_version' => 'v3.2',
+        // ]);
 
-        $helper = $fb->getRedirectLoginHelper();
+        // $helper = $fb->getRedirectLoginHelper();
 
-        $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('https://ureb.com/auth/facebook/callback', $permissions);
+        // $permissions = ['email']; // Optional permissions
+        // $loginUrl = $helper->getLoginUrl('https://ureb.com/auth/facebook/callback', $permissions);
 
-        echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+        // echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 
     }
 
     public function facebook_callback(){
-        $app_id = '977943965970059';
-        $app_secret = '83a9b6499f72d0a344e2b2fa2e27a65e';
-        $fb = new Facebook([
-            'app_id' => $app_id, // Replace {app-id} with your app id
-            'app_secret' => $app_secret,
-            'default_graph_version' => 'v3.2',
-        ]);
+        // $app_id = '977943965970059';
+        // $app_secret = '83a9b6499f72d0a344e2b2fa2e27a65e';
+        // $fb = new Facebook([
+        //     'app_id' => $app_id, // Replace {app-id} with your app id
+        //     'app_secret' => $app_secret,
+        //     'default_graph_version' => 'v3.2',
+        // ]);
 
-        $helper = $fb->getRedirectLoginHelper();
+        // $helper = $fb->getRedirectLoginHelper();
 
-        try {
-            $accessToken = $helper->getAccessToken();
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            // When Graph returns an error
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            // When validation fails or other local issues
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
+        // try {
+        //     $accessToken = $helper->getAccessToken();
+        // } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        //     // When Graph returns an error
+        //     echo 'Graph returned an error: ' . $e->getMessage();
+        //     exit;
+        // } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        //     // When validation fails or other local issues
+        //     echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        //     exit;
+        // }
 
-        if (! isset($accessToken)) {
-            if ($helper->getError()) {
-                header('HTTP/1.0 401 Unauthorized');
-                echo "Error: " . $helper->getError() . "\n";
-                echo "Error Code: " . $helper->getErrorCode() . "\n";
-                echo "Error Reason: " . $helper->getErrorReason() . "\n";
-                echo "Error Description: " . $helper->getErrorDescription() . "\n";
-            } else {
-                header('HTTP/1.0 400 Bad Request');
-                echo 'Bad request';
-            }
-            exit;
-        }
+        // if (! isset($accessToken)) {
+        //     if ($helper->getError()) {
+        //         header('HTTP/1.0 401 Unauthorized');
+        //         echo "Error: " . $helper->getError() . "\n";
+        //         echo "Error Code: " . $helper->getErrorCode() . "\n";
+        //         echo "Error Reason: " . $helper->getErrorReason() . "\n";
+        //         echo "Error Description: " . $helper->getErrorDescription() . "\n";
+        //     } else {
+        //         header('HTTP/1.0 400 Bad Request');
+        //         echo 'Bad request';
+        //     }
+        //     exit;
+        // }
 
-        // Logged in
+        // // Logged in
 
-        // The OAuth 2.0 client handler helps us manage access tokens
-        $oAuth2Client = $fb->getOAuth2Client();
+        // // The OAuth 2.0 client handler helps us manage access tokens
+        // $oAuth2Client = $fb->getOAuth2Client();
 
-        // Get the access token metadata from /debug_token
-        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+        // // Get the access token metadata from /debug_token
+        // $tokenMetadata = $oAuth2Client->debugToken($accessToken);
 
 
-        // Validation (these will throw FacebookSDKException's when they fail)
-        $tokenMetadata->validateAppId($app_id); // Replace {app-id} with your app id
-        // If you know the user ID this access token belongs to, you can validate it here
-        //$tokenMetadata->validateUserId('123');
-        $tokenMetadata->validateExpiration();
+        // // Validation (these will throw FacebookSDKException's when they fail)
+        // $tokenMetadata->validateAppId($app_id); // Replace {app-id} with your app id
+        // // If you know the user ID this access token belongs to, you can validate it here
+        // //$tokenMetadata->validateUserId('123');
+        // $tokenMetadata->validateExpiration();
 
-        if (! $accessToken->isLongLived()) {
-            // Exchanges a short-lived access token for a long-lived one
-            try {
-                $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-            } catch (Facebook\Exceptions\FacebookSDKException $e) {
-                echo "<p>Error getting long-lived access token: " . $e->getMessage() . "</p>\n\n";
-                exit;
-            }
-        }
+        // if (! $accessToken->isLongLived()) {
+        //     // Exchanges a short-lived access token for a long-lived one
+        //     try {
+        //         $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+        //     } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        //         echo "<p>Error getting long-lived access token: " . $e->getMessage() . "</p>\n\n";
+        //         exit;
+        //     }
+        // }
 
-        $_SESSION['fb_access_token'] = (string) $accessToken;
+        // $_SESSION['fb_access_token'] = (string) $accessToken;
 
-        try {
-            // Returns a `Facebook\FacebookResponse` object
-            $response = $fb->get('/me?fields=id,name,first_name,last_name,picture', $accessToken);
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
-        }
-        $user = $response->getGraphUser();
+        // try {
+        //     // Returns a `Facebook\FacebookResponse` object
+        //     $response = $fb->get('/me?fields=id,name,first_name,last_name,picture', $accessToken);
+        // } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        //     echo 'Graph returned an error: ' . $e->getMessage();
+        //     exit;
+        // } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        //     echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        //     exit;
+        // }
+        // $user = $response->getGraphUser();
 
-        $modelArray =AuthModel::facebook($user);
+        // $modelArray =AuthModel::facebook($user);
 
-        if(empty($modelArray['errors'])){
-            Url::redirect('');
-            exit;
-        }else {
-            Session::setFlash('error',$modelArray['errors']);
-            Url::redirect('login');
-            exit;
-        }
+        // if(empty($modelArray['errors'])){
+        //     Url::redirect('');
+        //     exit;
+        // }else {
+        //     Session::setFlash('error',$modelArray['errors']);
+        //     Url::redirect('login');
+        //     exit;
+        // }
     }
 
 
