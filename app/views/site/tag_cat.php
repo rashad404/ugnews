@@ -18,7 +18,7 @@ use Models\TextsModel;
                         <div class="col-lg-12">
                             <div class="page_title paddingTop20 paddingBottom20">
                                 <h2>
-                                    <?=$lng->get($data['cat_name']).$lng->get(' News')?>
+                                    <?=$lng->get($data['cat_name']).$lng->get('News')?>
                                 </h2>
                                 <hr/>
                             </div>

@@ -4,7 +4,6 @@ namespace Controllers;
 use Core\Controller;
 use Core\View;
 use Core\Language;
-use Facebook\Facebook;
 use Google_Client;
 use Google_Service_Oauth2;
 use Helpers\Format;

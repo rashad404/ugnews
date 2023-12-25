@@ -22,7 +22,8 @@ $defaultLang = LanguagesModel::getDefaultLanguage('partner');
     <?php include "_search.php"; ?>
 
     <div class="row pad-top-15">
-        <div class="col-xs-12"><!-- /.box -->
+        <div class="col-12"><!-- /.box -->
+
             <form action="<?php echo Url::to(MODULE_PARTNER."/".$params["name"]."/operation")?>" method="post">
                 <div class="box">
                     <div class="box-body">

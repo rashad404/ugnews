@@ -115,18 +115,18 @@ class Channels extends Controller
         $data['postData']['google_client'] = $client;
 
 
-        $fb = new Facebook([
-            'app_id' => '977943965970059', // Replace {app-id} with your app id
-            'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
-            'default_graph_version' => 'v3.2',
-        ]);
+        // $fb = new Facebook([
+        //     'app_id' => '977943965970059', // Replace {app-id} with your app id
+        //     'app_secret' => '83a9b6499f72d0a344e2b2fa2e27a65e',
+        //     'default_graph_version' => 'v3.2',
+        // ]);
 
-        $helper = $fb->getRedirectLoginHelper();
+        // $helper = $fb->getRedirectLoginHelper();
 
-        $permissions = ['email']; // Optional permissions
-        $loginUrl = $helper->getLoginUrl('https://ug.news/auth/facebook/callback', $permissions);
+        // $permissions = ['email']; // Optional permissions
+        // $loginUrl = $helper->getLoginUrl('https://ug.news/auth/facebook/callback', $permissions);
 
-        $data['postData']['facebook_url'] = htmlspecialchars($loginUrl);
+        // $data['postData']['facebook_url'] = htmlspecialchars($loginUrl);
 
         View::render('channels/'.__FUNCTION__, $data);
     }
