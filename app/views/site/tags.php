@@ -4,15 +4,16 @@ use Helpers\Url;
 use Models\ProductsModel;
 use Helpers\Format;
 use Models\TextsModel;
-?>
 
+$lowerCat = strtolower($data['cat_name']);
+?>
 <main class="main">
     <!--    Why Us?-->
     <div class="container paddingBottom20">
         <div class="row paddingBottom40">
             <div class="col-sm-12">
                 <div class="row ">
-                    <?php if (strtolower($data['cat_name']) == "valyuta") : ?>
+                    <?php if ($lowerCat == "valyuta") : ?>
                         <div class="col-lg-6">
                             <div class="page_title paddingTop20 paddingBottom20">
                                 <h2>
@@ -24,14 +25,14 @@ use Models\TextsModel;
                             </table>
                         </div>
                     <?php endif; ?>
-                    <div class="col-lg-6">
+                    <div class=<?php echo $lowerCat == 'valyuta' ? "col-lg-6" : '' ?>>
                         <div class="page_title paddingTop20 paddingBottom20">
                             <h2>
                                 <?= $lng->get($data['cat_name']) . $lng->get(' News') ?>
                             </h2>
                             <hr />
                         </div>
-                        <div class="d-flex flex-column">
+                        <div class=<?php echo $lowerCat == 'valyuta' ? "d-flex flex-column" : 'row' ?>>
                             <?php $cat_name = $data['cat_name'];
                             include 'news_include.php'; ?>
                         </div>
