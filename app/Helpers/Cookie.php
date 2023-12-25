@@ -163,7 +163,9 @@ class Cookie {
      */
     protected static function _setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
     {
-        return setcookie($name, $value, $expire, $path, '', $secure, $httponly);
+        if ($value !== null) {
+            return setcookie($name, $value, $expire, $path, '', $secure, $httponly);
+        } 
 
     }
 
