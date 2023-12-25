@@ -89,26 +89,26 @@ class CategoriesModel extends Model{
         echo ' <ul class="menu"> ';
             foreach ($array as $key=>$value){
                 if(count($value)>1){
-                    echo '<li class="dropdown"><a  href="cat/'.$key.'/'.Format::urlText($value['name']).'">'.$value['name'].' <span class="caret"></span></a>';
+                    echo '<li class="dropdown"><a  href="cat/'.Format::urlText($value['name']).'">'.$value['name'].' <span class="caret"></span></a>';
                     echo ' <ul class="dropdown-menu"> ';
                     foreach ($value as $key2=>$value2) {
                         if(!is_array($value2)){}
                         elseif(count($value2)>1){
-                            echo '<li class="li_sub_menu"><a href="cat/'.$key2.'/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a>';
+                            echo '<li class="li_sub_menu"><a href="cat/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a>';
                             echo ' <ul class="dropdown-menu sub-menu"> ';
                             foreach ($value2 as $key3=>$value3) {
                                 if(is_array($value3)) {
-                                    echo '<li><a href="cat/'.$key3.'/'.Format::urlText($value3['name']).'">' . $value3['name'] . '</a></li>';
+                                    echo '<li><a href="cat/'.Format::urlText($value3['name']).'">' . $value3['name'] . '</a></li>';
                                 }
                             }
                             echo '</ul></li>';
                         }else{
-                            echo '<li><a href="cat/'.$key2.'/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a></li>';
+                            echo '<li><a href="cat/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a></li>';
                         }
                     }
                     echo '</ul></li>';
                 }else{
-                    echo '<li><a href="cat/'.$key.'/'.Format::urlText($value['name']).'">'.$value['name'].'</a></li>';
+                    echo '<li><a href="cat/'.Format::urlText($value['name']).'">'.$value['name'].'</a></li>';
                 }
             }
         echo '</ul>';
@@ -119,7 +119,7 @@ class CategoriesModel extends Model{
         echo ' <ul class="menu"> ';
             foreach ($array as $key=>$value){
                 if(count($value)>1){
-                    echo '<li class="menu_li"><a  href="cat/'.$key.'/'.Format::urlText($value['name']).'">'.$value['name'].' <span class="caret"></span></a>';
+                    echo '<li class="menu_li"><a  href="cat'.Format::urlText($value['name']).'">'.$value['name'].' <span class="caret"></span></a>';
                     echo ' <ul class="sub_menu"> ';
                     foreach ($value as $key2=>$value2) {
                         if(!is_array($value2)){}
@@ -154,28 +154,28 @@ class CategoriesModel extends Model{
 
                 echo '<li>
                 <div style="padding:15px 40px;">
-                    <a href="cat/'.$key.'/'.Format::urlText($value['name']).'">'.$value['name'].'</a>
+                    <a href="cat/'.Format::urlText($value['name']).'">'.$value['name'].'</a>
                     <i data-id="'.$key.'" class="fa fa-angle-down sub_menu_toggle" style="font-size: 20px;float:right;cursor: pointer;"></i> 
                 </div>';
                     echo ' <ul id="toggle-ul-'.$key.'" class="mobile_sub_menu" style="margin:0;padding: 15px 40px;"> ';
                     foreach ($value as $key2=>$value2) {
                         if(!is_array($value2)){}
                         elseif(count($value2)>1){
-                            echo '<li class="li_sub_menu"><a href="cat/'.$key2.'/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a>';
+                            echo '<li class="li_sub_menu"><a href="cat/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a>';
                             echo ' <ul class="dropdown-menu sub-menu"> ';
                             foreach ($value2 as $key3=>$value3) {
                                 if(is_array($value3)) {
-                                    echo '<li><a href="cat/'.$key3.'/'.Format::urlText($value3['name']).'">' . $value3['name'] . '</a></li>';
+                                    echo '<li><a href="cat/'.Format::urlText($value3['name']).'">' . $value3['name'] . '</a></li>';
                                 }
                             }
                             echo '</ul></li>';
                         }else{
-                            echo '<li><a href="cat/'.$key2.'/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a></li>';
+                            echo '<li><a href="cat/'.Format::urlText($value2['name']).'">'.$value2['name'].'</a></li>';
                         }
                     }
                     echo '</ul></li>';
                 }else{
-                    echo '<li><a href="cat/'.$key.'/'.Format::urlText($value['name']).'">'.$value['name'].'</a></li>';
+                    echo '<li><a href="cat/'.Format::urlText($value['name']).'">'.$value['name'].'</a></li>';
                 }
             }
         echo '</ul>';

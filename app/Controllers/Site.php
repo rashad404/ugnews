@@ -76,18 +76,27 @@ class Site extends Controller
 
 
     // Index page
-    public function cat($id=0, $name=''){
-        $data = SeoModel::general();
-        $data['def_language'] = self::$def_language;
-
-        $pagination = new Pagination();
-        $pagination->limit = 24;
-        $data['pagination'] = $pagination;
-        $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($id));
-        $data['list'] = NewsModel::getListByCat($id, $limitSql);
-
-        $data['cat_name'] = NewsModel::getCatName($id);
-        View::render('site/'.__FUNCTION__, $data);
+    public function cat($name = '') {
+        $categoryIdArray = NewsModel::getCategoryIdByName($name);
+    
+        if (isset($categoryIdArray[0]['id'])) {
+            $categoryId = intval($categoryIdArray[0]['id']);
+    
+            $data = SeoModel::general();
+            $data['def_language'] = self::$def_language;
+    
+            $pagination = new Pagination();
+            $pagination->limit = 24;
+            $data['pagination'] = $pagination;
+            $limitSql = $pagination->getLimitSql(NewsModel::countListByCat($categoryId));
+            $data['list'] = NewsModel::getListByCat($categoryId, $limitSql);
+    
+            $data['cat_name'] = NewsModel::getCatName($categoryId);
+            View::render('site/' . __FUNCTION__, $data);
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            View::render('errors/404');
+        }
     }
 
 

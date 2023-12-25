@@ -106,7 +106,7 @@ class MenusModel extends Model{
                         echo '<li><a href="'.$value2['url'].'">'.$value2['name'].'</a></li>';
                     }
                 }
-                echo '</ul></li>';
+                // echo '</ul></li>';
             }else{
                 if($partner_id>0 && $value['name']=='Roommates'){
                 }else {
