@@ -28,21 +28,21 @@ const forecastContainer = document.querySelector(".weather-info");
 if (weatherElement) {
     weatherElement.innerHTML = `${weatherData.name} ${Math.round(weatherData.main.temp)}°`
 }
-weatherCurrent.innerHTML = `
+weatherCurrent ? weatherCurrent.innerHTML = `
 <h3 class="weather-header-city text-main-color">${cityName}</h3>
 <p class="current-city-date fs-5">${day} ${month} ${year}</p>
 <p class="weather-header-wet">Nisbi rütubət: ${currentWeather.main.humidity}% </p>
-<p class="weather-header-wind">Küləyin sürəti: ${currentWeather.wind.speed} km/saat</p>`
-degreeCurrent.innerHTML = `
+<p class="weather-header-wind">Küləyin sürəti: ${currentWeather.wind.speed} km/saat</p>` : ''
+degreeCurrent ? degreeCurrent.innerHTML = `
 <p class="today-degree">
             ${Math.round(currentWeather.main.temp)}<sup>o</sup> C
         </p>
-        <img src="/app/templates/main/img/weather/clouds.gif" class="d-block mt-3" alt="current weather" />`
+        <img src="/app/templates/main/img/weather/clouds.gif" class="d-block mt-3" alt="current weather" />` : ''
 
 
 let time = Date.now()
 const forecastList = forecastData.list.filter(item => (new Date(item.dt_txt).getTime()) > time)
-forecastContainer.innerHTML = forecastList.reduce((total, item) => {
+forecastContainer ? forecastContainer.innerHTML = forecastList.reduce((total, item) => {
     let { day, month, year } = getStringDate(item.dt_txt)
     return total += `<div class="p-0">
         <div class="d-flex flex-column weather-item ">
@@ -56,4 +56,19 @@ forecastContainer.innerHTML = forecastList.reduce((total, item) => {
             </ul>
         </div>
     </div>`
-}, '')
+}, '') : ''
+async function fetchData({ year, month, city }) {
+    const req = await fetch(`https://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=${city}&country=Azerbaijan&method=2`);
+    const resp = req.json();
+    return resp
+}
+async function namazApi() {
+    const d = new Date();
+    const year = d.getFullYear()
+    const month = d.getMonth() + 1;
+    const city = "Baku";
+    const data = await fetchData({ year, month, city });
+    console.log(data);
+}
+namazApi()
+// fetch('https://api.collectapi.com/pray/all?data.city=baku', { method: "GET", headers: { "Authorization": "apikey 5Io1foVJP0RLzhE9Vm0SIG:3jR07629URueJGCyNWTE3O" } }).then(res => res.json()).then(res => console.log(res))

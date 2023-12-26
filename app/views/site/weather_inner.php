@@ -1,4 +1,6 @@
-<div class="weather-header d-flex">
+<div class="weather">
+    <h2>Hava haqqında məlumat</h2>
+    <div class="weather-header d-flex">
     <div class="d-flex flex-column p-10 py-40 col-md-7">
         <h3 class="weather-header-city text-main-color">Bakı</h3>
         <p class="current-city-date fs-5">26 Dekabr</p>
@@ -110,4 +112,5 @@
         </div>
     </div>
 
+</div>
 </div>
