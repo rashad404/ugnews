@@ -7,3 +7,5 @@ vendor
 app/Core/Config.php
 test
 Web
+php_oop
+_MACOSX

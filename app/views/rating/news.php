@@ -10,7 +10,6 @@ use Helpers\Url;
             <div class="col-sm-12">
 
                 <div class="rating_box_title"><?=$lng->get('TOP News')?></div>
-
                 <div class="rating_box">
                     <table class="table table-striped">
                         <tr>

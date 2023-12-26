@@ -60,6 +60,10 @@ class NewsModel extends Model{
         $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `cat`='".$cat."'");
         return $array;
     }
+    public static function getCategoryIdByName($name){
+        $array = self::$db->select("SELECT `id` FROM `".self::$tableNameCategories."` WHERE `status`=1  AND `name`='".$name."'");
+        return $array;
+    }
 
     public static function countListByChannel($id){
         $array = self::$db->count("SELECT count(id) FROM `".self::$tableName."` WHERE `status`=1 AND `country`='".self::$region."' AND `channel`='".$id."'");

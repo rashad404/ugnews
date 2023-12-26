@@ -117,6 +117,14 @@ return [
     'Coronavirus'=>'Koronavirus',
     'Tourism'=>'Turizm',
     'Education'=>'Təhsil',
+    'Migration' => 'Miqrasiya',
+    'Business' => 'Biznes',
+    'Vacancies' => 'Vakansiyalar',
+    'Fashion' => 'Moda',
+    'Car' => 'Avtomobil',
+    'Law' => 'Qanun',
+    'Finance' => 'Maliyye',
+    'Insurance' => 'Sigorta',
 
 //    Channels
     'Your Channels'=>'Sizin kanallar',

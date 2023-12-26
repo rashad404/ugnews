@@ -46,7 +46,7 @@ Router::any('news/(:num)/(:any)', 'Controllers\Site@news_inner');
 Router::any('city/(:num)/(:any)', 'Controllers\Site@city');
 
 
-Router::any('cat/(:num)/(:any)', 'Controllers\Site@cat');
+Router::any('cat/(:any)', 'Controllers\Site@cat');
 Router::any('tags/(:num)/(:any)', 'Controllers\Site@tag_cat');
 Router::any('tags/(:any)', 'Controllers\Site@tags');
 
