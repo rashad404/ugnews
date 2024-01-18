@@ -24,6 +24,7 @@ class News extends MyController{
     public static $def_language;
     public static $rules;
     public static $params;
+    public static $slug;
 
     public function __construct(){
         self::$def_language = LanguagesModel::getDefaultLanguage('partner');
@@ -43,10 +44,30 @@ class News extends MyController{
             'imageSizeY' => '450',
             'thumbSizeX' => '640',
             'thumbSizeY' => '340',
+            'slug'=> 'test',
         ];
 
         parent::__construct();
         self::$model = new NewsModel(self::$params);
+    }
+
+    public static function generateSafeSlug($slug)
+    {
+        // setlocale(LC_ALL, "en_US.utf8");
+
+        // $slug = preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $slug));
+
+        // $slug = htmlentities($slug, ENT_QUOTES, 'UTF-8');
+
+        // $pattern = '~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i';
+        // $slug = preg_replace($pattern, '$1', $slug);
+
+        // $slug = html_entity_decode($slug, ENT_QUOTES, 'UTF-8');
+
+        $pattern = '~[^0-9a-z]+~i';
+        $slug = preg_replace($pattern, '-', $slug);
+
+        return strtolower(trim($slug, '-'));
     }
 
     public function index(){

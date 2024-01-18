@@ -34,7 +34,7 @@ foreach ($data['list'] as $list) : ?>
                             </div>
                         </div>
                     </div>
-                    <a href="news/<?= $list['id'] ?>/<?= Format::urlText($list['title']) ?>">
+                    <a href="news/<?= $list['slug'] ?>">
 
                         <?php if (!empty($list['thumb'])) : ?>
                             <!-- <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" /> -->
@@ -85,7 +85,7 @@ foreach ($data['list'] as $list) : ?>
                             </div>
                         </div>
                     </div>
-                    <a href="news/<?= $list['id'] ?>/<?= Format::urlText($list['title']) ?>">
+                    <a href="news/<?= $list['slug'] ?>">
 
                         <?php if (!empty($list['thumb'])) : ?>
                             <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" />
@@ -140,7 +140,7 @@ foreach ($data['list'] as $list) : ?>
                         </div>
                     </div>
                 </div>
-                <a href="news/<?= $list['id'] ?>/<?= Format::urlText($list['title']) ?>">
+                <a href="news/<?= $list['slug'] ?>">
 
                     <?php if (!empty($list['thumb'])) : ?>
                         <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" />

@@ -89,7 +89,7 @@ $ad = $data['ad'];
                                 </div>
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? ' subscribed' : '' ?>">
+                                        <button redirect_url="news/<?= $item['slug'] ?>" id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? ' subscribed' : '' ?>">
                                             <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?>"></i>
                                             <span><?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?></span>
                                         </button>
@@ -98,10 +98,10 @@ $ad = $data['ad'];
 
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? ' liked' : '' ?>">
+                                        <button redirect_url="news/<?= $item['slug'] ?>" id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? ' liked' : '' ?>">
                                             <i class="fas fa-<?= ($like_check === true) ? 'thumbs-up' : 'thumbs-up' ?>"></i>
                                         </button>
-                                        <button redirect_url="news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? ' disliked' : '' ?>">
+                                        <button redirect_url="news/<?= $item['slug'] ?>" id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? ' disliked' : '' ?>">
                                             <i class="fas fa-<?= ($dislike_check === true) ? 'thumbs-down' : 'thumbs-down' ?>"></i>
                                         </button>
                                     </div>
@@ -174,7 +174,7 @@ $ad = $data['ad'];
 
                             <div class="col-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
                                 <div class="news_box_similar">
-                                    <a href="news/<?= $list['id'] ?>/<?= Format::urlText($list['title']) ?>">
+                                    <a href="news/<?=$list['slug']?>">
                                             <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
 
                                             <div class="row m-0">

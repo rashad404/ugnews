@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  web:
+    image: php:7.1-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+      - phpmyadmin
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mypass123
+      MYSQL_DATABASE: ug
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: mypass123
+    ports:
+      - "8081:80"
+
+volumes:
+  mysql_data:

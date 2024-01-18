@@ -13,23 +13,22 @@ namespace Helpers;
 use Core\Logger;
 use \PDO;
 
-
 class Database extends PDO
 {
-
-    protected static $instances = array();
-
+    protected static $instances = [];
 
     public static function get($group = false)
     {
         // Determining if exists or it's not empty, then use default group defined in config
-        $group = !$group ? array (
-            'type' => DB_TYPE,
-            'host' => DB_HOST,
-            'name' => DB_NAME,
-            'user' => DB_USER,
-            'pass' => DB_PASS
-        ) : $group;
+        $group = !$group
+            ? [
+                'type' => DB_TYPE,
+                'host' => DB_HOST,
+                'name' => DB_NAME,
+                'user' => DB_USER,
+                'pass' => DB_PASS,
+            ]
+            : $group;
 
         // Group information
         $type = $group['type'];
@@ -53,7 +52,7 @@ class Database extends PDO
             $instance = new Database("$type:host=$host;dbname=$name;charset=utf8", $user, $pass);
             $instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $instance->exec("set names utf8");
+            $instance->exec('set names utf8');
             // Setting Database into $instances to avoid duplication
             self::$instances[$id] = $instance;
 
@@ -70,8 +69,9 @@ class Database extends PDO
         return $this->query($sql);
     }
 
-    public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC, $class = '')		//FETCH_OBJ
+    public function select($sql, $array = [], $fetchMode = PDO::FETCH_ASSOC, $class = '')
     {
+        //FETCH_OBJ
         $stmt = $this->prepare($sql);
         foreach ($array as $key => $value) {
             if (is_int($value)) {
@@ -90,8 +90,9 @@ class Database extends PDO
         }
     }
 
-    public function selectOne($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC, $class = '')		//FETCH_OBJ
+    public function selectOne($sql, $array = [], $fetchMode = PDO::FETCH_ASSOC, $class = '')
     {
+        //FETCH_OBJ
         $stmt = $this->prepare($sql);
         foreach ($array as $key => $value) {
             if (is_int($value)) {
@@ -109,8 +110,9 @@ class Database extends PDO
         }
     }
 
-    public function count($sql, $array = [])		//FETCH_OBJ
+    public function count($sql, $array = [])
     {
+        //FETCH_OBJ
         $stmt = $this->prepare($sql);
         foreach ($array as $key => $value) {
             if (is_int($value)) {
@@ -121,19 +123,19 @@ class Database extends PDO
         }
         $stmt->execute();
 
-        $return =$stmt->fetch(PDO::FETCH_ASSOC);
+        $return = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        foreach($return as $r){
+        foreach ($return as $r) {
             return intval($r);
         }
-     }
+    }
 
     public function insert($table, $data)
     {
         ksort($data);
 
         $fieldNames = implode(',', array_keys($data));
-        $fieldValues = ':'.implode(', :', array_keys($data));
+        $fieldValues = ':' . implode(', :', array_keys($data));
 
         $stmt = $this->prepare("INSERT INTO $table ($fieldNames) VALUES ($fieldValues)");
 
@@ -147,8 +149,7 @@ class Database extends PDO
 
     public function insertMultiple($table, $keys, $values)
     {
-
-        $values = preg_replace('/\\\/','\\\\\\\\',$values);
+        $values = preg_replace('/\\\/', '\\\\\\\\', $values);
         $stmt = $this->prepare("INSERT INTO $table ($keys) VALUES $values");
 
         $stmt->execute();
@@ -227,18 +228,18 @@ class Database extends PDO
         return $this->exec("TRUNCATE TABLE $table");
     }
 
-
-    public function createTable($table_name, $data){
-        $fields = array();
-        $query = "CREATE TABLE IF NOT EXISTS  `".$table_name."` ( `id` int(11) AUTO_INCREMENT, ";
-        foreach($data as $item){
-            if(!empty($item['sql_type'])) {
-                $fields[] = "`" . $item['key'] . "` " . $item['sql_type'] . ' NOT NULL';
+    public function createTable($table_name, $data)
+    {
+        $fields = [];
+        $query = 'CREATE TABLE IF NOT EXISTS  `' . $table_name . '` ( `id` int(11) AUTO_INCREMENT, ';
+        foreach ($data as $item) {
+            if (!empty($item['sql_type'])) {
+                $fields[] = '`' . $item['key'] . '` ' . $item['sql_type'] . ' NOT NULL';
             }
         }
-        $fields = implode(', ',$fields);
-        $query .= $fields.", PRIMARY KEY (`id`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;";
-//        echo $query;
+        $fields = implode(', ', $fields);
+        $query .= $fields . ', PRIMARY KEY (`id`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;';
+        //        echo $query;
         self::raw($query);
     }
 }

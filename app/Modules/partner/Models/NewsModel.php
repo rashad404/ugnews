@@ -67,6 +67,7 @@ class NewsModel extends Model{
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'time',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'view',            'sql_type'=>'int(11)'];
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',      'sql_type'=>'int(11)'];
+        $array[] = ['type'=>'',             'name'=>'',                 'key'=>'slug',            'sql_type'=>'varchar(255)'];
 
         $array[] = ['type'=>'textarea',      'name'=>'Text',           'key'=>'text',            'sql_type'=>'text'];
 //        $array[] = ['type'=>'date',         'name'=>'Notice Date',    'key'=>'notice_date',          'sql_type'=>'varchar(20)'];
@@ -210,6 +211,7 @@ class NewsModel extends Model{
         WHERE a.`apt_id`='".$id."' ORDER BY b.`position` DESC, b.`id` ASC ");
     }
 
+
     public static function getItem($id){
         return self::$db->selectOne("SELECT ".self::getSqlFields()." FROM ".self::$tableName." WHERE `id`='".$id."'");
     }
@@ -238,6 +240,7 @@ class NewsModel extends Model{
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
             $insert_data['time'] = time();
+            $insert_data['slug'] = Url::generateSafeSlug($post_data['title']);
 
             if($post_data['channel']>0){
                 $channel_info = ChannelsModel::getItem($post_data['channel']);

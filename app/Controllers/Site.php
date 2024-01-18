@@ -154,13 +154,14 @@ class Site extends Controller
 
 
     // News inner page
-    public function news_inner($id)
+    public function news_inner($slug)
     {
         $data['def_language'] = self::$def_language;
         $data['userId'] = $this->userId;
 
-        $data['item'] = NewsModel::getItem($id);
+        $id = NewsModel::getItemName($slug);
 
+        $data['item'] = NewsModel::getItem($id);
         $data['meta_img'] = $data['item']['image'];
 
         $data['title'] = $data['item']['title'];

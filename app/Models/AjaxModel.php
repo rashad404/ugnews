@@ -131,7 +131,8 @@ class AjaxModel extends Model
     {
         $data = '';
 
-        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%'ORDER BY `id` ASC LIMIT 10");
+
+        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" .$text. "%'ORDER BY `id` ASC LIMIT 10");
         if ($array_channels) {
             $data .= '<li class="li_title">' . self::$lng->get('News Channels') . '</li>';
             foreach ($array_channels as $item) {
@@ -151,13 +152,13 @@ class AjaxModel extends Model
             }
         }
 
-        $array_news = self::$db->select("SELECT `id`,`title`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%'ORDER BY `time` DESC LIMIT 10");
+        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `slug` LIKE '%" . $text . "%'ORDER BY `time` DESC LIMIT 10");
         if ($array_news) {
             $data .= '<li class="li_title" style="margin-bottom: 10px;font-size: 16px;">' . self::$lng->get('News') . '</li>';
             foreach ($array_news as $item) {
                 $data .= '
                 <li>
-                <a href="/news/' . $item['id'] . '/' . Format::urlText($item['title']) . '">
+                <a href="/news/' . $item['slug'] .  '">
                     <div class="row">
                         <div class="col-2 col-md-2 remove_col_padding_mob">
                             <img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>

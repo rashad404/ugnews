@@ -1,32 +1,28 @@
-
-
 Options -Indexes
 
 <IfModule mod_rewrite.c>
-        RewriteEngine On
-        RewriteBase /
+    RewriteEngine On
+    RewriteBase /
 
-        # Force to exclude the trailing slash
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteCond %{REQUEST_URI} (.*)/$
-        RewriteRule ^(.+)/$ $1 [R=307,L]
+    # Force to exclude the trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.*)/$
+    RewriteRule ^(.+)/$ $1 [R=307,L]
 
-        # Restrict php files direct access
-        RewriteCond %{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
+    # Restrict php files direct access
+    RewriteCond %{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
 
-        # Folder administirator
-        RewriteCond admin\{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
-        RewriteRule \.php$ - [F]
+    # Folder administrator
+    RewriteCond admin\{THE_REQUEST} ^.+?\ [^?]+\.php[?\ ]
+    RewriteRule \.php$ - [F]
 
-        # Remove the Need for www in Your URL
-        #RewriteCond %{HTTP_HOST} ^www.yourdomain.com [NC]
-        #RewriteRule ^(.*)$ http://yourdomain.com/$1 [L,R=301]
+    # Remove the Need for www in Your URL
+    # RewriteCond %{HTTP_HOST} ^www.yourdomain.com [NC]
+    # RewriteRule ^(.*)$ http://yourdomain.com/$1 [L,R=301]
 
-
-        # Allow any files or directories that exist to be displayed directly
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-
-        RewriteRule ^(.*)$ index.php?$1 [QSA,L]
+    # Convert http://localhost/cat/sport/page/3 to http://localhost/index.php?/cat/sport/page/3
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [QSA,L]
 
 </IfModule>
