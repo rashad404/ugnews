@@ -61,7 +61,7 @@ Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
 
 Router::any('(:any)', 'Controllers\Channels@inner');
 
-Router::any('slug/all','Models\NewsModel@getSlugAll');
+// Router::any('slug/all','Models\NewsModel@getSlugAll');
 
 
 
