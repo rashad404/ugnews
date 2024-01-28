@@ -248,7 +248,7 @@ class NewsModel extends Model{
             }
 
             $insert_data['slug'] = $channel_info['name_url'] . '/' . Url::generateSafeSlug($post_data['title']);
-            echo 1;echo $insert_data['slug'];exit;
+
             $insert_id = self::$db->insert(self::$tableName,$insert_data);
             if($insert_id>0){
                 self::updatePosition($insert_id);
