@@ -158,7 +158,7 @@ class AjaxModel extends Model
             foreach ($array_news as $item) {
                 $data .= '
                 <li>
-                <a href="/news/' . $item['slug'] .  '">
+                <a href="/' . $item['slug'] .  '">
                     <div class="row">
                         <div class="col-2 col-md-2 remove_col_padding_mob">
                             <img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>

@@ -154,8 +154,10 @@ class Site extends Controller
 
 
     // News inner page
-    public function news_inner($slug)
+    public function news_inner($slug_part_1, $slug_part_2)
     {
+        $slug = $slug_part_1 . '/'. $slug_part_2;
+        
         $data['def_language'] = self::$def_language;
         $data['userId'] = $this->userId;
 

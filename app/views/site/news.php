@@ -19,7 +19,7 @@ use Models\TextsModel;
                                     <?php foreach ($data['list'] as $list):?>
                                         <div class="item col-lg-4">
                                             <div class="thumbnail news_card">
-                                                <a href="news/<?=$list['slug']?>">
+                                                <a href="<?=$list['slug']?>">
                                                     <img class="group list-group-image hoverable" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
                                                     <div class="caption">
                                                         <div class="caption_text">
@@ -33,7 +33,7 @@ use Models\TextsModel;
                                                                 <p class="date"><?=date("M d Y",$list['time'])?></p>
                                                             </div>
                                                             <div class="col-xs-6 col-md-6">
-                                                                <a class="news_read_more" href="news/<?=$list['slug']?>"><?=strtoupper($lng->get('Read More'))?></a>
+                                                                <a class="news_read_more" href="<?=$list['slug']?>"><?=strtoupper($lng->get('Read More'))?></a>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -41,7 +41,6 @@ Router::any('auth/facebook/callback', 'Controllers\Auth@facebook_callback');
 
 
 Router::any('news', 'Controllers\Site@news');
-Router::any('news/(:any)', 'Controllers\Site@news_inner');
 
 Router::any('city/(:num)/(:any)', 'Controllers\Site@city');
 
@@ -58,6 +57,9 @@ Router::any('set/region/(:any)', 'Controllers\Settings@region');
 
 // Crons
 Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
+
+// News inner - slug -> channel_name/title_slug
+Router::any('(:any)/(:any)', 'Controllers\Site@news_inner');
 
 Router::any('(:any)', 'Controllers\Channels@inner');
 

@@ -67,10 +67,10 @@ $ad = $data['ad'];
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="share_btns d-flex flex-wrap gap-2">
 
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" class="fb_share" target="_blank">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/<?= $item['slug'] ?>" class="fb_share" target="_blank">
                                             <i class="fab fa-facebook-f"></i> <span><?= $lng->get('Share') ?></span>
                                         </a>
-                                        <a href="https://twitter.com/intent/tweet?text=<?= Format::listTitle($item['title']) ?>&url=https://ug.news/news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" class="tw_share" target="_blank">
+                                        <a href="https://twitter.com/intent/tweet?text=<?= Format::listTitle($item['title']) ?>&url=https://ug.news/<?= $item['slug'] ?>" class="tw_share" target="_blank">
                                             <i class="fab fa-twitter" aria-hidden="true"></i> <span>Tweet</span>
                                         </a>
                                     </div>
@@ -78,18 +78,18 @@ $ad = $data['ad'];
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="share_btns d-flex gap-2 flex-wrap flex-column flex-md-row">
 
-                                        <a href="whatsapp://send?text=<?= Format::listTitle($item['title']) ?> https://ug.news/news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" data-action="share/whatsapp/share" class="wtp_share">
+                                        <a href="whatsapp://send?text=<?= Format::listTitle($item['title']) ?> https://ug.news/<?= $item['slug'] ?>" data-action="share/whatsapp/share" class="wtp_share">
                                             <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
                                         </a>
 
-                                        <a href="mailto:?subject=<?= Format::listTitle($item['title']) ?> &body=https://ug.news/news/<?= $item['id'] ?>/<?= Format::urlText($item['title']) ?>" class="em_share">
+                                        <a href="mailto:?subject=<?= Format::listTitle($item['title']) ?> &body=https://ug.news/<?= $item['slug'] ?>" class="em_share">
                                             <i class="fas fa-envelope" aria-hidden="true"></i> <span>E-mail</span>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?= $item['slug'] ?>" id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? ' subscribed' : '' ?>">
+                                        <button redirect_url="<?= $item['slug'] ?>" id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? ' subscribed' : '' ?>">
                                             <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?>"></i>
                                             <span><?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?></span>
                                         </button>
@@ -98,10 +98,10 @@ $ad = $data['ad'];
 
                                 <div class="news_inner_right_box" style="padding: 0;">
                                     <div class="news_inner_subscribe_area">
-                                        <button redirect_url="news/<?= $item['slug'] ?>" id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? ' liked' : '' ?>">
+                                        <button redirect_url="<?= $item['slug'] ?>" id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? ' liked' : '' ?>">
                                             <i class="fas fa-<?= ($like_check === true) ? 'thumbs-up' : 'thumbs-up' ?>"></i>
                                         </button>
-                                        <button redirect_url="news/<?= $item['slug'] ?>" id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? ' disliked' : '' ?>">
+                                        <button redirect_url="<?= $item['slug'] ?>" id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? ' disliked' : '' ?>">
                                             <i class="fas fa-<?= ($dislike_check === true) ? 'thumbs-down' : 'thumbs-down' ?>"></i>
                                         </button>
                                     </div>
@@ -174,7 +174,7 @@ $ad = $data['ad'];
 
                             <div class="col-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
                                 <div class="news_box_similar">
-                                    <a href="news/<?=$list['slug']?>">
+                                    <a href="<?=$list['slug']?>">
                                             <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
 
                                             <div class="row m-0">

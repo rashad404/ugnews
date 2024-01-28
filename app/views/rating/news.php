@@ -32,7 +32,7 @@ use Helpers\Url;
                             <tr>
                                 <td class="rating_item_count"><span style="background-color: <?=$color?>"><?=$c?></span></td>
 
-                                <td class="rating_item_title"><a target="_blank" href="news/<?=$list['slug']?>"><?=Format::listTitle($list['title'],60)?></a> </td>
+                                <td class="rating_item_title"><a target="_blank" href="<?=$list['slug']?>"><?=Format::listTitle($list['title'],60)?></a> </td>
                                 <td class="rating_item"><?=$list['view']?></td>
                             </tr>
                         <?php $c++;endforeach; ?>
