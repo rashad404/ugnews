@@ -58,8 +58,25 @@ Router::any('set/region/(:any)', 'Controllers\Settings@region');
 // Crons
 Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
 
-// News inner - slug -> channel_name/title_slug
-Router::any('(:any)/(:any)', 'Controllers\Site@news_inner');
+// NEWS INNER ROUTE START
+    // slug -> channel_name/title_slug
+    $currentURI = $_SERVER["REQUEST_URI"];
+    $textsToCheck = array("/partner/", "/another-text/");
+
+    $containsText = false;
+
+    foreach ($textsToCheck as $text) {
+        if (strpos($currentURI, $text) !== false) {
+            $containsText = true;
+            break; // Exit the loop as soon as a match is found
+        }
+    }
+
+    if (!$containsText) {
+        Router::any('(:any)/(:any)', 'Controllers\Site@news_inner');
+    }
+// NEWS INNER ROUTE END
+
 
 Router::any('(:any)', 'Controllers\Channels@inner');
 
