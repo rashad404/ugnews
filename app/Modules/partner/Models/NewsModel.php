@@ -240,13 +240,14 @@ class NewsModel extends Model{
             $insert_data = $post_data;
             $insert_data['partner_id'] = self::$partner_id;
             $insert_data['time'] = time();
-            $insert_data['slug'] = Url::generateSafeSlug($post_data['title']);
 
             if($post_data['channel']>0){
                 $channel_info = ChannelsModel::getItem($post_data['channel']);
                 $insert_data['country'] = $channel_info['country'];
                 $insert_data['language'] = $channel_info['language'];
             }
+
+            $insert_data['slug'] = Url::generateSafeSlug($channel_info['name_url'] . '/' .$post_data['title']);
 
             $insert_id = self::$db->insert(self::$tableName,$insert_data);
             if($insert_id>0){
