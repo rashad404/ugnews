@@ -63,6 +63,7 @@ class ChannelsModel extends Model{
         $array[] = ['type'=>'',             'name'=>'',                 'key'=>'partner_id',           'sql_type'=>'int(11)'];
 
         $array[] = ['type'=>'textarea',      'name'=>'About',           'key'=>'text',            'sql_type'=>'text'];
+        $array[] = ['type'=>'text',      'name'=>'Name uRL',           'key'=>'name_url',            'sql_type'=>'text'];
         return $array;
     }
 
