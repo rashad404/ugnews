@@ -55,10 +55,11 @@ class SimpleImage {
      *
      */
     function __destruct() {
-        if( $this->image !== null && get_resource_type($this->image) === 'gd' ) {
+        if ($this->image !== null && $this->image instanceof \GdImage) {
             imagedestroy($this->image);
         }
     }
+    
 
     function uploadFile($filename, $destination){
         $allowedExts = array("doc", "docx", "pdf", "gif", "jpeg", "jpg", "png");
