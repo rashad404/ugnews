@@ -52,7 +52,7 @@ class ProfileModel extends Model{
 
             if (!empty($_FILES['file']['name'])) {
                 $upload_model = new FileUploader();
-                $upload = $upload_model->imageUpload('',"users");
+                $upload = $upload_model->imageUpload("users", '');
                 if($upload['success']==0){
                     $return['errors'] = $upload['error'];
                 }

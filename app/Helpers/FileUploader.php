@@ -72,7 +72,9 @@ class FileUploader
     }
 
 
-    public static function imageUpload($name='', $dir, $input = "file", $quality=80, $width=500, $height=500)
+    public static function imageUpload($dir, $name='', $input = "file", $quality=80, $width=500, $height=500)
+
+    // public static function imageUpload($name='', $dir, $input = "file", $quality=80, $width=500, $height=500)
     {
         $error = '';
         $imageFileType = strtolower(pathinfo($_FILES[$input]["name"],PATHINFO_EXTENSION));
