@@ -45,6 +45,7 @@ class MyController extends Controller
 
     public function accessControl($tableName, $methods = array())
     {
+        
         $current_method = Url::getMethod();
         if(in_array($current_method, $methods)) {
             $role = $this->adminRole();
