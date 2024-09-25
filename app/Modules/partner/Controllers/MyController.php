@@ -43,7 +43,7 @@ class MyController extends Controller
         return Session::get('partner_session_role');
     }
 
-    public function accessControl($methods = array(), $tableName)
+    public function accessControl($tableName, $methods = array())
     {
         $current_method = Url::getMethod();
         if(in_array($current_method, $methods)) {
