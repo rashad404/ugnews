@@ -65,7 +65,7 @@ $region = '233';
             <div class="col-0 col-sm-5">
 
 
-                <div class="search_area hidden-xs hidden-sm">
+                <div class="search_area d-none d-md-block">
                         <input class="" type="text" name="search" id="header_search_input" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
                         <button type="submit" class="">
                             <?=$lng->get('Search')?>
@@ -78,7 +78,7 @@ $region = '233';
             <div class="col-5 col-sm-3 ">
 
 
-                <div class="icons_area" style="float: right">
+                <div class="icons_area d-none d-md-block" style="float: right">
                     <ul class="menu">
                         <li class="menu_li">
                             <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <span class="hidden-xs"><?=CountryModel::getCode($_SETTINGS['region'])?></span> <i class="fas fa-caret-down hidden-xs"></i></a>
