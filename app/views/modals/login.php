@@ -98,10 +98,10 @@ use Helpers\Date;
                 </div>
 
                 <div class="col-md-12 " id="login_tab">
-                    <div class="fb_sign_in">
+                    <!-- <div class="fb_sign_in">
                         <a href="<?=$data['postData']['facebook_url']?>"><?=$lng->get('Continue with Facebook')?></a>
-                    </div>
-                    <div style="text-align: center;padding: 10px;"><?=$lng->get('Or')?>:</div>
+                    </div> -->
+                    <!-- <div style="text-align: center;padding: 10px;"><?=$lng->get('Or')?>:</div> -->
                     <form action="" method="POST">
                         <input type="hidden" value="<?=Csrf::makeToken('_login')?>" name="csrf_token_login" />
                         <input id="redirect_url_login" type="hidden" name="redirect_url"/>
