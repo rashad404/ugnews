@@ -96,6 +96,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 
 
     <link href="<?=Url::templatePath()?>css/app.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
+    <link href="<?=Url::templatePath()?>css/tailwind-output.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>css/bootstrap.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>assets/fontawesome-55/css/all.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
     <link href="<?=Url::templatePath()?>assets/owlcarousel/owl.carousel.min.css<?=$css_v?>" rel="stylesheet" type="text/css">
