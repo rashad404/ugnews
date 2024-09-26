@@ -58,6 +58,10 @@ Router::any('set/region/(:any)', 'Controllers\Settings@region');
 // Crons
 Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
 
+// Channel ratings
+Router::any('rating/channels', 'Controllers\Rating@channels');
+
+
 // NEWS INNER ROUTE START
     // slug -> channel_name/title_slug
     $currentURI = $_SERVER["REQUEST_URI"];

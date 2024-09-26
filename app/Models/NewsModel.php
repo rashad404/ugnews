@@ -206,7 +206,7 @@ class NewsModel extends Model
     {
         $array = self::$db->selectOne('SELECT `id`,`publish_time`,`slug`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `' . self::$tableName . "` WHERE `id`='" . $id . "' AND `status`=1");
 
-        if ($count) {
+        if ($count && $id) {
             $isUniqueView = self::calculateUniqueView($id);
             if ($isUniqueView) {
                 self::$db->raw('UPDATE `' . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
