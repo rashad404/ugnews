@@ -50,7 +50,7 @@ $region = '233';
 </div>
 
 
-<div class="header">
+<div class="header mb-4">
     <div class="container-fluid">
         <div class="row">
             <div class="col-7 col-sm-4 remove_col_padding_mob">

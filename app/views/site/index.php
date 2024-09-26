@@ -26,7 +26,7 @@ $info_list[] = ['Hava', 'Bakı 13 °', 'tags/hava'];
 $info_list[] = ['Namaz vaxtı', "Sübh: 06:35", "tags/namaz"]
 ?>
 
-<main class="main">
+<main class="main mt-4">
     <div class="container paddingBottom20">
 
         <div class="row info_box_area">

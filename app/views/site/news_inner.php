@@ -11,7 +11,7 @@ $like_check = \Models\NewsModel::likeCheck($item['id']);
 $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
 ?>
 
-<main class="container mx-auto px-4 py-8">
+<main class="container mx-auto px-4 py-24">
     <div class="flex flex-col lg:flex-row gap-8">
         <div class="lg:w-2/3">
             <article class="bg-white shadow-lg rounded-lg overflow-hidden">
