@@ -3,169 +3,37 @@
 use Helpers\Url;
 use Helpers\Format;
 
-foreach ($data['list'] as $list) : ?>
-    <?php if (isset($data["cat_name"])) : ?>
-        <?php if ($data["cat_name"] == "Valyuta") : ?>
-            <div class="col-12">
-                <div class="news_box p-2 valute-news-box">
-                    <div class="channel_info pt-3">
-                        <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
-                        <div class="row">
-                            <div class="col-2 remove_col_padding_mob">
-                                <img class="channel_img" src="<?= Url::filePath() ?><?= $channel_info['thumb'] ?>" alt="" />
-                            </div>
-                            <div class="col-7">
-                                <div class="news_box_channel_title">
-                                    <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>"><?= $channel_info['name']; ?></a>
-                                </div>
-                                <?php
-                                if (date("d", $list['publish_time']) == date('d')) {
-                                    $news_date = date("H:i", $list['publish_time']);
-                                } else {
-                                    $news_date = date("d.m.Y H:i", $list['publish_time']);
-                                }
-                                ?>
-                                <div class="news_box_date"><?= $news_date ?></div>
-                            </div>
-                            <div class="col-3">
-                                <div class="news_box_view">
-                                    <?= $list['view'] ?><br /><i class="fas fa-signal"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="<?= $list['slug'] ?>">
+?>
 
-                        <?php if (!empty($list['thumb'])) : ?>
-                            <!-- <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" /> -->
-                            <div class="caption">
-                                <div class="news_title mb-0">
-                                    <span>
-                                        <?= Format::listTitle($list['title'], 70) ?> <span style="color:red;"><?= Format::listTitle($list['title_extra'], 70) ?></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <?php else : ?>
-                                <div class="news_only_text">
-                                    <?= Format::listText($list['text'], 300) ?>... <span><?= $lng->get('Read more') ?></span>
-                                </div>
-                                <?php endif; ?>
-                            </a>
-                            <div class="news_cat top-0 ">
-                                <?= $lng->get(\Models\NewsModel::getCatName($list['cat'])) ?>
-                            </div>
-                </div>
-            </div>
-        <?php else : ?>
-            <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="news_box">
-                    <div class="channel_info">
-                        <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
-                        <div class="row">
-                            <div class="col-2 remove_col_padding_mob">
-                                <img class="channel_img" src="<?= Url::filePath() ?><?= $channel_info['thumb'] ?>" alt="" />
-                            </div>
-                            <div class="col-7">
-                                <div class="news_box_channel_title">
-                                    <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>"><?= $channel_info['name']; ?></a>
-                                </div>
-                                <?php
-                                if (date("d", $list['publish_time']) == date('d')) {
-                                    $news_date = date("H:i", $list['publish_time']);
-                                } else {
-                                    $news_date = date("d.m.Y H:i", $list['publish_time']);
-                                }
-                                ?>
-                                <div class="news_box_date"><?= $news_date ?></div>
-                            </div>
-                            <div class="col-3">
-                                <div class="news_box_view">
-                                    <?= $list['view'] ?><br /><i class="fas fa-signal"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="<?= $list['slug'] ?>">
-
-                        <?php if (!empty($list['thumb'])) : ?>
-                            <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" />
-                            <div class="caption">
-                                <div class="news_title">
-                                    <span>
-                                        <?= Format::listTitle($list['title'], 70) ?> <span style="color:red;"><?= Format::listTitle($list['title_extra'], 70) ?></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="news_cat">
-                                <?= $lng->get(\Models\NewsModel::getCatName($list['cat'])) ?>
-                            </div>
-                        <?php else : ?>
-                            <div class="news_only_text">
-                                <?= Format::listText($list['text'], 300) ?>... <span><?= $lng->get('Read more') ?></span>
-                            </div>
-                        <?php endif; ?>
-                    </a>
-                </div>
-            </div>
-        <?php endif; ?>
-    <?php else : ?>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="news_box">
-
-                <div class="channel_info">
-                    <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
-
-
-                    <div class="row">
-                        <div class="col-2 remove_col_padding_mob">
-                            <img class="channel_img" src="<?= Url::filePath() ?><?= $channel_info['thumb'] ?>" alt="" />
-                        </div>
-                        <div class="col-7">
-                            <div class="news_box_channel_title">
-                                <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>"><?= $channel_info['name']; ?></a>
-                            </div>
-                            <?php
-                            if (date("d", $list['publish_time']) == date('d')) {
-                                $news_date = date("H:i", $list['publish_time']);
-                            } else {
-                                $news_date = date("d.m.Y H:i", $list['publish_time']);
-                            }
-                            ?>
-                            <div class="news_box_date"><?= $news_date ?></div>
-                        </div>
-                        <div class="col-3">
-                            <div class="news_box_view">
-                                <?= $list['view'] ?><br /><i class="fas fa-signal"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="<?= $list['slug'] ?>">
-
-                    <?php if (!empty($list['thumb'])) : ?>
-                        <img class="news_image" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="" />
-                        <div class="caption">
-                            <div class="news_title">
-                                <span>
-                                    <?= Format::listTitle($list['title'], 70) ?> <span style="color:red;"><?= Format::listTitle($list['title_extra'], 70) ?></span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="news_cat">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <?php foreach ($data['list'] as $list) : ?>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+            <a href="<?= $list['slug'] ?>" class="block">
+                <img class="w-full h-48 object-cover" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="<?= $list['title'] ?>" />
+                <div class="p-4">
+                    <h2 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2"><?= Format::listTitle($list['title'], 70) ?></h2>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-orange-500 font-semibold">
                             <?= $lng->get(\Models\NewsModel::getCatName($list['cat'])) ?>
-                        </div>
-                    <?php else : ?>
-                        <div class="news_only_text">
-                            <?= Format::listText($list['text'], 300) ?>... <span><?= $lng->get('Read more') ?></span>
-                        </div>
-                    <?php endif; ?>
-                </a>
+                        </span>
+                        <span class="text-gray-500">
+                            <?= date("d.m.Y", $list['publish_time']) ?>
+                        </span>
+                    </div>
+                </div>
+            </a>
+            <div class="px-4 py-2 bg-gray-100 flex justify-between items-center">
+                <button class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-sync-alt"></i> <!-- Refresh icon -->
+                </button>
+                <button class="text-gray-600 hover:text-gray-800">
+                    <i class="far fa-bookmark"></i> <!-- Bookmark icon -->
+                </button>
             </div>
         </div>
-    <?php endif; ?>
-<?php endforeach; ?>
+    <?php endforeach; ?>
+</div>
 
-<div class="clearBoth"></div>
-<div style="text-align:center;">
-    <?php echo $data["pagination"]->pageNavigation('pagination') ?>
+<div class="mt-8 flex justify-center">
+    <?php echo $data["pagination"]->pageNavigation(); ?>
 </div>

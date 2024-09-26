@@ -77,37 +77,68 @@ class Pagination
         return $return;
     }
 
-    public function pageNavigation($custom_pagination = 'pagination')
+    public function getLimitSelector()
     {
+        $options = $this->options;
+        $limit = isset($_GET["limit"]) && (intval($_GET["limit"]) > 0 || $_GET["limit"] == 'all') 
+            ? ($_GET["limit"] == 'all' ? 'all' : intval($_GET["limit"])) 
+            : $options[0];
+    
+        $optionsField = '';
+        foreach ($options as $k => $v) {
+            $key = is_numeric($k) ? $v : $k;
+            $selected = $key == $limit ? 'selected' : '';
+            $optionsField .= '<option ' . $selected . ' value="' . Url::to(Url::addFullUrl(["limit" => $key])) . '">' . $v . '</option>';
+        }
+    
+        $return = '<div class="flex items-center space-x-2">
+                        <label for="limit-selector" class="text-sm font-medium text-gray-700">Hər səhifədə göstər</label>
+                        <select id="limit-selector" onchange="location = this.value;" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            ' . $optionsField . '
+                        </select>
+                    </div>';
+        return $return;
+    }
 
+    public function pageNavigation()
+    {
         $l = new Language(); $l->load('app');
 
-        $show=3;
-        $return = '<ul class="'.$custom_pagination.'">';
+        $return = '<nav><ul class="flex items-center justify-center space-x-1">';
 
-        if($this->currentPage>$this->showButtonCount+1) {
-            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => 1])) . '">1</a></li>';
+        if ($this->currentPage > $this->showButtonCount + 1) {
+            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => 1])) . '" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">1</a></li>';
         }
-        if($this->currentPage>1) {
-            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => ($this->currentPage - 1)])) . '"> « </a></li>';
+
+        if ($this->currentPage > 1) {
+            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => ($this->currentPage - 1)])) . '" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">«</a></li>';
         }
-        for($i=$this->currentPage-$this->showButtonCount;$i<=$this->currentPage+$this->showButtonCount;$i++)
-        {
-            if($i==$this->currentPage) {
-                $class='class="active"'; $href='javascript:void(0);';
+
+        for ($i = $this->currentPage - $this->showButtonCount; $i <= $this->currentPage + $this->showButtonCount; $i++) {
+            if ($i == $this->currentPage) {
+                $class = 'px-3 py-2 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700';
+                $href = 'javascript:void(0);';
+            } else {
+                $class = 'px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50';
+                $href = Url::to(Url::addFullUrl(["page" => $i]));
             }
-            else {
-                $class=''; $href=Url::to(Url::addFullUrl(["page" => $i]));
+
+            if ($this->maxPage > 1) {
+                if ($i > 0 && $i <= $this->maxPage) {
+                    $return .= '<li><a href="' . $href . '" class="' . $class . '">' . $i . '</a></li>';
+                }
             }
-            if($this->maxPage>1)
-            if($i>0 && $i<=$this->maxPage)
-                $return.= '<li '.$class.'><a href="'.$href.'">'.$i.'</a></li>';
         }
-        if($this->currentPage<$this->maxPage)
-            $return.= '<li><a href="'.Url::to(Url::addFullUrl(["page" => ($this->currentPage+1)])).'"> » </a></li>';
-        if($this->currentPage<$this->maxPage-$this->showButtonCount && $this->maxPage>1)
-            $return.= '<li><a href="'.Url::to(Url::addFullUrl(["page" => $this->maxPage])).'"> '.$this->maxPage.'</a></li>';
-        $return.='</ul>';
+
+        if ($this->currentPage < $this->maxPage) {
+            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => ($this->currentPage + 1)])) . '" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">»</a></li>';
+        }
+
+        if ($this->currentPage < $this->maxPage - $this->showButtonCount && $this->maxPage > 1) {
+            $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => $this->maxPage])) . '" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">' . $this->maxPage . '</a></li>';
+        }
+
+        $return .= '</ul></nav>';
 
         return $return;
     }
@@ -143,25 +174,25 @@ class Pagination
     }
 
 
-    public function getLimitSelector()
-    {
-        $options = $this->options;
-        if(isset($_GET["limit"]) and intval($_GET["limit"])>0) $limit = intval($_GET["limit"]);
-        elseif(isset($_GET["limit"]) and Security::safe($_GET["limit"])=='all') $limit = 'all';
-        else $limit = $options[0];
+    // public function getLimitSelector()
+    // {
+    //     $options = $this->options;
+    //     if(isset($_GET["limit"]) and intval($_GET["limit"])>0) $limit = intval($_GET["limit"]);
+    //     elseif(isset($_GET["limit"]) and Security::safe($_GET["limit"])=='all') $limit = 'all';
+    //     else $limit = $options[0];
 
-        $optionsField = '';
-        foreach($options as $k=>$v){
-            $selected='';
-            $key=$v;
-            if(!is_numeric($k)) $key=$k;
-            if($key == $limit) $selected   = 'selected="selected"';
-            $optionsField.='<option '.$selected.' value="'.Url::to(Url::addFullUrl(["limit" => $key])).'">'.$v.'</option>';
-        }
+    //     $optionsField = '';
+    //     foreach($options as $k=>$v){
+    //         $selected='';
+    //         $key=$v;
+    //         if(!is_numeric($k)) $key=$k;
+    //         if($key == $limit) $selected   = 'selected="selected"';
+    //         $optionsField.='<option '.$selected.' value="'.Url::to(Url::addFullUrl(["limit" => $key])).'">'.$v.'</option>';
+    //     }
 
-        $return = '<b class="text-info">Hər səhifədə göstər</b> <select class="padding-4 border-radius-5"  onchange="location = this.value;">
-                    '.$optionsField.'
-                </select>';
-        return $return;
-    }
+    //     $return = '<b class="text-info">Hər səhifədə göstər</b> <select class="padding-4 border-radius-5"  onchange="location = this.value;">
+    //                 '.$optionsField.'
+    //             </select>';
+    //     return $return;
+    // }
 }

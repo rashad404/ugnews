@@ -2,6 +2,8 @@
 module.exports = {
   content: [
     "./app/views/site/**/*.php",
+    "./app/Helpers/**/*.php",
+    "./app/templates/**/*.php"
   ],
   theme: {
     extend: {
