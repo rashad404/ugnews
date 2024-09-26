@@ -73,7 +73,7 @@ class Error extends Controller
 	
 	public function module_index($modul='')
     {
-       return  Url::redirect($modul."error/index404");
+       return  Url::redirect($modul);
     }
 
     /**
