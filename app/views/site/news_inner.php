@@ -4,230 +4,175 @@ use Helpers\Url;
 use Helpers\Format;
 
 $ad = $data['ad'];
+$item = $data['item']; // Assuming this is available in the data array
+$channel_info = \Models\ChannelsModel::getItem($item['channel']);
+$subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+$like_check = \Models\NewsModel::likeCheck($item['id']);
+$dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
 ?>
 
-<main class="main">
-    <section xmlns="http://www.w3.org/1999/html">
-        <div class="container paddingX">
-            <div class="row paddingTop20 paddingBottom40">
-
-                <div class="col-lg-8 news_inner_box">
-                    <div class="">
-                        <div class="row">
-                            <div class="col-sx-12">
-                                <div class="channel_info_inner remove_col_padding_mob" style="padding: 12px 10px;">
-                                    <?php $channel_info = \Models\ChannelsModel::getItem($item['channel']); ?>
-
-                                    <div class="row">
-                                        <div class="col-2 col-lg-2 remove_col_padding_mob" style="text-align: right;width:12%;">
-                                            <img class="channel_img" src="<?= Url::filePath() ?><?= $channel_info['thumb'] ?>" alt="" />
-                                        </div>
-                                        <div class="col-6 col-lg-7 remove_col_padding_web">
-                                            <div class="news_box_channel_title">
-                                                <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>"><?= $channel_info['name']; ?></a>
-                                            </div>
-                                            <div class="channel_info_inner_date"><?= date("d.m.Y H:i", $item['publish_time']) ?></div>
-                                        </div>
-                                        <div class="col-2  col-lg-1">
-                                            <div class="channel_info_inner_view">
-                                                <span style=""><?= $channel_info['subscribers'] ?><br /><?= $lng->get('subscribers') ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-lg-2">
-                                            <div class="channel_info_inner_view" style="text-align: center">
-                                                <?= $item['view'] ?><br /><i class="fas fa-signal"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<main class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+        <div class="lg:w-2/3">
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <header class="p-4 border-b">
+                    <div class="flex items-center space-x-4">
+                        <img class="w-12 h-12 rounded-full" src="<?= Url::filePath() . $channel_info['thumb'] ?>" alt="<?= $channel_info['name'] ?>" />
+                        <div>
+                            <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>" class="text-lg font-semibold hover:underline"><?= $channel_info['name'] ?></a>
+                            <p class="text-sm text-gray-500"><?= date("d.m.Y H:i", $item['publish_time']) ?></p>
                         </div>
-                        <div class="news_inner_title"><?= $item['title'] ?> <span style="color:red;"><?= $item['title_extra'] ?></span></div>
-
-                        <div class="row">
-                            <div class="col-sm-8 col-md-8 col-lg-8">
-                                <?php if (!empty($item['image'])) : ?>
-                                    <img class="news_inner_img" src="<?= Url::filePath() ?>/<?= $item['image'] ?>" alt="" />
-                                <?php else : ?>
-                                    <div class="news_inner_text">
-                                        <?= html_entity_decode($item['text']) ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-4 web_pl_remove">
-                                <div class="news_inner_right_box">
-                                    <i class="fas fa-tag"></i> <?= $lng->get(\Models\NewsModel::getCatName($item['cat'])) ?>
-                                </div>
-
-                                <?php
-                                $subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
-                                $like_check = \Models\NewsModel::likeCheck($item['id']);
-                                $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
-                                ?>
-                                <div class="news_inner_right_box" style="padding: 0;">
-                                    <div class="share_btns d-flex flex-wrap gap-2">
-
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/<?= $item['slug'] ?>" class="fb_share" target="_blank">
-                                            <i class="fab fa-facebook-f"></i> <span><?= $lng->get('Share') ?></span>
-                                        </a>
-                                        <a href="https://twitter.com/intent/tweet?text=<?= Format::listTitle($item['title']) ?>&url=https://ug.news/<?= $item['slug'] ?>" class="tw_share" target="_blank">
-                                            <i class="fab fa-twitter" aria-hidden="true"></i> <span>Tweet</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="news_inner_right_box" style="padding: 0;">
-                                    <div class="share_btns d-flex gap-2 flex-wrap flex-column flex-md-row">
-
-                                        <a href="whatsapp://send?text=<?= Format::listTitle($item['title']) ?> https://ug.news/<?= $item['slug'] ?>" data-action="share/whatsapp/share" class="wtp_share">
-                                            <i class="fab fa-whatsapp" aria-hidden="true"></i> <span>Whatsapp</span>
-                                        </a>
-
-                                        <a href="mailto:?subject=<?= Format::listTitle($item['title']) ?> &body=https://ug.news/<?= $item['slug'] ?>" class="em_share">
-                                            <i class="fas fa-envelope" aria-hidden="true"></i> <span>E-mail</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="news_inner_right_box" style="padding: 0;">
-                                    <div class="news_inner_subscribe_area">
-                                        <button redirect_url="<?= $item['slug'] ?>" id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? ' subscribed' : '' ?>">
-                                            <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?>"></i>
-                                            <span><?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?></span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="news_inner_right_box" style="padding: 0;">
-                                    <div class="news_inner_subscribe_area">
-                                        <button redirect_url="<?= $item['slug'] ?>" id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? ' liked' : '' ?>">
-                                            <i class="fas fa-<?= ($like_check === true) ? 'thumbs-up' : 'thumbs-up' ?>"></i>
-                                        </button>
-                                        <button redirect_url="<?= $item['slug'] ?>" id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? ' disliked' : '' ?>">
-                                            <i class="fas fa-<?= ($dislike_check === true) ? 'thumbs-down' : 'thumbs-down' ?>"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="ml-auto text-right">
+                            <p class="text-sm font-medium"><?= $channel_info['subscribers'] ?> <?= $lng->get('subscribers') ?></p>
+                            <p class="text-sm"><?= $item['view'] ?> <i class="fas fa-signal"></i></p>
                         </div>
                     </div>
+                </header>
+                
+                <div class="p-4">
+                    <h1 class="text-2xl font-bold mb-4"><?= $item['title'] ?> <span class="text-red-500"><?= $item['title_extra'] ?></span></h1>
+                    
                     <?php if (!empty($item['image'])) : ?>
-                        <div class="news_inner_text">
-                            <?= html_entity_decode($item['text']) ?>
-                            <div class="clearBoth"></div>
-                        </div>
+                        <img class="w-full h-auto mb-4 rounded" src="<?= Url::filePath() . $item['image'] ?>" alt="<?= $item['title'] ?>" />
                     <?php endif; ?>
-
-                    <?php if (!empty($item['tags'])) : ?>
-                        <div class="news_inner_tag_box">
-                            <?php $tags = explode(',', $item['tags']); ?>
-                            <h2><?= $lng->get('Tags') ?>:</h2>
-                            <ul class="news_inner_tags">
-                                <?php foreach ($tags as $tag) : ?>
-                                    <li><a href="/tags/<?= Format::urlTextTag($tag) ?>" class="news_inner_tag"><?= $tag ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-
-                    <div class="news_inner_navigate" style="display: none">
-                        <?php if ($previous_item['id'] > 0) : ?><div class="news_inner_date"><a href="news/<?= $previous_item['id'] ?>/<?= Format::urlText($previous_item['title']) ?>">
-                                    <<< <?= $lng->get('Previous News') ?></a>
-                            </div><?php endif; ?>
-                        <?php if ($next_item['id'] > 0) : ?><div class="news_inner_title"><a href="news/<?= $next_item['id'] ?>/<?= Format::urlText($next_item['title']) ?>"><?= $lng->get('Next News') ?> >>></a></div><?php endif; ?>
+                    
+                    <div class="prose max-w-none">
+                        <?= html_entity_decode($item['text']) ?>
                     </div>
                 </div>
-
-                <div class="col-lg-4 remove_col_padding">
-                    <div class="similar_news">
-
-                        <div class="similar_news_title"><?= $lng->get('Similar News') ?>:</div>
-                        <div class="row m-0 row-gap-3 flex-lg-column pe-12">
-                        <?php $c = 1;
-                        foreach ($data['list'] as $list) : ?>
-
-
-                            <!--                            AD START-->
-                            <?php if ($c == 2) : ?>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
-                                    <div class="ad_box_horizontal_1">
-                                        <div class="sponsored">
-                                            <i class="fas fa-info-circle"></i> <?= $lng->get('Sponsored') ?>
-                                            <a href="partner/ads/add" class="sponsored_create_ad"><?= $lng->get('Create ad') ?></a>
-                                        </div>
-                                        <a href="ads/click/<?= $ad['id'] ?>" target="_blank">
-                                            <div class="">
-
-                                                <div class="row m-0">
-                                                    <div class="col-6 remove_col_padding_mob">
-                                                        <img class="" src="<?= Url::filePath() ?>/<?= $ad['thumb'] ?>" alt="" />
-                                                    </div>
-                                                    <div class="col-6 custom_padding_smilar_news">
-                                                        <div class="ad_title"><?= Format::listTitle($ad['title'], 20) ?></div>
-                                                        <div class="ad_text"><?= Format::listText($ad['text'], 50) ?></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                            <!--                            AD END-->
-
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-12 remove_col_padding">
-                                <div class="news_box_similar">
-                                    <a href="<?=$list['slug']?>">
-                                            <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
-
-                                            <div class="row m-0">
-                                                <?php if (!empty($list['thumb'])) : ?>
-                                                    <div class="col-6 remove_col_padding_mob">
-                                                        <img class="" src="<?= Url::filePath() ?>/<?= $list['thumb'] ?>" alt="" />
-                                                    </div>
-                                                    <div class="col-6 custom_padding_smilar_news">
-                                                        <div class="news_box_similar_title"><?= Format::listTitle($list['title'], 50) ?></div>
-                                                        <div class="news_box_similar_title_channel_name">
-                                                            <?= $channel_info['name'] ?>
-                                                        </div>
-                                                        <div class="news_box_similar_date"><?= $list['view'] ?> <?= $lng->get('view') ?> <i class="fas fa-calendar"></i> <?= date("H:i", $list['publish_time']) ?></div>
-                                                    </div>
-                                                <?php else : ?>
-                                                    <div class="col-12 custom_padding_smilar_news remove_col_padding_mob" style="padding-left: 30px!important;">
-                                                        <div class="news_box_similar_title"><?= Format::listText($list['text'], 90) ?>...</div>
-                                                        <div class="news_box_similar_title_channel_name">
-                                                            <?= $channel_info['name'] ?>
-                                                        </div>
-                                                        <div class="news_box_similar_date"><?= $list['view'] ?> <?= $lng->get('view') ?> <i class="fas fa-calendar"></i> <?= date("H:i", $list['publish_time']) ?></div>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </div>
-                                    </a>
-                                </div>
-                            </div>
-                        <?php $c++;
-                        endforeach; ?>
+                
+                <?php if (!empty($item['tags'])) : ?>
+                    <div class="p-4 border-t">
+                        <h2 class="text-lg font-semibold mb-2"><?= $lng->get('Tags') ?>:</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <?php foreach (explode(',', $item['tags']) as $tag) : ?>
+                                <a href="/tags/<?= Format::urlTextTag($tag) ?>" class="px-3 py-1 bg-gray-200 text-sm rounded-full hover:bg-gray-300 transition"><?= $tag ?></a>
+                            <?php endforeach; ?>
                         </div>
-
                     </div>
+                <?php endif; ?>
+                
+                <footer class="p-4 border-t flex justify-between items-center">
+                    <div class="flex space-x-2">
+                        <button id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition <?= ($subscribe_check === true) ? 'bg-gray-500 hover:bg-gray-600' : '' ?>">
+                            <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?> mr-2"></i>
+                            <?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?>
+                        </button>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition <?= ($like_check === true) ? 'bg-green-600' : '' ?>">
+                            <i class="fas fa-thumbs-up"></i>
+                        </button>
+                        <button id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition <?= ($dislike_check === true) ? 'bg-red-600' : '' ?>">
+                            <i class="fas fa-thumbs-down"></i>
+                        </button>
+                    </div>
+                </footer>
+            </article>
+            
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold mb-4"><?= $lng->get('Share') ?>:</h2>
+                <div class="flex flex-wrap gap-2">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://ug.news/<?= $item['slug'] ?>" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" target="_blank">
+                        <i class="fab fa-facebook-f mr-2"></i> Facebook
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=<?= Format::listTitle($item['title']) ?>&url=https://ug.news/<?= $item['slug'] ?>" class="px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition" target="_blank">
+                        <i class="fab fa-twitter mr-2"></i> Twitter
+                    </a>
+                    <a href="whatsapp://send?text=<?= Format::listTitle($item['title']) ?> https://ug.news/<?= $item['slug'] ?>" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                    <a href="mailto:?subject=<?= Format::listTitle($item['title']) ?> &body=https://ug.news/<?= $item['slug'] ?>" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+                        <i class="fas fa-envelope mr-2"></i> Email
+                    </a>
                 </div>
-
             </div>
         </div>
-
-    </section>
+        
+        <div class="lg:w-1/3">
+    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+        <h2 class="text-2xl font-bold p-4 text-gray-800 border-b"><?= $lng->get('Similar News') ?></h2>
+        <div class="space-y-4 p-4">
+            <?php 
+            $c = 1;
+            foreach ($data['list'] as $list) : 
+                $list_channel_info = \Models\ChannelsModel::getItem($list['channel']);
+                
+                if ($c == 2) : 
+            ?>
+                <!-- Ad Item -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-blue-100">
+                    <div class="p-4">
+                        <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Reklam</span>
+                        <a href="ads/click/<?= $ad['id'] ?>" target="_blank" class="mt-2 flex items-center">
+                            <img src="<?= Url::filePath() . $ad['thumb'] ?>" alt="" class="w-16 h-16 object-cover rounded-md mr-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800"><?= Format::listTitle($ad['title'], 20) ?></h3>
+                                <p class="text-sm text-gray-600"><?= Format::listText($ad['text'], 50) ?></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php 
+                endif;
+            ?>
+            <!-- News Item -->
+            <a href="<?=$list['slug']?>" class="block bg-white rounded-lg shadow-sm overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
+                <div class="flex items-center p-4">
+                    <?php if (!empty($list['thumb'])) : ?>
+                        <img src="<?= Url::filePath() . $list['thumb'] ?>" alt="" class="w-20 h-20 object-cover rounded-md mr-4">
+                    <?php endif; ?>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 line-clamp-2"><?= Format::listTitle($list['title'], 50) ?></h3>
+                        <p class="text-sm text-gray-500 mt-1"><?= $list_channel_info['name'] ?></p>
+                        <div class="flex items-center text-xs text-gray-400 mt-2">
+                            <span class="mr-2"><?= $list['view'] ?> <?= $lng->get('view') ?></span>
+                            <span><i class="fas fa-calendar mr-1"></i><?= date("H:i", $list['publish_time']) ?></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <?php 
+            $c++;
+            endforeach; 
+            ?>
+        </div>
+    </div>
+</div>
+    </div>
 </main>
 
-
-<div class="umodal login">
-    <div class="umodal_box">
-        <div class="umodal_head">
-            <div class="umodal_title">
-                <h2 class="title" id="umodal_title"><?= $lng->get('Login') ?></h2>
-            </div>
-            <div class="umodal_close"><i class="fas fa-times"></i></div>
-            <div class="clearBoth"></div>
-            <hr class="dark_gray" />
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold" id="umodal_title"><?= $lng->get('Login') ?></h2>
+            <button class="text-gray-500 hover:text-gray-700" onclick="closeLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div class="umodal_body">
+        <hr class="mb-4" />
+        <div id="loginModalContent">
             <?php require $data['modal_url']; ?>
         </div>
     </div>
 </div>
+
+<script>
+function openLoginModal() {
+    document.getElementById('loginModal').classList.remove('hidden');
+    document.getElementById('loginModal').classList.add('flex');
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').classList.add('hidden');
+    document.getElementById('loginModal').classList.remove('flex');
+}
+
+// Replace umodal_toggle class functionality
+document.querySelectorAll('.umodal_toggle').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLoginModal();
+    });
+});
+</script>

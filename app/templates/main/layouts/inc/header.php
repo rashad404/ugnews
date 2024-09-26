@@ -30,14 +30,21 @@ $region = '233';
 <div class="all_site_no_bg"></div>
 <div id="mobile_menu" class="mobile_menu mobile_menu_open">
     <div class="mobile_menu_body">
-        <div class="sign_in_mob">
+    <div class="sign_in_mob flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
             <?php if($userId>0):?>
-                <a href="/user_panel/profile" style="float: left"><i class="fas fa-user-alt"></i> <?=$userInfo['first_name']?></a>
-                <a style="float:right;" href="/user_panel/logout"><i class="fas fa-sign-out"></i> <?=$lng->get('Logout')?></a>
+                <a href="/user_panel/profile" class="text-maroon-700 hover:text-maroon-800">
+                    <i class="fas fa-user-alt mr-2"></i> <?=$userInfo['first_name']?>
+                </a>
+                <a href="/user_panel/logout" class="text-maroon-700 hover:text-maroon-800">
+                    <i class="fas fa-sign-out mr-2"></i> <?=$lng->get('Logout')?>
+                </a>
             <?php else:?>
-                <a style="float: left;" href="/login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
+                <a href="/login" class="text-maroon-700 hover:text-maroon-800">
+                    <i class="fas fa-sign-in-alt mr-2"></i> <?=$lng->get('Sign in')?>
+                </a>
             <?php endif;?>
         </div>
+        
         <?php include "left_menu.php";?>
     </div>
 </div>
