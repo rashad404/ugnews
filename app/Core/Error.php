@@ -71,7 +71,7 @@ class Error extends Controller
         View::render('error/404', $data, 'error');
     }
 	
-	public function module_index($modul='https://ug.news')
+	public function module_index($modul='')
     {
        return  Url::redirect($modul."/error/index404");
     }
