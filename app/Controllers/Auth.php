@@ -62,7 +62,7 @@ class Auth extends Controller
         $helper = $fb->getRedirectLoginHelper();
 
         try {
-            $accessToken = $helper->getAccessToken();
+            $accessToken = $helper->getAccessToken("https://ug.news/auth/facebook/callback");
         } catch(FacebookResponseException $e) {
             // When Graph returns an error
             echo 'Graph returned an error: ' . $e->getMessage();
