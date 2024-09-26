@@ -92,6 +92,11 @@ class Site extends Controller
             $data['list'] = NewsModel::getListByCat($categoryId, $limitSql);
     
             $data['cat_name'] = NewsModel::getCatName($categoryId);
+
+            $data['title'] = $this->lng->get($data['cat_name']) . ' Xəbərləri, ' . $this->lng->get($data['cat_name']) . ' xeberleri';
+            $data['keywords'] = $this->lng->get($data['cat_name']) . ' Xəbərləri, ' . $this->lng->get($data['cat_name']) . ' xeberleri';
+            $data['description'] = $this->lng->get($data['cat_name']) . ' Xəbərləri, ' . $this->lng->get($data['cat_name']) . ' xeberleri';
+
             View::render('site/' . __FUNCTION__, $data);
         } else {
             header("HTTP/1.0 404 Not Found");

@@ -8,8 +8,8 @@ use Helpers\XLSXReader;
 
 class SeoModel extends Model{
 
-    public static $add_text = ' | UG.news';
-    public static $add_prefix = 'UG.news | ';
+    public static $add_text = ' | ' . SITE_TITLE;
+    public static $add_prefix = SITE_TITLE . ' | ';
     public $lng;
 
     public function __construct(){
@@ -21,14 +21,14 @@ class SeoModel extends Model{
     public static function general(){
         $array['title'] = self::$add_prefix.' Xəbər Sosial Şəbəkəsi';
         $array['keywords'] = self::$add_prefix.' xəbərlər, xeberler, en son xeber, bugun xeber, son deqiqe xeberleri, namaz, valyuta';
-        $array['description'] = 'UG.news Xəbər Sosial Şəbəkəsidir. Ən son xəbərlər fərqli formatda';
+        $array['description'] = SITE_TITLE . ' Xəbər Sosial Şəbəkəsidir. Ən son xəbərlər fərqli formatda';
         $array['meta_img'] = 'logo/logo-fb.png';
         return $array;
     }
     public static function index(){
         $array['title'] = self::$add_prefix.' Xəbər Sosial Şəbəkəsi';
         $array['keywords'] = self::$add_prefix.' xəbərlər, xeberler, en son xeber, bugun xeber, son deqiqe xeberleri, namaz, valyuta';
-        $array['description'] = 'UG.news Xəbər Sosial Şəbəkəsidir. Ən son xəbərlər fərqli formatda';
+        $array['description'] = SITE_TITLE . ' Xəbər Sosial Şəbəkəsidir. Ən son xəbərlər fərqli formatda';
         $array['meta_img'] = 'logo/logo-fb.png';
         return $array;
     }
