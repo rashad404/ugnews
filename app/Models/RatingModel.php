@@ -26,7 +26,7 @@ class RatingModel extends Model{
     }
 
     public static function topNews($limit='0,10'){
-        $array = self::$db->select("SELECT `id`,`title`,`view` FROM `".self::$tableNameNews."` WHERE `status`=1 ORDER BY `view` DESC $limit");
+        $array = self::$db->select("SELECT `id`,`title`,`view`, `slug` FROM `".self::$tableNameNews."` WHERE `status`=1 ORDER BY `view` DESC $limit");
         return $array;
     }
     public static function countNews(){
