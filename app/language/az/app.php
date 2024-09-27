@@ -83,6 +83,7 @@ return [
     'Law' => 'Qanun',
     'Finance' => 'Maliyye',
     'Insurance' => 'Sigorta',
+    'Technology' => 'Texnologiya',
 
     //    Right menu
     'Admin Portal' => 'Admin Paneli',

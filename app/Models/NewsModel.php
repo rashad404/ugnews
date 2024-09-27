@@ -38,7 +38,7 @@ class NewsModel extends Model
     public static function getSimilarNews($id, $limit = 6)
     {
         $array = self::getItem($id, false);
-        $title = Security::safe($array['title']);
+        $title = 1;
         //SELECT *,
         //MATCH(`name`, `middlename`, `surname`) AGAINST ('John' IN NATURAL LANGUAGE MODE) AS score
         //FROM person
