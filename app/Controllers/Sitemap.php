@@ -33,7 +33,9 @@ class Sitemap extends Controller
 
     public function update()
     {
-        SitemapModel::update();
+        $sitemapModel = new SitemapModel();
+        $sitemapModel->update();
+        echo 'Done!';
     }
 
 

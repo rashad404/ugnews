@@ -61,6 +61,7 @@ Router::any('crons/coronavirus', 'Controllers\Cron@coronavirus');
 // Channel ratings
 Router::any('rating/channels', 'Controllers\Rating@channels');
 Router::any('rating/news', 'Controllers\Rating@news');
+Router::any('sitemap-update', 'Controllers\Sitemap@update');
 
 
 // NEWS INNER ROUTE START
