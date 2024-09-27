@@ -36,7 +36,7 @@ class SitemapModel extends Model
 
         // Merge all links into one array
         // $allLinks = array_merge($staticLinks, $newsLinks, $channelLinks, $tagLinks);
-        $allLinks = array_merge($staticLinks, $newsLinks, $channelLinks);
+        $allLinks = array_merge($staticLinks, $channelLinks, $newsLinks);
 
         // Ensure uniqueness based on URL
         $uniqueLinks = [];
