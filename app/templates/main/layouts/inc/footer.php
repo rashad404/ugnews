@@ -31,15 +31,15 @@ use Helpers\Format;
                         $menu_array = \Models\MenusModel::buildCategoryList();
                         foreach (array_slice($menu_array, 0, ceil(count($menu_array)/2)) as $menu):
                         ?>
-                            <li><a href="<?=$menu['url']?>" class="hover:text-gray-300 transition-colors"><?=$menu['name']?><?=$lng->get(' news')?></a></li>
+                            <li><a href="<?=$menu['url']?>" class="text-indigo-200 hover:text-gray-300 transition-colors"><?=$menu['name']?><?=$lng->get(' news')?></a></li>
                         <?php endforeach;?>
                     </ul>
                     <ul class="space-y-2">
                         <?php foreach (array_slice($menu_array, ceil(count($menu_array)/2)) as $menu): ?>
-                            <li><a href="<?=$menu['url']?>" class="hover:text-gray-300 transition-colors"><?=$menu['name']?><?=$lng->get(' news')?></a></li>
+                            <li><a href="<?=$menu['url']?>" class="text-indigo-200 hover:text-gray-300 transition-colors"><?=$menu['name']?><?=$lng->get(' news')?></a></li>
                         <?php endforeach;?>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors"><?=$lng->get('Android App')?></a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors"><?=$lng->get('Ios App')?></a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-gray-300 transition-colors"><?=$lng->get('Android App')?></a></li>
+                        <li><a href="#" class="text-indigo-200 hover:text-gray-300 transition-colors"><?=$lng->get('Ios App')?></a></li>
                     </ul>
                 </div>
             </div>
