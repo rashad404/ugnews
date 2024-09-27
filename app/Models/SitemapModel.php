@@ -96,16 +96,7 @@ class SitemapModel extends Model
                 'priority'   => '0.8',
             ],
             // Add more static links here with custom changefreq and priority as needed
-            [
-                'url'        => $this->website . '/about-us',
-                'changefreq' => 'monthly',
-                'priority'   => '0.6',
-            ],
-            [
-                'url'        => $this->website . '/contact',
-                'changefreq' => 'yearly',
-                'priority'   => '0.5',
-            ],
+
         ];
     }
 
