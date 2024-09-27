@@ -6,7 +6,7 @@
                     <div class="help_title">
                         <h1 class=""><?=$lng->get("Make Your Voice Heard")?></h1>
                         <h2 class=""><?=$lng->get("Create your own news channel and make your voice heard by millions")?></h2>
-                        <form action="login/partner+news+index">
+                        <form action="login/partner+channels+index">
                             <button type="submit"><?=$lng->get("Let's Start")?></button>
                         </form>
                     </div>

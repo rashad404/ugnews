@@ -37,6 +37,7 @@ $lng->load('app');
         Url::templatePartnerPath() . 'photos/css/elan.css',
         Url::templatePartnerPath() . 'css/main.css'.$css_v,
         Url::templatePath() . 'css/app.min.css'.$css_v,
+        Url::templatePath(). 'css/tailwind-output.css'.$css_v,
         Url::templatePartnerPath() . 'css/bootstrap-tagsinput.min.css',
     ]);
     ?>
