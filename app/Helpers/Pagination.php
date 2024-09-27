@@ -104,7 +104,7 @@ class Pagination
     {
         $l = new Language(); $l->load('app');
 
-        $return = '<nav><ul class="flex items-center justify-center space-x-1">';
+        $return = '<nav><ul class="flex items-center justify-center space-x-2 pt-12">';
 
         if ($this->currentPage > $this->showButtonCount + 1) {
             $return .= '<li><a href="' . Url::to(Url::addFullUrl(["page" => 1])) . '" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">1</a></li>';
@@ -173,26 +173,4 @@ class Pagination
         return $return;
     }
 
-
-    // public function getLimitSelector()
-    // {
-    //     $options = $this->options;
-    //     if(isset($_GET["limit"]) and intval($_GET["limit"])>0) $limit = intval($_GET["limit"]);
-    //     elseif(isset($_GET["limit"]) and Security::safe($_GET["limit"])=='all') $limit = 'all';
-    //     else $limit = $options[0];
-
-    //     $optionsField = '';
-    //     foreach($options as $k=>$v){
-    //         $selected='';
-    //         $key=$v;
-    //         if(!is_numeric($k)) $key=$k;
-    //         if($key == $limit) $selected   = 'selected="selected"';
-    //         $optionsField.='<option '.$selected.' value="'.Url::to(Url::addFullUrl(["limit" => $key])).'">'.$v.'</option>';
-    //     }
-
-    //     $return = '<b class="text-info">Hər səhifədə göstər</b> <select class="padding-4 border-radius-5"  onchange="location = this.value;">
-    //                 '.$optionsField.'
-    //             </select>';
-    //     return $return;
-    // }
 }
