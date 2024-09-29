@@ -21,4 +21,11 @@ class NamazTimesModel extends Model {
         $count = self::$db->count($query);
         return $count;
     }
+
+    // Get today's Namaz times based on the current date
+    public static function getTodayNamazTimes() {
+        $today = date('j'); // Get today's day of the month
+        $query = "SELECT * FROM " . self::$tableName . " WHERE day = $today";
+        return self::$db->selectOne($query) ?? null;
+    }
 }

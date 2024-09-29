@@ -81,7 +81,7 @@ class SitemapModel extends Model
                 'priority'   => '1.0',
             ],
             [
-                'url'        => $this->website . '/tags/valyuta',
+                'url'        => $this->website . '/valyuta',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],
@@ -91,7 +91,7 @@ class SitemapModel extends Model
                 'priority'   => '0.8',
             ],
             [
-                'url'        => $this->website . '/tags/namaz',
+                'url'        => $this->website . '/namaz-vaxti',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],

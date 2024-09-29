@@ -1,7 +1,17 @@
 <?php
 
+use Models\CurrencyModel;
+use Models\NamazTimesModel;
 use Helpers\Url;
 use Helpers\Format;
+
+// Prepare the info list dynamically
+$info_list = [
+    ['Valyuta', "1 USD = " . ($usdRate ?? 'N/A') . " AZN", 'valyuta'],
+    ['Hava', 'Bakı 13 °', 'tags/hava'],
+    ['Namaz vaxtı', "Sübh: " . ($todayNamaz['fajr'] ?? 'N/A'), "namaz-vaxti"]
+];
+
 
 
 if ($data['region'] == 16) {
@@ -21,9 +31,6 @@ if ($data['region'] == 16) {
 // $info_list[] = ['Koronavirus',$world_corona.' '.$lng->get('cases'), 'info/coronavirus'];
 //$info_list[] = ['Ramazan',$ramazan_text, 'tags/ramazan'];
 // $info_list[] = ['Namaz',$namaz_text, 'info/namaz'];
-$info_list[] = ['Valyuta', '1 USD = 1.7 AZN', 'valyuta'];
-$info_list[] = ['Hava', 'Bakı 13 °', 'tags/hava'];
-$info_list[] = ['Namaz vaxtı', "Sübh: 06:35", "tags/namaz"]
 ?>
 
 <main class="main mt-4">
@@ -33,16 +40,15 @@ $info_list[] = ['Namaz vaxtı', "Sübh: 06:35", "tags/namaz"]
             <?php foreach ($info_list as $list) : ?>
 
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2" style="padding: 0 5px;">
-                    <a class="info_box_a" href="<?= $list['2'] ?>">
+                    <a class="info_box_a" href="<?= $list[2] ?>">
                         <div class="info_box">
-                            <?= $list['0'] ?><br />
-                            <span class="<?= strtolower($list['0']) ?>"><?= $list['1'] ?></span>
+                            <?= $list[0] ?><br />
+                            <span class="<?= strtolower($list[0]) ?>"><?= $list[1] ?></span>
                         </div>
                     </a>
                 </div>
             <?php endforeach; ?>
         </div>
-
     </div>
 
 

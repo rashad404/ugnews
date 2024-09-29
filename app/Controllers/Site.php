@@ -23,6 +23,8 @@ use Models\NewsModel;
 use Models\AboutModel;
 use Helpers\Pagination;
 use Helpers\Cookie;
+use Models\CurrencyModel;
+use Models\NamazTimesModel;
 use Modules\partner\Controllers\News;
 
 
@@ -70,6 +72,10 @@ class Site extends Controller
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
         Session::set('cat',0);
+
+
+        $data['usdRate'] = CurrencyModel::getUSDRate();
+        $data['todayNamaz'] = NamazTimesModel::getTodayNamazTimes();
 
         View::render('site/'.__FUNCTION__, $data);
     }

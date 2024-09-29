@@ -22,4 +22,9 @@ class CurrencyModel extends Model {
         $count = self::$db->count($query);
         return $count;
     }
+
+    public static function getUSDRate() {
+        $query = "SELECT value FROM " . self::$tableName . " WHERE code = 'USD' ORDER BY date DESC LIMIT 1";
+        return self::$db->select($query)[0]['value'] ?? null;
+    }
 }
