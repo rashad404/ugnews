@@ -1,15 +1,10 @@
-<?php
-
-use Helpers\Url;
-use Helpers\Format;
-
-?>
-
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <?php foreach ($data['list'] as $list) : ?>
         <div class="bg-white rounded-lg overflow-hidden shadow-md">
             <a href="<?= $list['slug'] ?>" class="block">
-                <img class="w-full h-48 object-cover" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="<?= $list['title'] ?>" />
+                <?php if (!empty($list['thumb'])) : ?>
+                    <img class="w-full h-48 object-cover" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="<?= $list['title'] ?>" />
+                <?php endif; ?>
                 <div class="p-4">
                     <h2 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2"><?= Format::listTitle($list['title'], 70) ?></h2>
                     <div class="flex justify-between items-center text-sm">
