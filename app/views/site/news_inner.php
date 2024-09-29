@@ -51,7 +51,6 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                             </div>
                         </div>
                     <?php endif; ?>
-                    
                     <footer class="px-6 py-4 border-t border-gray-200 flex justify-between items-center">
                         <div>
                             <button id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 <?= ($subscribe_check === true) ? 'bg-gray-600 hover:bg-gray-700' : '' ?>">
@@ -61,10 +60,10 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                         </div>
                         <div class="flex space-x-2">
                             <button id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 <?= ($like_check === true) ? 'bg-green-600' : '' ?>">
-                                <i class="fas fa-thumbs-up mr-1"></i> <span id="like_count"><?= $item['like'] ?></span>
+                                <i class="fas fa-thumbs-up mr-1"></i> <span id="like_count"><?= $item['likes'] ?></span>
                             </button>
                             <button id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 <?= ($dislike_check === true) ? 'bg-red-600' : '' ?>">
-                                <i class="fas fa-thumbs-down mr-1"></i> <span id="dislike_count"><?= $item['dislike'] ?></span>
+                                <i class="fas fa-thumbs-down mr-1"></i> <span id="dislike_count"><?= $item['dislikes'] ?></span>
                             </button>
                         </div>
                     </footer>

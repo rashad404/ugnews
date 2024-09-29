@@ -205,7 +205,7 @@ class NewsModel extends Model
     }
     public static function getItem($id, $count = true)
     {
-        $array = self::$db->selectOne('SELECT `id`,`publish_time`,`slug`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel` FROM `' . self::$tableName . "` WHERE `id`='" . $id . "' AND `status`=1");
+        $array = self::$db->selectOne('SELECT `id`,`publish_time`,`slug`,`title`,`title_extra`,`text`,`tags`,`thumb`,`image`,`partner_id`,`cat`,`view`,`channel`,`likes`,`dislikes` FROM `' . self::$tableName . "` WHERE `id`='" . $id . "' AND `status`=1");
 
         if ($count && $id) {
             $isUniqueView = self::calculateUniqueView($id);
