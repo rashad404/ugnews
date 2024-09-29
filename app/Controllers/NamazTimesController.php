@@ -19,7 +19,7 @@ class NamazTimesController extends Controller {
         // Fetch all namaz times from the database
         $namazTimesModel = new NamazTimesModel();
         $data['namaz_times'] = $namazTimesModel->getAllNamazTimes();
-        $data['def_language'] = 'en'; // Assuming default language is set as English
+        $data['def_language'] = self::$def_language;
 
         // Load the view and pass the data
         View::render('site/namaz_times', $data);

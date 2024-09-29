@@ -20,7 +20,7 @@ class CurrencyController extends Controller {
         // Fetch all currencies from the database
         $currencyModel = new CurrencyModel();
         $data['currencies'] = $currencyModel->getAllCurrencies();
-        $data['def_language'] = 'en'; // Assuming default language is set as English
+        $data['def_language'] = self::$def_language;
 
         // Load the view and pass the data
         View::render('site/currencies', $data);
