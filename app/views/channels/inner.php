@@ -29,8 +29,7 @@ $subscribe_check = \Models\NewsModel::subscribeCheck($item['id']);
         </div>
 
         <div class="mt-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6"><?=$lng->get('Latest News')?></h2>
-                <?php include_once 'app/views/site/news_include.php';?>
+            <?php include_once 'app/views/site/news_include.php';?>
         </div>
     </div>
 </main>

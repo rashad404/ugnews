@@ -4,17 +4,10 @@ use Helpers\Format;
 ?>
 
 <div class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Seçilmişlər</h2>
-        
-        <div class="flex flex-wrap gap-2 mb-8">
-            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">#Bakı</a>
-            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">#Türkiye</a>
-            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">#Hava</a>
-            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition">#Neft qiyməti</a>
-        </div>
 
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Son xəbərlər <a href="#" class="text-sm font-normal text-blue-600 hover:underline">(TOP)</a></h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Son xəbərlər             <a href="rating/news" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                <?= $lng->get('TOP') ?> <i class="fas fa-chart-bar"></i>
+            </a></h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php foreach ($data['list'] as $list) : ?>
@@ -63,5 +56,4 @@ use Helpers\Format;
         <div class="mt-12 flex justify-center">
             <?php echo $data["pagination"]->pageNavigation(); ?>
         </div>
-    </div>
 </div>

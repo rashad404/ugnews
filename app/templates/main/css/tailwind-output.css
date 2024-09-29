@@ -2110,6 +2110,11 @@ video {
     margin-right: 0px;
   }
 
+  .sm\:-mx-6 {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
   .sm\:h-10 {
     height: 2.5rem;
   }
@@ -2228,6 +2233,11 @@ video {
 @media (min-width: 1024px) {
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .lg\:-mx-8 {
+    margin-left: -2rem;
+    margin-right: -2rem;
   }
 
   .lg\:block {
