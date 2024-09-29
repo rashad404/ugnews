@@ -784,6 +784,14 @@ video {
   margin-left: 2rem;
 }
 
+.mr-12 {
+  margin-right: 3rem;
+}
+
+.mr-16 {
+  margin-right: 4rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -1547,6 +1555,11 @@ video {
 .py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .pb-2 {

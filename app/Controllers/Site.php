@@ -64,7 +64,7 @@ class Site extends Controller
         $data['list'] = NewsModel::getList($limitSql);
 
 
-        $data['channel_list'] = ChannelsModel::getList(11);
+        $data['channel_list'] = ChannelsModel::getList(7);
         new CityModel();
         $data['city_list_1'] = CityModel::getList('LIMIT 0,18');
         $data['city_list_2'] = CityModel::getList('LIMIT 18,100');

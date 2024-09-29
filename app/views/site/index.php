@@ -47,7 +47,7 @@ $tag_list = ($data['region'] == 16)
             </a>
         </div>
         <div class="flex overflow-x-auto pb-2 -mx-4 sm:mx-0">
-            <div class="flex-none px-4 sm:px-0 mr-4">
+            <div class="flex-none px-4 sm:px-0 mr-16">
                 <a href="create/channel" class="block w-20 text-center">
                     <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-2 shadow">
                         <svg class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,7 +58,7 @@ $tag_list = ($data['region'] == 16)
                 </a>
             </div>
             <?php foreach ($data['channel_list'] as $list): ?>
-                <div class="flex-none px-4 sm:px-0 mr-4">
+                <div class="flex-none px-4 sm:px-0 mr-16">
                     <a href="/<?= Format::urlTextChannel($list['name_url']) ?>" class="block w-20 text-center">
                         <img src="<?= Url::filePath() ?>/<?= $list['thumb'] ?>?aas" alt="<?= $list['name'] ?>" class="w-20 h-20 object-cover rounded-full mb-2 shadow">
                         <span class="text-xs text-gray-600"><?= Format::listTitle($list['name'], 20) ?></span>
