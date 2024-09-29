@@ -63,6 +63,14 @@ class SeoModel extends Model{
         return $array;
     }
 
+    public static function currencies() {
+        $array['title'] = ' Valyuta məzənnələri, Dollar məzənnəsi, Avro məzənnəsi';
+        $array['keywords'] = ' valyuta məzənnələri, dolların məzənnəsi, avronun məzənnəsi, xarici valyutalar, manat qarşısında valyutalar, bugünkü valyuta məzənnələri';
+        $array['description'] = ' Valyuta məzənnələri, bugünkü valyuta dəyişmələri, Azərbaycan manatına qarşı xarici valyutaların məzənnələri.';
+        $array['meta_img'] = 'logo/logo-fb.png';
+        return $array;
+    }
+    
 
 
 

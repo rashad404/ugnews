@@ -15,7 +15,7 @@ class CurrencyController extends Controller {
 
     // Currencies page
     public function index() {
-        $data = SeoModel::general();
+        $data = SeoModel::currencies();
 
         // Fetch all currencies from the database
         $currencyModel = new CurrencyModel();
