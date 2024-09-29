@@ -1,122 +1,75 @@
 <?php
-
-use Helpers\Session;
 use Helpers\Url;
-use Models\MenusModel;
-use Models\SiteModel;
 use Models\CountryModel;
 ?>
-
-<?php
-ob_start();
-MenusModel::buildMenuList($_PARTNER['id']);
-$menuList = ob_get_contents();
-ob_end_clean();
-
-ob_start();
-MenusModel::buildMenuListMobile($_PARTNER['id']);
-$menuListMobile = ob_get_contents();
-ob_end_clean();
-
-
-$data['contacts'] = SiteModel::getContacts();
-$region = '233';
-?>
-
-<div class="flash_notification"><?=Session::getFlash()?></div>
-
-
-<div class="all_site"></div>
-<div class="all_site_no_bg"></div>
-<div id="mobile_menu" class="mobile_menu mobile_menu_open">
-    <div class="mobile_menu_body">
-    <div class="sign_in_mob flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
-            <?php if($userId>0):?>
-                <a href="/user_panel/profile" class="text-maroon-700 hover:text-maroon-800">
-                    <i class="fas fa-user-alt mr-2"></i> <?=$userInfo['first_name']?>
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+                <a href="/">
+                    <img class="h-8 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
                 </a>
-                <a href="/user_panel/logout" class="text-maroon-700 hover:text-maroon-800">
-                    <i class="fas fa-sign-out mr-2"></i> <?=$lng->get('Logout')?>
-                </a>
-            <?php else:?>
-                <a href="/login" class="text-maroon-700 hover:text-maroon-800">
-                    <i class="fas fa-sign-in-alt mr-2"></i> <?=$lng->get('Sign in')?>
-                </a>
-            <?php endif;?>
+            </div>
+            <div class="-mr-2 -my-2 md:hidden">
+                <button @click="mobileMenuOpen = true" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <span class="sr-only">Open menu</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+                <?php foreach (array_slice($data['menus'], 0, 5) as $menu): ?>
+                    <a href="<?=$menu['url']?>" class="text-base font-medium text-gray-500 hover:text-gray-900">
+                        <?=$menu['title_' . $data['def_language']]?>
+                    </a>
+                <?php endforeach; ?>
+            </nav>
+            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <?php if ($userId > 0): ?>
+                    <a href="/user_panel/profile" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        <?= $userInfo['first_name'] ?>
+                    </a>
+                    <a href="/user_panel/logout" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        <?= $lng->get('Logout') ?>
+                    </a>
+                <?php else: ?>
+                    <a href="/login" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        <?= $lng->get('Sign in') ?>
+                    </a>
+                    <a href="/register" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        <?= $lng->get('Sign up') ?>
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
-        
-        <?php include "left_menu.php";?>
     </div>
-</div>
 
-
-<div class="header mb-4">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-7 col-sm-4 remove_col_padding_mob">
-
-                <div class="header_logo">
-                    <div>
-                        <div class="mobile_menu_icon" style="float: left">
-                            <a href="javascript:void(0);" class="icon">
-                                <i class="fa fa-bars fa-2x"></i>
-                            </a>
-                        </div>
-                        <a href="/">
-                            <img class="logo" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
-                        </a>
+    <!-- Mobile menu, show/hide based on mobile menu state -->
+    <div x-show="mobileMenuOpen" class="md:hidden" x-cloak>
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <?php foreach ($data['menus'] as $menu): ?>
+                <a href="<?=$menu['url']?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                    <?=$menu['title_' . $data['def_language']]?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+        <div class="pt-4 pb-3 border-t border-gray-200">
+            <div class="flex items-center px-5">
+                <?php if ($userId > 0): ?>
+                    <div class="ml-3">
+                        <div class="text-base font-medium text-gray-800"><?= $userInfo['first_name'] ?></div>
+                        <div class="text-sm font-medium text-gray-500"><?= $userInfo['email'] ?></div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-0 col-sm-5">
-
-
-                <div class="search_area d-none d-md-block">
-                        <input class="" type="text" name="search" id="header_search_input" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
-                        <button type="submit" class="">
-                            <?=$lng->get('Search')?>
-                            <i class="fas fa-search"></i>
-                        </button>
-
-                </div>
-            </div>
-
-            <div class="col-5 col-sm-3 ">
-
-
-                <div class="icons_area d-none d-md-block" style="float: right">
-                    <ul class="menu">
-                        <li class="menu_li">
-                            <a class="login_info" href="javascript:void(0);"><i class="fas fa-globe"></i> <span class="hidden-xs"><?=CountryModel::getCode($_SETTINGS['region'])?></span> <i class="fas fa-caret-down hidden-xs"></i></a>
-                            <ul class="sub_menu" style="max-height: 500px;right: 0px;">
-                                <li class="li_title"><?=$lng->get('Select Region')?>:</li>
-                                <?php foreach (CountryModel::getList() as $country) :?>
-                                    <li><a href="set/region/<?=$country['id']?>"><i class="fas fa-caret-right"></i> <?=$country['name']?></a></li>
-                                <?php endforeach;?>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-<!--                <div id="mobile_search_icon2" class="search_icon visible-xs" style="float: right">-->
-<!--                    <a href="javascript:void(0);" class="icon">-->
-<!--                        <i class="fa fa-search fa-2x"></i>-->
-<!--                    </a>-->
-<!--                </div>-->
+                <?php else: ?>
+                    <a href="/login" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+                        <?= $lng->get('Sign in') ?>
+                    </a>
+                    <a href="/register" class="ml-4 block px-3 py-2 rounded-md text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        <?= $lng->get('Sign up') ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-</div>
-
-<ul id="headerSearchDropDown" class="search_result_modal_box" style="max-height: 500px;right: 0px;">
-    <li class="li_title"><?=$lng->get('Loading')?>...</li>
-</ul>
-
-<div id="headerSearchBoxMobile" class="search_box_mobile" style="max-height: 200px;right: 0px;">
-        <input class="" type="text" name="search" id="header_search_input_mobile" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" placeholder="<?=$lng->get('Channel or News')?>">
-        <button type="submit" class="">
-            <?=$lng->get('Search')?>
-            <i class="fas fa-search"></i>
-        </button>
-</div>
+</header>
