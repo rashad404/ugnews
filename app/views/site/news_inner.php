@@ -1,6 +1,7 @@
 <?php
 use Helpers\Url;
 use Helpers\Format;
+use Helpers\Csrf;
 
 $ad = $data['ad'];
 $item = $data['item'];
@@ -52,20 +53,34 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                         </div>
                     <?php endif; ?>
                     <footer class="px-6 py-4 border-t border-gray-200 flex justify-between items-center">
-                        <div>
-                            <button id="subscribe_button" channel_id="<?= $item['channel'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 <?= ($subscribe_check === true) ? 'bg-gray-600 hover:bg-gray-700' : '' ?>">
-                                <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?> mr-2"></i>
-                                <?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?>
-                            </button>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button id="like_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 <?= ($like_check === true) ? 'bg-green-600' : '' ?>">
-                                <i class="fas fa-thumbs-up mr-1"></i> <span id="like_count"><?= $item['likes'] ?></span>
-                            </button>
-                            <button id="dislike_button" news_id="<?= $item['id'] ?>" class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 <?= ($dislike_check === true) ? 'bg-red-600' : '' ?>">
-                                <i class="fas fa-thumbs-down mr-1"></i> <span id="dislike_count"><?= $item['dislikes'] ?></span>
-                            </button>
-                        </div>
+                    <div class="news_inner_subscribe_area">
+                        <button 
+                            id="subscribe_button" 
+                            data-channel-id="<?= $item['channel'] ?>" 
+                            class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? 'subscribed' : '' ?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            <i class="fas fa-<?= ($subscribe_check === true) ? 'bell-slash' : 'bell' ?> mr-2"></i>
+                            <span><?= $lng->get(($subscribe_check === true) ? 'Subscribed' : 'Subscribe') ?></span>
+                        </button>
+                    </div>
+                    <div class="news_inner_subscribe_area flex space-x-2">
+                        <button 
+                            id="like_button" 
+                            data-news-id="<?= $item['id'] ?>" 
+                            class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> like <?= ($like_check === true) ? 'liked' : '' ?> px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 transition focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                        >
+                            <i class="fas fa-thumbs-up mr-1"></i>
+                            <span id="like_count"><?= $item['likes'] ?></span>
+                        </button>
+                        <button 
+                            id="dislike_button" 
+                            data-news-id="<?= $item['id'] ?>" 
+                            class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> dislike <?= ($dislike_check === true) ? 'disliked' : '' ?> px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                        >
+                            <i class="fas fa-thumbs-down mr-1"></i>
+                            <span id="dislike_count"><?= $item['dislikes'] ?></span>
+                        </button>
+                    </div>
                     </footer>
                 </article>
                 
@@ -168,7 +183,6 @@ function closeLoginModal() {
     document.body.style.overflow = '';
 }
 
-// Replace umodal_toggle class functionality
 document.querySelectorAll('.umodal_toggle').forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -176,40 +190,65 @@ document.querySelectorAll('.umodal_toggle').forEach(button => {
     });
 });
 
-// Like and Dislike functionality
+function handleAjaxRequest(url, button, successCallback) {
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (successCallback) {
+            successCallback(data, button);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function handleSubscribe(button) {
+    const channelId = button.getAttribute('data-channel-id');
+    const isSubscribed = button.classList.contains('subscribed');
+    const url = isSubscribed ? `/ajax/un_subscribe/${channelId}` : `/ajax/subscribe/${channelId}`;
+
+    handleAjaxRequest(url, button, (data, btn) => {
+        btn.classList.toggle('subscribed');
+        btn.querySelector('i').classList.toggle('fa-bell');
+        btn.querySelector('i').classList.toggle('fa-bell-slash');
+        btn.querySelector('span').textContent = data;
+    });
+}
+
+function handleLikeDislike(button, action) {
+    const newsId = button.getAttribute('data-news-id');
+    const isActive = button.classList.contains(`${action}d`);
+    const url = isActive ? `/ajax/remove_${action}/${newsId}` : `/ajax/${action}/${newsId}`;
+
+    handleAjaxRequest(url, button, (data, btn) => {
+        btn.classList.toggle(`${action}d`);
+        // Update the count
+        const countSpan = btn.querySelector(`#${action}_count`);
+        if (countSpan) {
+            countSpan.textContent = parseInt(countSpan.textContent) + (isActive ? -1 : 1);
+        }
+    });
+}
+
+document.getElementById('subscribe_button').addEventListener('click', function() {
+    if (!this.classList.contains('umodal_toggle')) {
+        handleSubscribe(this);
+    }
+});
+
 document.getElementById('like_button').addEventListener('click', function() {
-    if (this.classList.contains('umodal_toggle')) return;
-    updateReaction('like', <?= $item['id'] ?>);
+    if (!this.classList.contains('umodal_toggle')) {
+        handleLikeDislike(this, 'like');
+    }
 });
 
 document.getElementById('dislike_button').addEventListener('click', function() {
-    if (this.classList.contains('umodal_toggle')) return;
-    updateReaction('dislike', <?= $item['id'] ?>);
+    if (!this.classList.contains('umodal_toggle')) {
+        handleLikeDislike(this, 'dislike');
+    }
 });
-
-function updateReaction(type, newsId) {
-    fetch(`/api/reaction/${type}/${newsId}`, { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById(`${type}_count`).textContent = data.count;
-                document.getElementById(`${type}_button`).classList.toggle('bg-gray-500');
-                document.getElementById(`${type}_button`).classList.toggle(`bg-${type === 'like' ? 'green' : 'red'}-600`);
-            }
-        });
-}
-
-// Subscribe functionality
-document.getElementById('subscribe_button').addEventListener('click', function() {
-    if (this.classList.contains('umodal_toggle')) return;
-    const channelId = this.getAttribute('channel_id');
-    fetch(`/api/subscribe/${channelId}`, { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                this.innerHTML = `<i class="fas fa-${data.subscribed ? 'bell-slash' : 'bell'} mr-2"></i>${data.subscribed ? '<?= $lng->get('Subscribed') ?>' : '<?= $lng->get('Subscribe') ?>'}`;
-                this.classList.toggle('bg-blue-600');
-                this.classList.toggle('bg-gray-600');
-            }
-        });
-});
+</script>
