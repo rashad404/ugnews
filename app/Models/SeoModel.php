@@ -71,6 +71,14 @@ class SeoModel extends Model{
         return $array;
     }
     
+    public static function namaz_times() {
+        $array['title'] = 'Namaz vaxtları, ' . date('d.m.Y') . ' namaz vaxtı';
+        $array['keywords'] = 'namaz vaxtları, imsak vaxtı, sübh azanı, zohr azanı, əsr azanı, gün batar vaxtı, işa azanı, bugünkü namaz vaxtları';
+        $array['description'] = 'Namaz vaxtları, bugünkü namaz vaxtları, imsak, sübh, gün çıxır, zohr, əsr, gün batar, işa və gecə yarısı vaxtları.';
+        $array['meta_img'] = 'logo/logo-fb.png';
+        return $array;
+    }
+    
 
 
 

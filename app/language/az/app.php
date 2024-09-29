@@ -162,4 +162,22 @@ return [
     'Currencies' => 'Valyuta',
     'Exchange Rates' => 'Valyuta Məzənnələri',
     'Rate' => 'Məzənnə',
+
+    // Namaz Times
+    'Namaz Times' => 'Namaz Vaxtları',
+    'Namaz Time' => 'Namaz Vaxtı',
+    'Day' => 'Gün',
+    'Hijri Day' => 'Hicri Gün',
+    'İmsak' => 'İmsak',
+    'Subh' => 'Sübh',
+    'Sunrise' => 'Gün çıxır',
+    'Zohr' => 'Zohr',
+    'Asr' => 'Əsr',
+    'Maghrib' => 'Məğrib',
+    'Isha' => 'İşa',
+    'Midnight' => 'Gecə yarısı',
+    'Next Prayer' => 'Növbəti Namaz',
+    'Today\'s Namaz Times' => 'Bugünkü Namaz Vaxtları',
+    'Current Time' => 'Cari Vaxt',
+
 ];

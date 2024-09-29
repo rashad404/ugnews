@@ -64,6 +64,8 @@ Router::any('rating/news', 'Controllers\Rating@news');
 Router::any('sitemap-update', 'Controllers\Sitemap@update');
 
 Router::any('valyuta', 'Controllers\CurrencyController@index');
+Router::any('namaz-vaxti', 'Controllers\NamazTimesController@index');
+
 
 
 // NEWS INNER ROUTE START
