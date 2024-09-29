@@ -24,6 +24,7 @@ return [
 
     //Sign in
     'Sign in' => 'Daxil ol',
+    'Sign up' => 'Qeydiyyat',
     'Login or E-mail' => 'Login və ya E-mail',
     'Password' => 'Şifrə',
     'Login' => 'Daxil olun',
@@ -113,6 +114,7 @@ return [
 
     //    Channel
     'Channel' => 'Kanal',
+    'Create Channel' => 'Kanal Yarat',
     'TOP Channels' => 'TOP Kanallar',
     'News title' => 'Xəbər başlığı',
     'View' => 'Baxış',

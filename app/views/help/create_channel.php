@@ -1,56 +1,55 @@
-<main class="main">
-    <section xmlns="http://www.w3.org/1999/html">
-        <div class="container" style="max-width: 900px!important;">
-            <div class="row paddingBottom40">
-                <div class="col-sm-12">
-                    <div class="help_title">
-                        <h1 class=""><?=$lng->get("Make Your Voice Heard")?></h1>
-                        <h2 class=""><?=$lng->get("Create your own news channel and make your voice heard by millions")?></h2>
-                        <form action="login/partner+channels+index">
-                            <button type="submit"><?=$lng->get("Let's Start")?></button>
-                        </form>
-                    </div>
-                </div>
+<main class="bg-gray-100">
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                <?=$lng->get("Make Your Voice Heard")?>
+            </h1>
+            <p class="mt-5 text-xl text-gray-500">
+                <?=$lng->get("Create your own news channel and make your voice heard by millions")?>
+            </p>
+            <div class="mt-8">
+                <form action="login/partner+channels+index">
+                    <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <?=$lng->get("Let's Start")?>
+                    </button>
+                </form>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid help_block_1">
-            <div class="row ">
-                <div class="col-sm-12 help_block_div_1">
-                    <div class="help_block_text_1">
-                        <?=$lng->get("CreateChannelText1")?>
-                    </div>
-                </div>
-            </div>
+    <section class="bg-indigo-700 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-xl text-indigo-100">
+                <?=$lng->get("CreateChannelText1")?>
+            </p>
         </div>
+    </section>
 
-        <div class="container-fluid help_block_2">
-            <div class="row ">
-                <div class="col-sm-6 help_block_2_div_1">
-                    <div class="help_block_2_text_1">
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                         Ug.news <?=$lng->get("CreateChannelText2")?>
-                    </div>
+                    </h2>
+                    <p class="mt-3 max-w-3xl text-lg text-gray-500">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
                 </div>
-                <div class="col-sm-6 help_block_2_div_2">
-                    <div class="help_block_2_img">
-                        <img src="<?=\Helpers\Url::templatePath()?>img/partner_logos/ug_news.svg" alt="logo"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container-fluid help_block_1">
-            <div class="row ">
-                <div class="col-sm-12 help_block_div_1">
-                    <div class="help_block_text_1">
-                        <?=$lng->get("CreateChannelText3")?>
+                <div class="mt-8 lg:mt-0">
+                    <div class="flex justify-center lg:justify-end">
+                        <img class="w-64 h-64" src="<?=\Helpers\Url::templatePath()?>img/partner_logos/ug_news.svg" alt="logo"/>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-
-        <div class="clearBoth"></div>
+    <section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-xl text-gray-500">
+                <?=$lng->get("CreateChannelText3")?>
+            </p>
+        </div>
     </section>
 </main>
