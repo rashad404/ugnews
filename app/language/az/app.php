@@ -157,4 +157,9 @@ return [
 
     //Rating
     'TOP News' => 'TOP Xəbərlər',
+
+    //Currencies
+    'Currencies' => 'Valyuta',
+    'Exchange Rates' => 'Valyuta Məzənnələri',
+    'Rate' => 'Məzənnə',
 ];

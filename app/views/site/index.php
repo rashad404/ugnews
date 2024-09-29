@@ -21,7 +21,7 @@ if ($data['region'] == 16) {
 // $info_list[] = ['Koronavirus',$world_corona.' '.$lng->get('cases'), 'info/coronavirus'];
 //$info_list[] = ['Ramazan',$ramazan_text, 'tags/ramazan'];
 // $info_list[] = ['Namaz',$namaz_text, 'info/namaz'];
-$info_list[] = ['Valyuta', '1 USD = 1.7 AZN', 'tags/valyuta'];
+$info_list[] = ['Valyuta', '1 USD = 1.7 AZN', 'valyuta'];
 $info_list[] = ['Hava', 'Bakı 13 °', 'tags/hava'];
 $info_list[] = ['Namaz vaxtı', "Sübh: 06:35", "tags/namaz"]
 ?>

@@ -63,6 +63,8 @@ Router::any('rating/channels', 'Controllers\Rating@channels');
 Router::any('rating/news', 'Controllers\Rating@news');
 Router::any('sitemap-update', 'Controllers\Sitemap@update');
 
+Router::any('valyuta', 'Controllers\CurrencyController@index');
+
 
 // NEWS INNER ROUTE START
     // slug -> channel_name/title_slug
