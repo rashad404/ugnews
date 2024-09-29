@@ -4,19 +4,20 @@ use Helpers\Url;
 use Helpers\Format;
 
 ?>
-
-
-
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <?php foreach ($data['list'] as $list) : ?>
         <div class="bg-white rounded-lg overflow-hidden shadow-md flex flex-col">
             <a href="<?= $list['slug'] ?>" class="block flex-grow">
                 <?php if (!empty($list['thumb'])) : ?>
                     <img class="w-full h-48 object-cover" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="<?= $list['title'] ?>" />
+                    <div class="p-4">
+                        <h2 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2"><?= Format::listTitle($list['title'], 70) ?></h2>
+                    </div>
+                <?php else : ?>
+                    <div class="p-4">
+                        <h2 class="text-lg font-bold text-gray-800 mb-2 line-clamp-8"><?= Format::listTitle($list['text'], 300) ?></h2>
+                    </div>
                 <?php endif; ?>
-                <div class="p-4">
-                    <h2 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2"><?= Format::listTitle($list['title'], 70) ?></h2>
-                </div>
             </a>
 
             <!-- Bottom Section: Category, Date, Channel Info, Views -->
