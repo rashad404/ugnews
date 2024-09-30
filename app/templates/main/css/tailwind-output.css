@@ -958,6 +958,10 @@ video {
   height: 16rem;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
 .max-h-60 {
   max-height: 15rem;
 }
@@ -2304,6 +2308,14 @@ video {
 
   .sm\:h-64 {
     height: 16rem;
+  }
+
+  .sm\:h-12 {
+    height: 3rem;
+  }
+
+  .sm\:h-1 {
+    height: 0.25rem;
   }
 
   .sm\:grid-cols-2 {
