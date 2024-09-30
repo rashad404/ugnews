@@ -82,7 +82,7 @@ use Helpers\Format;
         </div>
         <div class="mt-12 border-t border-gray-700 pt-8">
             <p class="text-base text-gray-400 xl:text-center">
-                &copy; <?= date("Y")?> <?=$_PARTNER['name']?>. <?=$lng->get('All rights reserved')?>.
+                &copy; <?= date("Y")?> <?=$_PARTNER['name']?>. <?=$lng->get('All rights reserved')?>
                 <?php if($_PARTNER['id']==0):?>
                     <?=$lng->get('Created by')?> <a href="https://websiteca.com" class="text-white hover:underline" target="_blank" title="Small business websites, website development">WebsiteCA</a>.
                 <?php endif;?>
