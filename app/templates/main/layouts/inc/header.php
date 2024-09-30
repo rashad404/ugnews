@@ -35,7 +35,7 @@ use Models\CountryModel;
                 </div>
             </div>
             <div class="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
-                <div class="max-w-lg w-full lg:max-w-xs relative">
+                <div class="max-w-lg w-full lg:max-w-xs relative hidden md:block">
                     <label for="search" class="sr-only"><?=$lng->get('Search')?></label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -128,19 +128,6 @@ use Models\CountryModel;
         </div>
     </div>
 
-    <div id="mobileSearchResults" class="fixed inset-x-0 top-16 bottom-0 bg-white z-50 overflow-y-auto mx-2" style="display: none;">
-        <div class="p-4">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg font-semibold"><?=$lng->get('Search Results')?></h2>
-                <button id="closeMobileSearch" class="text-gray-500 hover:text-gray-700">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="mobileSearchResultsContent"></div>
-        </div>
-    </div>
     <div id="mainContentOverlay" class="fixed inset-0 bg-black opacity-50 z-40" style="display: none;"></div>
 </header>
 
@@ -150,7 +137,6 @@ use Models\CountryModel;
         const headerSearchDropDown = document.getElementById('headerSearchDropDown');
         const mobileSearchResults = document.getElementById('mobileSearchResults');
         const mobileSearchResultsContent = document.getElementById('mobileSearchResultsContent');
-        const closeMobileSearch = document.getElementById('closeMobileSearch');
         const mainContentOverlay = document.getElementById('mainContentOverlay');
 
         function performSearch(inputVal) {
@@ -165,26 +151,14 @@ use Models\CountryModel;
                 })
                 .then(response => response.text())
                 .then(data => {
-                    console.log(data);
-                    if (window.innerWidth < 768) {  // Mobile view
-                        mobileSearchResultsContent.innerHTML = data;
-                        mobileSearchResults.style.display = 'block';
-                        mainContentOverlay.style.display = 'block';
-                        document.body.style.overflow = 'hidden';
-                    } else {  // Desktop view
-                        if (headerSearchDropDown) {
-                            headerSearchDropDown.innerHTML = data;
-                            headerSearchDropDown.style.display = 'block';
-                        }
+                    if (headerSearchDropDown) {
+                        headerSearchDropDown.innerHTML = data;
+                        headerSearchDropDown.style.display = 'block';
                     }
                 })
                 .catch(error => console.error('Error:', error));
             } else {
-                if (window.innerWidth < 768) {
-                    mobileSearchResults.style.display = 'none';
-                    mainContentOverlay.style.display = 'none';
-                    document.body.style.overflow = '';
-                } else if (headerSearchDropDown) {
+                if (headerSearchDropDown) {
                     headerSearchDropDown.style.display = 'none';
                 }
             }
@@ -203,25 +177,11 @@ use Models\CountryModel;
             });
         }
 
-        // Close mobile search results
-        if (closeMobileSearch) {
-            closeMobileSearch.addEventListener('click', function() {
-                mobileSearchResults.style.display = 'none';
-                mainContentOverlay.style.display = 'none';
-                document.body.style.overflow = '';
-            });
-        }
 
         // Handle window resize
         window.addEventListener('resize', function() {
-            if (window.innerWidth >= 768) {
-                mobileSearchResults.style.display = 'none';
-                mainContentOverlay.style.display = 'none';
-                document.body.style.overflow = '';
-            } else {
-                if (headerSearchDropDown) {
-                    headerSearchDropDown.style.display = 'none';
-                }
+            if (headerSearchDropDown) {
+                headerSearchDropDown.style.display = 'none';
             }
         });
     });

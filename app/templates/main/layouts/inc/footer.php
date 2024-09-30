@@ -97,19 +97,32 @@ use Helpers\Format;
         <svg class="w-6 h-6 mb-1 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
         <?=$lng->get('Home')?>
     </a>
-    <a href="/" class="w-full block py-2 px-3 text-center hover:bg-gray-200">
-        <svg class="w-6 h-6 mb-1 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        <?=$lng->get('Local')?>
+    <a href="/trending" class="w-full block py-2 px-3 text-center hover:bg-gray-200">
+        <svg class="w-6 h-6 mb-1 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+        <?=$lng->get('Trending')?>
     </a>
-    <a href="#" id="mobile_search_icon" class="w-full block py-2 px-3 text-center hover:bg-gray-200">
+    <button id="mobileSearchToggle" class="w-full block py-2 px-3 text-center hover:bg-gray-200">
         <svg class="w-6 h-6 mb-1 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         <?=$lng->get('Search')?>
-    </a>
+    </button>
     <a href="/create/channel" class="w-full block py-2 px-3 text-center hover:bg-gray-200">
         <svg class="w-6 h-6 mb-1 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
         <?=$lng->get('Create')?>
     </a>
 </nav>
+
+<!-- Mobile Search Overlay -->
+<div id="mobileSearchOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 hidden">
+    <div class="bg-white w-full h-full flex flex-col">
+        <div class="p-4 border-b border-gray-200 flex items-center">
+            <input type="search" id="mobileSearchInput" class="flex-grow px-4 py-2 border rounded-md" placeholder="<?=$lng->get('Search')?>" />
+            <button id="closeMobileSearch" class="ml-2 text-gray-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div id="mobileSearchResults" class="flex-grow overflow-y-auto p-4"></div>
+    </div>
+</div>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?= GOOGLE_ANALYTICS;?>"></script>
 <script>
@@ -117,4 +130,50 @@ use Helpers\Format;
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '<?= GOOGLE_ANALYTICS;?>');
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+    const mobileSearchOverlay = document.getElementById('mobileSearchOverlay');
+    const mobileSearchInput = document.getElementById('mobileSearchInput');
+    const mobileSearchResults = document.getElementById('mobileSearchResults');
+    const closeMobileSearch = document.getElementById('closeMobileSearch');
+
+    mobileSearchToggle.addEventListener('click', function() {
+        mobileSearchOverlay.classList.remove('hidden');
+        mobileSearchInput.focus();
+    });
+
+    console.log(1);
+    closeMobileSearch.addEventListener('click', function() {
+        console.log(2);
+        console.log('closed');
+        mobileSearchOverlay.classList.add('hidden');
+        mobileSearchInput.value = '';
+        mobileSearchResults.innerHTML = '';
+    });
+    console.log(3);
+    mobileSearchInput.addEventListener('input', function() {
+        const inputVal = this.value;
+        if (inputVal.length >= 1) {
+            fetch("/ajax/search/" + encodeURIComponent(inputVal), {
+                method: "GET",
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                mobileSearchResults.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                mobileSearchResults.innerHTML = 'An error occurred while searching.';
+            });
+        } else {
+            mobileSearchResults.innerHTML = '';
+        }
+    });
+});
 </script>

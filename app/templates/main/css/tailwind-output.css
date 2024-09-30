@@ -662,6 +662,18 @@ video {
   top: 4rem;
 }
 
+.bottom-16 {
+  bottom: 4rem;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -960,6 +972,10 @@ video {
 
 .max-h-screen {
   max-height: 100vh;
+}
+
+.max-h-\[80vh\] {
+  max-height: 80vh;
 }
 
 .min-h-full {
@@ -2362,6 +2378,10 @@ video {
 
   .md\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .md\:block {
+    display: block;
   }
 
   .md\:inline {
