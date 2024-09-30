@@ -5,34 +5,30 @@ use Models\ProductsModel;
 $subscribe_check = \Models\NewsModel::subscribeCheck($item['id']);
 ?>
 
-<main class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="relative h-48 sm:h-64 md:h-80">
-                <img src="<?=Url::uploadPath().$item['thumb']?>?a" alt="<?=$item['name']?>" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6">
-                    <h1 class="text-3xl font-bold text-white mb-2"><?=$item['name']?></h1>
-                    <p class="text-sm text-gray-300 mb-2">https://ug.news/<?=strtolower($item['name_url'])?></p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-white"><?=number_format($item['subscribers'])?> <?=$lng->get('subscribers')?></span>
-                        <button 
-                            id="subscribe_button" 
-                            channel_id="<?=$item['id']?>" 
-                            class="<?=($data['userId']>0)?'':'umodal_toggle'?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 <?=($subscribe_check===true)?'bg-gray-600 hover:bg-gray-700':''?>"
-                        >
-                            <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?> mr-2"></i>
-                            <?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?>
-                        </button>
-                    </div>
-                </div>
+<div class="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="relative h-48 sm:h-64 md:h-80">
+        <img src="<?=Url::uploadPath().$item['thumb']?>?a" alt="<?=$item['name']?>" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6">
+            <h1 class="text-3xl font-bold text-white mb-2"><?=$item['name']?></h1>
+            <p class="text-sm text-gray-300 mb-2">https://ug.news/<?=strtolower($item['name_url'])?></p>
+            <div class="flex items-center justify-between">
+                <span class="text-white"><?=number_format($item['subscribers'])?> <?=$lng->get('subscribers')?></span>
+                <button 
+                    id="subscribe_button" 
+                    channel_id="<?=$item['id']?>" 
+                    class="<?=($data['userId']>0)?'':'umodal_toggle'?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 <?=($subscribe_check===true)?'bg-gray-600 hover:bg-gray-700':''?>"
+                >
+                    <i class="fas fa-<?=($subscribe_check===true)?'bell-slash':'bell'?> mr-2"></i>
+                    <?=$lng->get(($subscribe_check===true)?'Subscribed':'Subscribe')?>
+                </button>
             </div>
         </div>
-
-        <div class="mt-8">
-            <?php include_once 'app/views/site/news_include.php';?>
-        </div>
     </div>
-</main>
+</div>
+
+<div class="mt-8">
+    <?php include_once 'app/views/site/news_include.php';?>
+</div>
 
 <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white rounded-lg p-8 max-w-md w-full m-4">
