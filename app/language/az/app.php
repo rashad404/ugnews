@@ -186,4 +186,5 @@ return [
     'Search Results' => 'Axtarış Nəticələri',
     'More Links' => 'Digər linklər',
     'More' => 'Ardı',
+    'Less' => 'Kiçilt',
 ];
