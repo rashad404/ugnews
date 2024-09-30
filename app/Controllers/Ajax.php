@@ -46,5 +46,8 @@ class Ajax extends Controller
         echo AjaxModel::search($text);
     }
 
+    public function countryList(){
+        echo AjaxModel::countryList();
+    }
 
 }

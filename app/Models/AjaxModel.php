@@ -128,52 +128,63 @@ class AjaxModel extends Model
 
 
     public static function search($text)
-{
-    $data = '<div class="divide-y divide-gray-200">';
+    {
+        $data = '<div class="divide-y divide-gray-200">';
 
-    $array_channels = self::$db->select("SELECT `id`,`name`,`thumb`,`subscribers` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%' ORDER BY `subscribers` DESC LIMIT 5");
-    if ($array_channels) {
-        $data .= '<div class="py-4 px-2">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News Channels') . '</h3>
-                    <ul role="list" class="divide-y divide-gray-200">';
-        foreach ($array_channels as $item) {
-            $data .= '<li>
-                        <a href="/' . Format::urlTextChannel($item['name']) . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
-                            <img class="h-10 w-10 rounded-full object-cover" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['name'] . '"/>
-                            <div class="ml-3 flex-grow">
-                                <p class="text-sm font-medium text-gray-900">' . $item['name'] . '</p>
-                                <p class="text-sm text-gray-500">' . number_format($item['subscribers']) . ' ' . self::$lng->get('subscribers') . '</p>
-                            </div>
-                        </a>
-                      </li>';
+        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb`,`subscribers` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%' ORDER BY `subscribers` DESC LIMIT 5");
+        if ($array_channels) {
+            $data .= '<div class="py-4 px-2">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News Channels') . '</h3>
+                        <ul role="list" class="divide-y divide-gray-200">';
+            foreach ($array_channels as $item) {
+                $data .= '<li>
+                            <a href="/' . Format::urlTextChannel($item['name']) . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <img class="h-10 w-10 rounded-full object-cover" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['name'] . '"/>
+                                <div class="ml-3 flex-grow">
+                                    <p class="text-sm font-medium text-gray-900">' . $item['name'] . '</p>
+                                    <p class="text-sm text-gray-500">' . number_format($item['subscribers']) . ' ' . self::$lng->get('subscribers') . '</p>
+                                </div>
+                            </a>
+                        </li>';
+            }
+            $data .= '</ul></div>';
         }
-        $data .= '</ul></div>';
-    }
 
-    $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%' ORDER BY `time` DESC LIMIT 5");
-    if ($array_news) {
-        $data .= '<div class="py-4 px-2">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News') . '</h3>
-                    <ul role="list" class="divide-y divide-gray-200">';
-        foreach ($array_news as $item) {
-            $data .= '<li>
-                        <a href="/' . $item['slug'] . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
-                            <img class="h-16 w-24 object-cover rounded" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['title'] . '"/>
-                            <div class="ml-3 flex-grow">
-                                <p class="text-sm font-medium text-gray-900">' . Format::listTitle($item['title'], 60) . '</p>
-                                <p class="text-xs text-gray-500">' . date('M d, Y H:i', $item['time']) . '</p>
-                            </div>
-                        </a>
-                      </li>';
+        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%' ORDER BY `time` DESC LIMIT 5");
+        if ($array_news) {
+            $data .= '<div class="py-4 px-2">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News') . '</h3>
+                        <ul role="list" class="divide-y divide-gray-200">';
+            foreach ($array_news as $item) {
+                $data .= '<li>
+                            <a href="/' . $item['slug'] . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
+                                <img class="h-16 w-24 object-cover rounded" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['title'] . '"/>
+                                <div class="ml-3 flex-grow">
+                                    <p class="text-sm font-medium text-gray-900">' . Format::listTitle($item['title'], 60) . '</p>
+                                    <p class="text-xs text-gray-500">' . date('M d, Y H:i', $item['time']) . '</p>
+                                </div>
+                            </a>
+                        </li>';
+            }
+            $data .= '</ul></div>';
         }
-        $data .= '</ul></div>';
+
+        if (!$array_channels && !$array_news) {
+            $data .= '<div class="py-4 text-center text-gray-500">' . self::$lng->get('No result') . '</div>';
+        }
+
+        $data .= '</div>';
+        return $data;
     }
 
-    if (!$array_channels && !$array_news) {
-        $data .= '<div class="py-4 text-center text-gray-500">' . self::$lng->get('No result') . '</div>';
-    }
 
-    $data .= '</div>';
-    return $data;
-}
+    public static function countryList()
+    {
+        $list = CountryModel::getList();
+        $data = [];
+        foreach ($list as $item) {
+            $data[] = ['id' => $item['id'], 'name' => $item['name']];
+        }
+        return json_encode($data);
+    }
 }

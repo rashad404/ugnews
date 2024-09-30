@@ -7,7 +7,7 @@ use Models\CountryModel;
         <div class="flex justify-between items-center py-4 lg:py-6">
             <div class="flex items-center">
                 <a href="/" class="flex-shrink-0">
-                    <img class="h-10 w-auto" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
+                    <img class="h-10 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
                 </a>
                 <div class="hidden lg:ml-6 lg:flex lg:space-x-6 pl-4">
                     <?php foreach (array_slice($data['menus'], 0, 5) as $menu): ?>
@@ -51,23 +51,44 @@ use Models\CountryModel;
                 </div>
             </div>
             <div class="flex items-center">
-    <div x-data="{ open: false }" class="ml-3 relative">
-        <div>
-            <button @click="open = !open" type="button" class="flex items-center text-base font-medium text-gray-500 hover:text-gray-900" id="region-menu" aria-expanded="false" aria-haspopup="true">
-                <i class="fas fa-globe mr-1"></i>
-                <span class="hidden md:inline"><?=CountryModel::getCode($_SETTINGS['region'])?></span>
-                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </button>
-        </div>
-        <div x-show="open" @click.away="open = false" class="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="region-menu">
-            <div class="px-4 py-2 text-xs text-gray-500"><?=$lng->get('Select Region')?>:</div>
-            <?php foreach (CountryModel::getList() as $country) :?>
-                <a href="set/region/<?=$country['id']?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?=$country['name']?></a>
-            <?php endforeach;?>
-        </div>
-    </div>
+
+
+                <div x-data="countryDropdown()" class="ml-3 relative">
+                    <div>
+                        <!-- Call loadCountries when opening the dropdown -->
+                        <button @click="open = !open; if (open) loadCountries()" type="button" class="flex items-center text-base font-medium text-gray-500 hover:text-gray-900" id="region-menu" aria-expanded="false" aria-haspopup="true">
+                            <i class="fas fa-globe mr-1"></i>
+                            <span class="hidden md:inline"><?= CountryModel::getCode($_SETTINGS['region']) ?></span>
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div x-show="open" @click.away="open = false" class="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="region-menu" style="max-height: 300px; overflow-y: auto;">
+                        <div class="px-4 py-2 text-xs text-gray-500"><?= $lng->get('Select Region') ?>:</div>
+                        <!-- Search Input -->
+                        <div class="px-4 py-2">
+                            <input type="text" x-model="searchQuery" placeholder="<?= $lng->get('Search') ?>..." class="block w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+
+                        <!-- Country List -->
+                        <template x-if="filteredCountries().length > 0">
+                            <div>
+                                <template x-for="country in filteredCountries()" :key="country.id">
+                                    <a :href="'set/region/' + country.id" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" x-text="country.name"></a>
+                                </template>
+                            </div>
+                        </template>
+
+                        <!-- Message if no country matches the search -->
+                        <template x-if="filteredCountries().length === 0">
+                            <div class="px-4 py-2 text-sm text-gray-500">No results found</div>
+                        </template>
+                    </div>
+                </div>
+
+
+
     
     <div x-data="{ open: false }" class="ml-4 relative">
         <div>
@@ -185,4 +206,32 @@ use Models\CountryModel;
             }
         });
     });
+</script>
+
+
+<script>
+    function countryDropdown() {
+        return {
+            open: false,
+            countries: [],  // Initialize countries as an empty array
+            searchQuery: '',  // Initialize search query
+            loadCountries() {
+                if (this.countries.length === 0) {
+                    fetch('/ajax/countries')  // Replace with your actual endpoint
+                        .then(response => response.json())
+                        .then(data => {
+                            this.countries = data;
+                        })
+                        .catch(error => console.error('Error fetching countries:', error));
+                }
+            },
+            // Filter countries based on the search query
+            filteredCountries() {
+                if (this.searchQuery === '') {
+                    return this.countries;
+                }
+                return this.countries.filter(country => country.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
+            }
+        };
+    }
 </script>
