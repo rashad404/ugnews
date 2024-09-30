@@ -182,4 +182,5 @@ return [
     'Today\'s Namaz Times' => 'Bugünkü Namaz Vaxtları',
     'Current Time' => 'Cari Vaxt',
 
+    'Show' => 'Göstər',
 ];

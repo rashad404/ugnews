@@ -129,55 +129,53 @@ class AjaxModel extends Model
 
     public static function search($text)
     {
-        $data = '';
-
-
-        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" .$text. "%'ORDER BY `id` ASC LIMIT 10");
+        $data = '<div class="divide-y divide-gray-200">';
+    
+        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb`,`subscribers` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%' ORDER BY `subscribers` DESC LIMIT 5");
         if ($array_channels) {
-            $data .= '<li class="li_title">' . self::$lng->get('News Channels') . '</li>';
+            $data .= '<div class="py-4 px-2">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News Channels') . '</h3>
+                        <ul role="list" class="divide-y divide-gray-200">';
             foreach ($array_channels as $item) {
-                $data .= '<li class="channel_li"><a style="padding: 10px 20px;" href="/' . Format::urlTextChannel($item['name']) . '">
-                <div class="row">
-                        <div class="col-2">
-                            <img  class="channel_img" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>
-                        </div>
-                        <div class="col-7">
-                            ' . $item['name'] . '
-                        </div>
-                        <div class="col-3">
-
-                            <div class="search_count">4 ' . self::$lng->get('subscribers') . '</div>
-                        </div>
-                    </div></a></li>';
+                $data .= '<li class="py-3 flex items-center">
+                            <img class="h-10 w-10 rounded-full object-cover" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['name'] . '"/>
+                            <div class="ml-3 flex-grow">
+                                <p class="text-sm font-medium text-gray-900">' . $item['name'] . '</p>
+                                <p class="text-sm text-gray-500">' . number_format($item['subscribers']) . ' ' . self::$lng->get('subscribers') . '</p>
+                            </div>
+                            <a href="/' . Format::urlTextChannel($item['name']) . '" class="ml-2 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                ' . self::$lng->get('Show') . '
+                            </a>
+                          </li>';
             }
+            $data .= '</ul></div>';
         }
-
-        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `slug` LIKE '%" . $text . "%'ORDER BY `time` DESC LIMIT 10");
+    
+        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%' ORDER BY `time` DESC LIMIT 5");
         if ($array_news) {
-            $data .= '<li class="li_title" style="margin-bottom: 10px;font-size: 16px;">' . self::$lng->get('News') . '</li>';
+            $data .= '<div class="py-4 px-2">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News') . '</h3>
+                        <ul role="list" class="divide-y divide-gray-200">';
             foreach ($array_news as $item) {
-                $data .= '
-                <li>
-                <a href="/' . $item['slug'] .  '">
-                    <div class="row">
-                        <div class="col-2 col-md-2 remove_col_padding_mob">
-                            <img src="' . Url::filePath() . '/' . $item['thumb'] . '" alt=""/>
-                        </div>
-                        <div class="col-8 col-md-8">
-                            <span class="search_news_name">' . $item['title'] . '</span> 
-                        </div>
-                        <div class="col-2 col-md-2">
-                            <div class="search_date">' . date('M d H:i', $item['time']) . '</div>
-                        </div>
-                    </div>
-                </a>
-                </li>';
+                $data .= '<li class="py-3 flex items-center">
+                            <img class="h-16 w-24 object-cover rounded" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['title'] . '"/>
+                            <div class="ml-3 flex-grow">
+                                <p class="text-sm font-medium text-gray-900">' . Format::listTitle($item['title'], 60) . '</p>
+                                <p class="text-xs text-gray-500">' . date('M d, Y H:i', $item['time']) . '</p>
+                            </div>
+                            <a href="/' . $item['slug'] . '" class="ml-2 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                ' . self::$lng->get('Read') . '
+                            </a>
+                          </li>';
             }
+            $data .= '</ul></div>';
         }
-
+    
         if (!$array_channels && !$array_news) {
-            $data .= '<li class="li_title">' . self::$lng->get('No result') . '</li>';
+            $data .= '<div class="py-4 text-center text-gray-500">' . self::$lng->get('No result') . '</div>';
         }
+    
+        $data .= '</div>';
         return $data;
     }
 }
