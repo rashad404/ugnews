@@ -4,10 +4,10 @@ use Models\CountryModel;
 ?>
 <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div class="flex justify-between items-center py-2 lg:py-6 md:justify-start md:space-x-10">
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="/">
-                    <img class="h-8 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
+                    <img class="h-12 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
                 </a>
             </div>
             <div class="-mr-2 -my-2 md:hidden">

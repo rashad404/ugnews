@@ -147,10 +147,10 @@ class Site extends Controller
     }
     // cities
     public function city($id){
-        $data['def_language'] = self::$def_language;
 
         $data = SeoModel::city(CityModel::getName($id));
 
+        $data['def_language'] = self::$def_language;
         $pagination = new Pagination();
         $pagination->limit = 24;
         $data['pagination'] = $pagination;
