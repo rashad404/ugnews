@@ -4,7 +4,7 @@ use Models\CountryModel;
 ?>
 <header class="bg-white shadow" x-data="{ mobileMenuOpen: false, searchDropdownOpen: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-2 lg:py-6">
+        <div class="flex justify-between items-center py-4 lg:py-6">
             <div class="flex items-center">
                 <a href="/" class="flex-shrink-0">
                     <img class="h-8 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
@@ -45,7 +45,7 @@ use Models\CountryModel;
                         </div>
                         <input id="header_search_input" name="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="<?=$lng->get('Channel or News')?>" type="search">
                     </div>
-                    <div id="headerSearchDropDown" x-show="searchDropdownOpen" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto max-h-96" style="display: none;">
+                    <div id="headerSearchDropDown" class="absolute z-10 mt-2 w-full bg-white shadow-lg rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto max-h-96" style="display: none;">
                         <!-- Search results will be populated here -->
                     </div>
                 </div>
@@ -127,55 +127,102 @@ use Models\CountryModel;
             <?php endif; ?>
         </div>
     </div>
+
+    <div id="mobileSearchResults" class="fixed inset-x-0 top-16 bottom-0 bg-white z-50 overflow-y-auto mx-2" style="display: none;">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold"><?=$lng->get('Search Results')?></h2>
+                <button id="closeMobileSearch" class="text-gray-500 hover:text-gray-700">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileSearchResultsContent"></div>
+        </div>
+    </div>
+    <div id="mainContentOverlay" class="fixed inset-0 bg-black opacity-50 z-40" style="display: none;"></div>
 </header>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const headerSearchInput = document.getElementById('header_search_input');
-    const headerSearchDropDown = document.getElementById('headerSearchDropDown');
+    document.addEventListener('DOMContentLoaded', function() {
+        const headerSearchInput = document.getElementById('header_search_input');
+        const headerSearchDropDown = document.getElementById('headerSearchDropDown');
+        const mobileSearchResults = document.getElementById('mobileSearchResults');
+        const mobileSearchResultsContent = document.getElementById('mobileSearchResultsContent');
+        const closeMobileSearch = document.getElementById('closeMobileSearch');
+        const mainContentOverlay = document.getElementById('mainContentOverlay');
 
-    function performSearch(inputVal) {
-        if (inputVal.length >= 1) {
-            // Show the dropdown
-            if (headerSearchDropDown) {
-                headerSearchDropDown.style.display = 'block';
-            }
-
-            // Perform the AJAX request
-            fetch("/ajax/search/" + encodeURIComponent(inputVal), {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: "text="
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                if (headerSearchDropDown) {
-                    headerSearchDropDown.innerHTML = data;
+        function performSearch(inputVal) {
+            if (inputVal.length >= 1) {
+                // Perform the AJAX request
+                fetch("/ajax/search/" + encodeURIComponent(inputVal), {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: "text="
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    if (window.innerWidth < 768) {  // Mobile view
+                        mobileSearchResultsContent.innerHTML = data;
+                        mobileSearchResults.style.display = 'block';
+                        mainContentOverlay.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    } else {  // Desktop view
+                        if (headerSearchDropDown) {
+                            headerSearchDropDown.innerHTML = data;
+                            headerSearchDropDown.style.display = 'block';
+                        }
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                if (window.innerWidth < 768) {
+                    mobileSearchResults.style.display = 'none';
+                    mainContentOverlay.style.display = 'none';
+                    document.body.style.overflow = '';
+                } else if (headerSearchDropDown) {
+                    headerSearchDropDown.style.display = 'none';
                 }
-            })
-            .catch(error => console.error('Error:', error));
-        } else {
-            // Hide the dropdown if input is empty
-            if (headerSearchDropDown) {
-                headerSearchDropDown.style.display = 'none';
             }
         }
-    }
 
-    if (headerSearchInput) {
-        headerSearchInput.addEventListener('keyup', function() {
-            performSearch(this.value);
-        });
-    }
+        if (headerSearchInput) {
+            headerSearchInput.addEventListener('input', function() {
+                performSearch(this.value);
+            });
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-        if (headerSearchDropDown && !headerSearchInput.contains(event.target) && !headerSearchDropDown.contains(event.target)) {
-            headerSearchDropDown.style.display = 'none';
+            // Close dropdown when clicking outside on desktop
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth >= 768 && headerSearchDropDown && !headerSearchInput.contains(event.target) && !headerSearchDropDown.contains(event.target)) {
+                    headerSearchDropDown.style.display = 'none';
+                }
+            });
         }
+
+        // Close mobile search results
+        if (closeMobileSearch) {
+            closeMobileSearch.addEventListener('click', function() {
+                mobileSearchResults.style.display = 'none';
+                mainContentOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                mobileSearchResults.style.display = 'none';
+                mainContentOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            } else {
+                if (headerSearchDropDown) {
+                    headerSearchDropDown.style.display = 'none';
+                }
+            }
+        });
     });
-});
 </script>

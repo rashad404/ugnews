@@ -183,4 +183,5 @@ return [
     'Current Time' => 'Cari Vaxt',
 
     'Show' => 'Göstər',
+    'Search Results' => 'Axtarış Nəticələri',
 ];
