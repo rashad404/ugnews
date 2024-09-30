@@ -9,7 +9,7 @@ use Helpers\Format;
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8 xl:col-span-1">
-                <img class="h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
+                <img class="h-10" width="107" height="40" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo_white']?>" alt="<?=PROJECT_NAME?> logo"/>
                 <p class="text-gray-400 text-base">
                     <?= $lng->get('FooterAboutText'); ?>
                 </p>

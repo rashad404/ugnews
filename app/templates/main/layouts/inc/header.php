@@ -7,7 +7,7 @@ use Models\CountryModel;
         <div class="flex justify-between items-center py-4 lg:py-6">
             <div class="flex items-center">
                 <a href="/" class="flex-shrink-0">
-                    <img class="h-10 w-auto sm:h-10" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
+                    <img class="h-10 w-auto sm:h-10" width="107" height="40" src="<?=Url::templatePath()?>/img/partner_logos/<?=$_PARTNER['header_logo']?>" alt="<?=PROJECT_NAME?> logo"/>
                 </a>
                 <div class="hidden lg:ml-6 lg:flex lg:space-x-6 pl-4">
                     <?php foreach (array_slice($data['menus'], 0, 5) as $menu): ?>
