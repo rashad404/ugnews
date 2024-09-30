@@ -962,6 +962,10 @@ video {
   height: 0.25rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .max-h-60 {
   max-height: 15rem;
 }
@@ -1040,6 +1044,10 @@ video {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-full {
