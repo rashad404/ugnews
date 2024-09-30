@@ -82,7 +82,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
         <?php include 'inc/header.php'; ?>
 
         <main>
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto py-6 px-2 sm:px-6 lg:px-8">
                 <?php eval($content); ?>
             </div>
         </main>
