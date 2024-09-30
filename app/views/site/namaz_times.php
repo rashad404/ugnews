@@ -1,4 +1,4 @@
-<main class="bg-gray-100 py-10 mt-20">
+<main class="bg-gray-100 py-8">
     <section>
         <div class="container mx-auto px-4">
             <!-- Page Title -->

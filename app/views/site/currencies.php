@@ -1,4 +1,4 @@
-<main class="bg-gray-100 py-10 mt-20"> <!-- Add mt-20 to push the content below the header -->
+<main class="bg-gray-100 py-8"> 
 
     <section>
         <div class="container mx-auto px-4">
