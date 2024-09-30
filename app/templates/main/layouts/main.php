@@ -90,6 +90,6 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
         <?php include 'inc/footer.php'; ?>
     </div>
 
-    <script src="<?= Url::templatePath() ?>js/main.min.js"></script>
+    
 </body>
 </html>
