@@ -74,7 +74,6 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <meta property="og:site_name" content="<?= SITE_NAME ?>">
     <link rel="icon" href="<?= Url::templatePath() ?>img/favicon/favicon-32x32.png" type="image/png">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="<?= Url::templatePath() ?>css/tailwind-output.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
