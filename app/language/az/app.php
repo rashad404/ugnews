@@ -184,4 +184,5 @@ return [
 
     'Show' => 'Göstər',
     'Search Results' => 'Axtarış Nəticələri',
+    'More Links' => 'Daha çox bağlantılar',
 ];
