@@ -145,15 +145,11 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileSearchInput.focus();
     });
 
-    console.log(1);
     closeMobileSearch.addEventListener('click', function() {
-        console.log(2);
-        console.log('closed');
         mobileSearchOverlay.classList.add('hidden');
         mobileSearchInput.value = '';
         mobileSearchResults.innerHTML = '';
     });
-    console.log(3);
     mobileSearchInput.addEventListener('input', function() {
         const inputVal = this.value;
         if (inputVal.length >= 1) {
