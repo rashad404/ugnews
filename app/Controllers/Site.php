@@ -318,7 +318,7 @@ class Site extends Controller
 
     public function register($return=''){
         if($this->userId>0){
-            Url::redirect("user/dashboard");exit;
+            Url::redirect("partner/news/index");exit;
         }
         $data = SeoModel::general();
         $data['countryList'] = Sms::getCountryList();
@@ -331,7 +331,7 @@ class Site extends Controller
             if(empty($modelArray['errors'])){
 //                $return = preg_replace('/\+/','/',$return);
 //                Url::redirect($return);
-                Url::redirect('');
+                Url::redirect('partner/news/index');
                 exit;
             }else {
                 Session::setFlash('error',$modelArray['errors']);

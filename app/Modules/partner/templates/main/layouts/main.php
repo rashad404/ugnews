@@ -185,7 +185,7 @@ $lng->load('app');
     $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     ?>
     <!-- Header -->
-        <?php include "app/templates/main/layouts/inc/header.php";?>
+        <?php include "app/templates/main/layouts/user_panel/header.php";?>
     <!-- Header end -->
 
     <!-- Content Wrapper. Contains page content -->
