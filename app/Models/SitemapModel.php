@@ -32,11 +32,12 @@ class SitemapModel extends Model
         $staticLinks = $this->getStaticLinks();
         $channelLinks = $this->fetchChannelLinks();
         $newsLinks = $this->fetchNewsLinks();
+        $weatherLinks = $this->fetchWeatherLinks();
         // $tagLinks = $this->fetchTagLinks();
 
         // Merge all links into one array
         // $allLinks = array_merge($staticLinks, $newsLinks, $channelLinks, $tagLinks);
-        $allLinks = array_merge($staticLinks, $channelLinks, $newsLinks);
+        $allLinks = array_merge($staticLinks, $weatherLinks, $channelLinks, $newsLinks);
 
         // Ensure uniqueness based on URL
         $uniqueLinks = [];
@@ -81,12 +82,12 @@ class SitemapModel extends Model
                 'priority'   => '1.0',
             ],
             [
-                'url'        => $this->website . '/valyuta',
+                'url'        => $this->website . '/hava-haqqinda',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],
             [
-                'url'        => $this->website . '/tags/hava',
+                'url'        => $this->website . '/valyuta',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],
@@ -131,6 +132,31 @@ class SitemapModel extends Model
 
         return $links;
     }
+
+
+    /**
+     * Fetch dynamic weather links from the database with default changefreq and priority
+     *
+     * @return array
+     */
+    private function fetchWeatherLinks()
+    {
+        $links = [];
+        $query = "SELECT `slug`, `updated_at` FROM `weather` WHERE `status` = 1 ORDER BY `id` ASC";
+        $array = self::$db->select($query);
+
+        foreach ($array as $item) {
+            $links[] = [
+                'url'        => $this->website . '/hava-haqqinda/' . htmlspecialchars($item['slug'], ENT_QUOTES, 'UTF-8'),
+                'changefreq' => 'hourly',  // Weather data changes frequently, so set changefreq accordingly
+                'priority'   => '0.90',   // Assign a higher priority for weather pages
+                'lastmod'    => date(DATE_W3C, strtotime($item['updated_at'])),
+            ];
+        }
+
+        return $links;
+    }
+
 
     /**
      * Fetch dynamic channel links from the database with default changefreq and priority
