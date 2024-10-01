@@ -82,17 +82,17 @@ class SitemapModel extends Model
                 'priority'   => '1.0',
             ],
             [
-                'url'        => $this->website . '/hava-haqqinda',
-                'changefreq' => 'daily',
-                'priority'   => '0.8',
-            ],
-            [
                 'url'        => $this->website . '/valyuta',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],
             [
                 'url'        => $this->website . '/namaz-vaxti',
+                'changefreq' => 'daily',
+                'priority'   => '0.8',
+            ],
+            [
+                'url'        => $this->website . '/hava-haqqinda',
                 'changefreq' => 'daily',
                 'priority'   => '0.8',
             ],
