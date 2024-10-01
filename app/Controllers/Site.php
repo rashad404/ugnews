@@ -25,6 +25,7 @@ use Helpers\Pagination;
 use Helpers\Cookie;
 use Models\CurrencyModel;
 use Models\NamazTimesModel;
+use Models\WeatherModel;
 use Modules\partner\Controllers\News;
 
 
@@ -76,6 +77,7 @@ class Site extends Controller
 
         $data['usdRate'] = CurrencyModel::getUSDRate();
         $data['todayNamaz'] = NamazTimesModel::getTodayNamazTimes();
+        $data['bakuWeatherInfo'] = round(WeatherModel::getWeatherBySlug('Baki')['temp']);
 
         View::render('site/'.__FUNCTION__, $data);
     }

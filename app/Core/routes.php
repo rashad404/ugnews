@@ -67,6 +67,9 @@ Router::any('sitemap-update', 'Controllers\Sitemap@update');
 
 Router::any('valyuta', 'Controllers\CurrencyController@index');
 Router::any('namaz-vaxti', 'Controllers\NamazTimesController@index');
+Router::any('hava-haqqinda/(:any)', 'Controllers\WeatherController@city');
+Router::any('hava-haqqinda', 'Controllers\WeatherController@index');
+Router::any('hava-haqqinda/', 'Controllers\WeatherController@index');
 
 
 

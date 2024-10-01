@@ -7,6 +7,7 @@ use Helpers\Format;
 // Prepare the info list dynamically
 $info_list = [
     ['Valyuta', "1 USD = " . ($usdRate ?? 'N/A') . " AZN", 'valyuta'],
+    ['Hava haqqında', "Bakı " . ($bakuWeatherInfo ?? 'N/A') . " °C", 'hava-haqqinda'],
     // ['Hava', 'Bakı 13 °', 'tags/hava'],
     ['Namaz vaxtı', "Sübh: " . ($todayNamaz['fajr'] ?? 'N/A'), "namaz-vaxti"]
 ];

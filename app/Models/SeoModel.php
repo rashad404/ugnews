@@ -79,6 +79,21 @@ class SeoModel extends Model{
         return $array;
     }
     
+    public static function weather() {
+        $array['title'] = 'Hava proqnozu, ' . date('d.m.Y') . ' üçün hava məlumatı';
+        $array['keywords'] = 'hava proqnozu, bugünkü hava, sabahki hava, Bakı hava proqnozu, Gəncə hava proqnozu, Şəki hava proqnozu, Lənkəran hava proqnozu';
+        $array['description'] = 'Hava proqnozu, bugünkü və sabahki hava məlumatı. Bakı, Gəncə, Şəki, Lənkəran və digər şəhərlər üçün cari hava şəraiti və proqnozlar.';
+        $array['meta_img'] = 'logo/logo-fb.png'; // Path to a relevant image for sharing
+        return $array;
+    }
+    
+    public static function weather_city($city) {
+        $array['title'] = $city . ' Hava proqnozu, ' . date('d.m.Y') . ' üçün '.$city.' hava məlumatı';
+        $array['keywords'] = $city . ' hava proqnozu, '.$city.' bugünkü hava, '.$city.' sabahki hava, '.$city.' hava proqnozu';
+        $array['description'] = $city . ' Hava proqnozu, '.$city.' bugünkü və sabahki hava məlumatı. '.$city.' şəhəri üçün cari hava şəraiti və proqnozlar.';
+        $array['meta_img'] = 'logo/logo-fb.png'; // Path to a relevant image for sharing
+        return $array;
+    }
 
 
 
