@@ -23,7 +23,7 @@ function getTemperatureColor($temp) {
                 <?=$lng->get('Weather Forecast')?>
             </h1>
             <p class="text-xl text-blue-100">
-                <?=date("F d, Y")?> | <?=$lng->get('Real-time Weather Insights')?>
+                <?=$lng->get(date('F')) . date(" d, Y")?> | <?=$lng->get('Real-time Weather Insights')?>
             </p>
         </div>
 

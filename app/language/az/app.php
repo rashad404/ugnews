@@ -161,9 +161,12 @@ return [
     'TOP News' => 'TOP Xəbərlər',
 
     //Currencies
+    'Currency Exchange Rates' => 'Valyuta Məzənnələri',
     'Currencies' => 'Valyuta',
     'Exchange Rates' => 'Valyuta Məzənnələri',
     'Rate' => 'Məzənnə',
+    'Live Rates' => 'Canlı Məzənnələr',
+    'Search currency' => 'Valyuta axtar',
 
     // Namaz Times
     'Namaz Times' => 'Namaz Vaxtları',
@@ -221,4 +224,22 @@ return [
     'few clouds' => 'Az Buludlu',
     'scattered clouds' => 'Səpələnmiş Buludlar',
     'broken clouds' => 'Dağınıq Buludlar',
+    'Feels like' => 'Hiss Edilən',
+    'Real-time Weather Insights' => 'Canlı Hava Analizi',
+    'View Detailed Forecast' => 'Ətraflı Proqnozu Göstər',
+
+    // Months
+    'January' => 'Yanvar',
+    'February' => 'Fevral',
+    'March' => 'Mart',
+    'April' => 'Aprel',
+    'May' => 'May',
+    'June' => 'İyun',
+    'July' => 'İyul',
+    'August' => 'Avqust',
+    'September' => 'Sentyabr',
+    'October' => 'Oktyabr',
+    'November' => 'Noyabr',
+    'December' => 'Dekabr',
+    
 ];
