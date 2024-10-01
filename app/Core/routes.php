@@ -10,6 +10,7 @@ use Helpers\Url;
 Router::any('create/channel', 'Controllers\Site@create_channel');
 
 Router::any('privacy-policy', 'Controllers\Site@privacy');
+Router::any('data-deletion', 'Controllers\Site@data_deletion');
 Router::any('refund-policy', 'Controllers\Site@refund');
 
 //AJAX

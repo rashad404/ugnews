@@ -378,6 +378,13 @@ class Site extends Controller
 
         View::render('site/'.__FUNCTION__, $data);
     }
+    
+    public function data_deletion(){
+        $data = SeoModel::general();
+        $data['def_language'] = self::$def_language;
+
+        View::render('site/'.__FUNCTION__, $data);
+    }
     public function refund(){
         $data = SeoModel::general();
         $data['def_language'] = self::$def_language;
