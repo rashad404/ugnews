@@ -113,7 +113,7 @@ class SitemapModel extends Model
         $batchSize = 1000; // Adjust batch size as needed
 
         do {
-            $query = "SELECT `slug`, `time` FROM `{$this->newsTable}` WHERE `status` = 1 ORDER BY `id` ASC LIMIT :offset, :limit";
+            $query = "SELECT `slug`, `time` FROM `{$this->newsTable}` ORDER BY `id` ASC LIMIT :offset, :limit";
             $params = [
                 ':offset' => $offset,
                 ':limit'  => $batchSize,
