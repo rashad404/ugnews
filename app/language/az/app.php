@@ -187,4 +187,6 @@ return [
     'More Links' => 'Digər linklər',
     'More' => 'Ardı',
     'Less' => 'Kiçilt',
+    'Dashboard' => 'İdarə Paneli',
+    'Profile' => 'Profil',
 ];
