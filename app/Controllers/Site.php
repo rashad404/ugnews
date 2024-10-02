@@ -77,7 +77,7 @@ class Site extends Controller
 
         $data['usdRate'] = CurrencyModel::getUSDRate();
         $data['todayNamaz'] = NamazTimesModel::getTodayNamazTimes();
-        $data['bakuWeatherInfo'] = round(WeatherModel::getWeatherBySlug('Baki')['temp']);
+        $data['bakuWeatherInfo'] = round(WeatherModel::getWeatherBySlug('Baki')['temp'] ?? 0);
 
         View::render('site/'.__FUNCTION__, $data);
     }
