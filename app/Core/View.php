@@ -119,6 +119,7 @@ class View
         $layout = 'main';
         $template = 'main';
         $file = 'app/Modules/'.$modul.'/Views/'.$path.'.php';
+        
         if(is_readable($file)) {
             $content='require SMVC."app/Modules/'.$modul.'/Views/'.$path.'.php";';
             require SMVC."app/Modules/".$modul."/templates/".$template."/layouts/".$layout.".php";

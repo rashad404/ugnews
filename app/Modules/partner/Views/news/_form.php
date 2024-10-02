@@ -7,12 +7,6 @@ $lng = $data['lng'];
 $languages = LanguagesModel::getLanguages();
 $defaultLanguage = LanguagesModel::getDefaultLanguage();
 ?>
-<script>
-    $(function() {
-        // $('.ui.dropdown').dropdown();
-        $('.ui.dropdown').dropdown('set selected', <?= $features ?>);
-    });
-</script>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form_box">
         <div class="row ">
