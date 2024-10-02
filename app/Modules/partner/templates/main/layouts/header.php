@@ -38,7 +38,7 @@ $region = '233';
                 <a style="float: left;" href="/login"><i class="fas fa-sign-in-alt"></i> <?=$lng->get('Sign in')?></a>
             <?php endif;?>
         </div>
-        <?php include "app/templates/main/layouts/inc/left_menu.php";?>
+        <?php include "inc/left_menu.php";?>
     </div>
 </div>
 
@@ -92,11 +92,6 @@ $region = '233';
                     </ul>
                 </div>
 
-<!--                <div id="mobile_search_icon2" class="search_icon visible-xs" style="float: right">-->
-<!--                    <a href="javascript:void(0);" class="icon">-->
-<!--                        <i class="fa fa-search fa-2x"></i>-->
-<!--                    </a>-->
-<!--                </div>-->
             </div>
         </div>
     </div>

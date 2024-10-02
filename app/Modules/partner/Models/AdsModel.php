@@ -68,62 +68,6 @@ class AdsModel extends Model{
     }
 
 
-    public static function getCategories(){
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCategories." WHERE `status`=1 ORDER BY `position`");
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>''];
-        }
-        return $list;
-    }
-
-    public static function getCountries(){
-        new SettingsModel();
-        $defaults = SettingsModel::getItem();
-        $def_country = $defaults['country'];
-
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCountries);
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_country==$item['id'])?'true':''];
-        }
-        return $list;
-    }
-    public static function getCities(){
-
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameCities);
-        $list[] = ['key'=>0, 'name'=>'---', 'disabled'=>''];
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>''];
-        }
-        return $list;
-    }
-    public static function getLanguages(){
-        new SettingsModel();
-        $defaults = SettingsModel::getItem();
-        $def_language = $defaults['language'];
-
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameLanguages." WHERE `status`=1 ORDER BY `id` DESC");
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($def_language==$item['id'])?'true':''];
-        }
-        return $list;
-    }
-    public static function getChannels(){
-        new SettingsModel();
-        $defaults = SettingsModel::getItem();
-        $default = $defaults['channel'];
-
-        $list = [];
-        $array = self::$db->select("SELECT `id`,`name` FROM ".self::$tableNameChannels." WHERE `status`=1 AND `partner_id`='".self::$partner_id."' ORDER BY `id` DESC");
-        foreach ($array as $item){
-            $list[] = ['key'=>$item['id'], 'name'=>$item['name'], 'disabled'=>'', 'default'=>($default==$item['id'])?'true':''];
-        }
-        return $list;
-    }
-
 
 
     public static function getSqlFields(){
@@ -154,53 +98,15 @@ class AdsModel extends Model{
     }
 
 
-    public static function getName($id){
-        $array = self::$db->selectOne("SELECT `first_name`,`last_name` FROM ".self::$tableName." WHERE `id`='".$id."'");
-        return $array['first_name'].' '.$array['last_name'];
-    }
-    public static function getGenderName($id){
-        $array = self::$db->selectOne("SELECT `gender` FROM ".self::$tableName." WHERE `id`='".$id."'");
-        return $array['gender'];
-    }
-    public static function getBreakPredict($id){
-        $array = self::$db->selectOne("SELECT `break_predict` FROM ".self::$tableName." WHERE `id`='".$id."'");
-        return $array['break_predict'];
-    }
-
     public static function getList($limit='LIMIT 0,10'){
         return self::$db->select("SELECT ".self::getSqlFields()." FROM ".self::$tableName." WHERE `partner_id`='".self::$partner_id."' ORDER BY `id` DESC,`id` DESC $limit");
     }
-    public static function getListActive($limit='LIMIT 0,10'){
-        return self::$db->select("SELECT ".self::getSqlFields()." FROM ".self::$tableName." WHERE `bed_id`>0 AND `partner_id`='".self::$partner_id."' ORDER BY `id` DESC,`id` DESC $limit");
-    }
-
-
-    public static function getBreakPredictList(){
-        return self::$db->select("SELECT ".self::getSqlFields().",`apt_id` FROM ".self::$tableName." WHERE `partner_id`='".self::$partner_id."' AND  `break_predict`>0 ORDER BY `position` DESC,`id` ASC");
-    }
-
     public static function countList(){
         $count = self::$db->selectOne("SELECT count(`id`) as countList FROM ".self::$tableName." WHERE `partner_id`='".self::$partner_id."'");
         return $count['countList'];
     }
 
-    public static function countListActive(){
-        $count = self::$db->selectOne("SELECT count(`id`) as countList FROM ".self::$tableName." WHERE `bed_id`>0 AND `partner_id`='".self::$partner_id."'");
-        return $count['countList'];
-    }
 
-
-    public static function countUsers($gender){
-        $count = self::$db->selectOne("SELECT count(`id`) as c FROM ".self::$tableName." WHERE `bed_id`>0 AND  `partner_id`='".self::$partner_id."' AND `gender`='".$gender."'");
-        return $count['c'];
-    }
-
-
-    public static function getListByApt($id){
-        return self::$db->select("SELECT a.`id`,a.`first_name`,a.`last_name`,b.`name_".self::$def_language."` as `bed_name` FROM ".self::$tableName." as a
-        INNER JOIN ".self::$tableNameBeds." as b ON a.`bed_id`=b.`id` 
-        WHERE a.`apt_id`='".$id."' ORDER BY b.`position` DESC, b.`id` ASC ");
-    }
 
     public static function getItem($id){
         return self::$db->selectOne("SELECT ".self::getSqlFields()." FROM ".self::$tableName." WHERE `id`='".$id."'");
@@ -334,30 +240,6 @@ class AdsModel extends Model{
     }
 
 
-    public static function searchActive(){
-        $postData = self::getPost();
-        $text = $postData['search'];
-        $values = self::$params['searchFields'];
-
-        $sql_s = '`bed_id`>0 ';
-        $sql_s_extra = '';
-
-        if($values<=1){
-            $sql_s_extra = "`".$values."` LIKE '%".$text."%' ";
-        } else {
-            foreach($values as $value){
-                $sql_s_extra .= "`".$value."` LIKE '%".$text."%' OR ";
-            }
-            $sql_s_extra = '('.substr($sql_s,0,-3).')';
-        }
-
-        if(!empty($sql_s_extra)){
-            $sql_s .= ' AND '.$sql_s_extra;
-        }
-        $list = self::$db->select("SELECT ".self::getSqlFields()." FROM `".self::$tableName."` WHERE ".$sql_s);
-        return $list;
-    }
-
 
     public static function delete($id_array = []){
         if(empty($id_array)) {
@@ -407,20 +289,6 @@ class AdsModel extends Model{
         self::$db->raw("UPDATE ".self::$tableName." SET `position`='".$position."' WHERE `id` ='".$id."'");
     }
 
-    public static function getListByType($type){
-        $where = '';
-
-        if($type==1){
-            $where = '';
-        }elseif($type==2){
-            $where = 'AND `gender`=2';
-        }elseif($type==3){
-            $where = 'AND `gender`=1';
-        }elseif($type==4){
-            $where = 'AND `balance`>0';
-        }
-        return self::$db->select("SELECT `id`,`first_name`,`phone`,`email`,`gender` FROM ".self::$tableName." WHERE `status`=1 AND `bed_id`>0 AND `partner_id`='".self::$partner_id."' ".$where." ORDER BY `id` DESC");
-    }
 }
 
 ?>

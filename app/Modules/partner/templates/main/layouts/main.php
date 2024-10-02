@@ -94,7 +94,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 <body class="hold-transition skin-blue sidebar-mini">
 
     <div class="wrapper">
-        <?php include "app/templates/main/layouts/user_panel/header.php";?>
+        <?php include "header.php";?>
 
         <div class="content-wrapper">
             <?php eval($content); ?>
@@ -103,6 +103,8 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     </div>
 
     <input type="hidden" id="baseUrl" value="<?= Url::to(Url::getModuleController()) ?>"/>
+    
+    <?php include "footer.php";?>
 
 </body>
 </html>
