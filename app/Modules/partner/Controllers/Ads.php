@@ -47,6 +47,7 @@ class Ads extends CrudController
     public function index()
     {
         parent::index();
+        $data = [];
         View::renderPartner($this->partnerParams['name'] . '/index', $data);
     }
 }
