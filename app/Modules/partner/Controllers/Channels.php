@@ -1,36 +1,18 @@
 <?php
 namespace Modules\partner\Controllers;
 
-use Core\Language;
-use Helpers\Csrf;
-use Helpers\Database;
-use Helpers\Pagination;
-use Helpers\Session;
-use Modules\partner\Models\BalanceModel;
 use Modules\partner\Models\ChannelsModel;
-use Models\LanguagesModel;
 use Core\View;
-use Helpers\Url;
 
-class Channels extends MyController{
-
-    public static $params;
-    public static $model;
-    public static $lng;
-    public static $def_language;
-    public static $rules;
-
-    public function __construct(){
-        self::$def_language = LanguagesModel::getDefaultLanguage('partner');
-        self::$lng = new Language();
-        self::$lng->load('partner');
-        self::$rules = ['first_name' => ['required']];
-
-
-        self::$params = [
+class Channels extends CrudController
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $params = [
             'name' => 'channels',
-            'searchFields' => ['id','title','text'],
-            'title' => self::$lng->get('Your Channels'),
+            'searchFields' => ['id', 'title', 'text'],
+            'title' => 'Your Channels', // We'll translate this in the view
             'position' => true,
             'status' => true,
             'actions' => true,
@@ -39,120 +21,45 @@ class Channels extends MyController{
             'thumbSizeX' => '300',
             'thumbSizeY' => '300',
         ];
-        parent::__construct();
-        self::$model = new ChannelsModel(self::$params);
+        $this->initializePartnerController(ChannelsModel::class, $params);
     }
 
-    public function index(){
-        $model = self::$model;
-        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $data['list'] = $model::search();
-            $pagination = new Pagination();
-            $data['pagination'] = $pagination;
-        }else {
-            $pagination = new Pagination();
-            $pagination->limit = 30;
-            $data['pagination'] = $pagination;
-            $limitSql = $pagination->getLimitSql($model::countList());
-            $data['list'] = $model::getList($limitSql);
-        }
-        $data['lng'] = self::$lng;
-        $data['params'] = self::$params;
-        View::renderPartner(self::$params['name'].'/index',$data);
+    public function index()
+    {
+        $data = $this->getListData($this->partnerModel);
+        $data['lng'] = $this->partnerLng;
+        $data['params'] = $this->partnerParams;
+        View::renderPartner($this->partnerParams['name'] . '/index', $data);
     }
 
-
-    public function add(){
-
-        $model = self::$model;
-
-        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $modelArray = $model::add();
-            if(empty($modelArray['errors'])){
-                Session::setFlash('success',self::$lng->get('Data has been saved successfully'));
-                Url::redirect(MODULE_PARTNER."/".self::$params["name"]);
-            }else {
-                Session::setFlash('error',$modelArray['errors']);
-            }
-        }
-        $data['input_list'] = $model::getInputs();
-        $data['params'] = self::$params;
-        $data['item'] = '';
-        $data['lng'] = self::$lng;
-        View::renderPartner(self::$params["name"].'/'.__FUNCTION__,$data);
+    public function view($id)
+    {
+        $data['item'] = $this->partnerModel::getItem($id);
+        $data['lng'] = $this->partnerLng;
+        $data['params'] = $this->partnerParams;
+        View::renderPartner($this->partnerParams['name'] . '/view', $data);
     }
 
-    public function update($id){
-        $model = self::$model;
-
-        if(isset($_POST['csrf_token']) && Csrf::isTokenValid()){
-            $modelArray = $model::update($id);
-            if(empty($modelArray['errors'])){
-                Session::setFlash('success',self::$lng->get('Data has been saved successfully'));
-                Url::redirect(MODULE_PARTNER."/".self::$params["name"]);
-            }else {
-                Session::setFlash('error',$modelArray['errors']);
-            }
-        }
-        $data['input_list'] = $model::getInputs();
-        $data['params'] = self::$params;
-        $data['item'] = $model::getItem($id);
-        $data['lng'] = self::$lng;
-        View::renderPartner(self::$params["name"].'/'.__FUNCTION__,$data);
+    // If you need any channel-specific methods, add them here
+    // For example:
+    public function getActiveChannels()
+    {
+        return $this->partnerModel::getActiveChannels();
     }
 
-
-    public function searchLikeFor($table, $values, $search_word){
-
-        $sql_s = ''; // Stop errors when $words is empty
-        if($values<=1){
-            $sql_s = "`".$values."` LIKE '%".$search_word."%' ";
-        } else {
-            foreach($values as $value){
-                $sql_s .= "`".$value."` LIKE '%".$search_word."%' OR ";
-            }
-            $sql_s = substr($sql_s,0,-3);
-        }
-        $sql = Database::get()->select("SELECT * FROM `".$table."` WHERE ".$sql_s);
-        return $sql;
-
+    // Override add method if you need channel-specific logic
+    public function add()
+    {
+        // Add any channel-specific logic here before calling parent method
+        parent::add();
     }
 
-    public function up($id){
-        $model = self::$model;
-        $model::move($id,'up');
-        Url::previous(MODULE_PARTNER."/".self::$params['name']);
-    }
-    public function down($id){
-        $model = self::$model;
-        $model::move($id,'down');
-        Url::previous(MODULE_PARTNER."/".self::$params['name']);
-    }
-    public function status($id){
-        $model = self::$model;
-        $model::statusToggle($id);
-        Url::previous(MODULE_PARTNER."/".self::$params['name']);
-    }
-    public function delete($id){
-        $model = self::$model;
-        $model::delete([$id]);
-        Url::previous(MODULE_PARTNER."/".self::$params['name']);
-    }
-    public function operation(){
-        $model = self::$model;
-        if(isset($_POST["row_check"])){
-            if(isset($_POST["delete"])){
-                $model::delete();
-            }elseif(isset($_POST["active"])){
-                $model::status(1);
-            }elseif(isset($_POST["deactive"])){
-                $model::status(0);
-            }
-        }else{
-            Session::setFlash('error','Please choose an action');
-        }
-        return Url::previous(MODULE_PARTNER."/".$this->dataParams["cName"].'/album');
+    // Override update method if you need channel-specific logic
+    public function update($id)
+    {
+        // Add any channel-specific logic here before calling parent method
+        parent::update($id);
     }
 
-
+    // You can add more channel-specific methods as needed
 }

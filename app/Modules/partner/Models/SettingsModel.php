@@ -3,18 +3,20 @@
 namespace Modules\partner\Models;
 
 use Core\Model;
-use Helpers\Security;
 use Helpers\Session;
 use Helpers\Validator;
-use Models\PartnerModel;
+use Modules\partner\Traits\CommonModelTrait;
 
 class SettingsModel extends Model
 {
+    use CommonModelTrait;
+
     private static $tableName = 'partner_settings';
     private static $partner_id;
     private static $rules;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         self::$partner_id = Session::get('user_session_id');
 
@@ -24,58 +26,51 @@ class SettingsModel extends Model
         ];
     }
 
-    public static function naming(){
+    public static function naming()
+    {
         return [];
     }
 
-
-    protected static function getPost()
+    public static function getInputs()
     {
-        extract($_POST);
-        $skip_list = ['csrf_token','image'];
-        $array = [];
-        foreach($_POST as $key=>$value){
-            if (in_array($key, $skip_list)) continue;
-            $array[$key] = Security::safeText($_POST[$key]);
-        }
-        return $array;
+        return [
+            ['type' => 'select2', 'name' => 'Channel', 'key' => 'channel', 'sql_type' => 'int(11)'],
+            ['type' => 'select2', 'name' => 'Country', 'key' => 'country', 'sql_type' => 'varchar(2)'],
+            ['type' => 'select2', 'name' => 'Language', 'key' => 'language', 'sql_type' => 'varchar(2)'],
+            ['type' => '', 'name' => '', 'key' => 'partner_id', 'sql_type' => 'int(11)'],
+        ];
     }
 
-    public static function getItem(){
-        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `partner_id`='" .self::$partner_id . "'");
-        if($check){
+    public static function getItem()
+    {
+        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `partner_id`=:partner_id", [':partner_id' => self::$partner_id]);
+        if ($check) {
             return $check;
-        }else{
-            $array = [
-                'channel'=>'233',
-                'country'=>'233',
-                'language'=>'3',
-                'partner_id'=>self::$partner_id,
+        } else {
+            $defaultSettings = [
+                'channel' => '233',
+                'country' => '233',
+                'language' => '3',
+                'partner_id' => self::$partner_id,
             ];
-            self::$db->insert(self::$tableName,$array);
-            return $array;
+            self::$db->insert(self::$tableName, $defaultSettings);
+            return $defaultSettings;
         }
     }
 
-
-    public static function update(){
-        $return = [];
-        $return['errors'] = null;
+    public static function update()
+    {
+        $return = ['errors' => null];
 
         $post_data = self::getPost();
 
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
-            $return['errors'] = null;
-            $update_data = $post_data;
-
-            self::$db->update(self::$tableName, $update_data, ['partner_id'=>self::$partner_id]);
-        }else{
-            $return['errors'] = implode('<br/>',array_map("ucfirst", $validator->getErrors()));
+            self::$db->update(self::$tableName, $post_data, ['partner_id' => self::$partner_id]);
+        } else {
+            $return['errors'] = implode('<br/>', array_map("ucfirst", $validator->getErrors()));
         }
 
         return $return;
     }
 }
-
-?>
