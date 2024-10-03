@@ -7,6 +7,7 @@ use Helpers\Security;
 use Helpers\Session;
 use Helpers\Url;
 use Core\View;
+use Helpers\Csrf;
 
 class News extends CrudController
 {
