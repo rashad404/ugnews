@@ -76,7 +76,7 @@ $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="<?= Url::templatePath() ?>css/tailwind-output.css">
+    <link rel="stylesheet" href="<?= Url::templatePath() ?>css/tailwind-output.css?<?=$css_v?>">
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
