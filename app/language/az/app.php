@@ -242,4 +242,90 @@ return [
     'November' => 'Noyabr',
     'December' => 'Dekabr',
     
+
+        'CreateYourChannel' => 'Səsinizi Yaradın və Paylaşın',
+        'CreateAndShareYourChannel' => 'Kanalınızı Yaradın və Paylaşın',
+        
+    'CreateChannelSubtitle' => 'Öz xəbər kanalınızı yaradın və səsinizi milyonlarla insana çatdırın',
+    'StartYourChannel' => 'Kanalınızı Yaradın',
+    'WhyUgNews' => 'Niyə Ug.News?',
+    'RevolutionizeNewsCreation' => 'Xəbər Yazmağın Yeni Dövrü Başladı',
+    
+    'Subscriptions' => 'Abunəliklər',
+    'SubscriptionsDesc' => 'Oxucularınızı cəlb edin və daimi auditoriya yaradın',
+    
+    'LikesDislikes' => 'Bəyənmə/Bəyənməmə',
+    'LikesDislikesDesc' => 'Oxucularınızın rəyini öyrənin və istifadəçi maraqlarına uyğun xəbərlər yazın',
+    
+    'Bookmarks' => 'Əlfəcinlər',
+    'BookmarksDesc' => 'Oxucularınıza sevimli məqalələrini saxlamağa imkan verin',
+    
+    'InterestBasedNews' => 'Marağa Əsaslanan Xəbərlər',
+    'InterestBasedNewsDesc' => 'Hər bir oxucuya fərdiləşdirilmiş məzmun təqdim edin',
+    
+    'LocationBasedNews' => 'Yerli Xəbərlər',
+    'LocationBasedNewsDesc' => 'Sizə yaxında baş verən xəbərləri göstərin',
+    
+    'FreeHosting' => 'Pulsuz reklam yerləşdirmə',
+    'FreeHostingDesc' => 'Kanalınızda pulsuz reklam yerləşdirin',
+    
+    'AdvancedFeatures' => 'Təkmilləşdirilmiş Xüsusiyyətlər',
+    'PowerfulToolsForNewsmakers' => 'Xəbər Yaradıcıları üçün Güclü Alətlər',
+    
+    'AdvancedAdminPanel' => 'Təkmilləşdirilmiş İdarəetmə Paneli',
+    'AdvancedAdminPanelDesc' => 'AI gücü ilə təchiz edilmiş, asan istifadə olunan idarəetmə paneli',
+    
+    'CostEffective' => 'Pulunuza qənaət edin',
+    'CostEffectiveDesc' => 'On minlərlə dollar xərcləmək əvəzinə Ug.news-dan istifadə edin. Biz bütün texniki işləri görürük',
+    
+    'GlobalReach' => 'Qlobal Oxucu kütləsi',
+    'GlobalReachDesc' => 'Təkcə Azərbaycan üçün deyil, istənilən ölkə və dildə kanal yaradın',
+    
+    'EasySharing' => 'Asan Paylaşma',
+    'EasySharingDesc' => 'Xəbərlərinizi bir kliklə digər platformalarda paylaşın',
+    
+    'UniqueFeatures' => 'Unikal Xüsusiyyətlər',
+    'WhyUgNewsIsDifferent' => 'Ug.News-u Fərqləndirən Nədir?',
+    
+    'CategoryPosts' => 'Kateqoriyalı Postlar',
+    'CategoryPostsDesc' => 'Xəbərinizə uyğun kateqoriyanı seçin və oxucularınızın maraq dairəsinə uyğun xəbərləri tapmasını asanlaşdırın',
+    
+    'AdvancedSearch' => 'Təkmilləşdirilmiş Axtarış',
+    'AdvancedSearchDesc' => 'Güclü axtarış filtri ilə oxucularınızın istədiklərini asanlıqla tapmasına kömək edin',
+    
+    'CustomAds' => 'Fərdi Reklamlar',
+    'CustomAdsDesc' => 'Öz reklamlarınızı səhifənizə əlavə edin və əlavə gəlir əldə edin',
+    
+    'MonetizationOptions' => 'Monetizasiya Seçimləri',
+    'MonetizationOptionsDesc' => 'Reklamlardan pul qazanın və kanalınızı gəlir mənbəyinə çevirin',
+
+    'Security' => 'Təhlükəsizlik',
+    'YourSafetyIsOurPriority' => 'Sizin Təhlükəsizliyiniz Bizim Prioritetimizdir',
+    
+    'SecurityMeasures' => 'Təhlükəsizlik Tədbirləri',
+    'SecurityMeasuresDesc' => 'Biz sizin məlumatlarınızın və kanalınızın təhlükəsizliyini təmin etmək üçün ən son texnologiyalardan istifadə edirik',
+    
+    'EncryptedData' => 'Şifrələnmiş Məlumatlar',
+    'RegularSecurityAudits' => 'Mütəmadi Təhlükəsizlik Auditləri',
+    '24_7Support' => '24/7 Dəstək',
+    
+    'ReadyToStart' => 'Başlamağa Hazırsınız?',
+    'JoinUgNewsToday' => 'Bu Gün Ug.News-a Qoşulun',
+    'CTADescription' => 'Öz xəbər kanalınızı yaradın, geniş auditoriyaya çatın və onlayn medianın gələcəyinin bir parçası olun',
+    'CreateYourChannel' => 'Kanalınızı Yaradın',
+
+    // Additional translations for the existing content
+    'InstantChannelCreation' => 'Ani Kanal Yaratma',
+    'InstantChannelCreationDesc' => 'Bir neçə dəqiqə ərzində öz xəbər kanalınızı yaradın. Pulsuz və limitsizdir.',
+    'GlobalAudience' => 'Qlobal Auditoriya',
+    'GlobalAudienceDesc' => 'Dünyanın hər yerindən oxuculara çatın. İstədiyiniz dildə və ölkə üçün kanal yaradın.',
+    'PowerfulTools' => 'Güclü Alətlər',
+    'PowerfulToolsDesc' => 'Ən son texnologiyalarla təchiz edilmiş platformamız sizə güclü serverlər, yüksək təhlükəsizlik və müasir inzibati panel təqdim edir.',
+    'AIAssistedEditing' => 'AI dəstəkli redaktə',
+    'AdvancedAnalytics' => 'Təkmilləşdirilmiş analitika',
+    'Testimonials' => 'Rəylər',
+    'HearFromOurUsers' => 'İstifadəçilərimizin Fikirləri',
+    'Testimonial1' => 'Ug.News sayəsində xəbər kanalımı asanlıqla idarə edə bilirəm. Oxucu sayım sürətlə artır!',
+    'TestimonialName1' => 'Əli Məmmədov',
+    'TestimonialTitle1' => 'Texnologiya Bloggeri',
 ];
