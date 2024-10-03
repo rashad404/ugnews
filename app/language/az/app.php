@@ -248,7 +248,7 @@ return [
         
     'CreateChannelSubtitle' => 'Öz xəbər kanalınızı yaradın və səsinizi milyonlarla insana çatdırın',
     'StartYourChannel' => 'Kanalınızı Yaradın',
-    'WhyUgNews' => 'Niyə Ug.News?',
+    'WhyUgNews' => 'Niyə '.SITE_NAME.'?',
     'RevolutionizeNewsCreation' => 'Xəbər Yazmağın Yeni Dövrü Başladı',
     
     'Subscriptions' => 'Abunəliklər',
@@ -276,7 +276,7 @@ return [
     'AdvancedAdminPanelDesc' => 'AI gücü ilə təchiz edilmiş, asan istifadə olunan idarəetmə paneli',
     
     'CostEffective' => 'Pulunuza qənaət edin',
-    'CostEffectiveDesc' => 'On minlərlə dollar xərcləmək əvəzinə Ug.news-dan istifadə edin. Biz bütün texniki işləri görürük',
+    'CostEffectiveDesc' => 'On minlərlə dollar xərcləmək əvəzinə '.SITE_NAME.'-dan istifadə edin. Biz bütün texniki işləri görürük',
     
     'GlobalReach' => 'Qlobal Oxucu kütləsi',
     'GlobalReachDesc' => 'Təkcə Azərbaycan üçün deyil, istənilən ölkə və dildə kanal yaradın',
@@ -285,7 +285,7 @@ return [
     'EasySharingDesc' => 'Xəbərlərinizi bir kliklə digər platformalarda paylaşın',
     
     'UniqueFeatures' => 'Unikal Xüsusiyyətlər',
-    'WhyUgNewsIsDifferent' => 'Ug.News-u Fərqləndirən Nədir?',
+    'WhyUgNewsIsDifferent' => SITE_NAME.'-u Fərqləndirən Nədir?',
     
     'CategoryPosts' => 'Kateqoriyalı Postlar',
     'CategoryPostsDesc' => 'Xəbərinizə uyğun kateqoriyanı seçin və oxucularınızın maraq dairəsinə uyğun xəbərləri tapmasını asanlaşdırın',
@@ -310,7 +310,7 @@ return [
     '24_7Support' => '24/7 Dəstək',
     
     'ReadyToStart' => 'Başlamağa Hazırsınız?',
-    'JoinUgNewsToday' => 'Bu Gün Ug.News-a Qoşulun',
+    'JoinUgNewsToday' => 'Bu Gün '.SITE_NAME.'-a Qoşulun',
     'CTADescription' => 'Öz xəbər kanalınızı yaradın, geniş auditoriyaya çatın və onlayn medianın gələcəyinin bir parçası olun',
     'CreateYourChannel' => 'Kanalınızı Yaradın',
 
@@ -325,7 +325,7 @@ return [
     'AdvancedAnalytics' => 'Təkmilləşdirilmiş analitika',
     'Testimonials' => 'Rəylər',
     'HearFromOurUsers' => 'İstifadəçilərimizin Fikirləri',
-    'Testimonial1' => 'Ug.News sayəsində xəbər kanalımı asanlıqla idarə edə bilirəm. Oxucu sayım sürətlə artır!',
+    'Testimonial1' => SITE_NAME.' sayəsində xəbər kanalımı asanlıqla idarə edə bilirəm. Oxucu sayım sürətlə artır!',
     'TestimonialName1' => 'Əli Məmmədov',
     'TestimonialTitle1' => 'Texnologiya Bloggeri',
 ];
