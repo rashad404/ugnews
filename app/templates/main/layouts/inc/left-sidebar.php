@@ -11,7 +11,7 @@ use Helpers\Session;
     </div>
     <div class="border-t border-gray-200">
         <form action="" method="post" class="divide-y divide-gray-200">
-            <?php FilterModel::getFilters(Session::get('cat')); ?>
+            <?php FilterModel::getFilters(Session::get('category_id')); ?>
             <div class="px-4 py-4 sm:px-6">
                 <button type="submit" name="filter" value="filter" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <?= $lng->get('Show') ?>

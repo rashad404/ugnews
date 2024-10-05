@@ -29,7 +29,7 @@ use Helpers\Format;
                     <div class="px-4 py-3 bg-gray-50 mt-auto">
                         <div class="flex justify-between items-center text-sm mb-2">
                             <span class="text-orange-600 font-medium">
-                                <?= $lng->get(\Models\NewsModel::getCatName($list['cat'])) ?>
+                                <?= $lng->get(\Models\NewsModel::getCatName($list['category_id'])) ?>
                             </span>
                             <span class="text-gray-500">
                                 <?= date("d.m.Y", $list['publish_time']) ?>

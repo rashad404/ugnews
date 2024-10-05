@@ -40,12 +40,12 @@ trait CommonModelTrait
 
     public static function getList($limit = 'LIMIT 0,10')
     {
-        return self::$db->select("SELECT " . self::getSqlFields() . " FROM " . static::$tableName . " WHERE `user_id`='" . static::$user_id . "' ORDER BY `id` DESC $limit");
+        return self::$db->select("SELECT " . self::getSqlFields() . " FROM " . static::$tableName . " WHERE `partner_id`='" . static::$partner_id . "' ORDER BY `id` DESC $limit");
     }
 
     public static function countList()
     {
-        $count = self::$db->selectOne("SELECT count(`id`) as countList FROM " . static::$tableName . " WHERE `user_id`='" . static::$user_id . "'");
+        $count = self::$db->selectOne("SELECT count(`id`) as countList FROM " . static::$tableName . " WHERE `partner_id`='" . static::$partner_id . "'");
         return $count['countList'];
     }
 

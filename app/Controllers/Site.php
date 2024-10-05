@@ -72,7 +72,7 @@ class Site extends Controller
 
         $data['region'] = Cookie::get('set_region');
         if($data['region']==0)$data['region']=DEFAULT_COUNTRY;
-        Session::set('cat',0);
+        Session::set('category_id',0);
 
 
         $data['usdRate'] = CurrencyModel::getUSDRate();

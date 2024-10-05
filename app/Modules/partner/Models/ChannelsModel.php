@@ -51,7 +51,7 @@ class ChannelsModel extends Model
             ['type' => '', 'name' => '', 'key' => 'image', 'sql_type' => 'varchar(200)'],
             ['type' => '', 'name' => '', 'key' => 'thumb', 'sql_type' => 'varchar(200)'],
             ['type' => '', 'name' => '', 'key' => 'position', 'sql_type' => 'int(11)'],
-            ['type' => 'select2', 'name' => 'Select category', 'key' => 'cat', 'sql_type' => 'int(5)', 'data' => self::getCategories()],
+            ['type' => 'select2', 'name' => 'Select category', 'key' => 'category_id', 'sql_type' => 'int(5)', 'data' => self::getCategories()],
             ['type' => 'tags', 'name' => 'Tags', 'key' => 'tags', 'sql_type' => 'varchar(255)'],
             ['type' => 'select2', 'name' => 'Select Country', 'key' => 'country', 'sql_type' => 'varchar(2)', 'data' => self::getCountries()],
             ['type' => 'select2', 'name' => 'Select Language', 'key' => 'language', 'sql_type' => 'varchar(2)', 'data' => self::getLanguages()],
