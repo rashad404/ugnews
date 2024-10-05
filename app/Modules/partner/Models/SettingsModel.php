@@ -21,8 +21,8 @@ class SettingsModel extends Model
         self::$user_id = Session::get('user_session_id');
 
         self::$rules = [
-            'country' => ['min_length(0)', 'max_length(2)'],
-            'language' => ['min_length(0)', 'max_length(2)'],
+            'country_id' => ['min_length(0)', 'max_length(2)'],
+            'language_id' => ['min_length(0)', 'max_length(2)'],
         ];
     }
 
@@ -34,9 +34,9 @@ class SettingsModel extends Model
     public static function getInputs()
     {
         return [
-            ['type' => 'select2', 'name' => 'channel_id', 'key' => 'channel_id', 'sql_type' => 'int(11)'],
-            ['type' => 'select2', 'name' => 'Country', 'key' => 'country', 'sql_type' => 'varchar(2)'],
-            ['type' => 'select2', 'name' => 'Language', 'key' => 'language', 'sql_type' => 'varchar(2)'],
+            ['type' => 'select2', 'name' => 'Channel', 'key' => 'channel_id', 'sql_type' => 'int(11)'],
+            ['type' => 'select2', 'name' => 'Country', 'key' => 'country_id', 'sql_type' => 'varchar(2)'],
+            ['type' => 'select2', 'name' => 'Language', 'key' => 'language_id', 'sql_type' => 'varchar(2)'],
             ['type' => '', 'name' => '', 'key' => 'user_id', 'sql_type' => 'int(11)'],
         ];
     }
