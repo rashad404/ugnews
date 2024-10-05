@@ -38,7 +38,7 @@ use Helpers\Format;
 
                         <div class="flex justify-between items-center">
                             <div class="flex items-center">
-                                <?php $channel_info = \Models\ChannelsModel::getItem($list['channel']); ?>
+                                <?php $channel_info = \Models\ChannelsModel::getItem($list['channel_id']); ?>
                                 <img class="w-8 h-8 rounded-full mr-2 object-cover" src="<?= Url::filePath() ?><?= $channel_info['thumb'] ?>" alt="<?= $channel_info['name']; ?>" />
                                 <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>" class="text-sm font-medium text-gray-700 hover:text-blue-600 transition">
                                     <?= Format::listTitle($channel_info['name'], 20); ?>

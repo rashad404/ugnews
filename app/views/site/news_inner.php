@@ -5,8 +5,8 @@ use Helpers\Csrf;
 
 $ad = $data['ad'];
 $item = $data['item'];
-$channel_info = \Models\ChannelsModel::getItem($item['channel']);
-$subscribe_check = \Models\NewsModel::subscribeCheck($item['channel']);
+$channel_info = \Models\ChannelsModel::getItem($item['channel_id']);
+$subscribe_check = \Models\NewsModel::subscribeCheck($item['channel_id']);
 $like_check = \Models\NewsModel::likeCheck($item['id']);
 $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
 ?>
@@ -60,7 +60,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
             <div class="news_inner_subscribe_area">
                 <button 
                     id="subscribe_button" 
-                    data-channel-id="<?= $item['channel'] ?>" 
+                    data-channel-id="<?= $item['channel_id'] ?>" 
                     class="<?= ($data['userId'] > 0) ? '' : 'umodal_toggle' ?> subscribe <?= ($subscribe_check === true) ? 'subscribed' : '' ?> px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center"
                 >
                 
@@ -142,7 +142,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                 <?php 
                 $c = 1;
                 foreach ($data['list'] as $list) : 
-                    $list_channel_info = \Models\ChannelsModel::getItem($list['channel']);
+                    $list_channel_info = \Models\ChannelsModel::getItem($list['channel_id']);
                     
                     if ($c == 2) : 
                 ?>

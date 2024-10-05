@@ -105,7 +105,7 @@ class AjaxModel extends Model
 
         $check = self::$db->selectOne("SELECT `id` FROM `" . self::$tableNameSubscribers . "` WHERE `channel_id`= '" . $id . "' AND `user_id`= '" . $user_id . "'");
         if (!$check) {
-            $data = ['channel' => $id, 'user_id' => $user_id, 'time' => time()];
+            $data = ['channel_id' => $id, 'user_id' => $user_id, 'time' => time()];
             self::$db->insert(self::$tableNameSubscribers, $data);
             self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `subscribers`=`subscribers`+1 WHERE `id`= '" . $id . "'");
             return self::$lng->get('Subscribed');
@@ -118,7 +118,7 @@ class AjaxModel extends Model
     {
         $user_id = intval(Session::get("user_session_id"));
         if ($user_id < 1) exit;
-        $where = ['channel' => $id, 'user_id' => $user_id];
+        $where = ['channel_id' => $id, 'user_id' => $user_id];
         self::$db->delete(self::$tableNameSubscribers, $where);
         self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `subscribers`=`subscribers`-1 WHERE `id`= '" . $id . "'");
         return self::$lng->get('Subscribe');

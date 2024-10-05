@@ -113,7 +113,7 @@ return [
     'CreateChannelText3' => 'Onlayn pul qazanmaq vaxtıdır. Kanalınızı paylaşın. Abunə, oxucularınızı artırın və reklam, eləcə də ödənişli abunələrdən pul qazanın.',
 
     //    Channel
-    'Channel' => 'Kanal',
+    'channel' => 'Kanal',
     'Create Channel' => 'Kanal Yarat',
     'TOP Channels' => 'TOP Kanallar',
     'News title' => 'Xəbər başlığı',

@@ -34,7 +34,7 @@ class AdsModel extends Model{
 
 
 //        if($array && $count) {
-//            self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
+//            self::$db->raw("UPDATE `" . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel_id'] . "'");
 //        }
         return $array;
     }

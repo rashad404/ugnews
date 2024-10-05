@@ -27,7 +27,7 @@ $lng = $data['lng'];
                                     <select name="channel">
                                         <?php
                                             foreach ($data as $list):?>
-                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['channel'])?'selected':''?>><?=$list['name']?></option>
+                                            <option value="<?=$list['id']?>" <?=($list['id']==$item['channel_id'])?'selected':''?>><?=$list['name']?></option>
                                         <?php endforeach;?>
                                     </select>
                                 </td>

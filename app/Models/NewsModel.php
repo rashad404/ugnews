@@ -210,7 +210,7 @@ class NewsModel extends Model
         if ($count && $id) {
             $isUniqueView = self::calculateUniqueView($id);
             if ($isUniqueView) {
-                self::$db->raw('UPDATE `' . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel'] . "'");
+                self::$db->raw('UPDATE `' . self::$tableNameChannels . "` SET `view`=`view`+1 WHERE `id`='" . $array['channel_id'] . "'");
             }
         }
         return $array;

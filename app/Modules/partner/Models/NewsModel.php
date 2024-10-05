@@ -47,7 +47,7 @@ class NewsModel extends Model
             ['type' => 'text', 'name' => 'Title', 'key' => 'title', 'sql_type' => 'varchar(100)'],
             ['type' => 'text', 'name' => 'Extra Title', 'key' => 'title_extra', 'sql_type' => 'varchar(100)'],
             ['type' => 'select2', 'name' => 'Select category', 'key' => 'cat', 'sql_type' => 'int(5)', 'data' => self::getCategories()],
-            ['type' => 'select2', 'name' => 'Select Channel', 'key' => 'channel', 'sql_type' => 'varchar(2)', 'data' => self::getChannels()],
+            ['type' => 'select2', 'name' => 'Select Channel', 'key' => 'channel_id', 'sql_type' => 'varchar(2)', 'data' => self::getChannels()],
             ['type' => 'select2', 'name' => 'City', 'key' => 'city', 'sql_type' => 'int(11)', 'data' => self::getCities()],
             ['type' => '', 'name' => '', 'key' => 'image', 'sql_type' => 'varchar(200)'],
             ['type' => '', 'name' => '', 'key' => 'thumb', 'sql_type' => 'varchar(200)'],
@@ -99,8 +99,8 @@ class NewsModel extends Model
             $insert_data['user_id'] = self::$user_id;
             $insert_data['time'] = time();
 
-            if ($post_data['channel'] > 0) {
-                $channel_info = ChannelsModel::getItem($post_data['channel']);
+            if ($post_data['channel_id'] > 0) {
+                $channel_info = ChannelsModel::getItem($post_data['channel_id']);
                 $insert_data['country_id'] = $channel_info['country_id'];
                 $insert_data['language_id'] = $channel_info['language_id'];
             }
@@ -129,8 +129,8 @@ class NewsModel extends Model
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $update_data = $post_data;
-            if ($post_data['channel'] > 0) {
-                $channel_info = ChannelsModel::getItem($post_data['channel']);
+            if ($post_data['channel_id'] > 0) {
+                $channel_info = ChannelsModel::getItem($post_data['channel_id']);
                 $update_data['country_id'] = $channel_info['country_id'];
                 $update_data['language_id'] = $channel_info['language_id'];
             }
