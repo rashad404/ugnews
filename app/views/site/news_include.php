@@ -14,7 +14,7 @@ use Helpers\Format;
                 <div class="bg-white rounded-lg overflow-hidden shadow-md flex flex-col h-full">
                     <a href="<?= $list['slug'] ?>" class="block flex-grow">
                         <?php if (!empty($list['thumb'])) : ?>
-                            <img class="w-full h-48 object-cover" src="<?= Url::filePath() ?><?= $list['thumb'] ?>" alt="<?= $list['title'] ?>" />
+                            <img class="w-full h-48 object-cover" src="https://new.ug.news/storage/<?= $list['image'] ?>" alt="<?= $list['title'] ?>" />
                         <?php else : ?>
                             <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
                                 <span class="text-gray-500">No Image Available</span>
