@@ -103,7 +103,7 @@ class ChannelsModel extends Model
 
     public static function countSubscribers($id)
     {
-        $count = self::$db->selectOne("SELECT count(`id`) as c FROM " . self::$tableNameSubscribers . " WHERE `channel _id`='" . $id . "'");
+        $count = self::$db->selectOne("SELECT count(`id`) as c FROM " . self::$tableNameSubscribers . " WHERE `channel_id`='" . $id . "'");
         return $count['c'];
     }
 
