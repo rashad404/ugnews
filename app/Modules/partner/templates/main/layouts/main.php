@@ -43,7 +43,7 @@ if($userId>0) {
 $_PARTNER = [];
 
 
-Cookie::set('partner_id', 1);
+Cookie::set('user_id', 1);
 $_PARTNER['id'] = 1;
 
 $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);

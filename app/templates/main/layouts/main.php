@@ -54,7 +54,7 @@ $data['menus'] = $menusObject->getMenus();
 $data['defLang'] = LanguagesModel::defaultLanguage("app");
 
 $_PARTNER = [];
-Cookie::set('partner_id', 1);
+Cookie::set('user_id', 1);
 $_PARTNER['id'] = 1;
 $_PARTNER = \Models\PartnerModel::getInfo($_PARTNER['id']);
 ?>

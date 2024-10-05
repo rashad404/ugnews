@@ -12,13 +12,13 @@ class SettingsModel extends Model
     use CommonModelTrait;
 
     private static $tableName = 'partner_settings';
-    private static $partner_id;
+    private static $user_id;
     private static $rules;
 
     public function __construct()
     {
         parent::__construct();
-        self::$partner_id = Session::get('user_session_id');
+        self::$user_id = Session::get('user_session_id');
 
         self::$rules = [
             'country' => ['min_length(0)', 'max_length(2)'],
@@ -37,13 +37,13 @@ class SettingsModel extends Model
             ['type' => 'select2', 'name' => 'Channel', 'key' => 'channel', 'sql_type' => 'int(11)'],
             ['type' => 'select2', 'name' => 'Country', 'key' => 'country', 'sql_type' => 'varchar(2)'],
             ['type' => 'select2', 'name' => 'Language', 'key' => 'language', 'sql_type' => 'varchar(2)'],
-            ['type' => '', 'name' => '', 'key' => 'partner_id', 'sql_type' => 'int(11)'],
+            ['type' => '', 'name' => '', 'key' => 'user_id', 'sql_type' => 'int(11)'],
         ];
     }
 
     public static function getItem()
     {
-        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `partner_id`=:partner_id", [':partner_id' => self::$partner_id]);
+        $check = self::$db->selectOne("SELECT * FROM " . self::$tableName . " WHERE `user_id`=:user_id", [':user_id' => self::$user_id]);
         if ($check) {
             return $check;
         } else {
@@ -51,7 +51,7 @@ class SettingsModel extends Model
                 'channel' => '233',
                 'country' => '233',
                 'language' => '3',
-                'partner_id' => self::$partner_id,
+                'user_id' => self::$user_id,
             ];
             self::$db->insert(self::$tableName, $defaultSettings);
             return $defaultSettings;
@@ -66,7 +66,7 @@ class SettingsModel extends Model
 
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
-            self::$db->update(self::$tableName, $post_data, ['partner_id' => self::$partner_id]);
+            self::$db->update(self::$tableName, $post_data, ['user_id' => self::$user_id]);
         } else {
             $return['errors'] = implode('<br/>', array_map("ucfirst", $validator->getErrors()));
         }

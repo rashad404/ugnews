@@ -15,7 +15,7 @@ class AdsModel extends Model
     private static $tableName = 'ads';
     private static $rules;
     private static $params;
-    private static $partner_id;
+    private static $user_id;
 
     public function __construct($params = '')
     {
@@ -27,7 +27,7 @@ class AdsModel extends Model
         ];
         self::$db->createTable(self::$tableName, self::getInputs());
         self::$params = $params;
-        self::$partner_id = Session::get('user_session_id');
+        self::$user_id = Session::get('user_session_id');
     }
 
     public static function naming()
@@ -48,7 +48,7 @@ class AdsModel extends Model
             ['type' => '', 'name' => '', 'key' => 'time', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'view', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'click', 'sql_type' => 'int(11)'],
-            ['type' => '', 'name' => '', 'key' => 'partner_id', 'sql_type' => 'int(11)'],
+            ['type' => '', 'name' => '', 'key' => 'user_id', 'sql_type' => 'int(11)'],
         ];
     }
 
@@ -60,7 +60,7 @@ class AdsModel extends Model
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $insert_data = $post_data;
-            $insert_data['partner_id'] = self::$partner_id;
+            $insert_data['user_id'] = self::$user_id;
             $insert_data['time'] = time();
 
             $insert_id = self::$db->insert(self::$tableName, $insert_data);

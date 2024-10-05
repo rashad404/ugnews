@@ -47,7 +47,7 @@ class MenusModel extends Model{
     }
 
 
-    public static function buildMenuList($partner_id=0){
+    public static function buildMenuList($user_id=0){
         $array = self::buildCategoryList();
         echo ' <ul class="menu"> ';
         foreach ($array as $key=>$value){
@@ -79,7 +79,7 @@ class MenusModel extends Model{
     }
 
 
-    public static function buildMenuListMobile($partner_id=0){
+    public static function buildMenuListMobile($user_id=0){
         $array = self::buildCategoryList();
         echo ' <ul class="nav flex-column"> ';
         foreach ($array as $key=>$value){
@@ -108,7 +108,7 @@ class MenusModel extends Model{
                 }
                 // echo '</ul></li>';
             }else{
-                if($partner_id>0 && $value['name']=='Roommates'){
+                if($user_id>0 && $value['name']=='Roommates'){
                 }else {
                     echo '<li><a href="/' . $value['url'] . '">' . $value['name'] . '</a></li>';
                 }

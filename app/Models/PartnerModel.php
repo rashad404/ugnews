@@ -10,13 +10,13 @@ class PartnerModel extends Model{
     }
 
 
-    public static function getInfo($partner_id=0){
+    public static function getInfo($user_id=0){
 
         $data = [];
-        if($partner_id==0) {
-            $data['id'] = Cookie::get('partner_id');
+        if($user_id==0) {
+            $data['id'] = Cookie::get('user_id');
         }else{
-            $data['id'] = $partner_id;
+            $data['id'] = $user_id;
         }
 
 

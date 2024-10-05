@@ -23,7 +23,7 @@ class ChannelsModel extends Model
     private static $lng;
     private static $rules;
     private static $params;
-    private static $partner_id;
+    private static $user_id;
 
     public function __construct($params = '')
     {
@@ -36,7 +36,7 @@ class ChannelsModel extends Model
         ];
         self::$db->createTable(self::$tableName, self::getInputs());
         self::$params = $params;
-        self::$partner_id = Session::get('user_session_id');
+        self::$user_id = Session::get('user_session_id');
     }
 
     public static function naming()
@@ -59,7 +59,7 @@ class ChannelsModel extends Model
             ['type' => '', 'name' => '', 'key' => 'time', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'view', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'subscribers', 'sql_type' => 'int(11)'],
-            ['type' => '', 'name' => '', 'key' => 'partner_id', 'sql_type' => 'int(11)'],
+            ['type' => '', 'name' => '', 'key' => 'user_id', 'sql_type' => 'int(11)'],
             ['type' => 'textarea', 'name' => 'About', 'key' => 'text', 'sql_type' => 'text'],
             ['type' => 'text', 'name' => 'Name URL', 'key' => 'name_url', 'sql_type' => 'text'],
         ];
@@ -114,7 +114,7 @@ class ChannelsModel extends Model
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $insert_data = $post_data;
-            $insert_data['partner_id'] = self::$partner_id;
+            $insert_data['user_id'] = self::$user_id;
             $insert_data['name_code'] = mb_strtolower(preg_replace("/[ *()\-_.,]/", "", $insert_data['name']));
             $insert_data['name_url'] = Format::urlTextChannel($insert_data['name']);
 

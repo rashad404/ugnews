@@ -22,7 +22,7 @@ class NewsModel extends Model
 
     private static $rules;
     private static $params;
-    private static $partner_id;
+    private static $user_id;
 
     public function __construct($params = '')
     {
@@ -33,7 +33,7 @@ class NewsModel extends Model
         ];
         self::$db->createTable(self::$tableName, self::getInputs());
         self::$params = $params;
-        self::$partner_id = Session::get('user_session_id');
+        self::$user_id = Session::get('user_session_id');
     }
 
     public static function naming()
@@ -57,7 +57,7 @@ class NewsModel extends Model
             ['type' => '', 'name' => '', 'key' => 'status', 'sql_type' => 'tinyint(2)'],
             ['type' => '', 'name' => '', 'key' => 'time', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'view', 'sql_type' => 'int(11)'],
-            ['type' => '', 'name' => '', 'key' => 'partner_id', 'sql_type' => 'int(11)'],
+            ['type' => '', 'name' => '', 'key' => 'user_id', 'sql_type' => 'int(11)'],
             ['type' => '', 'name' => '', 'key' => 'slug', 'sql_type' => 'varchar(255)'],
             ['type' => 'textarea', 'name' => 'Text', 'key' => 'text', 'sql_type' => 'text'],
         ];
@@ -80,7 +80,7 @@ class NewsModel extends Model
 
     public static function getChannels()
     {
-        $array = self::$db->select("SELECT `id`, `name` FROM " . self::$tableNameChannels . " WHERE `status`=1 AND `partner_id`='" . self::$partner_id . "' ORDER BY `id` DESC");
+        $array = self::$db->select("SELECT `id`, `name` FROM " . self::$tableNameChannels . " WHERE `status`=1 AND `user_id`='" . self::$user_id . "' ORDER BY `id` DESC");
         return array_map(fn($item) => ['key' => $item['id'], 'name' => $item['name'], 'disabled' => ''], $array);
     }
 
@@ -96,7 +96,7 @@ class NewsModel extends Model
         $validator = Validator::validate($post_data, self::$rules, self::naming());
         if ($validator->isSuccess()) {
             $insert_data = $post_data;
-            $insert_data['partner_id'] = self::$partner_id;
+            $insert_data['user_id'] = self::$user_id;
             $insert_data['time'] = time();
 
             if ($post_data['channel'] > 0) {
