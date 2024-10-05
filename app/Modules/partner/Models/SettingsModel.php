@@ -49,8 +49,8 @@ class SettingsModel extends Model
         } else {
             $defaultSettings = [
                 'channel_id' => '233',
-                'country' => '233',
-                'language' => '3',
+                'country_id' => '233',
+                'language_id' => '3',
                 'user_id' => self::$user_id,
             ];
             self::$db->insert(self::$tableName, $defaultSettings);
