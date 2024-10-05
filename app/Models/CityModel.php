@@ -15,7 +15,7 @@ class CityModel extends Model{
     }
 
     public static function getList($limit='LIMIT 0,100'){
-        $row = self::$db->select("SELECT `id`,`name` FROM `".self::$tableName."` WHERE `country`='".self::$region."' ORDER BY `name` ASC ".$limit);
+        $row = self::$db->select("SELECT `id`,`name` FROM `".self::$tableName."` WHERE `country_id`='".self::$region."' ORDER BY `name` ASC ".$limit);
         return $row;
     }
     public static function getName($id){
