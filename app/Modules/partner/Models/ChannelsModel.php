@@ -75,7 +75,7 @@ class ChannelsModel extends Model
     {
         new SettingsModel();
         $defaults = SettingsModel::getItem();
-        $def_country = $defaults['country'];
+        $def_country = $defaults['country_id'];
 
         $array = self::$db->select("SELECT `id`, `name` FROM " . self::$tableNameCountries);
         return array_map(fn($item) => [

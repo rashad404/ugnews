@@ -101,8 +101,8 @@ class NewsModel extends Model
 
             if ($post_data['channel'] > 0) {
                 $channel_info = ChannelsModel::getItem($post_data['channel']);
-                $insert_data['country'] = $channel_info['country'];
-                $insert_data['language'] = $channel_info['language'];
+                $insert_data['country_id'] = $channel_info['country_id'];
+                $insert_data['language_id'] = $channel_info['language_id'];
             }
 
             $insert_data['slug'] = $channel_info['name_url'] . '/' . Url::generateSafeSlug($post_data['title']);
@@ -131,8 +131,8 @@ class NewsModel extends Model
             $update_data = $post_data;
             if ($post_data['channel'] > 0) {
                 $channel_info = ChannelsModel::getItem($post_data['channel']);
-                $update_data['country'] = $channel_info['country'];
-                $update_data['language'] = $channel_info['language'];
+                $update_data['country_id'] = $channel_info['country_id'];
+                $update_data['language_id'] = $channel_info['language_id'];
             }
 
             self::$db->update(self::$tableName, $update_data, ['id' => $id]);
