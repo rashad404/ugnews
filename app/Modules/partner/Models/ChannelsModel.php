@@ -90,7 +90,7 @@ class ChannelsModel extends Model
     {
         new SettingsModel();
         $defaults = SettingsModel::getItem();
-        $def_language = $defaults['language'];
+        $def_language = $defaults['language_id'];
 
         $array = self::$db->select("SELECT `id`, `name` FROM " . self::$tableNameLanguages . " WHERE `status`=1 ORDER BY `id` DESC");
         return array_map(fn($item) => [
