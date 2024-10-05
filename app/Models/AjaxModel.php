@@ -103,7 +103,7 @@ class AjaxModel extends Model
         $user_id = intval(Session::get("user_session_id"));
         if ($user_id < 1) exit;
 
-        $check = self::$db->selectOne("SELECT `id` FROM `" . self::$tableNameSubscribers . "` WHERE `channel`= '" . $id . "' AND `user_id`= '" . $user_id . "'");
+        $check = self::$db->selectOne("SELECT `id` FROM `" . self::$tableNameSubscribers . "` WHERE `channel _id`= '" . $id . "' AND `user_id`= '" . $user_id . "'");
         if (!$check) {
             $data = ['channel' => $id, 'user_id' => $user_id, 'time' => time()];
             self::$db->insert(self::$tableNameSubscribers, $data);

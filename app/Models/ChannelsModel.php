@@ -15,7 +15,7 @@ class ChannelsModel extends Model{
     }
 
     public static function countSubscribers($id){
-        $array = self::$db->count("SELECT count(id) FROM `".self::$tableNameSubscribers."` WHERE `channel`='".$id."'");
+        $array = self::$db->count("SELECT count(id) FROM `".self::$tableNameSubscribers."` WHERE `channel _id`='".$id."'");
         return $array;
     }
 
