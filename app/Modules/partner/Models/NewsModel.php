@@ -48,7 +48,7 @@ class NewsModel extends Model
             ['type' => 'text', 'name' => 'Extra Title', 'key' => 'title_extra', 'sql_type' => 'varchar(100)'],
             ['type' => 'select2', 'name' => 'Select category', 'key' => 'category_id', 'sql_type' => 'int(5)', 'data' => self::getCategories()],
             ['type' => 'select2', 'name' => 'Select Channel', 'key' => 'channel_id', 'sql_type' => 'varchar(2)', 'data' => self::getChannels()],
-            ['type' => 'select2', 'name' => 'City', 'key' => 'city', 'sql_type' => 'int(11)', 'data' => self::getCities()],
+            ['type' => 'select2', 'name' => 'City', 'key' => 'city_id', 'sql_type' => 'int(11)', 'data' => self::getCities()],
             ['type' => '', 'name' => '', 'key' => 'image', 'sql_type' => 'varchar(200)'],
             ['type' => '', 'name' => '', 'key' => 'thumb', 'sql_type' => 'varchar(200)'],
             ['type' => '', 'name' => '', 'key' => 'position', 'sql_type' => 'int(11)'],
