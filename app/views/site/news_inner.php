@@ -38,7 +38,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                 <h1 class="text-3xl font-bold text-gray-900 mb-4"><?= $item['title'] ?> <span class="text-red-600"><?= $item['title_extra'] ?></span></h1>
                 
                 <?php if (!empty($item['image'])) : ?>
-                    <img class="w-full h-auto mb-6 rounded-lg shadow-md" src="<?= Url::filePath() . $item['image'] ?>" alt="<?= $item['title'] ?>" />
+                    <img class="w-full h-auto mb-6 rounded-lg shadow-md" src="https://new.ug.news/storage/<?= $item['image'] ?>" alt="<?= $item['title'] ?>" />
                 <?php endif; ?>
                 
                 <div class="prose max-w-none text-gray-700">
