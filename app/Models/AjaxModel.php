@@ -131,7 +131,7 @@ class AjaxModel extends Model
     {
         $data = '<div class="divide-y divide-gray-200">';
 
-        $array_channels = self::$db->select("SELECT `id`,`name`,`thumb`,`subscribers` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%' ORDER BY `subscribers` DESC LIMIT 5");
+        $array_channels = self::$db->select("SELECT `id`,`name`,`image`,`subscribers` FROM `" . self::$tableNameChannels . "` WHERE `name` LIKE '%" . $text . "%' ORDER BY `subscribers` DESC LIMIT 5");
         if ($array_channels) {
             $data .= '<div class="py-4 px-2">
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News Channels') . '</h3>
