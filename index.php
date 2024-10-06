@@ -1,6 +1,5 @@
 <?php
 ini_set("display_errors",1);
-ini_set('session.cookie_domain', '.ug.news');
 
 /**
  * SimpleMVC specifed directory default is '.'
