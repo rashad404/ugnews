@@ -150,7 +150,7 @@ class AjaxModel extends Model
             $data .= '</ul></div>';
         }
 
-        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`thumb`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%' ORDER BY `time` DESC LIMIT 5");
+        $array_news = self::$db->select("SELECT `id`,`title`,`slug`,`image`,`time` FROM `" . self::$tableNameNews . "` WHERE `title` LIKE '%" . $text . "%' ORDER BY `time` DESC LIMIT 5");
         if ($array_news) {
             $data .= '<div class="py-4 px-2">
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">' . self::$lng->get('News') . '</h3>
