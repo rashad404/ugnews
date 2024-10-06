@@ -107,7 +107,7 @@ use Models\CountryModel;
         </div>
         <div x-show="open" @click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
             <?php if ($userId > 0): ?>
-                <a target="_blank" href="https://new.ug.news" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Dashboard') ?></a>
+                <a target="_blank" href="https://new.ug.news/user/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Dashboard') ?></a>
                 <a href="/user_panel/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Profile') ?></a>
                 <a href="/user_panel/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Logout') ?></a>
             <?php else: ?>
