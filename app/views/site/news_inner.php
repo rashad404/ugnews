@@ -16,7 +16,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
         <article class="bg-white shadow-lg rounded-lg overflow-hidden">
             <header class="p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-4">
-                    <img class="w-12 h-12 rounded-full object-cover" src="<?= Url::filePath() . $channel_info['thumb'] ?>" alt="<?= $channel_info['name'] ?>" />
+                    <img class="w-12 h-12 rounded-full object-cover" src="https://new.ug.news/storage/<?=$channel_info['image'] ?>" alt="<?= $channel_info['name'] ?>" />
                     <div class="flex-1">
                         <a href="/<?= Format::urlTextChannel($channel_info['name_url']) ?>" class="text-lg font-semibold text-gray-900 hover:underline"><?= $channel_info['name'] ?></a>
                         <p class="text-sm text-gray-500"><?= date("d.m.Y H:i", $item['publish_time']) ?></p>
@@ -150,7 +150,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                     <div class="p-4 bg-blue-50">
                         <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Reklam</span>
                         <a href="ads/click/<?= $ad['id'] ?>" target="_blank" class="mt-2 flex items-center group">
-                            <img src="<?= Url::filePath() . $ad['thumb'] ?>" alt="" class="w-16 h-16 object-cover rounded-md mr-4">
+                            <img src="https://new.ug.news/storage/<?=$ad['image'] ?>" alt="" class="w-16 h-16 object-cover rounded-md mr-4">
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition"><?= Format::listTitle($ad['title'], 20) ?></h3>
                                 <p class="text-sm text-gray-600"><?= Format::listText($ad['text'], 50) ?></p>
@@ -164,7 +164,7 @@ $dislike_check = \Models\NewsModel::dislikeCheck($item['id']);
                 <a href="<?=$list['slug']?>" class="block p-4 hover:bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex items-center">
                         <?php if (!empty($list['thumb'])) : ?>
-                            <img src="<?= Url::filePath() . $list['thumb'] ?>" alt="" class="w-20 h-20 object-cover rounded-md mr-4">
+                            <img src="https://new.ug.news/storage/<?=$list['image'] ?>" alt="" class="w-20 h-20 object-cover rounded-md mr-4">
                         <?php endif; ?>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 line-clamp-2 hover:text-blue-600 transition"><?= Format::listTitle($list['title'], 50) ?></h3>

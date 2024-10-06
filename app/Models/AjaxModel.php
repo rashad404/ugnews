@@ -139,7 +139,7 @@ class AjaxModel extends Model
             foreach ($array_channels as $item) {
                 $data .= '<li>
                             <a href="/' . Format::urlTextChannel($item['name']) . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
-                                <img class="h-10 w-10 rounded-full object-cover" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['name'] . '"/>
+                                <img class="h-10 w-10 rounded-full object-cover" src="https://new.ug.news/storage/'. $item['image'] . '" alt="' . $item['name'] . '"/>
                                 <div class="ml-3 flex-grow">
                                     <p class="text-sm font-medium text-gray-900">' . $item['name'] . '</p>
                                     <p class="text-sm text-gray-500">' . number_format($item['subscribers']) . ' ' . self::$lng->get('subscribers') . '</p>
@@ -158,7 +158,7 @@ class AjaxModel extends Model
             foreach ($array_news as $item) {
                 $data .= '<li>
                             <a href="/' . $item['slug'] . '" class="py-3 flex items-center hover:bg-gray-50 transition duration-150 ease-in-out">
-                                <img class="h-16 w-24 object-cover rounded" src="' . Url::filePath() . '/' . $item['thumb'] . '" alt="' . $item['title'] . '"/>
+                                <img class="h-16 w-24 object-cover rounded" src="https://new.ug.news/storage/' . $item['image'] . '" alt="' . $item['title'] . '"/>
                                 <div class="ml-3 flex-grow">
                                     <p class="text-sm font-medium text-gray-900">' . Format::listTitle($item['title'], 60) . '</p>
                                     <p class="text-xs text-gray-500">' . date('M d, Y H:i', $item['time']) . '</p>

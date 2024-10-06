@@ -20,7 +20,7 @@ use Models\TextsModel;
                                         <div class="item col-lg-4">
                                             <div class="thumbnail news_card">
                                                 <a href="<?=$list['slug']?>">
-                                                    <img class="group list-group-image hoverable" src="<?=Url::filePath()?>/<?=$list['image']?>" alt="" />
+                                                    <img class="group list-group-image hoverable" src="https://new.ug.news/storage/<?=$list['image']?>" alt="" />
                                                     <div class="caption">
                                                         <div class="caption_text">
                                                             <h4 class="group inner list-group-item-heading">

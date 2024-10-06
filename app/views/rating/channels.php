@@ -34,7 +34,7 @@ use Helpers\Url;
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <?php if (!empty($list['thumb'])): ?>
-                                    <img class="h-10 w-10 rounded-full mr-3" src="<?=Url::filePath()?>/<?=$list['thumb']?>" alt="<?=$list['name']?>" />
+                                    <img class="h-10 w-10 rounded-full mr-3" src="https://new.ug.news/storage/<?=$list['image']?>" alt="<?=$list['name']?>" />
                                 <?php endif; ?>
                                 <div class="text-sm font-medium text-gray-900">
                                     <a href="/<?=Format::urlTextChannel($list['name_url'])?>" class="hover:text-blue-600">
