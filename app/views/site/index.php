@@ -61,7 +61,7 @@ $tag_list = ($data['region'] == 16)
             <?php foreach ($data['channel_list'] as $list): ?>
                 <div class="flex-none px-4 sm:px-0 mr-4 lg:mr-16">
                     <a href="/<?= Format::urlTextChannel($list['name_url']) ?>" class="block w-20 text-center">
-                        <img src="<?= Url::filePath() ?>/<?= $list['thumb'] ?>?aas" alt="<?= $list['name'] ?>" class="w-20 h-20 object-cover rounded-full mb-2 shadow">
+                        123<img src="https://new.ug.news/storage/<?= $list['image'] ?>" alt="<?= $list['name'] ?>" class="w-20 h-20 object-cover rounded-full mb-2 shadow">
                         <span class="text-xs text-gray-600"><?= Format::listTitle($list['name'], 20) ?></span>
                     </a>
                 </div>
