@@ -7,7 +7,7 @@ $subscribe_check = \Models\NewsModel::subscribeCheck($item['id']);
 
 <div class="bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="relative h-48 sm:h-64 md:h-80">
-        <img src="https://new.ug.news/<?=$item['image']?>" alt="<?=$item['name']?>" class="w-full h-full object-cover">
+        <img src="https://new.ug.news/storage/<?=$item['image']?>" alt="<?=$item['name']?>" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6">
             <h1 class="text-3xl font-bold text-white mb-2"><?=$item['name']?></h1>
             <p class="text-sm text-gray-300 mb-2">https://ug.news/<?=strtolower($item['name_url'])?></p>
