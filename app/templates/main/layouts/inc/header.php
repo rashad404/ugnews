@@ -111,8 +111,8 @@ use Models\CountryModel;
                 <a href="https://new.ug.news/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Profile') ?></a>
                 <a href="/user_panel/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Logout') ?></a>
             <?php else: ?>
-                <a href="/login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Sign in') ?></a>
-                <a href="/register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Sign up') ?></a>
+                <a href="https://new.ug.news/login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Sign in') ?></a>
+                <a href="https://new.ug.news/register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"><?= $lng->get('Sign up') ?></a>
             <?php endif; ?>
         </div>
     </div>
