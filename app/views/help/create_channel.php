@@ -9,7 +9,7 @@
                 <?=$lng->get("CreateChannelSubtitle")?>
             </p>
             <div class="mt-10">
-                <a href="partner/channels/add" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="https://new.ug.news/user/channels/create" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <?=$lng->get("StartYourChannel")?>
                 </a>
             </div>
@@ -332,7 +332,7 @@
             <p class="mt-4 text-lg leading-6 text-indigo-200">
                 <?=$lng->get("CTADescription")?>
             </p>
-            <a href="partner/channels/add" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto">
+            <a href="https://new.ug.news/user/channels/create" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto">
                 <?=$lng->get("CreateYourChannel")?>
             </a>
         </div>
